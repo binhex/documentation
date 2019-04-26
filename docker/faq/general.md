@@ -1,4 +1,4 @@
-**General Docker FAQ**
+# **General Docker FAQ**
 
 Q1. What is the difference between Bridge and Host Network Types?
 

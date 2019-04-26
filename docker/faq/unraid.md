@@ -1,4 +1,4 @@
-**unRAID FAQ**
+# **unRAID Docker FAQ**
 
 Q1. What does the Privileged check-box do?
 

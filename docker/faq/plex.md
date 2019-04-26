@@ -1,4 +1,4 @@
-**Plex FAQ**
+# **Plex Docker FAQ**
 
 Q1. How do i configure Plex to transcode to RAM/Array/Cache?
 
