@@ -16,7 +16,7 @@ Q4. Why can't Sonarr/Radarr/Lidarr/SickRage/Medusa post process my downloads fro
 
 A4. The location you set for downloads for your download client(s) MUST be consistent for ALL docker containers, so for instance assuming two containers (there could and probably will be more than two in reality), a downloader (sabnzbdvpn) and a metadata downloader (sonarr), here are some scenarios:-
 
-<span style="color:red">*BROKEN EXAMPLE 1.*</span>
+**BROKEN EXAMPLE 1.**</span>
 
 **sabnzbdvpn**
 
@@ -36,7 +36,7 @@ is mapped to
 
 Why is this broken? because although the container path (/data) is the same for both containers, the host path does NOT match
 
-<span style="color:red">*BROKEN EXAMPLE 2.*</span>
+**BROKEN EXAMPLE 2.**</span>
 
 **sabnzbdvpn**
 
@@ -56,7 +56,7 @@ is mapped to
 
 Why is this broken? because although the container path (/data) is the same for both containers, the host path does NOT match (linux is CaSe sensitive).
 
-<span style="color:red">*BROKEN EXAMPLE 3.*</span>
+**BROKEN EXAMPLE 3.**</span>
 
 **sabnzbdvpn**
 
@@ -76,7 +76,7 @@ is mapped to
 
 Why is this broken? because although the host path is now ok, the container paths do NOT match.
 
-<span style="color:green">*WORKING EXAMPLE*</span>
+**WORKING EXAMPLE**</span>
 
 **sabnzbdvpn**
 
