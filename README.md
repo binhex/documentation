@@ -5,19 +5,24 @@ Links to documentation for software located in the binhex repositories.
 
 ## Docker
 
-### General Docker FAQ - https://github.com/binhex/documentation/blob/master/docker/faq/general.md
+### General Docker FAQ
+https://github.com/binhex/documentation/blob/master/docker/faq/general.md
 Frequently asked questions regards general Docker usage.
 
-### VPN Docker FAQ - https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+### VPN Docker FAQ
+https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
 Frequently asked questions regards Plex specific configuration.
 
-### Plex Docker FAQ - https://github.com/binhex/documentation/blob/master/docker/faq/plex.md
+### Plex Docker FAQ
+https://github.com/binhex/documentation/blob/master/docker/faq/plex.md
 Frequently asked questions regards Plex specific configuration.
 
-### unRAID Docker FAQ - https://github.com/binhex/documentation/blob/master/docker/faq/unraid.md
+### unRAID Docker FAQ
+https://github.com/binhex/documentation/blob/master/docker/faq/unraid.md
 Frequently asked questions regards unRAID general Docker usage.
 
-### Further Help - https://github.com/binhex/documentation/blob/master/docker/faq/help.md
+### Further Help
+https://github.com/binhex/documentation/blob/master/docker/faq/help.md
 Instructions for further help if required.
 
 If you appreciate my work, then please consider buying me a beer  :D
