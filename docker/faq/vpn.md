@@ -47,7 +47,8 @@ A4. Sure!, here is a list of examples and how to identify the correct CIDR notat
 
 If you type "ipconfig /all" on windows host on your LAN you will get something similar to this:-
 
-```Ethernet adapter Ethernet:
+```
+Ethernet adapter Ethernet:
 
    Connection-specific DNS Suffix  . : home.gateway
    Description . . . . . . . . . . . : Red Hat VirtIO Ethernet Adapter
@@ -64,17 +65,20 @@ If you type "ipconfig /all" on windows host on your LAN you will get something s
    DHCPv6 IAID . . . . . . . . . . . : 55727104
    DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-1D-4A-97-73-52-54-00-32-3F-43
    DNS Servers . . . . . . . . . . . : 193.1.2.3
-   NetBIOS over Tcpip. . . . . . . . : Enabled```
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+```
 
 or "ifconfig" on linux:-
 
-```eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+```
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 192.168.1.10  netmask 255.255.255.0  broadcast 192.168.1.255
         ether 68:05:ca:0b:fe:25  txqueuelen 0  (Ethernet)
         RX packets 28203743  bytes 36171326044 (33.6 GiB)
         RX errors 0  dropped 19925  overruns 0  frame 0
         TX packets 26710466  bytes 165269242671 (153.9 GiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0```
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
 
 So you can see the ip address of this host 192.168.1.10 and the netmask 255.255.255.0, so the internal network is defined as:-
 
@@ -86,9 +90,11 @@ and the netmask in CIDR format is:-
 
 Some common netmask to CIDR notation examples:-
 
-```255.255.255.0 = /24
+```
+255.255.255.0 = /24
 255.255.0.0 = /16
-255.0.0.0 = /8```
+255.0.0.0 = /8
+```
 
 Q5. I've just updated and now the container won't start. If i look in the /config/supervisord.log file i see the message below, what does it mean and how do i fix it?.
 
@@ -148,8 +154,10 @@ Q8. I'm unable to see the Web UI and i'm seeing the following in the /config/sup
 
 A8. This is due to the VPN provider pushing an OpenVPN option to use IPv6 to the client (your end), due to the fact that unRAID 6.3.x or earlier doesn't support IPv6 you will then see the above error message. To prevent this we can filter out the pushed options by adding the following lines to your ovpn file (located in /config/openvpn/<your filename>.ovpn)
 
-```pull-filter ignore "route-ipv6"
-pull-filter ignore "ifconfig-ipv6"```
+```
+pull-filter ignore "route-ipv6"
+pull-filter ignore "ifconfig-ipv6"
+```
 
 Save the file and restart the container for the change to take effect.
 
@@ -159,11 +167,13 @@ A9. To do this you can use the website https://www.yougetsignal.com/tools/open-p
 
 Q10. I can't connect to the Web UI and i see the following repeated over and over in the logs, what does mean and how do i fix it?
 
-```2018-04-02 21:13:42,659 DEBG 'start-script' stdout output:
+```
+2018-04-02 21:13:42,659 DEBG 'start-script' stdout output:
 [warn] Response code 000 from curl != 2xx
 [warn] Exit code 7 from curl != 0
 [info] 4 retries left
-[info] Retrying in 10 secs...```
+[info] Retrying in 10 secs...
+```
 
 A10. The above message means that you have env var 'STRICT_PORT_FORWARD' set to a value of 'yes' but the endpoint you are connecting to does NOT support port forwarding. For a current list of port forward enabled endpoints for PIA, see the link below:-
 
