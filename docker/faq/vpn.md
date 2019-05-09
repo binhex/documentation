@@ -18,8 +18,10 @@ In order to force the loading of iptable_mangle you need to add the following to
 
 Step 1 SSH into the unRAID host and issue the following commands:-
 
-```echo \"# force iptable mangle module to load (required for *vpn dockers)\" >> /boot/config/go
-echo \"/sbin/modprobe iptable_mangle\" >> /boot/config/go```
+```
+echo "# force iptable mangle module to load (required for *vpn dockers)" >> /boot/config/go
+echo "/sbin/modprobe iptable_mangle" >> /boot/config/go
+```
 
 Step 2 Reboot the host for the change to take effect
 
