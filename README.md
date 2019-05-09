@@ -14,7 +14,7 @@ Links to documentation for software located in the binhex repositories.
 &nbsp;&nbsp;&nbsp;&nbsp; Frequently asked questions regards Plex specific configuration.
 
 ### &nbsp;&nbsp;&nbsp;&nbsp; SABnzbdVPN Docker FAQ
-&nbsp;&nbsp;&nbsp;&nbsp; https://github.com/binhex/documentation/blob/master/docker/faq/sabmzbdvpn.md  
+&nbsp;&nbsp;&nbsp;&nbsp; https://github.com/binhex/documentation/blob/master/docker/faq/sabnzbdvpn.md  
 &nbsp;&nbsp;&nbsp;&nbsp; Frequently asked questions regards SABnzbd+ specific configuration.
 
 ### &nbsp;&nbsp;&nbsp;&nbsp; DelugeVPN Docker FAQ
