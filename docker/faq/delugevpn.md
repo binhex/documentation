@@ -42,6 +42,6 @@
 
 5. The "Tracker Status" should return something like this:-
 
-```"checkmytorrentip.net: Error: Success, Your torrent client IP is: 10.156.1.1"```
+&nbsp;&nbsp; ```"checkmytorrentip.net: Error: Success, Your torrent client IP is: 10.156.1.1"```
 
 6. If the tunnel is correctly established then IP address should be different to the IP address from your ISP.
