@@ -41,5 +41,3 @@ For example a volume mapping of /config /mnt/cache/appdata will create a folder 
 **Q9.** I have a problem with application X, its hanging/crashing/behaving strangely, who do i contact?
 
 **A9.** Although i am the developer for the docker image i cannot fix issues related to the application itself, put simply i create an easy to use method to run the application, if the application itself is faulty then you will need to contact the developer(s) of the application, most of the time this involves posting an 'issue' on github, see the application support thread OP for links to the application, or link in the readme.md for the application.
-
-Still stuck?, take a look at the unRAID FAQ:- https://lime-technology.com/forums/topic/57181-real-docker-faq/

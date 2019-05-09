@@ -13,6 +13,18 @@ Frequently asked questions regards general Docker usage.
 https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md  
 Frequently asked questions regards Plex specific configuration.
 
+### SABnzbdVPN Docker FAQ
+https://github.com/binhex/documentation/blob/master/docker/faq/sabmzbdvpn.md  
+Frequently asked questions regards SABnzbd+ specific configuration.
+
+### DelugeVPN Docker FAQ
+https://github.com/binhex/documentation/blob/master/docker/faq/delugevpn.md  
+Frequently asked questions regards Deluge specific configuration.
+
+### rTorrentVPN Docker FAQ
+https://github.com/binhex/documentation/blob/master/docker/faq/rtorrentvpn.md  
+Frequently asked questions regards rTorrent/ruTorrent specific configuration.
+
 ### Plex Docker FAQ
 https://github.com/binhex/documentation/blob/master/docker/faq/plex.md  
 Frequently asked questions regards Plex specific configuration.
