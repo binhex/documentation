@@ -16,14 +16,14 @@ A2. The Docker VPN images use iptables in order to secure against ip leakage of 
 
 In order to force the loading of iptable_mangle you need to add the following to your unRAID "go" file, this can be done by issuing the following:-
 
-1. SSH into the unRAID host and issue the following commands:-
+Step 1 SSH into the unRAID host and issue the following commands:-
 
 ```echo "# force iptable mangle module to load (required for *vpn dockers)" >> /boot/config/go
 echo "/sbin/modprobe iptable_mangle" >> /boot/config/go```
 
-2. Reboot the host for the change to take effect
+Step 2 Reboot the host for the change to take effect
 
-Note -  if you want to apply the fix straight away issue the following:-
+Note - If you want to apply the fix straight away issue the following:-
 
 ```/sbin/modprobe iptable_mangle```
 
