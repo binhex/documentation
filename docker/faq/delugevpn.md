@@ -12,13 +12,13 @@
 
 3. Open Deluge authorisation file /config/auth and note the username and password, it should be in the format:-
 
-```<admin username>:<admin password>:<level>```
+&nbsp;&nbsp; ```<admin username>:<admin password>:<level>```
 
-The default value is as follows:-
+&nbsp;&nbsp;&nbsp; The default value is as follows:-
 
-```admin:deluge:10```
+&nbsp;&nbsp; ```admin:deluge:10```
 
-If the above doesn't exist then please add to the auth file and restart the container before continuing.
+&nbsp;&nbsp;&nbsp; If the above doesn't exist then please add to the auth file and restart the container before continuing.
 
 4. Go to the CouchPotato webui->Settings>Downloaders>Deluge
 
