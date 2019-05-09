@@ -16,7 +16,7 @@ Please note, this is a new environment variable that has been added later on, th
 
 2. Run the following command:-
 
-```docker exec -it <name of container> curl -L https://jsonip.com```
+&nbsp;&nbsp;&nbsp; ```docker exec -it <name of container> curl -L https://jsonip.com```
 
 3. The returned IP value should be different to your ISP assigned IP address
 
