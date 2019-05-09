@@ -41,4 +41,4 @@ error: [Errno 0] Error
 
 **A3.** The above error indicates that the currently used certificate and key are too weak and thus must be replaced with a stronger cert/key. If your using the self-signed certificate that comes with SABnzbd then you can simply stop the Docker container, and then delete the files /config/admin/server.key and /config/admin/server.cert then start the container again to force the regeneration of compliant certs.
 
-Note:- There is currently a bug in SABnzbd where it still shows an error message on the web ui, this is completely harmless and can be dismissed, if you wish to help get this bug removed then please post about it here:- https://github.com/sabnzbd/sabnzbd/issues/853
+**Note** - There is currently a bug in SABnzbd where it still shows an error message on the web ui, this is completely harmless and can be dismissed, if you wish to help get this bug removed then please post about it here:- https://github.com/sabnzbd/sabnzbd/issues/853
