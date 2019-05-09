@@ -5,9 +5,9 @@ Links to documentation for software located in the binhex repositories.
 
 ## Docker
 
-    + ### General Docker FAQ
-    + https://github.com/binhex/documentation/blob/master/docker/faq/general.md  
-    + Frequently asked questions regards general Docker usage.
+&nbsp;&nbsp;### General Docker FAQ
+&nbsp;&nbsp;https://github.com/binhex/documentation/blob/master/docker/faq/general.md  
+&nbsp;&nbsp;Frequently asked questions regards general Docker usage.
 
 ### VPN Docker FAQ
 https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md  
