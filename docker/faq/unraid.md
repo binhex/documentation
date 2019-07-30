@@ -102,7 +102,7 @@ Lastly keep in mind that when you configure sabnzbdvpn and sonarr (in this exam
 
 **Q5.** There is an issue with the latest version of an application, how do i roll back to a specific version?
 
-**A5.** In order to pull down a specific version of an application you need to specify the tag with the version you want. To find out what tags are available for the docker image you need to go to the first post in the applications support thread, then copy the URL shown for "Docker Hub:" and append "builds/" to the end of the url and paste into your preferred browser.
+**A5.** In order to pull down a specific version of an application you need to specify the tag with the version you want. To find out what tags are available for the docker image you need to go to the first post in the applications support thread, then copy the URL shown after the text "Docker Hub:" and append "tags/" to the end of the url and paste into your preferred browser.
 
 This will return a list of available tag names, make a note of the tag you want (tag name denotes the version of the application) and then go the unRAID web interface, left clicking the specific Docker container and selecting "edit", then click on the advanced view option (top right) and edit the repository string, adding in ":<the tag you want>" to the end of the name, e.g. to specify a version of 1.0.0.0 for couchpotato. the repository would be changed from:-
 
