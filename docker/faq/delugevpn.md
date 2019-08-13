@@ -65,7 +65,7 @@
         "Label",
         "Scheduler",
         "Notifications"
-],
+    ],
 ```
 
 4. Start the container again, then check the Web UI preferences/plugins and ensure the plugins are enabled.
