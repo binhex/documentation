@@ -29,9 +29,17 @@ Links to documentation for software located in the binhex repositories.
 &nbsp;&nbsp;&nbsp;&nbsp; https://github.com/binhex/documentation/blob/master/docker/faq/rtorrentvpn.md  
 &nbsp;&nbsp;&nbsp;&nbsp; Frequently asked questions regards rTorrent/ruTorrent specific configuration.
 
+### &nbsp;&nbsp;&nbsp;&nbsp; qBittorrentVPN Docker FAQ
+&nbsp;&nbsp;&nbsp;&nbsp; https://github.com/binhex/documentation/blob/master/docker/faq/qbittorrentvpn.md  
+&nbsp;&nbsp;&nbsp;&nbsp; Frequently asked questions regards qBittorrent specific configuration.
+
 ### &nbsp;&nbsp;&nbsp;&nbsp; Plex Docker FAQ
 &nbsp;&nbsp;&nbsp;&nbsp; https://github.com/binhex/documentation/blob/master/docker/faq/plex.md  
 &nbsp;&nbsp;&nbsp;&nbsp; Frequently asked questions regards Plex specific configuration.
+
+### &nbsp;&nbsp;&nbsp;&nbsp; UrBackup Docker FAQ
+&nbsp;&nbsp;&nbsp;&nbsp; https://github.com/binhex/documentation/blob/master/docker/faq/urbackup.md  
+&nbsp;&nbsp;&nbsp;&nbsp; Frequently asked questions regards UrBackup specific configuration.
 
 ### &nbsp;&nbsp;&nbsp;&nbsp; unRAID Docker FAQ
 &nbsp;&nbsp;&nbsp;&nbsp; https://github.com/binhex/documentation/blob/master/docker/faq/unraid.md  
