@@ -45,3 +45,7 @@
 &nbsp;&nbsp; ```"checkmytorrentip.net: Error: Success, Your torrent client IP is: 10.156.1.1"```
 
 6. If the tunnel is correctly established then IP address should be different to the IP address from your ISP.
+
+**Q3.** When i attempt to install a 3rd party Deluge Plugin using the Web UI it doesn't load, what is the correct way to install 3rd party plugins?
+
+**A3.** Installing .egg files (google 'Python Eggs' for more info) is best done by copying and pasting the file with the .egg extension to the /config/plugins/ folder on the host, once you have done this you will need to restart the container for the plugin to be shown in preferences/plugins in the Web UI.
