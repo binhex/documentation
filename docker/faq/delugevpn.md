@@ -48,4 +48,26 @@
 
 **Q3.** When i attempt to install a 3rd party Deluge Plugin using the Web UI it doesn't load, what is the correct way to install 3rd party plugins?
 
-**A3.** Installing .egg files (google 'Python Eggs' for more info) is best done by copying and pasting the file with the .egg extension to the /config/plugins/ folder on the host, once you have done this you will need to restart the container for the plugin to be shown in preferences/plugins in the Web UI.
+**A3.** Installing .egg files (google 'Python Eggs' for more info) is best done by copying and pasting the file with the .egg extension to the /config/plugins/ folder on the host, once you have done this you will need to restart the container for the plugin to be shown in preferences/plugins in the Web UI. If the plugin does not stay enabled between restarts then see below.
+
+**Q4.** Whenever i enable a plugin using the Deluge Web UI the enabled plugin seems to disable on a restart, how can i keep the plugin enabled even after a restart?
+
+**A4.** Deluge developers seemed to of taken the strange decision of writing configuration changes for plugins on shutdown, this causes a problem for people using Deluge in a container, as all processes will be terminated on shutdown of the container, meaning there is no time for Deluge to write out to the configuration file (/config/core.conf). To get around this we need to manually edit the configuration file ourselves, the steps below detail how to do this:-
+
+1. Make a note of the plugin names you want to enable through the Web UI (they are case sensitive!)
+
+2. Stop the container and then open /config/core.conf with a text editor such as notepad++ (windows), or nano (linux), do NOT use wordpad or notepad on Windows, it will screw up line endings.
+
+3. Find the section 'enabled_plugins' and add in the list of plugins you want enabled, for example to enable 3 plugins:-
+
+```
+    "enabled_plugins": [
+        "Label",
+        "Scheduler",
+        "Notifications"
+],
+```
+
+4. Start the container again, then check the Web UI preferences/plugins and ensure the plugins are enabled.
+
+5. Configure each plugin as desired.
