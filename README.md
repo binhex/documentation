@@ -5,8 +5,8 @@ Links to documentation for software located in the binhex repositories.
 
 ## Docker
 
-### &nbsp;&nbsp; Guides
-### &nbsp;&nbsp;&nbsp;&nbsp; VPN Docker Guide
+### &nbsp;&nbsp;&nbsp;&nbsp; Guides
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VPN Docker Guide
 &nbsp;&nbsp;&nbsp;&nbsp; https://github.com/binhex/documentation/blob/master/docker/guides/vpn.md  
 &nbsp;&nbsp;&nbsp;&nbsp; Guide on how to do the initial setup for VPN enabled Docker images.
 
