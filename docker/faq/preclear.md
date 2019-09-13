@@ -1,4 +1,4 @@
-Firstly if you are **not** comfortable with the command line then i would encourage you to use the excellent 'Preclear Plugin', link here:- 
+Firstly if you are **not** comfortable with the command line then i would encourage you to use the excellent 'Preclear Plugin' instead of this, link here:- 
 https://forums.unraid.net/topic/54648-preclear-plugin/
 
 The Preclear script was created by [Joe L.](https://forums.unraid.net/topic/2732-preclear_disksh-a-new-utility-to-burn-in-and-pre-clear-disks-for-quick-add/) and later modified by [bjp999](https://forums.unraid.net/topic/30921-unofficial-faster-preclear/), all credit goes to both of these authors for the script.
