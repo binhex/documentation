@@ -37,6 +37,12 @@ This will then list drives which are candidates for preclering, make a note of t
 
 **A5.** Yes this is possible, you simply create an additional 'tab' in the 'Xfce terminal' and then run the script again against the additional named drive.
 
-**Q6.** I have an enhancement to the preclear script, can i get it included in the next Docker image build?
+**Q6.** Can i preclear a drive connected via USB?.
 
-**A6.** The function of this Docker image is to produce an easy, repeatable way of running the preclear script with minimal hassle, additional features will not be considered at this time, bug fixes only.
+**A6.** Yes this is possible, you simply connect the drive to the USB port and once the drive is detected by the OS then you should be able to preclear as per normal.
+
+**Note**:- You do **NOT** need to install the 'unassigned devices' plugin for the above to work.
+
+**Q7.** I have an enhancement to the preclear script, can i get it included in the next Docker image build?
+
+**A7.** The function of this Docker image is to produce an easy, repeatable way of running the preclear script with minimal hassle, additional features will not be considered at this time, bug fixes only.
