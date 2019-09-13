@@ -1,6 +1,8 @@
 Firstly if you are not comfortable with the command line then i would encourage you to use the excellent Preclear Plugin, link here:- 
 https://forums.unraid.net/topic/54648-preclear-plugin/
 
+The Preclear script was created by [Joe L.](https://forums.unraid.net/topic/2732-preclear_disksh-a-new-utility-to-burn-in-and-pre-clear-disks-for-quick-add/) and later modified by [bjp999](https://forums.unraid.net/topic/30921-unofficial-faster-preclear/), all credit goes to both of these authors for the script.
+
 **Q1.** What is the purpose of the preclear script, and is it still required?
 
 **A1.** Originally the preclear script was designed to do one thing, preclear drives in readiness to be added to the array, the reason we wanted to preclear the drives up front is because doing this using unraid used to cause the entire array to be inaccessible until the preclear had finished, which can take many hours.
