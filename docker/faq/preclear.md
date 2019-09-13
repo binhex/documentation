@@ -16,9 +16,11 @@ However the need to stress test a drive is still present due to the bathtub curv
 **Q3.** How do i preclear a disk?
 
 **A3.** Left click the preclear icon in the Docker tab in the unraid web ui and then choose 'WebUI', then if a terminal window is not showing then right click the desktop and select 'Xfce terminal', then run the following command in the window to list drives that can be precleared:-
+
 ```preclear_binhex.sh -l```
 
 This will then list drives which are candidates for preclering, make a note of the 'sdX' name of the drive you want to preclear and then issue the following command, where XXX is the name of the drive from the previous command:-
+
 ```preclear_binhex.sh -f /dev/XXX```
 
 **Note**:- The -f flag performs the 'faster' preclear, as enhanced by forum member 'bjp999' and is optional.
@@ -26,6 +28,7 @@ This will then list drives which are candidates for preclering, make a note of t
 **Q4.** Can i perform other partial wipes or testing of the disk with this script?
 
 **A4.** Yes there are multiple options with the preclear script, please execute the following to view all options:-
+
 ```preclear_binhex.sh -h``` 
 
 **Q5.** Can i perform multiple disk preclears at the same time?.
