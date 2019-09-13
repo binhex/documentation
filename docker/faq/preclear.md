@@ -27,13 +27,13 @@ This will then list drives which are candidates for preclering, make a note of t
 
 **Note**:- The -f flag performs the 'faster' preclear, as enhanced by forum member 'bjp999' and is optional.
 
-**Q4.** Can i perform other partial wipes or testing of the disk with this script?
+**Q4.** Can i perform other partial wipes or test to ensure the drive is precleared with this script?
 
 **A4.** Yes there are multiple options with the preclear script, please execute the following to view all options:-
 
 ```preclear_binhex.sh -h``` 
 
-**Q5.** Can i perform multiple disk preclears at the same time?.
+**Q5.** Can i preclear multiple disks at the same time?.
 
 **A5.** Yes this is possible, you simply create an additional 'tab' in the 'Xfce terminal' and then run the script again against the additional named drive.
 
