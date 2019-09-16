@@ -43,6 +43,12 @@ This will then list drives which are candidates for preclering, make a note of t
 
 **Note**:- You do **NOT** need to install the 'unassigned devices' plugin for the above to work.
 
-**Q7.** I have an enhancement to the preclear script, can i get it included in the next Docker image build?
+**Q7.** Can i safely close the noVNC Web UI window whilst a preclear is running?.
 
-**A7.** The function of this Docker image is to produce an easy, repeatable way of running the preclear script with minimal hassle, additional features will not be considered at this time, bug fixes only.
+**A7.** Yes this is perfectly safe to do, as long as the terminal window running preclear is **NOT** closed then the preclear script will continue as a background process of the running container. If you then later on wish to check on progress of the preclear script then you simply left click the preclear icon and select 'WebUI' to get back to the terminal window.
+
+**Note**:- Do not perform a backup of the running container (using something like 'CA Appdata Backup/Restore v2'), as this could 'pause' the container during backup which can/may cause issues for the preclear script on 'resume' (not tested).
+
+**Q8.** I have an enhancement to the preclear script, can i get it included in the next Docker image build?
+
+**A8.** The function of this Docker image is to produce an easy, repeatable way of running the preclear script with minimal hassle, additional features will not be considered at this time, bug fixes only.
