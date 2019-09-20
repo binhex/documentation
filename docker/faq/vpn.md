@@ -210,3 +210,8 @@ Where xx will be 2 random digits.
 2. You have an assigned incoming port from your VPN provider - For PIA users this is done automatically for you, so as long as you are connected to an endpoint that supports port forwarding (see here for details) AND you have STRICT_PORT_FORWARD  set to yes. For other providers they may manually assign a port for you on request, or may use other mechanisms.
 
 3. You have configured the application to use the assigned port - For PIA users this is done automatically for you, for other providers you will need to manually set the application to use the port assigned to you.
+
+**Q15.** I am seeing the following in the log file '/config/supervisord.log' and cannot access the web ui, what does it mean and how can i fix it?.
+```AUTH: Received control message: AUTH_FAILED'```
+
+**A15.** This error means that the credentials you have entered for environment variables 'VPN_USER' and 'VPN_PASS' are not valid, and thus your VPN provider is not allowing you to connect. Please re-check the values for both of these environment variables is correct, also try typing in the value for both as opposed to copy/paste, as this can lead to unexpected characters and thus authentication failure.
