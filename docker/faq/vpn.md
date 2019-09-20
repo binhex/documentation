@@ -215,4 +215,4 @@ Where xx will be 2 random digits.
 
 ```AUTH: Received control message: AUTH_FAILED'```
 
-**A15.** This error means that the credentials you have entered for environment variables 'VPN_USER' and 'VPN_PASS' are not valid, and thus your VPN provider is not allowing you to connect. Please re-check the values for both of these environment variables is correct, also try typing in the value for both as opposed to copy/paste, as this can lead to unexpected characters and thus authentication failure.
+**A15.** This error means that the credentials you have entered for environment variables 'VPN_USER' and/or 'VPN_PASS' are not valid, and thus your VPN provider is not allowing you to connect. Please re-check the values for both of these environment variables is correct, also try typing in the value for both as opposed to copy/paste, as this can lead to unexpected characters and thus authentication failure.
