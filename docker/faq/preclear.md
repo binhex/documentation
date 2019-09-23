@@ -3,6 +3,11 @@ https://forums.unraid.net/topic/54648-preclear-plugin/
 
 The Preclear script was created by [Joe L.](https://forums.unraid.net/topic/2732-preclear_disksh-a-new-utility-to-burn-in-and-pre-clear-disks-for-quick-add/) and later modified by [bjp999](https://forums.unraid.net/topic/30921-unofficial-faster-preclear/), all credit goes to both of these authors for the script.
 
+
+**IMPORTANT**:- Please do **NOT** perform a backup of the running container (using something like 'CA Appdata Backup/Restore v2'), as this could 'pause' (or stop) the container during the backup process which can/may cause issues for the preclear script on 'resume' or restart (not tested).
+
+Please also ensure that you haven't set the server to go into a sleep/hibernate state whilst a preclear is running, as this also can/may cause the preclear script to abort abnormally and require a re-start from the beginning.
+
 **Q1.** What is the purpose of the preclear script, and is it still required?
 
 **A1.** Originally the preclear script was designed to do one thing, preclear drives in readiness to be added to the array, the reason we wanted to preclear the drives up front is because doing this using unraid used to cause the entire array to be inaccessible until the preclear had finished, which can take many hours.
@@ -46,8 +51,6 @@ This will then list drives which are candidates for preclering, make a note of t
 **Q7.** Can i safely close the noVNC Web UI window whilst a preclear is running?.
 
 **A7.** Yes this is perfectly safe to do, as long as the terminal window running preclear is **NOT** closed then the preclear script will continue as a background process of the running container. If you then later on wish to check on progress of the preclear script then you simply left click the preclear icon and select 'WebUI' to get back to the terminal window.
-
-**Note**:- Do not perform a backup of the running container (using something like 'CA Appdata Backup/Restore v2'), as this could 'pause' the container during backup which can/may cause issues for the preclear script on 'resume' (not tested). Please also ensure that you haven't set the server to go into a sleep/hibernate state whilst a preclear is running, as this also may cause the preclear script to abort abnormally and require a re-start from the beginning.
 
 **Q8.** I have an enhancement to the preclear script, can i get it included in the next Docker image build?
 
