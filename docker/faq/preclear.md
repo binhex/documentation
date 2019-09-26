@@ -2,12 +2,13 @@ Firstly if you are **not** comfortable with the command line then i would encour
 https://forums.unraid.net/topic/54648-preclear-plugin/
 
 The Preclear script was created by [Joe L.](https://forums.unraid.net/topic/2732-preclear_disksh-a-new-utility-to-burn-in-and-pre-clear-disks-for-quick-add/) and later modified by [bjp999](https://forums.unraid.net/topic/30921-unofficial-faster-preclear/), all credit goes to both of these authors for the script.
-
-
+___
 **IMPORTANT**:- Please do **NOT** perform a backup of the running container (using something like 'CA Appdata Backup/Restore v2'), as this could 'pause' (or stop) the container during the backup process which can/may cause issues for the preclear script on 'resume' or restart (not tested).
 
-Please also ensure that you haven't set the server to go into a sleep/hibernate state whilst a preclear is running, as this also can/may cause the preclear script to abort abnormally and require a re-start from the beginning.
+**IMPORTANT**:- If you have 'CA Auto Update' plugin installed then please ensure that the Preclear Docker container is **NOT** set to automatically update, as this will cause the preclear script to terminate. In order to exclude this container from auto updates you need to go to unRAID Web UI/Plugins/CA Auto Update Applications/Docker Auto Update Settings tab, select 'No' from the dropdown for 'Update All Docker Applications' then re-select all the containers you want to auto update **EXCLUDING** the Preclear docker container, then click on 'Apply' to save.
 
+**IMPORTANT**:- Please also ensure that you haven't set the server to go into a sleep/hibernate state whilst a preclear is running, as this also can/may cause the preclear script to abort abnormally and require a re-start from the beginning.
+___
 **Q1.** What is the purpose of the preclear script, and is it still required?
 
 **A1.** Originally the preclear script was designed to do one thing, preclear drives in readiness to be added to the array, the reason we wanted to preclear the drives up front is because doing this using unraid used to cause the entire array to be inaccessible until the preclear had finished, which can take many hours.
