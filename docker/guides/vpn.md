@@ -1,8 +1,6 @@
-# **Newbie VPN Guide**
+# **VPN Setup Guide**
 
-**Q1.** I can't get the Web UI to show for application xVPN when VPN_ENABLED is set to 'yes', if i set it to 'no' then i can view the Web UI, what am i doing wrong?
-
-**A1.** Firstly in order to create a tunnel to your VPN provider you need to use their OpenVPN configuration file and certificates. These will typically be downloaded from your VPN providers website, and generally are zipped. 
+Firstly in order to create a tunnel to your VPN provider you need to use their OpenVPN configuration file and certificates. These will typically be downloaded from your VPN providers website, and generally are zipped. 
 
 **PIA users** - The URL to download the openvpn configuration files and certs is https://www.privateinternetaccess.com/openvpn/openvpn.zip
 
@@ -28,18 +26,19 @@ Whilst a lot of VPN providers are subtly different, i will try to give some exam
 
 **STRICT_PORT_FORWARD** - If this is set to yes then you will be enforcing port forwarding when connected to an VPN remote endpoinly for provider PIA. Again i would like to stress this only takes effect for PIA users only, if you're using another provider then you will need to setup the port forward yourself (speeds will be VERY slow without a working incoming port).
 
-**ENABLE_PRIVOXY** - Allows you to define whether you want to run Privoxy inside the container as well - for more details about Privoxy see below Q4.
+**ENABLE_PRIVOXY** - Allows you to define whether you want to run Privoxy inside the container as well - for more details about Privoxy see below Q3.
 
-https://forums.lime-technology.com/topic/44108-support-binhex-general/?do=findComment&comment=433613
+https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
 
-**LAN_NETWORK** - This is used to define your home LAN network, do NOT confuse this with the IP address of your router or your server, the value for this key defines your network NOT a single host - for more details about how to configure this see below Q5.
-https://forums.lime-technology.com/topic/44108-support-binhex-general/?do=findComment&comment=433613
+**LAN_NETWORK** - This is used to define your home LAN network, do NOT confuse this with the IP address of your router or your server, the value for this key defines your network NOT a single host - for more details about how to configure this see below Q4.
+
+https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
 
 **NAME_SERVERS** - This allows you to define the name servers you want to use when the VPN tunnel is established, keep in mind you probably will NOT be able to use your ISP's name servers when the tunnel is running, as your IP address will then not be in your ISP's range and thus will normally be blocked, thus the recommendation to use an open DNS, the defaults are normally fine.
 
 **DEBUG** - Set this to true to enable debug, extremely useful to debug issues when you can't connect to the VPN tunnel - for further help see below
 
-https://forums.lime-technology.com/topic/44108-support-binhex-general/?do=findComment&comment=435831
+https://github.com/binhex/documentation/blob/master/docker/faq/help.md
 
 **UMASK** - This sets the permissions for newly created files/folders, the defaults are normally fine.
 
