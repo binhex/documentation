@@ -4,7 +4,7 @@ Firstly in order to create a tunnel to your VPN provider you need to use their O
 
 **PIA users** - The URL to download the openvpn configuration files and certs is https://www.privateinternetaccess.com/openvpn/openvpn.zip
 
-Once you have downloaded the zip (normally a zip as they contain multiple ovpn files) then extract it to /config/openvpn/ folder (if that folder doesn't exist then start and stop the docker container to force the creation). If there are multiple ovpn files then please delete the ones you don't want to use (normally filename follows location of the endpoint) leaving just a single ovpn file and the referenced certificates (normally files with a crt and pem extension).
+Once you have downloaded the zip (normally a zip as they contain multiple ovpn files) then extract it to somewhere locally, then start and stop the container, this creates the required /config/openvpn/ folder. If there are multiple ovpn files then please delete the ones you don't want to use (normally filename follows location of the endpoint) leaving just a single ovpn file and the referenced certificates (normally files with a crt and pem extension).
 
 You will now need to move onto configuration of the container...
 
