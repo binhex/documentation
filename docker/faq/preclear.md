@@ -53,6 +53,16 @@ This will then list drives which are candidates for preclering, make a note of t
 
 **A7.** Yes this is perfectly safe to do, as long as the terminal window running preclear is **NOT** closed then the preclear script will continue as a background process of the running container. If you then later on wish to check on progress of the preclear script then you simply left click the preclear icon and select 'WebUI' to get back to the terminal window.
 
-**Q8.** I have an enhancement to the preclear script, can i get it included in the next Docker image build?
+**Q8.** The preclear script has identified a drive as a candidate for clearing, but when i attempt to run a preclear i am seeing the following message, what is the cause of this?
 
-**A8.** The function of this Docker image is to produce an easy, repeatable way of running the preclear script with minimal hassle, additional features will not be considered at this time, bug fixes only.
+```Sorry: /dev/sdX does not exist as a block device```
+
+**A8.** This is due to the fact that the preclear docker container was started before you plugged in your drive. In order to fix this simply restart the container and try the command again.
+
+**Q9.** I have a Seagate hard drive and i am seeing unusually high SMART Raw Values for 'Raw_Read_Error_Rate', 'Seek_Error_Rate' and 'Hardware_ECC_Recovered', is this something to be concerned about?.
+
+**A9.** High 'Raw Values' for those Attributes with Seagate drives is perfectly normal and not usually something to be concerned about. The Raw Values are in fact a count of the actual sectors read, the errors are in the upper 16bits of the 48bit word.
+
+**Q10.** I have an enhancement to the preclear script, can i get it included in the next Docker image build?
+
+**A10.** The function of this Docker image is to produce an easy, repeatable way of running the preclear script with minimal hassle, additional features will not be considered at this time, bug fixes only.
