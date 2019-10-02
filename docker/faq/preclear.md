@@ -70,6 +70,7 @@ ___
 **Notes**
 
 **Alignment Options**
+
 Below is the logic built into the preclear script when determining the starting sector for the partition:-
 - if -a option chosen and drive < 2.2TB then will set to 63.
 - if -a option chosen and drive > 2.2TB then will set to 64.
