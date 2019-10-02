@@ -72,8 +72,8 @@ ___
 **Alignment Options**
 
 Below is the logic built into the preclear script when determining the starting sector for the partition:-
-- if -a option chosen and drive < 2.2TB then will set to 63.
-- if -a option chosen and drive > 2.2TB then will set to 64.
-- if -A option chosen and drive < 2.2TB then will set to 64.
-- if -A option chosen and drive > 2.2TB then will set to 64.
-- if -a or -A not chosen then 63 or 64 will be chosen based on unraid config, **UNLESS** the drive is > 2.2TB, in which case it will always be 64.
+- if preclear -a option chosen and drive < 2.2TB then will set to 63.
+- if preclear -a option chosen and drive > 2.2TB then will set to 64.
+- if preclear -A option chosen and drive < 2.2TB then will set to 64.
+- if preclear -A option chosen and drive > 2.2TB then will set to 64.
+- if preclear -a or -A not defined then 63 or 64 will be chosen based on unraid config, **UNLESS** the drive is > 2.2TB, in which case it will always be 64.
