@@ -66,3 +66,13 @@ This will then list drives which are candidates for preclering, make a note of t
 **Q10.** I have an enhancement to the preclear script, can i get it included in the next Docker image build?
 
 **A10.** The function of this Docker image is to produce an easy, repeatable way of running the preclear script with minimal hassle, additional features will not be considered at this time, bug fixes only.
+___
+**Notes**
+
+**Alignment Options**
+Below is the logic built into the preclear script when determining the starting sector for the partition:-
+- if -a option chosen and drive < 2.2TB then will set to 63.
+- if -a option chosen and drive > 2.2TB then will set to 64.
+- if -A option chosen and drive < 2.2TB then will set to 64.
+- if -A option chosen and drive > 2.2TB then will set to 64.
+- if -a or -A not chosen then 63 or 64 will be chosen based on unraid config, **UNLESS** the drive is > 2.2TB, in which case it will always be 64.
