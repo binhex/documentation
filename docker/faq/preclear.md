@@ -73,7 +73,7 @@ This will then list drives which are candidates for preclering, make a note of t
 ___
 **Notes**
 
-**Alignment Options**
+**Alignment Options (-a and -A flags)**
 
 Below is the logic built into the preclear script when determining the starting sector for the partition:-
 - if preclear -a option chosen and drive < 2.2TB then will set to 63.
