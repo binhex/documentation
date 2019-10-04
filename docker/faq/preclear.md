@@ -35,6 +35,8 @@ This will then list drives which are candidates for preclering, make a note of t
 
 **Note**:- The -f flag performs the 'faster' preclear, as enhanced by forum member 'bjp999' and is optional.
 
+**IMPORTANT**:- Please double check the serial number of the drive shown in the confirmation screen **BEFORE** you type 'Yes', if you preclear a drive with data on it accidentally it will be impossible to recover the data off the drive.
+
 **Q4.** Can i perform other partial wipes or test to ensure the drive is precleared with this script?
 
 **A4.** Yes there are multiple options with the preclear script, please execute the following to view all options:-
