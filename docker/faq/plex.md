@@ -49,7 +49,7 @@ https://www.youtube.com/watch?v=GOhHiFAXwOE
 The best way to diagnose if this is the issue is by looking at the Plex log, this is stored in the following location:-
 
 ```
-"/config/Plex Media Server/Logs/Plex Media Server.log"
+/config/Plex Media Server/Logs/Plex Media Server.log
 ```
 
 If you open this file with something like notepad++/vscode/atom then do a 'find' for the following string:-
