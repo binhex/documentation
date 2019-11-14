@@ -66,7 +66,7 @@ If you see a match then proceed to the next FAQ, if not then please post on the 
 
 1. Switch to unRAID 6.6.7 - The SQLite bug is not present in this version, this is probably the simplest way around this issue until Limetech fix it in future releases ~~(still an issue with 6.8.0 RC3)~~
 
-**UPDATE** - Limetech have now identified the SQLite corruption issue and fixed it, this will be included in the next stable release (6.8.0), i would encourage anybody with the corruption issue to move to this when available, else switch back to 6.6.7.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**UPDATE** - Limetech have now identified the SQLite corruption issue and fixed it, this will be included in the next stable release (6.8.0), i would encourage anybody with the corruption issue to move to this when available, else switch back to 6.6.7.
 
 2. Move Plex metadata to cache drive - The bug is triggered by running unraid 6.7.x (or later) and storing the Plex metadata on the array, moving it to the cache drive will prevent the bug.
 
