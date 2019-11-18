@@ -21,7 +21,7 @@ However the need to stress test a drive is still present due to the bathtub curv
 
 **Q2.** Why has this docker image been created, as we already have a unraid preclear plugin?.
 
-**A2.** Due to the fact that plugins rely on the underlying OS (Slackware) in order to run, any changes made by Limetech can potentially lead to a breakage with the preclear plgin, this has historically happened a number of times and is unfortunately a fact of life. So how do we try and mitigate this from happening?, by using Docker, this then gives us a known platform from which to run the preclear script, and should reduce the chances of this happening.
+**A2.** Due to the fact that plugins rely on the underlying OS (Slackware) in order to run, any changes made by Limetech can potentially lead to a breakage with the preclear plugin, this has historically happened a number of times and is unfortunately a fact of life. So how do we try and mitigate this from happening?, by using Docker, this then gives us a known platform from which to run the preclear script, and should reduce the chances of this happening.
 
 **Q3.** How do i preclear a disk?
 
@@ -29,11 +29,15 @@ However the need to stress test a drive is still present due to the bathtub curv
 
 ```preclear_binhex.sh -l```
 
-This will then list drives which are candidates for preclering, make a note of the 'sdX' name of the drive you want to preclear and then issue the following command, where XXX is the name of the drive from the previous command:-
+This will then list drives which are candidates for preclearing, make a note of the 'sdX' name of the drive you want to preclear and then issue the following command, where XXX is the name of the drive from the previous command:-
 
 ```preclear_binhex.sh -f /dev/XXX```
 
 **Note**:- The -f flag performs the 'faster' preclear, as enhanced by forum member 'bjp999' and is optional.
+
+Another example, this time adding email notification during the preclear process:-
+
+```preclear_binhex.sh -f -M 4 /dev/XXX```
 
 **IMPORTANT**:- Please double check the serial number of the drive shown in the confirmation screen **BEFORE** you type 'Yes', if you preclear a drive with data on it accidentally it will be impossible to recover the data off the drive.
 
