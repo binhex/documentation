@@ -17,3 +17,5 @@ CTRL + a + d
 ```
 
 Use command 'clear' to clear the screen of any previous output, you can then re-connect to the session again if required using the command above.
+
+**Note** If you do press CTRL + c by accident then you will need to restart the container in order to be able to connect to the console again, as this will kill the running Minecraft Server.
