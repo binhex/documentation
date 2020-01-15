@@ -19,10 +19,10 @@ If you want to modify things like incoming port, enabling/disabling dht, and fol
 
 The decision has therefore been made to improve out of the box security by setting a randomised password for the web ui and/or rpc2 if none are defined, this can be identified by one or both of the following messages in the '/config/supervisord.log' file:-
 
-'''
+```
 [warn] RPC2_PASS not defined (via -e RPC2_PASS), using randomised password (password stored in '/config/nginx/security/rpc2_pass')
 [warn] WEBUI_PASS not defined (via -e WEBUI_PASS), using randomised password (password stored in '/config/nginx/security/webui_pass')
-'''
+```
 
 If you see the above in your log then you will need to open the files specified in order to retrieve your newly defined passwords, you would then use these passwords to login to the web ui and/or reconfigure 3rd party apps to use the new rpc2 credentials.
 
@@ -34,15 +34,15 @@ If you want to specify your own passwords then please read Q4 below.
 
 The 'key' names will be:-
 
-'''
+```
 WEBUI_PASS
-'''
+```
 
 and
 
-'''
+```
 RPC2_PASS
-'''
+```
 
 The 'value' will be the password you want to set.
 
