@@ -46,4 +46,4 @@ RPC2_PASS
 
 The 'value' for each of the above will be the password you want to set.
 
-**NOTE** unRAID users - This is done by left clicking the icon shown in the docker tab in the unRAID web ui, select edit, click on 'Add another Path, Port, Variable, Label or Device' then select 'Config Type' of 'Variable' and define the key and value as shown above.
+**NOTE** unRAID users - Creating environment variables is done by left clicking the icon shown in the Docker tab in the unRAID web ui, select 'Edit', click on 'Add another Path, Port, Variable, Label or Device' then select 'Config Type' of 'Variable' and define the key and value as shown above.
