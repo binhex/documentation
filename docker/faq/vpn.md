@@ -216,3 +216,24 @@ Where xx will be 2 random digits.
 ```AUTH: Received control message: AUTH_FAILED'```
 
 **A15.** This error means that the credentials you have entered for environment variables 'VPN_USER' and/or 'VPN_PASS' are not valid, and thus your VPN provider is not allowing you to connect. Please re-check the values for both of these environment variables is correct, also try typing in the value for both as opposed to copy/paste, as this can lead to unexpected characters and thus authentication failure.
+
+**Q16.** I'm unable to connect to the web ui and i'm seeing the following repeated over and over in the /config/supervisord.log file, what does it mean and how can i fix it?
+
+```
+2020-02-04 07:21:26,213 DEBG 'start-script' stdout output:
+Tue Feb  4 07:21:26 2020 [UNDEF] Inactivity timeout (--ping-restart), restarting
+
+2020-02-04 07:21:26,213 DEBG 'start-script' stdout output:
+Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
+```
+
+**A16.** This means the OpenVPN Client is unable to connect to the VPN providers server on the specified IP address and port (as defined in the ovpn file 'remote' line), this can have many causes, some of the more common ones (and solutions) are as follows:-
+
+1. Hardware firewall/router is blocking outbound connections to the vpn providers servers - [SOLUTION] Allow outbound connections for the port defined in the VPN providers ovpn file on your firewall/router.  
+2. Host machine firewall blocking the docker container from connecting to the vpn providers servers - [SOLUTION] Allow outbound connections for the port defined in the VPN providers ovpn file on the hosts firewall.  
+3. VLAN blocking the connection for the host to the VPN providers servers - [SOLUTION] Allow outbound connections for the port defined in the VPN providers ovpn file on your switch.  
+4. Out of date ovpn config file containing reference to retired VPN remote server(s) - [SOLUTION] Download the latest ovpn config file from your VPN provider, place in /config/openvpn/ and restart container.  
+5. ISP is hijacking DNS lookup and redirecting you to their (spammy) landing page - [SOLUTION] Use an IP based ovpn config file instead, this wil circumvent the requirement to do a name lookup.  
+6. ISP is blocking outbound connections to the VPN providers servers - [SOLUTION] Try a different ovpn config files from your VPN provider, some providers allow different ports to get around this restriction (443, 1194, 1198, etc).  
+7. VPN provider has a major outage - [SOLUTION] Contact VPN provider to confirm outage and wait for the outage to be resolved.  
+Once you have ruled out any potential Home LAN issues and if none of the above resolve the issue then you may have to switch VPN provider or even ISP to get around the blocking restriction.
