@@ -8,4 +8,4 @@ OK so you've read any relevant FAQ's from [here](https://github.com/binhex/docum
 4. Start the container and wait 5 mins for it to completely finish initialising.
 5. unRAID users - Attach the log file located at /config/supervusord.log to the correct forum support thread for the container you are running, for non unRAID users please paste into pastebin (or similar) and create Github 'Issue' and link to the log file.
 
-**IMPORTANT** - Make sure to remove any reference to your username and password from the supervisord.log **BEFORE** posting it.
+**IMPORTANT** - Make sure to remove any reference to your username and password from the supervisord.log **BEFORE** attaching/pasting it.
