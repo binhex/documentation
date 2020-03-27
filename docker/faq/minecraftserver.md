@@ -13,7 +13,7 @@ You will then be able to execute 'help' in order to see available commands.
 In order to disconnect from the running Minecraft console without stopping the server, you press:-
 
 ```
-CTRL + a + d
+CTRL + a then release and press d
 ```
 
 Use command 'clear' to clear the screen of any previous output, you can then re-connect to the session again if required using the command above.
