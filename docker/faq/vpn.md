@@ -244,3 +244,9 @@ Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 7. VPN provider has a major outage - **[SOLUTION]** Contact VPN provider to confirm outage and wait for the outage to be resolved.
 
 Once you have ruled out any potential Home LAN issues and if none of the above resolve the issue then you may have to switch VPN provider or even ISP to get around the blocking restriction.
+
+**Q17.** When i set my application (such as Sonarr, Radarr, etc) to use Privoxy and do a curl/wget from within the applications container i see that my IP address is my ISP's assigned IP address and NOT the expected VPN provider IP address for the endpoint im connected to, why is this, is the VPN not working correctly?.
+
+**A17.** A proxy server works at a application level NOT a system level, therefore when using command line tools like curl or wget these applications would need to be configured to use the proxy in order to correctly route through and show the VPN provider allocated IP address.
+
+Whereas a VPN client works at the system level, thus all traffic is routed over the VPN tunnel, so using command line utilities such as curl or wget inside the VPN docker container (e.g. DelugeVPN, PrivoxyVPN, etc) WOULD correctly show the VPN allocated IP address.
