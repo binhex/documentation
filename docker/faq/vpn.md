@@ -175,9 +175,28 @@ Save the file and restart the container for the change to take effect.
 [info] Retrying in 10 secs...
 ```
 
-**A10.** The above message means that you have env var 'STRICT_PORT_FORWARD' set to a value of 'yes' but the endpoint you are connecting to does NOT support port forwarding. For a current list of port forward enabled endpoints for PIA, see the link below:-
+**A10.** The above message means that you have env var 'STRICT_PORT_FORWARD' set to a value of 'yes' but the endpoint you are connecting to does NOT support port forwarding (PIA users only). Please keep in mind PIA may remove or add endpoints that support port forwarding at **ANY** time, this is out of my control.
 
-https://www.privateinternetaccess.com/helpdesk/kb/articles/how-do-i-enable-port-forwarding-on-my-vpn
+For a dynamically generated up to date list of port forward enabled endpoints for PIA, see your log located at /config/supervisord.log.
+
+The below is an example snippet from the log, please do **NOT** use this as the current list:-
+
+```
+2020-03-25 17:05:32,603 DEBG 'start-script' stdout output:
+[info] PIA endpoint 'sweden.privateinternetaccess.com' is in the list of endpoints that support port forwarding
+
+2020-03-25 17:05:32,603 DEBG 'start-script' stdout output:
+[info] List of PIA endpoints that support port forwarding:-
+[info] de-berlin.privateinternetaccess.com
+[info] de-frankfurt.privateinternetaccess.com
+[info] sweden.privateinternetaccess.com
+[info] swiss.privateinternetaccess.com
+[info] france.privateinternetaccess.com
+[info] czech.privateinternetaccess.com
+[info] spain.privateinternetaccess.com
+[info] ro.privateinternetaccess.com
+[info] israel.privateinternetaccess.com
+```
 
 The alternative to this is to set env var 'STRICT_PORT_FORWARD' value to 'no', this will then skip any port forwarding and allow you to connect to ANY PIA endpoint independent of whether it supports port forwarding or not (not recommended).
 
