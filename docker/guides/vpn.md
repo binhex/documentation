@@ -16,15 +16,15 @@ Whilst a lot of VPN providers are subtly different, i will try to give some exam
 
 **VPN_USER** - This is the username as supplied by your VPN provider, it might be the website login, or it might be a separate username. In some cases it may also not be required, as some providers allow you to create a ovpn config file with your authentication supplied as a inline end user certificate (AirVPN for instance).
 
-**VPN_PASS** - Same deal as the VPN_USER, this is the VPN provider supplied password, again this may not be necessary for certain providers due to auth via embeded cert in the ovpn file.
+**VPN_PASS** - Same deal as the VPN_USER, this is the VPN provider supplied password, again this may not be necessary for certain providers due to auth via embedded cert in the ovpn file.
 
 **IMPORTANT** - usernames/passwords that contain characters which are NOT in the range (0-9, a-z, A-Z) MAY cause issues, check the /config/supervisord.log for this
 
-**VPN_PROV** - This is the VPN provider you're using, the reason i differentiate between providers is because i have built in support for port forwarding for propvider PIA, thus its important to specify this correctly, if you aren't using VPN provider PIA then set it to either AirVPN or custom.
+**VPN_PROV** - This is the VPN provider you're using, the reason i differentiate between providers is because i have built in support for port forwarding for provider PIA, thus its important to specify this correctly, if you aren't using VPN provider PIA then set it to either AirVPN or custom.
 
 **VPN_OPTIONS** - This allows you to define advanced OpenVPN options, in most cases this is NOT required unless you know what you're doing.
 
-**STRICT_PORT_FORWARD** - If this is set to yes then you will be enforcing port forwarding when connected to an VPN remote endpoinly for provider PIA. Again i would like to stress this only takes effect for PIA users only, if you're using another provider then you will need to setup the port forward yourself (speeds will be VERY slow without a working incoming port).
+**STRICT_PORT_FORWARD** - If this is set to yes then you will be enforcing port forwarding when connected to an VPN remote endpoint for provider PIA. Again i would like to stress this only takes effect for PIA users only, if you're using another provider then you will need to setup the port forward yourself (speeds will be VERY slow without a working incoming port).
 
 **ENABLE_PRIVOXY** - Allows you to define whether you want to run Privoxy inside the container as well - for more details about Privoxy see below Q3.
 
