@@ -202,27 +202,54 @@ The alternative to this is to set env var 'STRICT_PORT_FORWARD' value to 'no', t
 
 Note:- The above is ONLY true for PIA users, the env var 'STRICT_PORT_FORWARD' does nothing for any other VPN providers.
 
-**Q11.** I have an application that does not seem to support the use of a proxy (privoxy), how do i configure the application to use Privoxy?
+**Q11.** I see from Q10 that i need to change the PIA endpoint i connect to due to the endpoint im currently connected to be being disabled for port forwarding, so how do i do this?
 
-**A11.** You can configure ANY application to use Privoxy by adding in the following environment variable to the "Extra Parameters" field (please switch to "Advanced view" to view this) in the unRaid Web UI/Docker tab.
+**A11.** There are two ways of switching the endpoint you connect to:-
+
+**Method 1. (recommended)**
+Download the latest ovpn zip pack from PIA, link below:-
+https://www.privateinternetaccess.com/openvpn/openvpn.zip
+
+Extract the zip to /config/openvpn/ and then delete all .ovpn files that you do NOT want to connect to, leaving the ovpn file you want to use and the required certificates, then restart the container for the change to take effect.
+
+**Method 2.**
+Download a text editor that honors line endings, such as notepad++ or atom, then open the file /config/openvpn/<filename with a ovpn extension>
+
+Look for the line that starts with 'remote' and modify this line to one of the port forward enabled endpoints shown in your log (see Q10 for details on how to find this).
+
+Example, switching from 'sweden' to 'swiss':-
+
+```
+remote sweden.privateinternetaccess.com 1198 udp
+```
+to
+```
+remote swiss.privateinternetaccess.com 1198 udp
+```
+
+Save the file and restart the container for the change to take effect.
+
+**Q12.** I have an application that does not seem to support the use of a proxy (privoxy), how do i configure the application to use Privoxy?
+
+**A12.** You can configure ANY application to use Privoxy by adding in the following environment variable to the "Extra Parameters" field (please switch to "Advanced view" to view this) in the unRaid Web UI/Docker tab.
 
 ```-e RUN_OPTS="--ProxyConnection=<host ip addr>:<privoxy host port number>"```
 
-**Q12.** I can see from the '/config/supervisord.log' file that the openvpn process keeps getting killed every 30 seconds on my QNAP appliance, what could be the cause of this?
+**Q13.** I can see from the '/config/supervisord.log' file that the openvpn process keeps getting killed every 30 seconds on my QNAP appliance, what could be the cause of this?
 
-**A12.** For some reason (unknown at this time) QNAP decided to kill any openvpn process running on the host by adding in a line to the 'daemon_mgr.conf' file. In order to prevent this you need to delete the following line from the 'daemon_mgr.conf':-
+**A13.** For some reason (unknown at this time) QNAP decided to kill any openvpn process running on the host by adding in a line to the 'daemon_mgr.conf' file. In order to prevent this you need to delete the following line from the 'daemon_mgr.conf':-
 
 ```DAEMONxx = openvpn, stop, /usr/sbin/openvpn```
 
 Where xx will be 2 random digits.
 
-**Q13.** I am a Synology DS-1817+ user and am seeing very bad download/upload speeds whilst using DelugeVPN/SABnzbdVPN/qBittorrentVPN, what could be the cause?.
+**Q14.** I am a Synology DS-1817+ user and am seeing very bad download/upload speeds whilst using DelugeVPN/SABnzbdVPN/qBittorrentVPN, what could be the cause?.
 
-**A13.** The Synology DS-1817+ can have performance issues when running dockers that include openvpn client, this can manifest itself as slow download/upload rates. There are two solutions to this problem, either reduce the load on the system by shutting down other containers/vm's or alternatively by running the vpn enabled docker container on a more powerful system.
+**A14.** The Synology DS-1817+ can have performance issues when running dockers that include openvpn client, this can manifest itself as slow download/upload rates. There are two solutions to this problem, either reduce the load on the system by shutting down other containers/vm's or alternatively by running the vpn enabled docker container on a more powerful system.
 
-**Q14.** I have setup port forwarding on my router/firewall but still cannot seem to seed any torrents and my incoming port is showing as closed, how can i fix this?
+**Q15.** I have setup port forwarding on my router/firewall but still cannot seem to seed any torrents and my incoming port is showing as closed, how can i fix this?
 
-**A14.** A common misconception is that port forwarding for a torrent client when using a VPN connection is still done on the users router/firewall, this is NOT the case. In order to have a working incoming port you need to have all of the following in place:-
+**A15.** A common misconception is that port forwarding for a torrent client when using a VPN connection is still done on the users router/firewall, this is NOT the case. In order to have a working incoming port you need to have all of the following in place:-
 
 1. The VPN provider you have signed up to provides port forwarding - For PIA users this is the case, there are other providers too which allow port forwarding, but be aware most do NOT, check with the provider BEFORE signing up.
 
@@ -230,13 +257,13 @@ Where xx will be 2 random digits.
 
 3. You have configured the application to use the assigned port - For PIA users this is done automatically for you, for other providers you will need to manually set the application to use the port assigned to you.
 
-**Q15.** I am seeing the following in the log file '/config/supervisord.log' and cannot access the web ui, what does it mean and how can i fix it?.
+**Q16.** I am seeing the following in the log file '/config/supervisord.log' and cannot access the web ui, what does it mean and how can i fix it?.
 
 ```AUTH: Received control message: AUTH_FAILED'```
 
-**A15.** This error means that the credentials you have entered for environment variables 'VPN_USER' and/or 'VPN_PASS' are not valid, and thus your VPN provider is not allowing you to connect. Please re-check the values for both of these environment variables is correct, also try typing in the value for both as opposed to copy/paste, as this can lead to unexpected characters and thus authentication failure.
+**A16.** This error means that the credentials you have entered for environment variables 'VPN_USER' and/or 'VPN_PASS' are not valid, and thus your VPN provider is not allowing you to connect. Please re-check the values for both of these environment variables is correct, also try typing in the value for both as opposed to copy/paste, as this can lead to unexpected characters and thus authentication failure.
 
-**Q16.** I'm unable to connect to the web ui and i'm seeing the following repeated over and over in the /config/supervisord.log file, what does it mean and how can i fix it?
+**Q17.** I'm unable to connect to the web ui and i'm seeing the following repeated over and over in the /config/supervisord.log file, what does it mean and how can i fix it?
 
 ```
 2020-02-04 07:21:26,213 DEBG 'start-script' stdout output:
@@ -246,7 +273,7 @@ Tue Feb  4 07:21:26 2020 [UNDEF] Inactivity timeout (--ping-restart), restarting
 Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 ```
 
-**A16.** This means the OpenVPN Client is unable to connect to the VPN providers server on the specified IP address and port (as defined in the ovpn file 'remote' line), this can have many causes, some of the more common ones (and solutions) are as follows:-
+**A17.** This means the OpenVPN Client is unable to connect to the VPN providers server on the specified IP address and port (as defined in the ovpn file 'remote' line), this can have many causes, some of the more common ones (and solutions) are as follows:-
 
 1. Hardware firewall/router is blocking outbound connections to the vpn providers servers - **[SOLUTION]** Allow outbound connections for the port defined in the VPN providers ovpn file on your firewall/router.
 
@@ -264,8 +291,8 @@ Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 
 Once you have ruled out any potential Home LAN issues and if none of the above resolve the issue then you may have to switch VPN provider or even ISP to get around the blocking restriction.
 
-**Q17.** When i set my application (such as Sonarr, Radarr, etc) to use Privoxy and do a curl/wget from within the applications container i see that my IP address is my ISP's assigned IP address and NOT the expected VPN provider IP address for the endpoint im connected to, why is this, is the VPN not working correctly?.
+**Q18.** When i set my application (such as Sonarr, Radarr, etc) to use Privoxy and do a curl/wget from within the applications container i see that my IP address is my ISP's assigned IP address and NOT the expected VPN provider IP address for the endpoint im connected to, why is this, is the VPN not working correctly?.
 
-**A17.** A proxy server works at a application level NOT a system level, therefore when using command line tools like curl or wget these applications would need to be configured to use the proxy in order to correctly route through and show the VPN provider allocated IP address.
+**A18.** A proxy server works at a application level NOT a system level, therefore when using command line tools like curl or wget these applications would need to be configured to use the proxy in order to correctly route through and show the VPN provider allocated IP address.
 
 Whereas a VPN client works at the system level, thus all traffic is routed over the VPN tunnel, so using command line utilities such as curl or wget inside the VPN docker container (e.g. DelugeVPN, PrivoxyVPN, etc) WOULD correctly show the VPN allocated IP address.
