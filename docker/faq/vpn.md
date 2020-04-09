@@ -213,7 +213,7 @@ https://www.privateinternetaccess.com/openvpn/openvpn.zip
 Extract the zip to /config/openvpn/ and then delete all .ovpn files that you do NOT want to connect to, leaving the ovpn file you want to use and the required certificates, then restart the container for the change to take effect.
 
 **Method 2.**
-Download a text editor that honors line endings, such as notepad++ or atom, then open the file /config/openvpn/`<filename with a ovpn extension`>
+Download a text editor that honors line endings, such as notepad++ or atom, then open the file /config/openvpn/`<filename with a ovpn extension>`
 
 Look for the line that starts with 'remote' and modify this line to one of the port forward enabled endpoints shown in your log (see Q10 for details on how to find this).
 
