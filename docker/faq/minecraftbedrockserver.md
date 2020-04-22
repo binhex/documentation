@@ -53,14 +53,16 @@ Use command 'clear' to clear the screen of any previous output, you can then re-
 **A3.** You can execute arbitrary commands on the Minecraft Bedrock console by re-attaching to the 'screen' session and then 'stuff'ing commands into the input buffer, syntax is as follows:-
 
 ```
-docker exec -u nobody -it <name of container> screen -S minecraft -p 0 -X stuff "<command to execute>^M"
+docker exec -u nobody -i <name of container> screen -S minecraft -p 0 -X stuff "<command to execute>^M"
 ```
 
 To verify this worked simply re-attach to the session (as documented above in Q1) and you should see the command has been executed. 
 
-**Note** If you do re-attach to verify the command executed and then try to run another arbitrary command from another exec'd session then you will see a 'permission denied' message and the command will NOT execute, you need to detach from the running session for the command to execute correctly.
+**Notes**
+If you do re-attach to verify the command executed and then try to run another arbitrary command from another exec'd session then you will see a 'permission denied' message and the command will NOT execute, you need to detach from the running session for the command to execute correctly.
 
-So if you want to run this on a scheduled basis then you simply run the command via a 'cron' job on the host.
+If you want to run this on a scheduled basis either from a bash script or via cron job then you will need to ensure you do not specify the '-t' flag for the command, otherwise it will attempt to create a terminal which will not be available when run via cron/bash (non interactive).
 
-**Tutorial** Reddit post 'Bedrock Dedicated Server Tutorial':-
+**Tutorials**
+Reddit post 'Bedrock Dedicated Server Tutorial':-
 https://www.reddit.com/user/ProfessorValko/comments/9f438p/bedrock_dedicated_server_tutorial/?utm_source=share&utm_medium=web2x
