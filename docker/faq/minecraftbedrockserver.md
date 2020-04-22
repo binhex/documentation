@@ -48,5 +48,5 @@ Use command 'clear' to clear the screen of any previous output, you can then re-
 
 **Note** If you at any stage get the message 'invalid_resource_pack file' then the pack you downloaded is incompatible with the version of Minecraft Bedrock server that you are running, try another texture pack.
 
-**Tutorial*** Reddit post 'Bedrock Dedicated Server Tutorial':-
+**Tutorial** Reddit post 'Bedrock Dedicated Server Tutorial':-
 https://www.reddit.com/user/ProfessorValko/comments/9f438p/bedrock_dedicated_server_tutorial/?utm_source=share&utm_medium=web2x
