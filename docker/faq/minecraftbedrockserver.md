@@ -58,11 +58,11 @@ docker exec -u nobody -i <name of container> screen -S minecraft -p 0 -X stuff "
 
 To verify this worked simply re-attach to the session (as documented above in Q1) and you should see the command has been executed. 
 
-**Notes**
+**Notes**  
 If you do re-attach to verify the command executed and then try to run another arbitrary command from another exec'd session then you will see a 'permission denied' message and the command will NOT execute, you need to detach from the running session for the command to execute correctly.
 
 If you want to run this on a scheduled basis either from a bash script or via cron job then you will need to ensure you do not specify the '-t' flag for the command, otherwise it will attempt to create a terminal which will not be available when run via cron/bash (non interactive).
 
-**Tutorials**
+**Tutorials**  
 Reddit post 'Bedrock Dedicated Server Tutorial':-
 https://www.reddit.com/user/ProfessorValko/comments/9f438p/bedrock_dedicated_server_tutorial/?utm_source=share&utm_medium=web2x
