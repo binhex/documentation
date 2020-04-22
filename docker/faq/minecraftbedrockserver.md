@@ -26,12 +26,12 @@ Use command 'clear' to clear the screen of any previous output, you can then re-
 
 1. Stop the Minecraft Bedrock Server container.
 2. Download a texture pack, e.g. https://mcpedl.com/fuserealism-resource-pack/ ensuring the filename does not contain spaces, change the extension to .zip
-3. Copy the downloaded texture pack to '/config/minecraft/resource_packs/'
-4. Also copy the texture pack to '/config/minecraft/worlds/<name of your world>/resource_packs/' - this is so people joining get the texture pack installed on their Minecraft client, otherwise they must have it pre-installed on their device.
-5. Rename file '/config/valid_known_packs.json' to a new name.
+3. Copy the downloaded texture pack to ```/config/minecraft/resource_packs/```
+4. Also copy the texture pack to ```/config/minecraft/worlds/<name of your world>/resource_packs/``` - this is so people joining get the texture pack installed on their Minecraft client, otherwise they must have it pre-installed on their device.
+5. Rename file ```/config/valid_known_packs.json``` to a new name.
 6. Start and stop the container to auto regenerate the above file with the correct UUID and version values for the texture pack.
-7. Open the file '/config/valid_known_packs.json' and make a note of the 'uuid' value - this will be required in a step below.
-8. Create a file '/config/minecraft/worlds/<name of your world>/world_resource_packs.json' with the following content, replacing the value of 'pack_id' with the uuid identified in step 7.:-
+7. Open the file ```/config/valid_known_packs.json``` and make a note of the 'uuid' value - this will be required in a step below.
+8. Create a file ```/config/minecraft/worlds/<name of your world>/world_resource_packs.json``` with the following content, replacing the value of 'pack_id' with the uuid identified in step 7.:-
 
 ```
 [
@@ -42,7 +42,7 @@ Use command 'clear' to clear the screen of any previous output, you can then re-
 ]
 ```
  
-9. Open the file 'config/server.properties' and change 'texturepack-required=true' if you want to force people to use the pack. otherwise leave it false to make the texture pack optional.
+9. Open the file ```config/server.properties``` and change ```texturepack-required=true``` if you want to force people to use the pack. otherwise leave it false to make the texture pack optional.
 10. Start the Docker container.
 11. The texture pack should now be visible in your Minecraft world.
 
