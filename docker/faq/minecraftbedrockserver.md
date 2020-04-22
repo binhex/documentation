@@ -56,9 +56,11 @@ Use command 'clear' to clear the screen of any previous output, you can then re-
 docker exec -u nobody -it <name of container> screen -S minecraft -p 0 -X stuff "<command to execute>^M"
 ```
 
-To verify this worked simply re-attach to the session (as documented above in Q1) and you should see the command has been executed.
+To verify this worked simply re-attach to the session (as documented above in Q1) and you should see the command has been executed. 
 
-So if you want to run this on a scheduled basis then you simply run the command via a 'cron' job.
+**Note** If you do re-attach to verify the command executed and then try to run another arbitrary command from another exec'd session then you will see a 'permission denied' message and the command will NOT execute, you need to detach from the running session for the command to execute correctly.
+
+So if you want to run this on a scheduled basis then you simply run the command via a 'cron' job on the host.
 
 **Tutorial** Reddit post 'Bedrock Dedicated Server Tutorial':-
 https://www.reddit.com/user/ProfessorValko/comments/9f438p/bedrock_dedicated_server_tutorial/?utm_source=share&utm_medium=web2x
