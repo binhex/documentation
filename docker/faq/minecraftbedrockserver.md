@@ -48,5 +48,17 @@ Use command 'clear' to clear the screen of any previous output, you can then re-
 
 **Note** If you at any stage get the message 'invalid_resource_pack file' then the pack you downloaded is incompatible with the version of Minecraft Bedrock server that you are running, try another texture pack.
 
+**Q3.** I would like to execute a specific Minecraft Bedrock console command on a scheduled basis, how can i do this?
+
+**A3.** You can execute arbitrary commands on the Minecraft Bedrock console by re-attaching to the 'screen' session and then 'stuff'ing commands into the input buffer, syntax is as follows:-
+
+```
+docker exec -u nobody -it <name of container> screen -S minecraft -p 0 -X stuff "<command to execute>^M"
+```
+
+To verify this worked simply re-attach to the session (as documented above in Q1) and you should see the command has been executed.
+
+So if you want to run this on a scheduled basis then you simply run the command via a 'cron' job.
+
 **Tutorial** Reddit post 'Bedrock Dedicated Server Tutorial':-
 https://www.reddit.com/user/ProfessorValko/comments/9f438p/bedrock_dedicated_server_tutorial/?utm_source=share&utm_medium=web2x
