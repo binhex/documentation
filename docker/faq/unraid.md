@@ -74,8 +74,9 @@ Host path is set to:-
 Container path is set to:-
 ```/downloads```
 
-Why is this broken? because although the host path is now ok, the container paths do NOT match.&nbsp;&nbsp;
-
+Why is this broken? because although the host path is now ok, the container paths do NOT match.
+&nbsp;
+&nbsp;
 **WORKING EXAMPLE**</span>
 
 **sabnzbdvpn**
