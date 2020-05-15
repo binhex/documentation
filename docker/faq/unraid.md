@@ -38,9 +38,9 @@ Why is this broken? because although the container path (/data) is the same for 
 
 **BROKEN EXAMPLE 2.**</span>
 
-Host path is set to:-
 **sabnzbdvpn**
 
+Host path is set to:-
 ```/mnt/cache/appdata/data/Completed```
 
 Container path is set to:-
