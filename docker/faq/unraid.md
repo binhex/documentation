@@ -36,6 +36,7 @@ Container path is set to:-
 
 Why is this broken? because although the container path (/data) is the same for both containers, the host path does NOT match
 
+
 **BROKEN EXAMPLE 2.**</span>
 
 **sabnzbdvpn**
@@ -56,6 +57,7 @@ Container path is set to:-
 
 Why is this broken? because although the container path (/data) is the same for both containers, the host path does NOT match (linux is CaSe sensitive).
 
+
 **BROKEN EXAMPLE 3.**</span>
 
 **sabnzbdvpn**
@@ -75,6 +77,7 @@ Container path is set to:-
 ```/downloads```
 
 Why is this broken? because although the host path is now ok, the container paths do NOT match.
+
 
 **WORKING EXAMPLE**</span>
 
