@@ -34,8 +34,7 @@ Host path is set to:-
 Container path is set to:-
   ```/data```
 
-Why is this broken? because although the container path (/data) is the same for both containers, the host path does NOT match
-
+Why is this broken? because although the container path (/data) is the same for both containers, the host path does NOT match.  
 
 **BROKEN EXAMPLE 2.**</span>
 
@@ -55,8 +54,7 @@ Host path is set to:-
 Container path is set to:-
 ```/data```
 
-Why is this broken? because although the container path (/data) is the same for both containers, the host path does NOT match (linux is CaSe sensitive).
-
+Why is this broken? because although the container path (/data) is the same for both containers, the host path does NOT match (linux is CaSe sensitive).  
 
 **BROKEN EXAMPLE 3.**</span>
 
@@ -76,8 +74,7 @@ Host path is set to:-
 Container path is set to:-
 ```/downloads```
 
-Why is this broken? because although the host path is now ok, the container paths do NOT match.
-
+Why is this broken? because although the host path is now ok, the container paths do NOT match.  
 
 **WORKING EXAMPLE**</span>
 
