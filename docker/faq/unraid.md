@@ -20,38 +20,38 @@
 
 **sabnzbdvpn**
 
+Host path is set to:-
 ```/mnt/cache/appdata/data/completed```
 
-is mapped to
-
+Container path is set to:-
 ```/data```
 
 **sonarr**
 
+Host path is set to:-
 ```/mnt/cache/appdata/data```
 
- is mapped to
-
+Container path is set to:-
   ```/data```
 
 Why is this broken? because although the container path (/data) is the same for both containers, the host path does NOT match
 
 **BROKEN EXAMPLE 2.**</span>
 
+Host path is set to:-
 **sabnzbdvpn**
 
 ```/mnt/cache/appdata/data/Completed```
 
-is mapped to
-
+Container path is set to:-
 ```/data```
 
 **sonarr**
 
+Host path is set to:-
 ```/mnt/cache/appdata/data/completed```
 
-is mapped to
-
+Container path is set to:-
 ```/data```
 
 Why is this broken? because although the container path (/data) is the same for both containers, the host path does NOT match (linux is CaSe sensitive).
@@ -60,18 +60,18 @@ Why is this broken? because although the container path (/data) is the same for 
 
 **sabnzbdvpn**
 
+Host path is set to:-
 ```/mnt/cache/appdata/data/completed```
 
-is mapped to
-
+Container path is set to:-
 ```/data```
 
 **sonarr**
 
+Host path is set to:-
 ```/mnt/cache/appdata/data/completed```
 
-is mapped to
-
+Container path is set to:-
 ```/downloads```
 
 Why is this broken? because although the host path is now ok, the container paths do NOT match.
@@ -80,18 +80,18 @@ Why is this broken? because although the host path is now ok, the container path
 
 **sabnzbdvpn**
 
+Host path is set to:-
 ```/mnt/cache/appdata/data/completed``` 
 
-is mapped to:-
-
+Container path is set to:-
 ```/data```
 
 **sonarr**
 
+Host path is set to:-
 ```/mnt/cache/appdata/data/completed```
 
-is mapped to:-
-
+Container path is set to:-
 ```/data```
 
 Why is this working? because BOTH the container path (/data) and the host path (/mnt/cache/appdata/data/completed) EXACTLY match.
