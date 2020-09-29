@@ -309,7 +309,7 @@ Whereas a VPN client works at the system level, thus all traffic is routed over 
 
 **Q20.** I would like to specify multiple endpoints to attempt to connect to in case one or more of them have transient issues, can your *VPN Docker images do this, and if so, how?
 
-**A20** Yes, all the Docker Images i produce do support multiple endpoints, this is achieved by editing the OpenVPN configuration file and adding in additional 'remote' lines, an example is shown below:-
+**A20** Yes, all the Docker Images i produce do support multiple endpoints, this is achieved by editing the OpenVPN configuration file located in /config/openvpn/ and adding in additional 'remote' lines, an example is shown below:-
 
 ```
 remote ca-toronto.privateinternetaccess.com 1198
