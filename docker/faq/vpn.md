@@ -299,7 +299,7 @@ Whereas a VPN client works at the system level, thus all traffic is routed over 
 
 **Q19.** I see that PIA has a new network called 'Next-Gen', does *VPN Docker Images that you produce support this, and if so how do i switch over to it?
 
-**A19.** If you want to switch from PIA's current network to the 'next-gen' network then please generate a new ovpn file using the following procedure:-
+**A19.** Yes, it's now fully supported including port forwarding, if you want to switch from PIA's current network to the 'next-gen' network then please generate a new ovpn file using the following procedure:-
 
 1. Please make sure you have the latest Docker Image by issuing a docker pull.
 
