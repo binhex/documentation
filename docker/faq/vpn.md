@@ -325,4 +325,4 @@ remote ro.privateinternetaccess.com 1198
 
 The order shown above will be the order tried, if an endpoint fails to connect then it will try the next, and so on, if it gets to the end of the list then it will start from the top again in a round robin fashion.
 
-**Note** Multiple OpenVPN configuration files is *NOT* supported, only multi remote lines as shown above.
+**Note** Multiple OpenVPN configuration files is **NOT** supported, only multi remote lines as shown above.
