@@ -303,6 +303,26 @@ Whereas a VPN client works at the system level, thus all traffic is routed over 
 
 1. Download next-gen ovpn config file - Click on the following link and then click on 'View OpenVPN Configurations' , please download a ovpn file for next-gen:- https://www.privateinternetaccess.com/pages/download#
 
-2. Extract the zip and copy **one** of the ovpn files and any other certs etc to /config/openvpn/, ensuring you either rename the extension or delete the old current-gen network ovpn file.
+2. Extract the zip and copy **ONE** of the ovpn files and any other certs etc to /config/openvpn/, ensuring you either rename the extension or delete the old current-gen network ovpn file.
 
 3. Restart the container and monitor /config/supervisord.log file for any issues.
+
+**Q20.** I would like to specify multiple endpoints to attempt to connect to in case one or more of them have transient issues, can your *VPN Docker images do this, and if so, how?
+
+**A20** Yes, all the Docker Images i produce do support multiple endpoints, this is achieved by editing the OpenVPN configuration file and adding in additional 'remote' lines, an example is shown below:-
+
+```
+remote ca-toronto.privateinternetaccess.com 1198
+remote ca-montreal.privateinternetaccess.com 1198
+remote ca-vancouver.privateinternetaccess.com 1198
+remote de-berlin.privateinternetaccess.com 1198
+remote de-frankfurt.privateinternetaccess.com 1198
+remote france.privateinternetaccess.com 1198
+remote czech.privateinternetaccess.com 1198
+remote spain.privateinternetaccess.com 1198
+remote ro.privateinternetaccess.com 1198
+```
+
+The order shown above will be the order tried, if an endpoint fails to connect then it will try the next, and so on, if it gets to the end of the list then it will start from the top again in a round robin fashion.
+
+**Note** Multiple OpenVPN configuration files is *NOT* supported, only multi remote lines as shown above.
