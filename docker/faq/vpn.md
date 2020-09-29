@@ -301,11 +301,13 @@ Whereas a VPN client works at the system level, thus all traffic is routed over 
 
 **A19.** If you want to switch from PIA's current network to the 'next-gen' network then please generate a new ovpn file using the following procedure:-
 
-1. Download next-gen ovpn config file - Click on the following link and then click on 'View OpenVPN Configurations' , please download a ovpn file for next-gen:- https://www.privateinternetaccess.com/pages/download#
+1. Please make sure you have the latest Docker Image by issuing a docker pull.
 
-2. Extract the zip and copy **ONE** of the ovpn files and any other certs etc to /config/openvpn/, ensuring you either rename the extension or delete the old current-gen network ovpn file.
+2. Download next-gen ovpn config file - Click on the following link and then click on 'View OpenVPN Configurations' , please download a ovpn file for next-gen:- https://www.privateinternetaccess.com/pages/download#
 
-3. Restart the container and monitor /config/supervisord.log file for any issues.
+3. Extract the zip and copy **ONE** of the ovpn files and any other certs etc to /config/openvpn/, ensuring you either rename the extension or delete the old current-gen network ovpn file.
+
+4. Restart the container and monitor /config/supervisord.log file for any issues.
 
 **Q20.** I would like to specify multiple endpoints to attempt to connect to in case one or more of them have transient issues, can your *VPN Docker images do this, and if so, how?
 
