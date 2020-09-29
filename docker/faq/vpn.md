@@ -296,3 +296,13 @@ Once you have ruled out any potential Home LAN issues and if none of the above r
 **A18.** A proxy server works at a application level NOT a system level, therefore when using command line tools like curl or wget these applications would need to be configured to use the proxy in order to correctly route through and show the VPN provider allocated IP address.
 
 Whereas a VPN client works at the system level, thus all traffic is routed over the VPN tunnel, so using command line utilities such as curl or wget inside the VPN docker container (e.g. DelugeVPN, PrivoxyVPN, etc) WOULD correctly show the VPN allocated IP address.
+
+**Q19.** I see that PIA has a new network called 'Next-Gen', does *VPN Docker Images that you produce support this, and if so how do i switch over to it?
+
+**A19.** If you want to switch from PIA's current network to the 'next-gen' network then please generate a new ovpn file using the following procedure:-
+
+1. Download next-gen ovpn config file - Click on the following link and then click on 'View OpenVPN Configurations' , please download a ovpn file for next-gen:- https://www.privateinternetaccess.com/pages/download#
+
+2. Extract the zip and copy **one** of the ovpn files and any other certs etc to /config/openvpn/, ensuring you either rename the extension or delete the old current-gen network ovpn file.
+
+3. Restart the container and monitor /config/supervisord.log file for any issues.
