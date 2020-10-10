@@ -328,3 +328,23 @@ remote ro.privateinternetaccess.com 1198
 The order shown above will be the order tried, if an endpoint fails to connect then it will try the next, and so on, if it gets to the end of the list then it will start from the top again in a round robin fashion.
 
 **Note** Multiple OpenVPN configuration files is **NOT** supported, only multi remote lines as shown above.
+
+**Q21.** I now see that you support WireGuard, how do i switch from OpenVPN to WireGuard client?
+
+**A21.** Yes you are correct, all binhex VPN created images now support OpenVPN and WireGuard, for PIA and other VPN providers. 
+
+If you're a PIA user then please follow this procedure:-
+
+1. Change Docker parameter from ```--cap-add=NET_ADMIN``` to ```--privileged=true``` (WireGuard requires privileged permissions)
+2. Add environment variable key name ```VPN_CLIENT``` and set the value to ```wireguard```
+3. Re-create the container with the new parameters
+4. Once the container has started you should then be able to see the dynamically generated WireGuard config file in ```/config/wireguard/```
+5. If you wish to change the endpoint you connect to then open the file ```/config/wireguard/wg0.conf``` and change the ```Endpoint``` line to the endpint you want
+
+If you're a 'custom or airvpn' VPN user (non PIA) then please follow this procedure:-
+
+1. Change Docker parameter from ```--cap-add=NET_ADMIN``` to ```--privileged=true``` (WireGuard requires privileged permissions)
+2. Add environment variable key name ```VPN_CLIENT``` and set the value to ```wireguard```
+3. Start and stop the container to force the creation of ```/config/wireguard/```
+4. Copy and paste in the WireGuard configuration file for your VPN provider
+5. Restart the container and monitor the log ```/config/supervisord.log``` to ensure the connection is established
