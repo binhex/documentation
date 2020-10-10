@@ -337,9 +337,9 @@ If you're a PIA user then please follow this procedure:-
 
 1. Change Docker parameter from ```--cap-add=NET_ADMIN``` to ```--privileged=true``` (WireGuard requires privileged permissions)
 2. Add environment variable key name ```VPN_CLIENT``` and set the value to ```wireguard```
-3. Re-create the container with the new parameters
-4. Once the container has started you should then be able to see the dynamically generated WireGuard config file in ```/config/wireguard/```
-5. If you wish to change the endpoint you connect to then open the file ```/config/wireguard/wg0.conf``` and change the ```Endpoint``` line to the endpint you want
+3. Start the container with the new parameters
+4. Once the container has started you should then be able to see the dynamically generated WireGuard config file in ```/config/wireguard/wg0.conf```
+5. If you wish to change the endpoint you connect to then open the file ```/config/wireguard/wg0.conf``` and change the ```Endpoint``` line to the endpoint you want
 
 If you're a 'custom or airvpn' VPN user (non PIA) then please follow this procedure:-
 
