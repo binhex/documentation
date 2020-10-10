@@ -335,16 +335,16 @@ The order shown above will be the order tried, if an endpoint fails to connect t
 
 If you're a PIA user then please follow this procedure:-
 
-1. Change Docker parameter from ```--cap-add=NET_ADMIN``` to ```--privileged=true``` (WireGuard requires privileged permissions)
-2. Add environment variable key name ```VPN_CLIENT``` and set the value to ```wireguard```
-3. Start the container with the new parameters
-4. Once the container has started you should then be able to see the dynamically generated WireGuard config file in ```/config/wireguard/wg0.conf```
-5. If you wish to change the endpoint you connect to then open the file ```/config/wireguard/wg0.conf``` and change the ```Endpoint``` line to the endpoint you want
+1. Change Docker parameter from ```--cap-add=NET_ADMIN``` to ```--privileged=true``` (WireGuard requires privileged permissions).
+2. Add environment variable key name ```VPN_CLIENT``` and set the value to ```wireguard```.
+3. Start the container with the new parameters.
+4. Once the container has started you should then be able to see the dynamically generated WireGuard config file ```/config/wireguard/wg0.conf```.
+5. If you wish to change the endpoint (default is Netherlands) then open the file ```/config/wireguard/wg0.conf``` and change the ```Endpoint``` line to the endpoint you want to connect to.
 
 If you're a 'custom or airvpn' VPN user (non PIA) then please follow this procedure:-
 
-1. Change Docker parameter from ```--cap-add=NET_ADMIN``` to ```--privileged=true``` (WireGuard requires privileged permissions)
-2. Add environment variable key name ```VPN_CLIENT``` and set the value to ```wireguard```
-3. Start and stop the container to force the creation of ```/config/wireguard/```
-4. Copy and paste in the WireGuard configuration file for your VPN provider
-5. Restart the container and monitor the log ```/config/supervisord.log``` to ensure the connection is established
+1. Change Docker parameter from ```--cap-add=NET_ADMIN``` to ```--privileged=true``` (WireGuard requires privileged permissions).
+2. Add environment variable key name ```VPN_CLIENT``` and set the value to ```wireguard```.
+3. Start and stop the container to force the creation of ```/config/wireguard/```.
+4. Copy and paste in the WireGuard configuration file for your VPN provider.
+5. Restart the container and monitor the log ```/config/supervisord.log``` to ensure the connection is established.
