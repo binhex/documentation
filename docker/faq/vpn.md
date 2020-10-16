@@ -84,7 +84,7 @@ So armed with the IP Address and Subnet Mask, the easiest way to work out the co
 
 - Enter the host IP address into the 'IP Address' field, in this example '192.168.1.10'
 - On the dropdown 'CIDR Netmask' select your subnet mask, in this example 255.255.255.0
-- Copy the value from 'Net: CIDR Npotation', which in this example would be 192.168.1.0/24
+- Copy the value from 'Net: CIDR Notation', which in this example would be 192.168.1.0/24
 - Paste it into the value for env var 'LAN_NETWORK'
 
 **Q5.** I've just updated and now the container won't start. If i look in the /config/supervisord.log file i see the message below, what does it mean and how do i fix it?.
