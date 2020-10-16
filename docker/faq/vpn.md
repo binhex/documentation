@@ -43,9 +43,9 @@ Note:- Privoxy is NOT intended to be used by the application running inside the 
 
 **Q4.** I'm struggling to configure LAN_NETWORK correctly, can you give some examples?
 
-**A4.** Sure!, here is a list of examples and how to identify the correct CIDR notation (digit(s) after the /)
+**A4.** Sure!, a common misconception when defining this is to set the IP address to the value of your router or host (server), this is NOT correct. What you need to do is set the value to encapsulate all host IP addresses for your home network, NOT for a particular host on the network. Below is an examples of how to identify the correct IP address and CIDR notation (digit(s) after the /)
 
-If you type "ipconfig /all" on windows host on your LAN you will get something similar to this:-
+If you type "ipconfig /all" on Windows host on your LAN you will get something similar to this:-
 
 ```
 Ethernet adapter Ethernet:
@@ -68,7 +68,7 @@ Ethernet adapter Ethernet:
    NetBIOS over Tcpip. . . . . . . . : Enabled
 ```
 
-or "ifconfig" on linux:-
+or "ifconfig" on Linux/Mac:-
 
 ```
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
@@ -80,21 +80,12 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-So you can see the ip address of this host 192.168.1.10 and the netmask 255.255.255.0, so the internal network is defined as:-
+So armed with the IP Address and Subnet Mask, the easiest way to work out the correct values is to use a online calculator, go to:- http://www.subnet-calculator.com/cidr.php
 
-```192.168.1.0```
-
-and the netmask in CIDR format is:-
-
-```/24```
-
-Some common netmask to CIDR notation examples:-
-
-```
-255.255.255.0 = /24
-255.255.0.0 = /16
-255.0.0.0 = /8
-```
+- Enter the host IP address into the 'IP Address' field, in this example '192.168.1.10'
+- On the dropdown 'CIDR Netmask' select your subnet mask, in this example 255.255.255.0
+- Copy the value from 'Net: CIDR Npotation', which in this example would be 192.168.1.0/24
+- Paste it into the value for env var 'LAN_NETWORK'
 
 **Q5.** I've just updated and now the container won't start. If i look in the /config/supervisord.log file i see the message below, what does it mean and how do i fix it?.
 
