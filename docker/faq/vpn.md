@@ -322,15 +322,12 @@ https://www.privateinternetaccess.com/openvpn/openvpn-nextgen.zip
 **A20** Yes, all the Docker Images i produce do support multiple endpoints, this is achieved by editing the OpenVPN configuration file located in /config/openvpn/ and adding in additional 'remote' lines, an example is shown below:-
 
 ```
-remote ca-toronto.privateinternetaccess.com 1198
-remote ca-montreal.privateinternetaccess.com 1198
-remote ca-vancouver.privateinternetaccess.com 1198
-remote de-berlin.privateinternetaccess.com 1198
-remote de-frankfurt.privateinternetaccess.com 1198
-remote france.privateinternetaccess.com 1198
-remote czech.privateinternetaccess.com 1198
-remote spain.privateinternetaccess.com 1198
-remote ro.privateinternetaccess.com 1198
+remote al.privacy.network 1198
+remote ad.privacy.network 1198
+remote austria.privacy.network 1198
+remote brussels.privacy.network 1198
+remote ba.privacy.network 1198
+remote sofia.privacy.network 1198
 ```
 
 The order shown above will be the order tried, if an endpoint fails to connect then it will try the next, and so on, if it gets to the end of the list then it will start from the top again in a round robin fashion.
