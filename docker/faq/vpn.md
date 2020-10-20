@@ -227,11 +227,11 @@ Look for the line that starts with 'remote' and modify this line to one of the p
 Example, switching from 'sweden' to 'swiss':-
 
 ```
-remote sweden.privateinternetaccess.com 1198 udp
+remote italy.privacy.network 1198 udp
 ```
 to
 ```
-remote swiss.privateinternetaccess.com 1198 udp
+remote malta.privacy.network 1198 udp
 ```
 
 Save the file and restart the container for the change to take effect.
