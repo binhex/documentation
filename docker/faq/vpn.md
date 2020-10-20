@@ -135,7 +135,7 @@ Consumer grade routers are notoriously underpowered with slow processors and ver
 
 **A7.** Recently i have stpped baking in the OpenVPN configuration file and certs for PIA users (there are multiple reasons for this which i won't go into here), so in order to create a tunnel to your VPN provider you now need to download their OpenVPN configuration file and certificates. These will typically be downloaded from your VPN providers website, and generally are zipped.
 
-PIA users - The URL to download the openvpn configuration files and certs is https://www.privateinternetaccess.com/openvpn/openvpn.zip
+PIA users - The URL to download the openvpn configuration files and certs is https://www.privateinternetaccess.com/openvpn/openvpn-nextgen.zip
 
 Once you have downloaded the zip (normally a zip as they contain multiple ovpn files) then extract it to /config/openvpn/ folder (if that folder doesn't exist then start and stop the docker container to force the creation). If there are multiple ovpn files then please delete the ones you don't want to use (normally filename follows location of the endpoint) leaving just a single ovpn file and the referenced certificates (normally files with a crt and pem extension).
 
@@ -178,15 +178,31 @@ The below is an example snippet from the log, please do **NOT** use this as the 
 
 2020-03-25 17:05:32,603 DEBG 'start-script' stdout output:
 [info] List of PIA endpoints that support port forwarding:-
-[info] de-berlin.privateinternetaccess.com
-[info] de-frankfurt.privateinternetaccess.com
-[info] sweden.privateinternetaccess.com
-[info] swiss.privateinternetaccess.com
-[info] france.privateinternetaccess.com
-[info] czech.privateinternetaccess.com
-[info] spain.privateinternetaccess.com
-[info] ro.privateinternetaccess.com
-[info] israel.privateinternetaccess.com
+[info] al.privacy.network
+[info] ad.privacy.network
+[info] austria.privacy.network
+[info] brussels.privacy.network
+[info] ba.privacy.network
+[info] sofia.privacy.network
+[info] czech.privacy.network
+[info] denmark.privacy.network
+[info] ee.privacy.network
+[info] fi.privacy.network
+[info] france.privacy.network
+[info] de-berlin.privacy.network
+[info] de-frankfurt.privacy.network
+[info] gr.privacy.network
+[info] hungary.privacy.network
+[info] is.privacy.network
+[info] ireland.privacy.network
+[info] man.privacy.network
+[info] italy.privacy.network
+[info] lv.privacy.network
+[info] liechtenstein.privacy.network
+[info] lt.privacy.network
+[info] lu.privacy.network
+[info] mk.privacy.network
+[info] malta.privacy.network
 ```
 
 The alternative to this is to set env var 'STRICT_PORT_FORWARD' value to 'no', this will then skip any port forwarding and allow you to connect to ANY PIA endpoint independent of whether it supports port forwarding or not (not recommended).
@@ -199,7 +215,7 @@ Note:- The above is ONLY true for PIA users, the env var 'STRICT_PORT_FORWARD' 
 
 **Method 1. (recommended)**
 Download the latest ovpn zip pack from PIA, link below:-
-https://www.privateinternetaccess.com/openvpn/openvpn.zip
+https://www.privateinternetaccess.com/openvpn/openvpn-nextgen.zip
 
 Extract the zip to /config/openvpn/ and then delete all .ovpn files that you do NOT want to connect to, leaving the ovpn file you want to use and the required certificates, then restart the container for the change to take effect.
 
@@ -294,7 +310,8 @@ Whereas a VPN client works at the system level, thus all traffic is routed over 
 
 1. Please make sure you have the latest Docker Image by issuing a docker pull.
 
-2. Download next-gen ovpn config file - Click on the following link and then click on 'View OpenVPN Configurations' , please download a ovpn file for next-gen:- https://www.privateinternetaccess.com/pages/download#
+2. Download next-gen ovpn config file from the following link:-
+https://www.privateinternetaccess.com/openvpn/openvpn-nextgen.zip
 
 3. Extract the zip and copy **ONE** of the ovpn files and any other certs etc to /config/openvpn/, ensuring you either rename the extension or delete the old current-gen network ovpn file.
 

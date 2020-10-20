@@ -2,7 +2,7 @@
 
 Firstly in order to create a tunnel to your VPN provider you need to use their OpenVPN configuration file and certificates. These will typically be downloaded from your VPN providers website, and generally are zipped. 
 
-**PIA users** - The URL to download the openvpn configuration files and certs is https://www.privateinternetaccess.com/openvpn/openvpn.zip
+**PIA users** - The URL to download the openvpn configuration files and certs is https://www.privateinternetaccess.com/openvpn/openvpn-nextgen.zip
 
 Once you have downloaded the zip (normally a zip as they contain multiple ovpn files) then extract it to somewhere locally, then start and stop the container, this creates the required /config/openvpn/ folder. If there are multiple ovpn files then please delete the ones you don't want to use (normally filename follows location of the endpoint) leaving just a single ovpn file and the referenced certificates (normally files with a crt and pem extension).
 
