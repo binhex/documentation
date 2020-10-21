@@ -298,7 +298,7 @@ Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[SOLUTION]** Use an IP based ovpn config file instead, this wil circumvent the requirement to do a name lookup.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[CAUSE]**    ISP is blocking outbound connections to the VPN providers servers  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[SOLUTION]** Try a different ovpn config files from your VPN provider, some providers allow different ports to get around this restrictions e.g. 443, 1194.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[SOLUTION]** Try another ovpn config file from your VPN provider, also try different ports too e.g. 443, 1194.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[CAUSE]**    VPN provider has a major outage  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[SOLUTION]** Contact VPN provider to confirm outage and wait for the outage to be resolved.
