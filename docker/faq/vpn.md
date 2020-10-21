@@ -282,26 +282,26 @@ Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 
 **A17.** This means the OpenVPN Client is unable to connect to the VPN providers server on the specified IP address and port (as defined in the ovpn file 'remote' line), this can have many causes, some of the more common causes (and solutions) are as follows:-
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[CAUSE]**    Hardware firewall/router is blocking outbound connections to the vpn providers servers  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[SOLUTION]** Allow outbound connections for the port defined in the VPN providers ovpn file on your firewall/router.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CAUSE]    Hardware firewall/router is blocking outbound connections to the vpn providers servers  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SOLUTION] Allow outbound connections for the port defined in the VPN providers ovpn file on your firewall/router.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[CAUSE]**    Host machine firewall blocking the docker container from connecting to the vpn providers servers  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[SOLUTION]** Allow outbound connections for the port defined in the VPN providers ovpn file on the hosts firewall.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CAUSE]    Host machine firewall blocking the docker container from connecting to the vpn providers servers  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SOLUTION] Allow outbound connections for the port defined in the VPN providers ovpn file on the hosts firewall.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[CAUSE]**    VLAN blocking the connection for the host to the VPN providers servers  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[SOLUTION]** Allow outbound connections for the port defined in the VPN providers ovpn file on your switch.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CAUSE]    VLAN blocking the connection for the host to the VPN providers servers  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SOLUTION] Allow outbound connections for the port defined in the VPN providers ovpn file on your switch.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[CAUSE]**    Out of date ovpn config file containing reference to retired VPN remote server(s)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[SOLUTION]** Download the latest ovpn config file from your VPN provider, place in /config/openvpn/ and restart container.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CAUSE]    Out of date ovpn config file containing reference to retired VPN remote server(s)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SOLUTION] Download the latest ovpn config file from your VPN provider, place in /config/openvpn/ and restart container.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[CAUSE]**    ISP is hijacking DNS lookup and redirecting you to their (spammy) landing page  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[SOLUTION]** Use an IP based ovpn config file instead, this wil circumvent the requirement to do a name lookup.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CAUSE]    ISP is hijacking DNS lookup and redirecting you to their (spammy) landing page  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SOLUTION] Use an IP based ovpn config file instead, this wil circumvent the requirement to do a name lookup.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[CAUSE]**    ISP is blocking outbound connections to the VPN providers servers  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[SOLUTION]** Try another ovpn config file from your VPN provider, also try different ports too e.g. 443, 1194.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CAUSE]    ISP is blocking outbound connections to the VPN providers servers  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SOLUTION] Try another ovpn config file from your VPN provider, also try different ports too e.g. 443, 1194.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[CAUSE]**    VPN provider has a major outage  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[SOLUTION]** Contact VPN provider to confirm outage and wait for the outage to be resolved.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CAUSE]    VPN provider has a major outage  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[SOLUTION] Contact VPN provider to confirm outage and wait for the outage to be resolved.
 
 Once you have ruled out any potential Home LAN issues and if none of the above resolve the issue then you may have to switch VPN provider or even ISP to get around the blocking restriction.
 
