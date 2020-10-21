@@ -348,7 +348,7 @@ The order shown above will be the order tried, if an endpoint fails to connect t
 If you're a PIA user then please follow this procedure:-
 
 1. Change Docker parameter from ```--cap-add=NET_ADMIN``` to ```--privileged=true``` (WireGuard requires privileged permissions).
-2. Add environment variable key name ```VPN_CLIENT``` and set the value to ```wireguard```.
+2. Add environment variable and set the ```Key name``` (**NOT** the name) to ```VPN_CLIENT``` and set the ```Value``` to ```wireguard```.
 3. Start the container with the new parameters.
 4. Once the container has started you should then be able to see the dynamically generated WireGuard config file ```/config/wireguard/wg0.conf```.
 5. If you wish to change the endpoint (default is Netherlands) then open the file ```/config/wireguard/wg0.conf``` and change the ```Endpoint``` line to the endpoint you want to connect to.
