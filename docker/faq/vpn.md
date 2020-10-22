@@ -268,7 +268,19 @@ Where xx will be 2 random digits.
 
 ```AUTH: Received control message: AUTH_FAILED'```
 
-**A16.** This error means that the credentials you have entered for environment variables 'VPN_USER' and/or 'VPN_PASS' are not valid, and thus your VPN provider is not allowing you to connect. Please re-check the values for both of these environment variables is correct, also try typing in the value for both as opposed to copy/paste, as this can lead to unexpected characters and thus authentication failure.
+**A16.** AUTH_FAILED means you are having issues authenticating with your VPN provider, there can many causes for this, here are some of the common ones:-
+
+1. Your subscription has run out - double check this on the vpn providers website.
+
+2. You have not typed in your username and/or password - do not copy and paste, type it in manually to prevent whitespace issues.
+
+3. You are using the wrong credentials - ensure the credentials are for openvpn/wireguard, NOT proxy servers etc
+
+3. Your password contains a character which may cause issues - please ensure it only contains letters a-z (upper case or lower case) and numbers 0-9
+
+4. Out of date openvpn config file (ovpn extension) - ensure you download the latest ovpn file from your vpn provider.
+
+5. The vpn provider you have signed up with is having authentication issues - try another endpoint, failing that contact the vpn provider and explain you are having authenticaiton issues when using native openvpn/wireguard clients with AUTH_FAILED shown.
 
 **Q17.** I'm unable to connect to the web ui and i'm seeing the following repeated over and over in the /config/supervisord.log file, what does it mean and how can i fix it?
 
