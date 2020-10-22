@@ -274,9 +274,9 @@ Where xx will be 2 random digits.
 
 2. You have not typed in your username and/or password - do not copy and paste, type it in manually to prevent whitespace issues.
 
-3. You are using the wrong credentials - ensure the credentials are for openvpn/wireguard, NOT proxy servers etc
+3. You are using the wrong credentials - ensure the credentials are for openvpn/wireguard, NOT proxy servers etc.
 
-3. Your password contains a character which may cause issues - please ensure it only contains letters a-z (upper case or lower case) and numbers 0-9
+3. Your password contains a character which may cause issues - please ensure it only contains letters a-z (upper case or lower case) and numbers 0-9.
 
 4. Out of date openvpn config file (ovpn extension) - ensure you download the latest ovpn file from your vpn provider.
 
