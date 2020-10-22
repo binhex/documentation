@@ -268,7 +268,7 @@ Where xx will be 2 random digits.
 
 ```AUTH: Received control message: AUTH_FAILED'```
 
-**A16.** AUTH_FAILED means you are having issues authenticating with your VPN provider, there can many causes for this, here are some of the common ones:-
+**A16.** AUTH_FAILED means you are having issues authenticating with your VPN provider, there can be many causes for this, here are some of the common ones:-
 
 1. Your subscription has run out - double check this on the vpn providers website.
 
