@@ -2,7 +2,7 @@
 
 **Q1.** What does the Privileged check-box do?
 
-**A1.** The Privileged checkbox allows the Docker Container to perform certain privileged activities, these are typically required for additional netwworking functions, such as creating/editing virtual adapters.
+**A1.** The Privileged checkbox allows the Docker Container to perform certain privileged activities, these are typically required for additional networking functions, such as creating/editing virtual adapters.
 
 **Q2.** I can't see how to configure the settings for the VPN Docker images
 
