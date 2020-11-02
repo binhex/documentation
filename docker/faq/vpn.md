@@ -374,3 +374,17 @@ If you're a 'custom or airvpn' VPN user (non PIA) then please follow this proced
 3. Start and stop the container to force the creation of ```/config/wireguard/```.
 4. Copy and paste in the WireGuard configuration file for your VPN provider.
 5. Start the container and monitor the log ```/config/supervisord.log``` to ensure the connection is established.
+
+**Q22.** I see the following in the log /config/supervisord.log, what does it mean and how can i fix it?
+
+```
+OPTIONS ERROR: failed to negotiate cipher with server. Add the server's cipher ('BF-CBC') to --data-ciphers (currently 'AES-256-GCM:AES-128-GCM:AES-256-CBC') if you want to connect to this server.
+```
+
+**A22.** This error is caused by a misconfiguration of the OpenVPN servers at the VPN providers end (currently affecting PIA customers). The VPN server does not push '--cipher', so the client has to assume that the server does not do any cipher negotiation, the client then tries to use the same cipher as the server, but since PIA's server say it uses BF-CBC, the client tries to switch to that cipher and it fails generating an error (PIA servers do not actually support BF-CBC - bad configuration).  
+
+The fix for this is to hard set the cipher on the client side to a cipher that PIA does support, this is done by editing the file /config/openvpn/<file with a ovpn extension> and adding the following line:-
+
+```
+cipher AES-128-GCM
+```
