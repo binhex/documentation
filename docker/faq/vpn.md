@@ -383,10 +383,10 @@ OPTIONS ERROR: failed to negotiate cipher with server. Add the server's cipher (
 
 **A22.** This error is caused by a misconfiguration of the OpenVPN servers at the VPN providers end (currently affecting PIA customers). The VPN server does not push '--cipher', so the client has to assume that the server does not do any cipher negotiation, the client then tries to use the same cipher as the server, but since PIA's server say it uses BF-CBC, the client tries to switch to that cipher and it fails generating an error (PIA servers do not actually support BF-CBC - bad configuration).  
 
-The fix for this is to hard set the cipher on the client side to a cipher that PIA does support, this is done by editing the file ```/config/openvpn/<file with a ovpn extension>``` and adding the following line:-
+The fix for this is to specify a fallback cipher on the client side to a cipher that PIA does support, this is done by editing the file ```/config/openvpn/<file with a ovpn extension>``` and adding the following line:-
 
 ```
-cipher AES-128-GCM
+data-ciphers-fallback aes-256-gcm
 ```
 
 Save and restart the container for the change to take effect.
