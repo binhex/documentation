@@ -386,7 +386,8 @@ OPTIONS ERROR: failed to negotiate cipher with server. Add the server's cipher (
 The fix for this is to specify a fallback cipher on the client side to a cipher that PIA does support, this is done by editing the file ```/config/openvpn/<file with a ovpn extension>``` and adding the following line (use notepad++ **NOT** notepad):-
 
 ```
-data-ciphers-fallback aes-256-gcm
+cipher aes-256-gcm
+ncp-disable
 ```
 
 Save and restart the container for the change to take effect.
