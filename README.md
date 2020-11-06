@@ -3,7 +3,7 @@
 ## **Description**
 Links to documentation for software located in the binhex repositories.
 
-## Docker-test
+## Docker
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Guides
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VPN Docker Guide
