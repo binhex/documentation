@@ -272,7 +272,7 @@ Where xx will be 2 random digits.
 
 1. [Cause] Your subscription has run out [Solution] double check this on the vpn providers website.
 
-2. [Cause] You have not typed in your username and/or password [Solution] do not copy and paste, type it in manually to prevent whitespace issues.
+2. [Cause] You have not typed in your username (VPN_USER value) and/or password (VPN_PASS value) correctly [Solution] do not copy and paste, type it in manually to prevent whitespace issues.
 
 3. [Cause] You are using the wrong credentials [Solution] ensure the credentials are for openvpn/wireguard, NOT proxy servers etc. [**PIA users**] Do **NOT** use the generated PPTP/L2TP/Socks Username and Password, this is not the correct credentials, you need to specify the web login credentials (username will be of the format Pxxxxxx) for VPN_USER and VPN_PASS.
 
