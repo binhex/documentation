@@ -274,15 +274,11 @@ Where xx will be 2 random digits.
 
 2. You have not typed in your username and/or password - do not copy and paste, type it in manually to prevent whitespace issues.
 
-3. You are using the wrong credentials - ensure the credentials are for openvpn/wireguard, NOT proxy servers etc.  
-
-**PIA users** Do **NOT** use the generated PPTP/L2TP/Socks Username and Password, this is not the correct credentials, you need to specify the web login credentials (username will be of the format Pxxxxxx) for VPN_USER and VPN_PASS.
+3. You are using the wrong credentials - ensure the credentials are for openvpn/wireguard, NOT proxy servers etc.**PIA users** - Do **NOT** use the generated PPTP/L2TP/Socks Username and Password, this is not the correct credentials, you need to specify the web login credentials (username will be of the format Pxxxxxx) for VPN_USER and VPN_PASS.
 
 4. Your password contains a character which may cause issues - please ensure it only contains letters a-z (upper case or lower case) and numbers 0-9.
 
-5. Your password is too long - Certain VPN providers (such as PIA) may limit the password length, please try shortening the password for your account.
-
-**PIA users** The maximum length for account passwords has changed with next-gen network, please ensure your password is 99 characters or less.
+5. Your password is too long - Certain VPN providers (such as PIA) may limit the password length, please try shortening the password for your account.**PIA users** - The maximum length for account passwords has changed with next-gen network, please ensure your password is 99 characters or less.
 
 6. Out of date openvpn config file (ovpn extension) - ensure you download the latest ovpn file from your vpn provider.
 
