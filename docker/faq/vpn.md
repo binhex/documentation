@@ -224,7 +224,7 @@ Download a text editor that honors line endings, such as notepad++ or atom, then
 
 Look for the line that starts with 'remote' and modify this line to one of the port forward enabled endpoints shown in your log (see Q10 for details on how to find this).
 
-Example, switching from 'sweden' to 'swiss':-
+Example, switching from 'italy' to 'malta':-
 
 ```
 remote italy.privacy.network 1198 udp
