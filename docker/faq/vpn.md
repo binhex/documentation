@@ -280,9 +280,13 @@ NOTE:- PIA users, do **NOT** use the generated PPTP/L2TP/Socks Username and Pass
 
 4. Your password contains a character which may cause issues - please ensure it only contains letters a-z (upper case or lower case) and numbers 0-9.
 
-5. Out of date openvpn config file (ovpn extension) - ensure you download the latest ovpn file from your vpn provider.
+5. Your password is too long - Certain VPN providers (such as PIA) may limit the password length, please try shortening the password for your account.
 
-6. The vpn provider you have signed up with is having authentication issues - try another endpoint, failing that contact the vpn provider and explain you are having authentication issues when using native openvpn/wireguard clients with AUTH_FAILED shown.
+NOTE:- PIA users, the maximum length for account passwords has changed with next-gen network, please ensure your password is 99 characters or less.
+
+6. Out of date openvpn config file (ovpn extension) - ensure you download the latest ovpn file from your vpn provider.
+
+7. The vpn provider you have signed up with is having authentication issues - try another endpoint, failing that contact the vpn provider and explain you are having authentication issues when using native openvpn/wireguard clients with AUTH_FAILED shown.
 
 **Q17.** I'm unable to connect to the web ui and i'm seeing the following repeated over and over in the /config/supervisord.log file, what does it mean and how can i fix it?
 
