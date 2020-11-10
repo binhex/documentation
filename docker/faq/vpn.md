@@ -174,7 +174,7 @@ The below is an example snippet from the log, please do **NOT** use this as the 
 
 ```
 2020-03-25 17:05:32,603 DEBG 'start-script' stdout output:
-[info] PIA endpoint 'sweden.privateinternetaccess.com' is in the list of endpoints that support port forwarding
+[info] PIA endpoint 'austria.privacy.network' is in the list of endpoints that support port forwarding
 
 2020-03-25 17:05:32,603 DEBG 'start-script' stdout output:
 [info] List of PIA endpoints that support port forwarding:-
@@ -205,7 +205,7 @@ The below is an example snippet from the log, please do **NOT** use this as the 
 [info] malta.privacy.network
 ```
 
-The alternative to this is to set env var 'STRICT_PORT_FORWARD' value to 'no', this will then skip any port forwarding and allow you to connect to ANY PIA endpoint independent of whether it supports port forwarding or not (not recommended).
+The alternative to this is to set env var 'STRICT_PORT_FORWARD' value to 'no', this will then skip any port forwarding and allow you to connect to ANY PIA endpoint independent of whether it supports port forwarding or not (not recommended as speeds will be slow).
 
 Note:- The above is ONLY true for PIA users, the env var 'STRICT_PORT_FORWARD' does nothing for any other VPN providers.
 
