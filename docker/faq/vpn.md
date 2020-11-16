@@ -256,7 +256,7 @@ Where xx will be 2 random digits.
 
 **Q15.** I have setup port forwarding on my router/firewall but still cannot seem to seed any torrents and my incoming port is showing as closed, how can i fix this?
 
-**A15.** A common misconception is that port forwarding for a torrent client when using a VPN connection is still done on the users router/firewall, this is NOT the case. In order to have a working incoming port you need to have all of the following in place:-
+**A15.** A common misconception is that port forwarding for a torrent client when using a VPN connection is still done on the users router/firewall, this is NOT the case, port forwarding MUST be done on the VPN provider side only. In order to have a working incoming port you need to have all of the following in place:-
 
 1. The VPN provider you have signed up to provides port forwarding - For PIA users this is the case, there are other providers too which allow port forwarding, but be aware most do NOT, check with the provider BEFORE signing up.
 
