@@ -390,3 +390,28 @@ data-ciphers-fallback aes-256-gcm
 ```
 
 Save and restart the container for the change to take effect.
+
+**Q23.** I see the following in the log /config/supervisord.log, what does it mean and how can i fix it?
+
+```
+RTNETLINK answers: Operation not permitted
+Unable to access interface: Operation not permitted
+[#] ip link delete dev wg0
+Cannot find device "wg0"
+[warn] WireGuard interface failed to come 'up', exit code is '1'
+```
+
+**A23.** This indicates that you are not running the container with 'Privileged' mode enabled and/or sysctl for src_valid_mark (both of which are requirements for wireguard).
+
+For unRAID users this can be done by toggling 'Privileged:' to 'on' for the container, and adding the following line to 'Extra Parameters:'
+
+```
+--sysctl="net.ipv4.conf.all.src_valid_mark=1"
+```
+
+for people using a Docker run command you would add the following lines:-
+
+```
+--sysctl="net.ipv4.conf.all.src_valid_mark=1" \
+--privileged=true \
+```
