@@ -8,7 +8,7 @@ So if you want to migrate from Sonarr v2 to Sonarr v3 you can now achieve this b
 
 1. Go to uRAID web ui/Docker tab, left click Sonarr and select 'Stop' then left click again and select 'Edit' and change the 'Repository' from ```binhex/arch-sonarr``` to ```binhex/arch-sonarr:v3``` then click on 'Show more settings...' and note the host path for /config. Copy ALL files and folders from the host path to another host path, noting the new host path you've chosen, for example (run from unraid Terminal NOT container console!):-
 ```
-cp -R /mnt/cache/appdata/binhex-sonarr/* /mnt/cache/appdata/binhex-sonarr-v3/
+mkdir -p /mnt/cache/appdata/binhex-sonarr-v3 && cp -R /mnt/cache/appdata/binhex-sonarr/* /mnt/cache/appdata/binhex-sonarr-v3/
 ```
 2. Now change the path for /config to the new path (in this example ```/mnt/cache/appdata/binhex-sonarr-v3```) and finally click on 'Apply' at the bottom.
 
