@@ -325,7 +325,7 @@ Whereas a VPN client works at the system level, thus all traffic is routed over 
 1. Please make sure you have the latest Docker Image by issuing a docker pull.
 
 2. Download next-gen ovpn config file from the following link:-
-https://www.privateinternetaccess.com/openvpn/openvpn-nextgen.zip
+https://www.privateinternetaccess.com/openvpn/openvpn.zip
 
 3. Extract the zip and copy **ONE** of the ovpn files and any other certs etc to /config/openvpn/, ensuring you either rename the extension or delete the old current-gen network ovpn file.
 
