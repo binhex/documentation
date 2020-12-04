@@ -82,10 +82,10 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 
 So armed with the IP Address and Subnet Mask, the easiest way to work out the correct values is to use a online calculator, go to:- http://www.subnet-calculator.com/cidr.php
 
-- Enter the host IP address into the 'IP Address' field, in this example '192.168.1.10'
-- On the dropdown 'CIDR Netmask' select your subnet mask, in this example 255.255.255.0
-- Copy the value from 'Net: CIDR Notation', which in this example would be 192.168.1.0/24
-- Paste it into the value for env var 'LAN_NETWORK'
+1. Enter the host IP address into the 'IP Address' field, in this example '192.168.1.10'
+2. On the dropdown 'CIDR Netmask' select your subnet mask, in this example 255.255.255.0
+3. Copy the value from 'Net: CIDR Notation', which in this example would be 192.168.1.0/24
+4. Paste it into the value for env var 'LAN_NETWORK'
 
 **Q5.** I've just updated and now the container won't start. If i look in the /config/supervisord.log file i see the message below, what does it mean and how do i fix it?.
 
@@ -256,11 +256,11 @@ Where xx will be 2 random digits.
 
 **A15.** A common misconception is that port forwarding for a torrent client when using a VPN connection is still done on the users router/firewall, this is NOT the case, port forwarding MUST be done on the VPN provider side only. In order to have a working incoming port you need to have all of the following in place:-
 
-1. The VPN provider you have signed up to provides port forwarding - For PIA users this is the case, there are other providers too which allow port forwarding, but be aware most do NOT, check with the provider BEFORE signing up.
+* The VPN provider you have signed up to provides port forwarding - For PIA users this is the case, there are other providers too which allow port forwarding, but be aware most do NOT, check with the provider BEFORE signing up.
 
-2. You have an assigned incoming port from your VPN provider - For PIA users this is done automatically for you, so as long as you are connected to an endpoint that supports port forwarding (see here for details) AND you have STRICT_PORT_FORWARD  set to yes. For other providers they may manually assign a port for you on request, or may use other mechanisms.
+* You have an assigned incoming port from your VPN provider - For PIA users this is done automatically for you, so as long as you are connected to an endpoint that supports port forwarding (see here for details) AND you have STRICT_PORT_FORWARD  set to yes. For other providers they may manually assign a port for you on request, or may use other mechanisms.
 
-3. You have configured the application to use the assigned port - For PIA users this is done automatically for you, for other providers you will need to manually set the application to use the port assigned to you.
+* You have configured the application to use the assigned port - For PIA users this is done automatically for you, for other providers you will need to manually set the application to use the port assigned to you.
 
 **Q16.** I am seeing the following in the log file '/config/supervisord.log' and cannot access the web ui, what does it mean and how can i fix it?.
 
@@ -268,19 +268,19 @@ Where xx will be 2 random digits.
 
 **A16.** AUTH_FAILED means you are having issues authenticating with your VPN provider, there can be many causes for this, here are some of the common ones:-
 
-1. [Cause] Your subscription has run out [Solution] double check this on the vpn providers website.
+* [Cause] Your subscription has run out [Solution] double check this on the vpn providers website.
 
-2. [Cause] You have not typed in your username (VPN_USER value) and/or password (VPN_PASS value) correctly [Solution] do not copy and paste, type it in manually to prevent whitespace issues.
+* [Cause] You have not typed in your username (VPN_USER value) and/or password (VPN_PASS value) correctly [Solution] do not copy and paste, type it in manually to prevent whitespace issues.
 
-3. [Cause] You are using the wrong credentials [Solution] ensure the credentials are for openvpn/wireguard, NOT proxy servers etc. [**PIA users**] Do **NOT** use the generated PPTP/L2TP/Socks Username and Password, this is not the correct credentials, you need to specify the web login credentials (username will be of the format Pxxxxxx) for VPN_USER and VPN_PASS.
+* [Cause] You are using the wrong credentials [Solution] ensure the credentials are for openvpn/wireguard, NOT proxy servers etc. [**PIA users**] Do **NOT** use the generated PPTP/L2TP/Socks Username and Password, this is not the correct credentials, you need to specify the web login credentials (username will be of the format Pxxxxxx) for VPN_USER and VPN_PASS.
 
-4. [Cause] Your password contains a character which may cause issues [Solution] please ensure it only contains letters a-z (upper case or lower case) and numbers 0-9.
+* [Cause] Your password contains a character which may cause issues [Solution] please ensure it only contains letters a-z (upper case or lower case) and numbers 0-9.
 
-5. [Cause] Your password is too long [Solution] Certain VPN providers (such as PIA) may limit the password length, please try shortening the password for your account. [**PIA users**] The maximum length for account passwords has changed with next-gen network, please ensure your password is 99 characters or less.
+* [Cause] Your password is too long [Solution] Certain VPN providers (such as PIA) may limit the password length, please try shortening the password for your account. [**PIA users**] The maximum length for account passwords has changed with next-gen network, please ensure your password is 99 characters or less.
 
-6. [Cause] Out of date openvpn config file (ovpn extension) [Solution] ensure you download the latest ovpn file from your vpn provider.
+* [Cause] Out of date openvpn config file (ovpn extension) [Solution] ensure you download the latest ovpn file from your vpn provider.
 
-7. [Cause] The vpn provider you have signed up with is having authentication issues [Solution] try another endpoint, failing that contact the vpn provider and explain you are having authentication issues when using native openvpn/wireguard clients with AUTH_FAILED shown.
+* [Cause] The vpn provider you have signed up with is having authentication issues [Solution] try another endpoint, failing that contact the vpn provider and explain you are having authentication issues when using native openvpn/wireguard clients with AUTH_FAILED shown.
 
 **Q17.** I'm unable to connect to the web ui and i'm seeing the following repeated over and over in the /config/supervisord.log file, what does it mean and how can i fix it?
 
