@@ -101,9 +101,7 @@ Keep in mind the purpose of a VPN is to provider secure, anonymous connectivity 
 
 * Incoming port not defined correctly - This is the main cause of low speeds, if you want to maintain high upload/download rates then you MUST have a working incoming port. If you are using PIA as your VPN provider then this will be done for you automatically, as long as you are connected to a endpoint that supports port forwarding (see list below) AND STRICT_PORT_FORWARD is set to "yes". If you are using another VPN provider then you will need to find out if your VPN provider supports port forwarding and what mechanism they use to allocate the port, and finally configure the application to use the port.
 
-PIA endpoints that support port forwarding (incoming port) can be seen here:-
-
-https://www.privateinternetaccess.com/helpdesk/kb/articles/how-do-i-enable-port-forwarding-on-my-vpn
+PIA endpoints that support port forwarding (incoming port) can be seen in the log file ```/config/supervisord.log```
 
 * Upload rate set too high/unlimited - failure to correctly define your upload speed will mean your connection will be choked, resulting in low download speeds, the solution to this is to define your upload rate as about 3/4 of your theoretical maximum upload rate (keeping in mind this is defined in Bytes (big B) NOT bits (small b).
 
