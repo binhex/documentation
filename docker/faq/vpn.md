@@ -294,19 +294,19 @@ Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 
 **A17.** This means the OpenVPN Client is unable to connect to the VPN providers server on the specified IP address and port (as defined in the ovpn file 'remote' line), this can have many causes, some of the more common causes (and solutions) are as follows:-
 
-1. [Cause] Hardware firewall/router is blocking outbound connections to the vpn providers servers. [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on your firewall/router.
+* [Cause] Hardware firewall/router is blocking outbound connections to the vpn providers servers. [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on your firewall/router.
 
-2. [Cause] Host machine firewall blocking the docker container from connecting to the vpn providers servers. [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on the hosts firewall.
+* [Cause] Host machine firewall blocking the docker container from connecting to the vpn providers servers. [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on the hosts firewall.
 
-3. [Cause] VLAN blocking the connection for the host to the VPN providers servers. [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on your switch.
+* [Cause] VLAN blocking the connection for the host to the VPN providers servers. [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on your switch.
 
-4. [Cause] Out of date ovpn config file containing reference to retired VPN remote server(s). [Solution] Download the latest ovpn config file from your VPN provider, place in /config/openvpn/ and restart container.
+* [Cause] Out of date ovpn config file containing reference to retired VPN remote server(s). [Solution] Download the latest ovpn config file from your VPN provider, place in /config/openvpn/ and restart container.
 
-5. [Cause] ISP is hijacking DNS lookup and redirecting you to their (spammy) landing page. [Solution] Use an IP based ovpn config file instead, this wil circumvent the requirement to do a name lookup.
+* [Cause] ISP is hijacking DNS lookup and redirecting you to their (spammy) landing page. [Solution] Use an IP based ovpn config file instead, this wil circumvent the requirement to do a name lookup.
 
-6. [Cause] ISP is blocking outbound connections to the VPN providers servers. [Solution] Contact VPN provider to confirm outage and wait for the outage to be resolved.
+* [Cause] ISP is blocking outbound connections to the VPN providers servers. [Solution] Contact VPN provider to confirm outage and wait for the outage to be resolved.
 
-7. [Cause] VPN provider has a major outage. [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on your firewall/router.
+* [Cause] VPN provider has a major outage. [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on your firewall/router.
 
 Once you have ruled out any potential Home LAN issues and if none of the above resolve the issue then you may have to switch VPN provider or even ISP to get around the blocking restriction.
 
