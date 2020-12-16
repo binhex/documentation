@@ -133,7 +133,7 @@ Note - Please ensure you remove any other existing lines that may clash with the
 
 **A7.** Recently i have stpped baking in the OpenVPN configuration file and certs for PIA users (there are multiple reasons for this which i won't go into here), so in order to create a tunnel to your VPN provider you now need to download their OpenVPN configuration file and certificates. These will typically be downloaded from your VPN providers website, and generally are zipped.
 
-PIA users - The URL to download the openvpn configuration files and certs is https://www.privateinternetaccess.com/openvpn/openvpn-nextgen.zip
+PIA users - The URL to download the openvpn configuration files and certs is https://www.privateinternetaccess.com/openvpn/openvpn.zip
 
 Once you have downloaded the zip (normally a zip as they contain multiple ovpn files) then extract it to /config/openvpn/ folder (if that folder doesn't exist then start and stop the docker container to force the creation). If there are multiple ovpn files then please delete the ones you don't want to use (normally filename follows location of the endpoint) leaving just a single ovpn file and the referenced certificates (normally files with a crt and pem extension).
 
@@ -213,7 +213,7 @@ Note:- The above is ONLY true for PIA users, the env var 'STRICT_PORT_FORWARD' 
 
 **Method 1. (recommended)**
 Download the latest ovpn zip pack from PIA, link below:-
-https://www.privateinternetaccess.com/openvpn/openvpn-nextgen.zip
+https://www.privateinternetaccess.com/openvpn/openvpn.zip
 
 Extract the zip to /config/openvpn/ and then delete all .ovpn files that you do NOT want to connect to, leaving the ovpn file you want to use and the required certificates, then restart the container for the change to take effect.
 
