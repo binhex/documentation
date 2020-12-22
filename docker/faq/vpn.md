@@ -352,7 +352,7 @@ If you're a PIA user then please follow this procedure:-
 2. Add environment variable and set the ```Key:``` (**NOT** the name) to ```VPN_CLIENT``` and set the ```Value:``` to ```wireguard```.
 3. Start the container with the new parameters.
 4. Once the container has started you should then be able to see the dynamically generated WireGuard config file ```/config/wireguard/wg0.conf```.
-5. If you wish to change the endpoint (default is Netherlands) then open the file ```/config/wireguard/wg0.conf``` and change the ```Endpoint``` line to the endpoint you want to connect to.
+5. If you wish to change the endpoint (default is Netherlands) then open the file ```/config/wireguard/wg0.conf``` and change the ```Endpoint``` line to the endpoint you want to connect to (the list of all port forward enabled endpoints is shown in the log ```/config/supervisord.log```)
 
 If you're a 'custom or airvpn' VPN user (non PIA) then please follow this procedure:-
 
