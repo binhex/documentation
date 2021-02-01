@@ -93,4 +93,4 @@ INFO gave up: plexmediaserver entered FATAL state, too many start retries too qu
 /config/Plex Media Server/Logs/Plex Media Server.log
 ```
 
-Open the log file with something like Notepad++/Atom/VSCode and search the log for the keywords 'error' or 'corruption' or 'fatal', if the issue is corruption then see Q4 and Q5 above.
+Open the log file with something like Notepad++/Atom/VSCode and search the log for the keywords 'error' or 'corruption' or 'fatal', if the issue is corruption (common issue) then see Q4 and Q5 above.
