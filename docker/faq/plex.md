@@ -42,7 +42,7 @@ maps to host path
 
 https://www.youtube.com/watch?v=GOhHiFAXwOE
 
-**Q3.** I've been running Plex Media Server for some time, now all of a sudden it won't start/has stopped working/won't index new content, what is the cause?.
+**Q3.** I've been running Plex Media Server on unRAID ver 6.7.x for some time, now all of a sudden it won't start/has stopped working/won't index new content, what is the cause?.
 
 **A3.** If you are **running unRAID 6.7.x AND store your Plex metadata on the array** (don't use or have a cache drive) then there is an issue in regards to Sqlite Databases, where you will get random database corruption, causing Plex to either completely stop working or be unable to playback or scan in new content. 
 
@@ -80,3 +80,17 @@ If you don't have a backup then you can either attempt a repair of the corrupt d
 https://support.plex.tv/articles/201100678-repair-a-corrupt-database/
 
 or simply delete everything in /config for this container and start from a clean state (ensuring at the end of the process you backup!).
+
+**Q6.** Plex has suddenly stopped working and displays the message below in ```/config/supervisord.log```, what is the best way to diagnose what the issue is?
+
+```
+INFO gave up: plexmediaserver entered FATAL state, too many start retries too quickly
+```
+
+**A6.** There are multiple reasons this could happen, the best way to diagnose the issue is to look at the Plex Media Server log, this file is located here:-
+
+```
+/config/Plex Media Server/Logs/Plex Media Server.log
+```
+
+Open the log file with something like Notepad++/Atom/VSCode and search the log for the keywords 'error' or 'corruption' or 'fatal', if the issue is corruption then see Q4 and Q5 above.
