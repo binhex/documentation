@@ -60,6 +60,8 @@ Database corruption
 
 If you see a match then proceed to the next FAQ, if not then please post on the support thread and attach the 'Plex Media Server.log' file, detailing what the issue is.
 
+**UPDATE** - Limetech has identified the SQLite corruption issue and fixed it, this has been included in the next stable release (6.8.0), i would encourage anybody with the corruption issue to move to this when available, else switch back to 6.6.7.
+
 **Q4.** OK i see i have Plex Database Corruption, how can i stop this happening?.
 
 **A4.** In order to stop Database Corruption from happening again, you need to do **ONE** (or more) of the following:-
@@ -69,8 +71,6 @@ If you see a match then proceed to the next FAQ, if not then please post on the 
 2. Move Plex metadata to cache drive - The bug is triggered by running unraid 6.7.x (or later) and storing the Plex metadata on the array, moving it to the cache drive will prevent the bug.
 
 3. Use the 'Unassigned Devices' plugin to assign a separate drive - Similar to moving to a cache drive, this also prevents the bug by moving the Plex metadata off the array and onto a single drive.
-
-**UPDATE** - Limetech have now identified the SQLite corruption issue and fixed it, this will be included in the next stable release (6.8.0), i would encourage anybody with the corruption issue to move to this when available, else switch back to 6.6.7.
 
 **Q5.** So I've now prevented the Database Corruption bug from happening, how do i now fix the existing Plex Database?.
 
