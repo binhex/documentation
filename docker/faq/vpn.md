@@ -414,16 +414,14 @@ for people using a Docker run command you would add the following lines:-
 
 **A24.** In order to route an application(s) through an existing VPN container you would do the following steps:-
 
-Container to route through VPN
-------------------------------
+**Container to route through VPN**
 1. Left click icon and 'Edit' container and toggle advanced view (top right).
 2. In 'Extra Parameters' enter '--net=container:<vpn container name>'.
 3. Go to 'Network Type' and select 'none'.
 4. Remove any 'Host Ports' defined.
 5. Click on 'Apply'.
 
-Container running VPN
----------------------
+**Container running VPN**
 1. Left click icon and 'Edit' container and toggle advanced view (top right).
 2. Click on 'Add another Path, Port, Variable, Label or Device' and add in a 'config type' of 'port'.
 3. Enter in Web UI port for 'container port' and any non conflicting port number for 'Host Port' (host port must not be used by another container).
