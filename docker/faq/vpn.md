@@ -409,3 +409,27 @@ for people using a Docker run command you would add the following lines:-
 --sysctl="net.ipv4.conf.all.src_valid_mark=1" \
 --privileged=true \
 ```
+
+**Q24.** I would like to be able to route application(s) X through one of my existing VPN containers, how do i do this?
+
+**A24.** In order to route an application(s) through an existing VPN container you would do the following steps:-
+
+Container to route through VPN
+------------------------------
+1. Left click icon and 'Edit' container and toggle advanced view (top right).
+2. In 'Extra Parameters' enter '--net=container:<vpn container name>'.
+3. Go to 'Network Type' and select 'none'.
+4. Remove any 'Host Ports' defined.
+5. Click on 'Apply'.
+
+Container running VPN
+---------------------
+1. Left click icon and 'Edit' container and toggle advanced view (top right).
+2. Click on 'Add another Path, Port, Variable, Label or Device' and add in a 'config type' of 'port'.
+3. Enter in Web UI port for 'container port' and any non conflicting port number for 'Host Port' (host port must not be used by another container).
+4. Edit 'ADDITIONAL_PORTS' env var and put Web UI port number in value, if multiple ports required then use a comma to separate.
+5. Click on 'Apply'.
+
+Final step is to restart the container running app, this is required due to the changes in the vpn container settings and thus it must rebind the network after the restart of the vpn container.
+
+**Note** Keep in mind that the order of containers starting is now important, as the vpn container MUST start first in order for the other container(s) to route through it.
