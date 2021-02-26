@@ -431,3 +431,15 @@ for people using a Docker run command you would add the following lines:-
 Final step is to restart the container that's running through the VPN, this is required due to changes in the VPN Containers settings and thus it must rebind the network after the re-creation of the VPN container (changes to any container means deletion and re-creation of container).
 
 **Note** Please keep in mind that the order of containers starting is now important, the VPN container **must start first** in order for the other container(s) to route through it, ordering can be changed in the unRAID Web UI by dragging the containers up and down, the unRAID Web UI shows the start order in descending order.
+
+**Q25."" I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and can no view the Web UI for the application i am routing through the VPN container, why is this and how can i fix it?.
+
+**A25.** Due to iptables tightening it is now a requirement that you add the applications Web UI/API ports to the 'ADDITIONAL_PORTS' env var value for the VPN container, if you have multiple ports then please separate the values with a comma, e.g. 'ADDITIONAL_PORTS' = 1234,5678
+
+Please also review Q24 above, and ensure you have completed ALL steps to route a container through another one.
+
+**Q26."" I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and the proxy connection for Sonarr/Radarr/Lidarr...etc no longer connects to the Download client (e.g. Deluge, rTorrent, qBittorrent, SABnzbd) why is this and how can i fix it?.
+
+**A26.** Due to iptables tightening you need to now bypass local addresses for proxy connection in index applications, for Sonarr/Rasdarr/Lidarr this can be achieved by editing the value for 'Ignored Addresses' under the Settings/General/Proxy and entering in the IP address of the unRAID server running the VPN container. This will then bypass using Privoxy (proxy server) for connections to the local server, and thus allow a direct connection to the download client.
+
+An alternative method to this is to setup Jackett, then configure Jackett to use Privoxy. You then simply point Sonarr/Radarr/Lidarr...etc at Jackett as an 'Indexer' and you are done, there is NO need to configure a proxy for Sonarr/Radarr/Lidarr...etc in this configuration, as Jackett is already doing the proxying for you.
