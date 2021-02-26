@@ -436,7 +436,7 @@ Final step is to restart the container that's running through the VPN, this is r
 
 **A25.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for the application you want to route through the VPN to the 'ADDITIONAL_PORTS' env var value for the VPN container, if you have multiple ports then please separate the values with a comma, e.g. 'ADDITIONAL_PORTS' = 1234,5678
 
-The other change you will need to do is when defining connections from an application to another application in the same network (as is the case in this scenario) then you will need to set the host to 'localhost' and NOT the LAN IP address. This is because the applications are now using the same network and thus can communicate over localhost.
+The other change you will need to do is when defining connections from an application to another application in the same container network (as is the case in this scenario) then you will need to set the host to 'localhost' and NOT the LAN IP address, this is because the applications are now bound to the same network and thus should communicate over 'localhost'.
 
 Please also review **A24.** above, and ensure you have completed ALL steps to route a container through another one.
 
