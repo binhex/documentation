@@ -428,6 +428,6 @@ for people using a Docker run command you would add the following lines:-
 4. Edit 'ADDITIONAL_PORTS' env var and put Web UI port number in value, if multiple ports required then use a comma to separate.
 5. Click on 'Apply'.
 
-Final step is to restart the container that's running through the VPN, this is required due to changes in the vpn Containers settings and thus it must rebind the network after the re-creation of the vpn container.
+Final step is to restart the container that's running through the VPN, this is required due to changes in the VPN Containers settings and thus it must rebind the network after the re-creation of the VPN container (changes to any container means deletion and re-creation of container).
 
 **Note** Please keep in mind that the order of containers starting is now important, the VPN container MUST start first in order for the other container(s) to route through it, ordering can be changed in the unRAID Web UI by dragging the containers up and down, the order is descending.
