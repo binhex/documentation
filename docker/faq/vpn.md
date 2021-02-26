@@ -436,6 +436,8 @@ Final step is to restart the container that's running through the VPN, this is r
 
 **A25.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for the application you want to route through the VPN to the 'ADDITIONAL_PORTS' env var value for the VPN container, if you have multiple ports then please separate the values with a comma, e.g. 'ADDITIONAL_PORTS' = 1234,5678
 
+The other change you will need to do is when defining connections from an application to another application in the same network (as is the case in this scenario) then you will need to set the host to 'localhost' and NOT the LAN IP address. This is because the applications are now using the same network and thus can communicate over localhost.
+
 Please also review **A24.** above, and ensure you have completed ALL steps to route a container through another one.
 
 **Q26.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and have setup Sonarr/Radarr/Lidarr...etc to use Privoxy (proxy server), but this is now no longer able to connect to the 'Download Client' (e.g. Deluge, rTorrent, qBittorrent, SABnzbd), why is this and how can i fix it?.
