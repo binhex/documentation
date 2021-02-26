@@ -410,7 +410,7 @@ for people using a Docker run command you would add the following lines:-
 --privileged=true \
 ```
 
-**Q24.** I would like to be able to route application(s) X through one of my existing VPN containers, how do i do this?
+**Q24.** I would like to be able to route other docker containers through one of my existing VPN containers, how do i do this?
 
 **A24.** In order to route an application(s) through an existing VPN container you would do the following steps:-
 
