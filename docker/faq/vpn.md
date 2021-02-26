@@ -432,7 +432,7 @@ Final step is to restart the container that's running through the VPN, this is r
 
 **Note** Please keep in mind that the order of containers starting is now important, the VPN container **must start first** in order for the other container(s) to route through it, ordering can be changed in the unRAID Web UI by dragging the containers up and down, the unRAID Web UI shows the start order in descending order.
 
-**Q25."" I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and can no view the Web UI for the application i am routing through the VPN container, why is this and how can i fix it?.
+**Q25.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and can no view the Web UI for the application i am routing through the VPN container, why is this and how can i fix it?.
 
 **A25.** Due to iptables tightening it is now a requirement that you add the applications Web UI/API ports to the 'ADDITIONAL_PORTS' env var value for the VPN container, if you have multiple ports then please separate the values with a comma, e.g. 'ADDITIONAL_PORTS' = 1234,5678
 
