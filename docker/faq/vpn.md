@@ -438,7 +438,7 @@ Final step is to restart the container that's running through the VPN, this is r
 
 Please also review **A24.** above, and ensure you have completed ALL steps to route a container through another one.
 
-**Q26.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and the proxy connection for Sonarr/Radarr/Lidarr...etc no longer connects to the Download client (e.g. Deluge, rTorrent, qBittorrent, SABnzbd) why is this and how can i fix it?.
+**Q26.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and have setup Sonarr/Radarr/Lidarr...etc to use Privoxy (proxy server), but this is now no longer able to connect to the 'Download Client' (e.g. Deluge, rTorrent, qBittorrent, SABnzbd), why is this and how can i fix it?.
 
 **A26.** Due to iptables tightening you need to now bypass local addresses for proxy connection in index applications, for Sonarr/Radarr/Lidarr this can be achieved by editing the value for 'Ignored Addresses' under the Settings/General/Proxy and entering in the IP address of the unRAID server running the VPN container. This will then bypass using Privoxy (proxy server) for connections to the local server, and thus allow a direct connection to the download client.
 
