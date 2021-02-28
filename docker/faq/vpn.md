@@ -430,7 +430,7 @@ for people using a Docker run command you would add the following lines:-
 
 Final step is to restart the container that's running through the VPN, this is required due to changes in the VPN Containers settings and thus it must rebind the network after the re-creation of the VPN container (changes to any container means deletion and re-creation of container).
 
-Please keep in mind that when defining connections from an application to another application in the same container network (as is the case in this scenario) then you will need to set the host to 'localhost' and NOT the LAN IP address, this is because the applications are now bound to the same network and thus should communicate over 'localhost' and NOT the unRAID host IP address.
+Please keep in mind that when defining connections from an application to another application in the same container network (as is the case in this scenario) then **you will need to set the host to 'localhost' and NOT the LAN IP address**, this is because the applications are now bound to the same network and thus should communicate over 'localhost' and NOT the unRAID host IP address.
 
 **Note** The order of containers starting is now important, the VPN container **must start first** in order for the other container(s) to route through it, ordering can be changed in the unRAID Web UI by dragging the containers up and down, the unRAID Web UI shows the start order in descending order.
 
