@@ -418,7 +418,7 @@ for people using a Docker run command you would add the following lines:-
 1. Left click icon and 'Edit' container and toggle advanced view (top right).
 2. In 'Extra Parameters' enter ```--net=container:<vpn container name>```.
 3. Go to 'Network Type' and select 'none'.
-4. Remove any 'Host Ports' defined.
+4. Remove any ports defined (not required as we will be accessing it via vpn container).
 5. Click on 'Apply'.
 
 **Container running VPN**
