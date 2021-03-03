@@ -2,9 +2,9 @@
 
 **Q1.** Do you implement a kill switch to prevent IP leakage when the VPN tunnel goes down?
 
-**A1.** No i do not implement a kill switch, what i do implement is better, let me explain...
+**A1.** No I do not implement a kill switch, what I do implement is better, let me explain...
 
-The VPN Docker images i produce use iptables (firewall) to prevent IP leakage at ALL times by using blocking rules, thus ensuring whatever state the VPN tunnel is in (up, down or otherwise) IP leakage cannot occur.
+The VPN Docker images I produce use iptables (firewall) to prevent IP leakage at ALL times by using blocking rules, thus ensuring whatever state the VPN tunnel is in (up, down or otherwise) IP leakage cannot occur.
 
 Kill switches on the other hand only block AFTER the VPN tunnel has gone down, thus potentially leaving a time gap between tunnel being down and the kill switch kicking in and blocking the connection, during this time window it is potentially possible for ip leakage to occur.
 
@@ -435,7 +435,7 @@ Final step is to restart the container that's running through the VPN, this is r
 
 2. The order of containers starting is now important, the VPN container **must start first** in order for the other container(s) to route through it, ordering can be changed in the unRAID Web UI by dragging the containers up and down, the unRAID Web UI shows the start order in descending order.
 
-**Q25.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and can no view the Web UI for the application i am routing through the VPN container, why is this and how can i fix it?.
+**Q25.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and can not view the Web UI for the application i am routing through the VPN container, why is this and how can i fix it?.
 
 **A25.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for the application you want to route through the VPN to the 'ADDITIONAL_PORTS' env var value for the VPN container, if you have multiple ports then please separate the values with a comma, e.g. 'ADDITIONAL_PORTS' = 1234,5678
 

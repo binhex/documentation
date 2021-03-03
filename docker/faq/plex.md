@@ -1,6 +1,6 @@
 # **Plex Docker FAQ**
 
-**Q1.** How do i configure Plex to transcode to RAM/Array/Cache?
+**Q1.** How do I configure Plex to transcode to RAM/Array/Cache?
 
 **A1.** Below are the different options for setting transcoding for Plex and Plex Pass:-
 
@@ -36,7 +36,7 @@ maps to host path
 
 **Note**:- Recommended transcode method is to use the cache drive.
 
-**Q2.** How do i configure Plex to use my GPU for encoding/decoding (sometimes referred to as hardware transcoding)?
+**Q2.** How do I configure Plex to use my GPU for encoding/decoding (sometimes referred to as hardware transcoding)?
 
 **A2.** The best way to see how to achieve this is by watching the excellent YouTube video by SpaceInvader One, link below:-
 
@@ -60,9 +60,9 @@ Database corruption
 
 If you see a match then proceed to the next FAQ, if not then please post on the support thread and attach the 'Plex Media Server.log' file, detailing what the issue is.
 
-**UPDATE** - Limetech has identified the SQLite corruption issue and fixed it, this has been included in the next stable release (6.8.0), i would encourage anybody with the corruption issue to move to this when available, else switch back to 6.6.7.
+**UPDATE** - Limetech has identified the SQLite corruption issue and fixed it, this has been included in the next stable release (6.8.0), I would encourage anybody with the corruption issue to move to this when available, else switch back to 6.6.7.
 
-**Q4.** OK i see i have Plex Database Corruption, how can i stop this happening?.
+**Q4.** OK I see I have Plex Database Corruption, how can I stop this happening?.
 
 **A4.** In order to stop Database Corruption from happening again, you need to do **ONE** (or more) of the following:-
 
@@ -72,7 +72,7 @@ If you see a match then proceed to the next FAQ, if not then please post on the 
 
 3. Use the 'Unassigned Devices' plugin to assign a separate drive - Similar to moving to a cache drive, this also prevents the bug by moving the Plex metadata off the array and onto a single drive.
 
-**Q5.** So I've now prevented the Database Corruption bug from happening, how do i now fix the existing Plex Database?.
+**Q5.** So I've now prevented the Database Corruption bug from happening, how do I now fix the existing Plex Database?.
 
 **A5.** The cleanest and safest way of doing this is to restore from a backup, if you run the plugin 'CA Appdata Backup/Restore v2' then you can simply restore your metadata and you should be good to go. 
 
