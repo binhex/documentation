@@ -435,11 +435,11 @@ for people using a Docker run command you would add the following lines:-
 
 **Q25.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and can not view the Web UI for the application i am routing through the VPN container, why is this and how can i fix it?.
 
-**A25.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for the application you want to route through the VPN to the 'ADDITIONAL_PORTS' env var value for the VPN container, if you have multiple ports then please separate the values with a comma, e.g. 'ADDITIONAL_PORTS' = 1234,5678
+**A25.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for the application you want to access whilst routed through the VPN to the env var key 'ADDITIONAL_PORTS' with the ports being the value, if you have multiple ports then please separate the values with a comma, e.g. 'ADDITIONAL_PORTS' = 1234,5678
 
-The other change you will need to do is when defining connections from an application to another application in the same container network then you will need to set the host to 'localhost' and NOT the LAN IP address, this is because the applications are now bound to the same network and thus should communicate over 'localhost'.
+The other change you will need to do is when defining connections from an application to another application in the same VPN container network then you will need to set the host to 'localhost' and NOT the LAN IP address, this is because the applications are now bound to the same network and thus should communicate over 'localhost'.
 
-Please also review **A24.** above, and ensure you have completed ALL steps to route a container through another one.
+Please also review **A24.** above, and ensure you have completed ALL steps to route a container through another one correctly.
 
 **Q26.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and have setup Sonarr/Radarr/Lidarr...etc to use Privoxy (proxy server), but this is now no longer able to connect to the 'Download Client' (e.g. Deluge, rTorrent, qBittorrent, SABnzbd), why is this and how can i fix it?.
 
@@ -449,6 +449,6 @@ An alternative method to this is to setup Jackett, then configure Jackett to use
 
 **Q27.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN which i route several containers through, and thanks to A25. i can now access the Web UI, however i cannot get applications routed through the VPN network to communicate with applications on the LAN, why is this and how can i fix it?
 
-**A27.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for applications on the LAN that applications routed through the VPN network need to access, if you have multiple ports then please separate the values with a comma, e.g. 'VPN_OUTPUT_PORTS' = 1234,5678
+**A27.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for applications on the LAN to the env var key 'VPN_OUTPUT_PORTS', with the ports being the value, this will then permit applications running in the VPN network to access applications on the LAN, if you have multiple ports then please separate the values with a comma, e.g. 'VPN_OUTPUT_PORTS' = 1234,5678
 
 An example of this requirement is when having Sonarr/Radarr/Lidarr routed through a VPN container and these apps requiring access to nzbget running on the LAN, in this case you would define VPN_OUTPUT_PORTS = 6789 (default port for nzbget), this would then allow the index app (Sonarr/Radarr/Lidarr) to connect to the download client (nzbget).
