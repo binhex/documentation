@@ -418,17 +418,15 @@ for people using a Docker run command you would add the following lines:-
 1. Left click icon and 'Edit' container and toggle advanced view (top right).
 2. In 'Extra Parameters' enter ```--net=container:<vpn container name>```.
 3. Go to 'Network Type' and select 'none'.
-4. Remove any ports defined (not required as we will be accessing it via vpn container).
+4. Remove all ports defined (no ports required as we will be accessing it via the vpn container).
 5. Click on 'Apply'.
 
 **Container running VPN**
 1. Left click icon and 'Edit' container and toggle advanced view (top right).
 2. Click on 'Add another Path, Port, Variable, Label or Device' and add in a 'config type' of 'port'.
-3. Enter in Web UI port for 'container port' and any non conflicting port number for 'Host Port' (host port must not be used by another container).
-4. Edit 'ADDITIONAL_PORTS' env var and put Web UI port number in value, if multiple ports required then use a comma to separate.
+3. Enter in the applications Web UI port for 'container port' and any non conflicting port number for 'Host Port' (host port must not be used by another container).
+4. Edit 'ADDITIONAL_PORTS' env var and put applications Web UI port number in the 'value', if multiple ports required then use a comma to separate.
 5. Click on 'Apply'.
-
-Final step is to restart the container that's running through the VPN, this is required due to changes in the VPN Containers settings and thus it must rebind the network after the re-creation of the VPN container (changes to any container means deletion and re-creation of container).
 
 **Notes**
 1. Please keep in mind that when defining connections from an application to another application in the same container network (as is the case in this scenario) then **you will need to set the host to 'localhost' and NOT the LAN IP address**, this is because the applications are now bound to the same network and thus should communicate over 'localhost' and NOT the unRAID host IP address.
@@ -439,7 +437,7 @@ Final step is to restart the container that's running through the VPN, this is r
 
 **A25.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for the application you want to route through the VPN to the 'ADDITIONAL_PORTS' env var value for the VPN container, if you have multiple ports then please separate the values with a comma, e.g. 'ADDITIONAL_PORTS' = 1234,5678
 
-The other change you will need to do is when defining connections from an application to another application in the same container network (as is the case in this scenario) then you will need to set the host to 'localhost' and NOT the LAN IP address, this is because the applications are now bound to the same network and thus should communicate over 'localhost'.
+The other change you will need to do is when defining connections from an application to another application in the same container network then you will need to set the host to 'localhost' and NOT the LAN IP address, this is because the applications are now bound to the same network and thus should communicate over 'localhost'.
 
 Please also review **A24.** above, and ensure you have completed ALL steps to route a container through another one.
 
@@ -448,3 +446,9 @@ Please also review **A24.** above, and ensure you have completed ALL steps to ro
 **A26.** Due to iptables tightening you need to now bypass local addresses for proxy connection in index applications, for Sonarr/Radarr/Lidarr this can be achieved by editing the value for 'Ignored Addresses' under the Settings/General/Proxy and entering in the IP address of the unRAID server running the VPN container. This will then bypass using Privoxy (proxy server) for connections to the local server, and thus allow a direct connection to the download client.
 
 An alternative method to this is to setup Jackett, then configure Jackett to use Privoxy. You then simply point Sonarr/Radarr/Lidarr...etc at Jackett as an 'Indexer' and you are done, there is NO need to configure a proxy for Sonarr/Radarr/Lidarr...etc in this configuration, as Jackett is already doing the proxying for you.
+
+**Q27.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN which i route several containers through, and thanks to A25. i can now access the Web UI, however i cannot get applications routed through the VPN network to communicate with applications on the LAN, why is this and how can i fix it?
+
+**A27.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for applications on the LAN that applications routed through the VPN network need to access, if you have multiple ports then please separate the values with a comma, e.g. 'VPN_OUTPUT_PORTS' = 1234,5678
+
+An example of this requirement is when having Sonarr/Radarr/Lidarr routed through a VPN container and these apps requiring access to nzbget running on the LAN, in this case you would define VPN_OUTPUT_PORTS = 6789 (default port for nzbget), this would then allow the index app (Sonarr/Radarr/Lidarr) to connect to the download client (nzbget).
