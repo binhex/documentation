@@ -425,7 +425,7 @@ for people using a Docker run command you would add the following lines:-
 1. Left click icon and 'Edit' container and toggle advanced view (top right).
 2. Click on 'Add another Path, Port, Variable, Label or Device' and add in a 'config type' of 'port'.
 3. Enter in the applications Web UI port for 'container port' and any non conflicting port number for 'Host Port' (host port must not be used by another container).
-4. Edit 'ADDITIONAL_PORTS' env var and put applications Web UI port number in the 'value', if multiple ports required then use a comma to separate.
+4. Edit 'VPN_INPUT_PORTS' env var and put applications Web UI port number in the 'value', if multiple ports required then use a comma to separate.
 5. Click on 'Apply'.
 
 **Notes**
@@ -435,7 +435,7 @@ for people using a Docker run command you would add the following lines:-
 
 **Q25.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and can not view the Web UI for the application i am routing through the VPN container, why is this and how can i fix it?.
 
-**A25.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for the application you want to access whilst routed through the VPN to the env var key 'ADDITIONAL_PORTS' with the ports being the value, if you have multiple ports then please separate the values with a comma, e.g. 'ADDITIONAL_PORTS' = 1234,5678
+**A25.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for the application you want to access whilst routed through the VPN to the env var key 'VPN_INPUT_PORTS' with the ports being the value, if you have multiple ports then please separate the values with a comma, e.g. 'VPN_INPUT_PORTS' = 1234,5678
 
 The other change you will need to do is when defining connections from an application to another application in the same VPN container network then you will need to set the host to 'localhost' and NOT the LAN IP address, this is because the applications are now bound to the same network and thus should communicate over 'localhost'.
 
