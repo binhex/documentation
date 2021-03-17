@@ -11,4 +11,4 @@
 1. Open qBittorrent Web UI and click on the cog (options) and select the 'Downloads' tab
 2. Type in **PART** of the path for your watched folder, for instance if you want your monitored folder to be ```/data/qbittorrent/watched```, then enter in ```/data``` then click on the tiny file icon to the right of the 'Override Save Location' field, then click on 'Save' at the bottom of the window.
 3. Repeat step 1. modifying the monitored path by expanding the path one folder at a time and saving until the entire path is populated.
-4. Test monitored folder by dropping in a .torrent file and watching the qBitorrent Web UI to ensure its loaded.
+4. Test monitored folder by dropping in a .torrent file and watching the qBitorrent Web UI to ensure its picked up and loaded.
