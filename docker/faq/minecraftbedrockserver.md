@@ -65,7 +65,7 @@ If you want to run this on a scheduled basis either from a bash script or via cr
 
 **Q4.** I can see in the log file ```/config/supervisord.log``` that the Minecraft server has started but when i attempt to connect to the console via the web ui i see the message ```There is no screen to be resumed matching Minecraft```, what is the cause and how can i fix it?.
 
-**A4.** 
+**A4.** This issue can be related to the browser used to connect to the web ui, switching browser normally allows a user to authenticate and view the console.
 
 **Tutorials**  
 Reddit post 'Bedrock Dedicated Server Tutorial':-
