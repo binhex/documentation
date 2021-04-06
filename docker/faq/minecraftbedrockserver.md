@@ -63,6 +63,10 @@ If you do re-attach to verify the command executed and then try to run another a
 
 If you want to run this on a scheduled basis either from a bash script or via cron job then you will need to ensure you do not specify the '-t' flag for the command, otherwise it will attempt to create a terminal which will not be available when run via cron/bash (non interactive).
 
+**Q4.** I can see in the log file ```/config/supervisord.log``` that the Minecraft server has started but when i attempt to connect to the console via the web ui i see the message ```There is no screen to be resumed matching Minecraft```, what is the cause and how can i fix it?.
+
+**A4.** 
+
 **Tutorials**  
 Reddit post 'Bedrock Dedicated Server Tutorial':-
 https://www.reddit.com/user/ProfessorValko/comments/9f438p/bedrock_dedicated_server_tutorial/?utm_source=share&utm_medium=web2x
