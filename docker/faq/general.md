@@ -42,7 +42,7 @@ For example a volume mapping of /config /mnt/cache/appdata will create a folder 
 
 **A9.** Although i am the developer for the docker image i cannot fix issues related to the application itself, put simply i create an easy to use method to run the application, if the application itself is faulty then you will need to contact the developer(s) of the application, most of the time this involves posting an 'issue' on github, see the application support thread OP for links to the application, or link in the readme.md for the application.
 
-**Q10.** Since the latest update i am having issues with application MineOS/Minecraft/Libreoffice and it is unable to start, what is the cause of this and how can i fix it?.
+**Q10.** Since the latest update i am having issues with application MineOS/Minecraft/Libreoffice/PyCharm and it is unable to start, what is the cause of this and how can i fix it?.
 
 **A10.** Due to an update to the 'glibc' library used in the Arch Linux base OS that all my images are built on, it is necessary to upgrade the version of 'runc' to '1.0-rc93' or later. To do this perform **ONE** of the following actions:-
 
