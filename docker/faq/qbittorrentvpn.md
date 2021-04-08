@@ -12,3 +12,7 @@
 2. Type in **PART** of the path for your watched folder, for instance if you want your monitored folder to be ```/data/qbittorrent/watched```, then enter in ```/data``` then click on the tiny file icon to the right of the 'Override Save Location' field, then click on 'Save' at the bottom of the window.
 3. Repeat step 1. modifying the monitored path by expanding the path one folder at a time and saving until the entire path is populated.
 4. Test monitored folder by dropping in a .torrent file and watching the qBitorrent Web UI to ensure its picked up and loaded.
+
+**Q3.** I am seeing fluctuating download and upload speeds with qBittorrent, what can i do to make the speeds more stable?.
+
+*A3.** One setting that does seem to make a difference is to change the 'Peer connection protocol' from 'TCP and uTP' to 'TCP', this setting can be found in qBittorrent web ui/Options/Connection tab/Peer Connection protocol.
