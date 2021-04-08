@@ -15,4 +15,4 @@
 
 **Q3.** I am seeing fluctuating download and upload speeds with qBittorrent, what can i do to make the speeds more stable?.
 
-*A3.** One setting that does seem to make a difference is to change the 'Peer connection protocol' from 'TCP and uTP' to 'TCP', this setting can be found in qBittorrent web ui/Options/Connection tab/Peer Connection protocol.
+**A3.** One setting that does seem to make a difference is to change the 'Peer connection protocol' from 'TCP and uTP' to 'TCP', this setting can be found in qBittorrent web ui/Options/Connection tab/Peer Connection protocol.
