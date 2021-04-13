@@ -470,5 +470,4 @@ Endpoint = nl-amsterdam.privacy.network:1337
 ```
 The 'Endpoint' line from the above example defines the endpoint you connect to, this can be changed to the endpoint you want to connect to, for PIA users a list of endpoints that support port forwarding is shown in the log ```/config/supervisord.log```.
 
-**Notes**
-PIA users - Please keep in mind not all endpoints support port forwarding, i would highly recommend sticking to port forward enabled endpoints only.
+**PIA users** - Please keep in mind not all endpoints support port forwarding, i would highly recommend sticking to port forward enabled endpoints only.
