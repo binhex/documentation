@@ -452,3 +452,23 @@ An alternative method to this is to setup Jackett, then configure Jackett to use
 **A27.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for applications on the LAN to the env var key 'VPN_OUTPUT_PORTS', with the ports being the value, this will then permit applications running in the VPN network to access applications on the LAN, if you have multiple ports then please separate the values with a comma, e.g. 'VPN_OUTPUT_PORTS' = 1234,5678
 
 An example of this requirement is when having Sonarr/Radarr/Lidarr routed through a VPN container and these apps requiring access to nzbget running on the LAN, in this case you would define VPN_OUTPUT_PORTS = 6789 (default port for nzbget), this would then allow the index app (Sonarr/Radarr/Lidarr) to connect to the download client (nzbget).
+
+**Q28.** If i am using Wireguard how do i change the endpoint that i am connecting to?
+
+**A28.** Wireguard is configured via the file ```/config/wireguard/wg.conf```, this file is either programmatically generated for PIA users or is downloaded from the VPN providers website. This file contains the endpoint you connect to, which can either be a hostname or an IP address, example config file shown below:-
+```
+[Interface]
+Address = 10.1.2.3
+PrivateKey = DFGDFDF234234$$£$DSGDSFGDFG=
+PostUp = '/root/wireguardup.sh'
+PostDown = '/root/wireguarddown.sh'
+
+[Peer]
+PublicKey = DFGDFDF234234$$£$DSGDSFGDFG=
+AllowedIPs = 0.0.0.0/0
+Endpoint = nl-amsterdam.privacy.network:1337
+```
+The 'Endpoint' line from the above example defines the endpoint you connect to, this can be changed to the endpoint you want to connect to, for PIA users a list of endpoints that support port forwarding is shown in the log ```/config/supervisord.log```.
+
+**Notes**
+PIA users - Please keep in mind not all endpoints support port forwarding, i would highly recommend sticking to port forward enabled endpoints only.
