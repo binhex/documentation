@@ -79,7 +79,7 @@ INFO gave up: plexmediaserver entered FATAL state, too many start retries too qu
 ```
 Open the log file with something like Notepad++/Atom/VSCode and search the log for the keywords 'error' or 'corruption' or 'fatal', if the issue is corruption (common issue) then see Q5 below.
 
-**Q5.** So i see from Q3 that i do have Plex daatabase corruption, how can i attempt to fix this?.
+**Q5.** So i see from Q4 that i do have Plex daatabase corruption, how can i attempt to fix this?.
 
 **A5.** The cleanest and safest way of doing this is to restore from a backup, if you run the plugin 'CA Appdata Backup/Restore v2' then you can simply restore your metadata and this should get you up and running.
 
