@@ -40,7 +40,7 @@
 
 1. Go to the unRAID 'Terminal' (NOT container console) and issue the following command to create a 5GB RAM Disk:-
 ```mkdir -p /tmp/plex-ramdisk && mount -t tmpfs -o size=5g tmpfs /tmp/plex-ramdisk```
-2. Follow the procedure for **A1.** 'Transcode to RAM', substituting ```/tmp``` for ```/tmp/plex-ramdisk```
+2. Follow the procedure for **A1.** 'Transcode to RAM', substituting 'Host Path' ```/tmp``` for ```/tmp/plex-ramdisk```
 
 **Notes**  
 - If you want the RAM Disk to be larger then change the ```size=``` parameter for the command.
