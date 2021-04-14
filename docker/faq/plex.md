@@ -4,58 +4,69 @@
 
 **A1.** Below are the different options for setting transcoding for Plex and Plex Pass:-
 
-**Transcode to RAM** - create a new volume mapping, host path /tmp and container path /transcode then define TRANS_DIR so that it points at ram drive e.g.:-
+**Transcode to RAM**
 
-```TRANS_DIR=/transcode```
+1. Go to unraid web ui/Docker tab/left click Plex container and select 'edit'
+2. Click on the toggle for 'advanced view'
+3. Go to variable named 'TRANS_DIR' and set the value to ```/transcode```
+4. Click on 'Add another Path, Port, Variable, Label or Device' and select 'Config Type' of 'Path'
+5. Set 'Container Path' to '/transcode' and 'Host Path' to '/tmp'
+6. Click on 'Add'
+7. Click on 'Apply' to apply the change
 
-```/transcode```
+**Transcode to the array** 
 
-maps to host path
+1. Go to unraid web ui/Docker tab/left click Plex container and select 'edit'
+2. Click on the toggle for 'advanced view'
+3. Go to variable named 'TRANS_DIR' and set the value to ```/transcode```
+4. Click on 'Add another Path, Port, Variable, Label or Device' and select 'Config Type' of 'Path'
+5. Set 'Container Path' to '/transcode' and 'Host Path' to '/mnt/user/<share name to store transcodes>'
+6. Click on 'Add'
+7. Click on 'Apply' to apply the change
 
-```/tmp```
+**Transcode to cache** (recommended)
 
-**Transcode to the array** - create a new unRAID user share named 'Transcode' (or whatever you want) and then define TRANS_DIR so that it points at your array e.g.:-
+1. Go to unraid web ui/Docker tab/left click Plex container and select 'edit'
+2. Click on the toggle for 'advanced view'
+3. Go to variable named 'TRANS_DIR' and set the value to ```/transcode```
+4. Click on 'Add another Path, Port, Variable, Label or Device' and select 'Config Type' of 'Path'
+5. Set 'Container Path' to '/transcode' and 'Host Path' to '/mnt/cache/appdata/binhex-plex/tmp'
+6. Click on 'Add'
+7. Click on 'Apply' to apply the change
 
-```TRANS_DIR=/transcode```
+**Q2.** I would like to control the size of the RAM used when transcoding to RAM, is this possible and if so how do i do this?.
 
-```/transcode```
+**A2.** This can be achieved by creating a RAM Disk and using this as the area to transcode to, the procedure is as follows:-
 
-maps to host path
+1. Go to the unRAID 'Terminal' (NOT container console) and issue the following command to create a 5GB RAM Disk:-
+```mkdir -p /tmp/plex-ramdisk && mount -t tmpfs -o size=5g tmpfs /tmp/plex-ramdisk```
+2. Follow the procedure for **A1.** - heading 'Transcode to RAM', substituting ```/tmp``` for ```/tmp/plex-ramdisk```
 
-```/mnt/user/Transcode```
+**Notes**  
+- If you want the RAM Disk to be larger then change the ```size=``` parameter for the command.
+- Location of the RAM Disk can be anywhere and does not have to be located under '/tmp'.
+- The command shown above will not be persistent and therefor will need to be re-run on subsequent reboots, a way of automating this is to include the command in the unRAID boot script named 'go', you can do this by running the command below from the unRAID 'Terminal':-
+```echo 'mkdir -p /tmp/plex-ramdisk && mount -t tmpfs -o size=5g tmpfs /tmp/plex-ramdisk' >> '/boot/config/go'```
 
-**Transcode to cache** (preferably cache is SSD not spinner) - define TRANS_DIR so that it points at your cache drive e.g.:-
+**Q3.** How do I configure Plex to use my GPU for encoding/decoding (sometimes referred to as hardware transcoding)?
 
-```TRANS_DIR=/transcode```
+Create var 'NVIDIA_VISIBLE_DEVICES' set to GPU ID shown in 
+create var 'NVIDIA_DRIVER_CAPABILITIES' set to 'all'
 
-```/transcode```
-
-maps to host path
-
-```/config/tmp```
-
-**Note**:- Recommended transcode method is to use the cache drive.
-
-**Q2.** How do I configure Plex to use my GPU for encoding/decoding (sometimes referred to as hardware transcoding)?
-
-**A2.** The best way to see how to achieve this is by watching the excellent YouTube video by SpaceInvader One, link below:-
-
-https://www.youtube.com/watch?v=GOhHiFAXwOE
-
-**Q3.** Plex has suddenly stopped working and displays the message below in ```/config/supervisord.log```, what is the best way to diagnose what the issue is?
+**Q4.** Plex has suddenly stopped working and displays the message below in ```/config/supervisord.log```, what is the best way to diagnose what the issue is?
 ```
 INFO gave up: plexmediaserver entered FATAL state, too many start retries too quickly
 ```
 
-**A3.** There are multiple reasons this could happen, the best way to diagnose the issue is to look at the Plex Media Server log, this file is located here:-
+**A4.** There are multiple reasons this could happen, the best way to diagnose the issue is to look at the Plex Media Server log, this file is located here:-
 ```
 /config/Plex Media Server/Logs/Plex Media Server.log
 ```
-Open the log file with something like Notepad++/Atom/VSCode and search the log for the keywords 'error' or 'corruption' or 'fatal', if the issue is corruption (common issue) then see Q4 below.
+Open the log file with something like Notepad++/Atom/VSCode and search the log for the keywords 'error' or 'corruption' or 'fatal', if the issue is corruption (common issue) then see Q5 below.
 
-**Q4.** So I've now prevented the Database Corruption bug from happening, how do I now fix the existing Plex Database?.
+**Q5.** So i see from Q3 that i do have Plex daatabase corruption, how can i attempt to fix this?.
 
-**A4.** The cleanest and safest way of doing this is to restore from a backup, if you run the plugin 'CA Appdata Backup/Restore v2' then you can simply restore your metadata and this should get you up and running.
+**A5.** The cleanest and safest way of doing this is to restore from a backup, if you run the plugin 'CA Appdata Backup/Restore v2' then you can simply restore your metadata and this should get you up and running.
 
 If you don't have a backup then you can either attempt a repair of the corrupt database using the following instructions:- 
 https://support.plex.tv/articles/201100678-repair-a-corrupt-database/
@@ -65,10 +76,9 @@ If the repair database procedure does not work then you can roll back to a previ
 1. Stop the Plex container.
 2. Rename the current database file ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db.orig```
 3. Rename the current database file ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db.orig```
-4. Rename the backup database file, for example:- ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db-2021-04-03``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db```
-5. Rename the latest backup database file, for example:- ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db-2021-04-03``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db```
+4. Rename the newest backup database file (example) ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db-2021-04-03``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db```
+5. Rename the newest backup database file (example) ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db-2021-04-03``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db```
 6. Start the Plex container and scrape any missing metadata.
 
 **Notes**  
 The above procedure will cause some loss of metadata, as you will be rolling back to a point in time (typically 3 days prior) but it maybe necessary to go back further if the database corruption happens some time ago, so further metadata scraping maybe required for your library after the restore.
-
