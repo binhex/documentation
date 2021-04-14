@@ -10,7 +10,7 @@
 2. Click on the toggle for 'advanced view'
 3. Go to variable named 'TRANS_DIR' and set the value to ```/transcode```
 4. Click on 'Add another Path, Port, Variable, Label or Device' and select 'Config Type' of 'Path'
-5. Set 'Container Path' to '/transcode' and 'Host Path' to '/tmp'
+5. Set 'Container Path' to ```/transcode``` and 'Host Path' to ```/tmp```
 6. Click on 'Add'
 7. Click on 'Apply' to apply the change
 
@@ -20,7 +20,7 @@
 2. Click on the toggle for 'advanced view'
 3. Go to variable named 'TRANS_DIR' and set the value to ```/transcode```
 4. Click on 'Add another Path, Port, Variable, Label or Device' and select 'Config Type' of 'Path'
-5. Set 'Container Path' to '/transcode' and 'Host Path' to '/mnt/user/<share name to store transcodes>'
+5. Set 'Container Path' to ```/transcode``` and 'Host Path' to ```/mnt/user/<share name to store transcodes>```
 6. Click on 'Add'
 7. Click on 'Apply' to apply the change
 
@@ -30,7 +30,7 @@
 2. Click on the toggle for 'advanced view'
 3. Go to variable named 'TRANS_DIR' and set the value to ```/transcode```
 4. Click on 'Add another Path, Port, Variable, Label or Device' and select 'Config Type' of 'Path'
-5. Set 'Container Path' to '/transcode' and 'Host Path' to '/mnt/cache/appdata/binhex-plex/tmp'
+5. Set 'Container Path' to ```/transcode``` and 'Host Path' to ```/mnt/cache/appdata/binhex-plex/tmp```
 6. Click on 'Add'
 7. Click on 'Apply' to apply the change
 
