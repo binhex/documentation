@@ -74,12 +74,22 @@ If you see a match then proceed to the next FAQ, if not then please post on the 
 
 **Q5.** So I've now prevented the Database Corruption bug from happening, how do I now fix the existing Plex Database?.
 
-**A5.** The cleanest and safest way of doing this is to restore from a backup, if you run the plugin 'CA Appdata Backup/Restore v2' then you can simply restore your metadata and you should be good to go. 
+**A5.** The cleanest and safest way of doing this is to restore from a backup, if you run the plugin 'CA Appdata Backup/Restore v2' then you can simply restore your metadata and this should get you up and running.
 
 If you don't have a backup then you can either attempt a repair of the corrupt database using the following instructions:- 
 https://support.plex.tv/articles/201100678-repair-a-corrupt-database/
 
-or simply delete everything in /config for this container and start from a clean state (ensuring at the end of the process you backup!).
+If the repair database procedure does not work then you can roll back to a previous backup by doing the following:-
+
+1. Stop the Plex container.
+2. Rename the current database file ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db.orig```.
+3. Rename the current database file ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db.orig```.
+4. Rename the backup database file, for example:- ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db-2021-04-03``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db```.
+5. Rename the backup database file, for example:- ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db-2021-04-03``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db```.
+6. Start the Plex container and scrape any missing metadata.
+
+**Notes**
+The above procedure will cause some loss of metadata, as you will be rolling back to a point in time (typically 3 days prior) but it maybe necessary to go back further if the database corruption happends some time ago, so further metadata scraping maybe required for your library after the restore.
 
 **Q6.** Plex has suddenly stopped working and displays the message below in ```/config/supervisord.log```, what is the best way to diagnose what the issue is?
 
