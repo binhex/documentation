@@ -82,10 +82,10 @@ https://support.plex.tv/articles/201100678-repair-a-corrupt-database/
 If the repair database procedure does not work then you can roll back to a previous backup by doing the following:-
 
 1. Stop the Plex container.
-2. Rename the current database file ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db.orig```.
-3. Rename the current database file ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db.orig```.
-4. Rename the backup database file, for example:- ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db-2021-04-03``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db```.
-5. Rename the backup database file, for example:- ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db-2021-04-03``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db```.
+2. Rename the current database file ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db.orig```
+3. Rename the current database file ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db.orig```
+4. Rename the backup database file, for example:- ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db-2021-04-03``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db```
+5. Rename the backup database file, for example:- ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db-2021-04-03``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db```
 6. Start the Plex container and scrape any missing metadata.
 
 **Notes**
