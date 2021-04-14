@@ -85,10 +85,10 @@ If the repair database procedure does not work then you can roll back to a previ
 2. Rename the current database file ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db.orig```
 3. Rename the current database file ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db.orig```
 4. Rename the backup database file, for example:- ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db-2021-04-03``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db```
-5. Rename the backup database file, for example:- ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db-2021-04-03``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db```
+5. Rename the latest backup database file, for example:- ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db-2021-04-03``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db```
 6. Start the Plex container and scrape any missing metadata.
 
-**Notes**
+**Notes**  
 The above procedure will cause some loss of metadata, as you will be rolling back to a point in time (typically 3 days prior) but it maybe necessary to go back further if the database corruption happends some time ago, so further metadata scraping maybe required for your library after the restore.
 
 **Q6.** Plex has suddenly stopped working and displays the message below in ```/config/supervisord.log```, what is the best way to diagnose what the issue is?
