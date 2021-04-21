@@ -127,6 +127,9 @@ Note - Please ensure you remove any other existing lines that may clash with the
 
 * Consumer grade routers are notoriously underpowered with slow processors and very little RAM, this can result in low or fluctuating download/upload speeds. This is particular true when torrenting, as this causes a heavy burden on the router due to multiple (sometimes hundreds) connections from peers. The solution to this is either simply swap out the router with something more powerful (such a pfSense box) or reduce the number of connections, either globally or per torrent in the torrent client.
 
+* Check your ISP router/modem Firewall settings and look for the keywords 'flooding' or specifically 'IP flooding'. This setting left checked and in combination with a VPN, can cause your network devices to be unable to accesss the Internet or slow down their speed to the Internet significantly.
+  For Liberty Global devices go to the web interface (ususally the IP of your gateway) and login. Then go to: 'Advanced Settings' -> 'Security' -> 'Firewall' and uncheck 'IP flood detection' and apply settings.
+
 **Q7.** Since the update i can't now start the container when VPN_ENABLED is set to 'yes' and i see the following message in /config/supervisord.log
 
 "[crit] No OpenVPN config file located in /config/openvpn/ (ovpn extension), please download from your VPN provider and then restart this container, exiting..." what does this mean and how can i fix this?
