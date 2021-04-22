@@ -1,4 +1,4 @@
-# **Documentation** 
+# **Documentation**
 
 ## **Description**
 Links to documentation for software located in the binhex repositories.
