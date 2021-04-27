@@ -143,4 +143,20 @@ or (if you do NOT have a cache drive):-
 
 **Note**:- If you do NOT have a cache drive and you switch to a specific disk then you may need to reconfigure the application from scratch.
 
+**Q8.** I have seen on the support thread on the forum that an additional feature has been added that requires me to add in values for a named variable XXXXX (e.g. VPN_INPUT_PORTS) but when i go to 'Edit' for the container and look for this i cannot see it, how can i fix this?.
+
+**A8.** So sadly unRAID does not automatically push our new 'Variables' when they are added by the Docker image developer, you will instead need to add these additional 'Variables' in yourself, the procedure for doing this is as follows:-
+
+1. Left click on the container you want to add in the new feature and select 'Edit'
+2. Click on the 'Advanced view' toggle at the top right of the screen.
+3. Click on the link 'Add another Path, Port, Variable, Label or Device' at the bottom
+4. On the 'Config Type' dropdown and select 'Variable'
+5. Set the 'Key:' to the name of the feature to add, e.g. 'VPN_INPUT_PORTS', ask on the support thread on the forum if you are unsure of the name.
+6. Set the 'Value:' to be the value for the variable, for the above example that would be something like '1234'
+7. Click on 'ADD' to add the variable and then click on 'Apply' to apply the change.
+
+The alternative to the above is to delete the existing template and re-download from Community Applications (CA) and then reconfigure from scratch, but this is obviously not the ideal approach and should only be done as a last resort.
+
+**Note**:- Some variables allow you to define more than one value, this is generally done by use a comma to separate the 'values', in the example above that would be something like '1234,5678', if you are unsure whether this is the case for the variable you want to use then please ask on the support thread on the forum.
+
 Still stuck?, take a look at the unRAID FAQ:- https://lime-technology.com/forums/topic/57181-real-docker-faq/
