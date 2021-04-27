@@ -145,7 +145,7 @@ or (if you do NOT have a cache drive):-
 
 **Q8.** I have seen on the support thread on the forum that an additional feature has been added that requires me to add in values for a named variable XXXXX (e.g. VPN_INPUT_PORTS) but when i go to 'Edit' for the container and look for this i cannot see it, how can i fix this?.
 
-**A8.** unRAID does not automatically push our new 'Variables' when they are added the the Template by the Docker image developer, you will instead need to add any additional 'Variables' in yourself, the procedure for doing this is as follows:-
+**A8.** unRAID does not automatically push out new 'Variables' when they are added the the Template by the Docker image developer, you will instead need to add any additional 'Variables' in yourself, the procedure for doing this is as follows:-
 
 1. Left click on the container you want to add in the new feature and select ```Edit```
 2. Click on the ```Advanced view``` toggle at the top right of the screen.
