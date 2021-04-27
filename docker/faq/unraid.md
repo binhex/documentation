@@ -151,8 +151,8 @@ or (if you do NOT have a cache drive):-
 2. Click on the ```Advanced view``` toggle at the top right of the screen.
 3. Click on the link ```Add another Path, Port, Variable, Label or Device``` at the bottom
 4. On the ```Config Type``` dropdown and select ```Variable```
-5. Set the ```Key:``` to the name of the feature to add, e.g. ```VPN_INPUT_PORTS```, ask on the support thread on the forum if you are unsure of the name.
-6. Set the ```Value:``` to be the value for the variable, for the above example that would be something like ```1234```, ask on the support thread on the forum if you are unsure of the value.
+5. Set the ```Key:``` to the name of the feature to add, e.g. ```VPN_INPUT_PORTS``` (ask on the support thread on the forum if you are unsure of the name).
+6. Set the ```Value:``` to be the value for the variable, for the above example that would be something like ```1234``` (ask on the support thread on the forum if you are unsure of the value).
 7. Click on ```ADD``` to add the variable and then click on ```Apply``` to apply the change.
 
 The alternative to the above is to delete the existing template and re-download from Community Applications (CA) and then reconfigure from scratch, but this is obviously not the ideal approach and should only be done as a last resort.
