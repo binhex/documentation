@@ -157,6 +157,6 @@ or (if you do NOT have a cache drive):-
 
 The alternative to the above is to delete the existing template and re-download from Community Applications (CA) and then reconfigure from scratch, but this is obviously not the ideal approach and should only be done as a last resort.
 
-**Note**:- Some variables allow you to define more than one value, this is generally done by use a comma to separate the ```Value:```, in the example above that would be something like ```1234,5678```, if you are unsure whether this is the case for the variable you want to use then please ask on the support thread on the forum.
+**Note**:- Some variables allow you to define more than one value, this is generally done by use a comma to separate the ```Value:```, in the example above that would be something like ```1234,5678``` - if you are unsure whether the variable supports multiple values then please ask on the support thread on the forum.
 
 Still stuck?, take a look at the unRAID FAQ:- https://lime-technology.com/forums/topic/57181-real-docker-faq/
