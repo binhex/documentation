@@ -50,15 +50,16 @@
 
 **Q3.** How do I configure Plex to use my GPU for encoding/decoding (sometimes referred to as hardware transcoding)?
 
-**A3.** To enable GPU encoding/decoding within Plex you need to install the 'Nvidia Driver' Plugin and configure two variables:-
+**A3.** To enable GPU encoding/decoding within Plex you need to install the 'Nvidia Driver' Plugin and then configure the Plex container as follows:-
 
 1. Go to Community Applications in the unRAID web ui and search for Plugin 'Nvidia Driver' and install it, then reboot host.
 2. Go to unRAID web ui/Plugins/Nvidia Driver and make a note of the GPU device, it should look something like this:- ```GPU-02ff3633-4f22-c4d6-2c15-654ff33a321e```
-2. Go to unRAID web ui/Docker tab/left click Plex container and select 'edit'.
-3. Click on the toggle for 'advanced view'.
-4. Go to variable named 'NVIDIA_DRIVER_CAPABILITIES' and set the value to ```all```
-5. Go to variable named 'NVIDIA_VISIBLE_DEVICES' and set the value to the GPU device found in step 2.
-6. Start Plex container.
+3. Go to unRAID web ui/Docker tab/left click Plex container and select 'edit'.
+4. Click on the toggle for 'advanced view'.
+5. Go to 'Extra Parameters:' and set it to ```--runtime=nvidia```
+6. Go to variable named 'NVIDIA_DRIVER_CAPABILITIES' and set the value to ```all```
+7. Go to variable named 'NVIDIA_VISIBLE_DEVICES' and set the value to the GPU device found in step 2.
+8. Start Plex container.
 
 **Notes**  
 It is possible that the variables mentioned above do not exist in your template, if this is the case then please create them by doing the following:-
