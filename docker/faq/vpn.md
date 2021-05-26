@@ -152,7 +152,7 @@ Save the file and restart the container for the change to take effect.
 
 **Q9.** How can i confirm that my incoming port is working when the VPN tunnel is established?
 
-**A9.** To do this you can use the website [](https://www.yougetsignal.com/tools/open-ports/) this allows you to put in your public IP address for your VPN connection (can be found in the /config/supervisord.log) and the incoming port that you have manually configured (or in the case of PIA auto configured) for the application. Once you have entered in these details hit the "check" button to confirm the port is open.
+**A9.** To do this you can use the website [you get signal](https://www.yougetsignal.com/tools/open-ports/) this allows you to put in your public IP address for your VPN connection (can be found in the /config/supervisord.log) and the incoming port that you have manually configured (or in the case of PIA auto configured) for the application. Once you have entered in these details hit the "check" button to confirm the port is open.
 
 **Q10.** I can't connect to the Web UI and i see the following repeated over and over in the logs, what does mean and how do i fix it?
 
