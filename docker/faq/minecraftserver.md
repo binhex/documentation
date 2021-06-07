@@ -32,3 +32,6 @@ Use command 'clear' to clear the screen of any previous output, you can then re-
 Value set to ```8```	= Java 8 (Default Java version)  
 Value set to ```11```	= Java 11 (Required by papermc)  
 Value set to ```16```	= Java 16 (Required by Minecraft 1.17+)  
+
+5. Click on ```SAVE```
+6. Click on ```Apply```
