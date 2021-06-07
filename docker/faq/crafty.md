@@ -1,8 +1,8 @@
 # **Crafty Controller Docker FAQ**
 
-**Q1.** How do i define the version of Java used when running a server via Crafty?
+**Q1.** How do i define the version of Java used when running a Minecraft server via Crafty?
 
-**A1.** In order to define the version of Java you need to edit an already defined server, you cannot define this at the time of creation in Crafty (at this time). The procedure for changing the version of Java after the server is defined is as follows:-
+**A1.** In order to specify the version of Java you need to edit an already defined server, you cannot define this at the time of server creation in Crafty (this may change in later versions). The procedure for changing the version of Java after the server is defined is as follows:-
 
 1. Open Crafty Web UI and login
 2. Click on the 'Dashboard'
