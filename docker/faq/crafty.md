@@ -9,15 +9,15 @@
 3. Click on 'Edit' for running server
 4. Scroll down to 'Java Path' and set the path to one of the versions of Java shown below:-
 
-Java 8 (default)
+**Java 8 (default)**
 ```
 /usr/lib/jvm/java-8-openjdk/bin/java
 ```
-Java 11 (required by papermc)
+**Java 11 (required by papermc)**
 ```
 /usr/lib/jvm/java-11-openjdk/bin/java
 ```
-Java 16 (required by minecraft 1.17+)
+**Java 16 (required by minecraft 1.17+)**
 ```
 /usr/lib/jvm/java-16-openjdk/bin/java
 ```
