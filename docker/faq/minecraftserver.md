@@ -29,6 +29,6 @@ Use command 'clear' to clear the screen of any previous output, you can then re-
 3. Scroll down until you see ```Container Variable: JAVA_VERSION``` then click on ```Edit```
 4. Set the value to the version of Java you want. e.g:-
 
-Value set to ```8```	= Java 8 (Default Java version)
-Value set to ```11```	= Java 11 (Required by papermc)
-Value set to ```16```	= Java 16 (Required by Minecraft 1.17+)
+Value set to ```8```	= Java 8 (Default Java version)  
+Value set to ```11```	= Java 11 (Required by papermc)  
+Value set to ```16```	= Java 16 (Required by Minecraft 1.17+)  
