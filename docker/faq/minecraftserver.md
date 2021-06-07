@@ -19,3 +19,16 @@ CTRL + a then release and press d
 Use command 'clear' to clear the screen of any previous output, you can then re-connect to the session again if required using the command above.
 
 **Note** If you do press CTRL + c by accident then you will need to restart the container in order to be able to connect to the console again, as this will kill the running Minecraft Server.
+
+**Q2.** How do i define the version of Java used when running a Minecraft server?
+
+**A2.** This is done by changing the value for env var ```JAVA_VERSION```, valid values are ```8```,```12```, or ```16```, the procedure for this is as follows:-
+
+1. Launch unRAID Web UI and go to 'Docker' tab.
+2. Left click the Minecraft Sever icon and select 'Edit'
+3. Scroll down until you see ```Container Variable: JAVA_VERSION``` then click on ```Edit```
+4. Set the value to the version of Java you want. e.g:-
+
+Value set to ```8```	= Java 8 (Default Java version)
+Value set to ```11```	= Java 11 (Required by papermc)
+Value set to ```16```	= Java 16 (Required by Minecraft 1.17+)
