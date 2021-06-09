@@ -359,7 +359,7 @@ If you're a 'custom or airvpn' VPN user (non PIA) then please follow this proced
 1. Change Docker parameter from ```--cap-add=NET_ADMIN``` to ```--privileged=true``` (WireGuard requires privileged permissions).
 2. Add environment variable and set the ```Key:``` (**NOT** the name) to ```VPN_CLIENT``` and set the ```Value:``` to ```wireguard```.
 3. Start and stop the container to force the creation of ```/config/wireguard/```.
-4. Copy and paste in the WireGuard configuration file for your VPN provider.
+4. Copy and paste in the WireGuard configuration file for your VPN provider to ```/config/wireguard/```
 5. Start the container and monitor the log ```/config/supervisord.log``` to ensure the connection is established.
 
 **Q22.** I see the following in the log /config/supervisord.log, what does it mean and how can i fix it?
