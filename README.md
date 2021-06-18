@@ -5,76 +5,84 @@ Links to documentation for software located in the binhex repositories.
 
 ## Docker
 
-#### Guides
+<u>#### Guides</u>
+
 ##### VPN Docker Guide
- https://github.com/binhex/documentation/blob/master/docker/guides/vpn.md
- Guide on how to do the initial setup for VPN enabled Docker images.
+Guide on how to do the initial setup for VPN enabled Docker images.
+https://github.com/binhex/documentation/blob/master/docker/guides/vpn.md
+
 
 #### FAQ's
 ##### General Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/general.md
- Frequently asked questions regards general Docker usage.
+Frequently asked questions regards general Docker usage.
+https://github.com/binhex/documentation/blob/master/docker/faq/general.md
+
 
 ##### VPN Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
- Frequently asked questions regards VPN specific configuration.
+Frequently asked questions regards VPN specific configuration.
+https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+
 
 ##### SABnzbdVPN Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/sabnzbdvpn.md
- Frequently asked questions regards SABnzbd+ specific configuration.
+Frequently asked questions regards SABnzbd+ specific configuration.
+https://github.com/binhex/documentation/blob/master/docker/faq/sabnzbdvpn.md
+
 
 ##### DelugeVPN Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/delugevpn.md
- Frequently asked questions regards Deluge specific configuration.
+Frequently asked questions regards Deluge specific configuration.
+https://github.com/binhex/documentation/blob/master/docker/faq/delugevpn.md
+
 
 ##### rTorrentVPN Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/rtorrentvpn.md
- Frequently asked questions regards rTorrent/ruTorrent specific configuration.
+Frequently asked questions regards rTorrent/ruTorrent specific configuration.
+https://github.com/binhex/documentation/blob/master/docker/faq/rtorrentvpn.md
 
 ##### qBittorrentVPN Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/qbittorrentvpn.md
- Frequently asked questions regards qBittorrent specific configuration.
+Frequently asked questions regards qBittorrent specific configuration.
+https://github.com/binhex/documentation/blob/master/docker/faq/qbittorrentvpn.md
 
 ##### Sonarr Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/sonarr.md
- Frequently asked questions regards Sonarr  specific configuration.
+Frequently asked questions regards Sonarr  specific configuration.
+https://github.com/binhex/documentation/blob/master/docker/faq/sonarr.md
 
 ##### Plex Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/plex.md
- Frequently asked questions regards Plex specific configuration.
+Frequently asked questions regards Plex specific configuration.
+https://github.com/binhex/documentation/blob/master/docker/faq/plex.md
+
 
 ##### UrBackup Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/urbackup.md
  Frequently asked questions regards UrBackup specific configuration.
+ https://github.com/binhex/documentation/blob/master/docker/faq/urbackup.md
 
 ##### Preclear Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/preclear.md
- Frequently asked questions regards Preclear Docker usage.
+Frequently asked questions regards Preclear Docker usage.
+https://github.com/binhex/documentation/blob/master/docker/faq/preclear.md
+
 
 ##### Minecraft Server Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/minecraftserver.md
- Frequently asked questions regards Minecraft Server specific configuration.
+Frequently asked questions regards Minecraft Server specific configuration.
+https://github.com/binhex/documentation/blob/master/docker/faq/minecraftserver.md
 
 ##### Minecraft Bedrock Server Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/minecraftbedrockserver.md
- Frequently asked questions regards Minecraft Bedrock Server specific configuration.
+Frequently asked questions regards Minecraft Bedrock Server specific configuration.
+https://github.com/binhex/documentation/blob/master/docker/faq/minecraftbedrockserver.md
 
 ##### Crafty Controller Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/crafty.md
- Frequently asked questions regards Crafty Controller specific configuration.
+Frequently asked questions regards Crafty Controller specific configuration.
+https://github.com/binhex/documentation/blob/master/docker/faq/crafty.md
 
 ##### Code-Server Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/code-server.md
- Frequently asked questions regards Code-Server specific configuration.
+Frequently asked questions regards Code-Server specific configuration.
+https://github.com/binhex/documentation/blob/master/docker/faq/code-server.md
 
 ##### unRAID Docker FAQ
- https://github.com/binhex/documentation/blob/master/docker/faq/unraid.md
- Frequently asked questions regards unRAID general Docker usage.
+Frequently asked questions regards unRAID general Docker usage.
+https://github.com/binhex/documentation/blob/master/docker/faq/unraid.md
 
 #### Help
 ##### Further Help
- https://github.com/binhex/documentation/blob/master/docker/faq/help.md
- Instructions for further help if required.
+Instructions for further help if required.
+https://github.com/binhex/documentation/blob/master/docker/faq/help.md
 
 ---
 If you appreciate my work, then please consider buying me a beer  :D
