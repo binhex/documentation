@@ -4,7 +4,11 @@
 
 **A1.** This error is caused by the use of self-signed certificates, which by default this container uses. The error can be triggered by simply going to an extesion and attempting to view the 'Details' tab.
 
-To Fix this issue you need to switch to a valid certificate (or use Github integration see Q4.) signed by a trusted Certifiate Authority (CA), once you have the certificate issued then you can use the following procedure to configure code-server to use the cert:-
+To Fix this issue please see **Q2.** or **Q4.**
+
+**Q2.** I want to switch from using a self-signed cert to a valid certificate from a authorised certificate authority, how do i do this?.
+
+**A2.** Once you have the certificate issued from your certificate authority then you can use the following procedure to configure code-server to use the cert:-
 
 1. Stop the container
 2. Copy the certificate and key to ```/config/code-server/certs/```
