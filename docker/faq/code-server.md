@@ -7,8 +7,10 @@
 To Fix this issue you need to switch to a valid certificate signed by a trusted Certifiate Authority (CA), once you have the certificate you then use the following procedure to confoigure code-server to use the cert:-
 
 1. Stop the container
-2. Copy the certificate (and root and intermediate certs if supplied) to /config/code-server/certs/
+2. Copy the certificate (and root and intermediate certs if supplied) to ```/config/code-server/certs/```
 3. Start container
+
+Note:- No code in place at present to support the above, need to enhance.
 
 **Q2.** I want to use a reverse proxy such as SWAG or NPM with Code-Server so i can access it externally, in order to do this i need to disable the use of HTTPS, how do i do this?.
 
