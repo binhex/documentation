@@ -304,6 +304,9 @@ Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 * **Cause:** Out of date ovpn config file containing reference to retired VPN remote server(s).<br/>
 **Solution:** Download the latest ovpn config file from your VPN provider, place in /config/openvpn/ and restart container.
 
+* **Cause:**  VPN provider has a major outage.<br/>
+**Solution:** Contact VPN provider to confirm outage and wait for the outage to be resolved.
+
 * **Cause:**  Hardware firewall/router is blocking outbound connections to the vpn providers servers.<br/>
 **Solution:** Allow outbound connections for the port defined in the VPN providers ovpn file on your firewall/router.
 
@@ -318,9 +321,6 @@ Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 
 * **Cause:**  ISP is blocking outbound connections to the VPN providers servers.<br/>
 **Solution:** Use an IP based ovpn config file instead, this wil circumvent the requirement to do a name lookup.
-
-* **Cause:**  VPN provider has a major outage.<br/>
-**Solution:** Contact VPN provider to confirm outage and wait for the outage to be resolved.
 
 Once you have ruled out any potential Home LAN issues and if none of the above resolve the issue then you may have to switch VPN provider or even ISP to get around the blocking restriction.
 
