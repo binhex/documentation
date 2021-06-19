@@ -292,21 +292,28 @@ Tue Feb  4 07:21:26 2020 [UNDEF] Inactivity timeout (--ping-restart), restarting
 Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 ```
 
-**A17.** This means the OpenVPN Client is unable to connect to the VPN providers server on the specified IP address and port (as defined in the ovpn file 'remote' line), this can have many causes, some of the more common causes (and solutions) are as follows:-
+**A17.** This means the OpenVPN Client is unable to connect to the VPN providers server on the specified IP address and port (as defined in the ovpn file 'remote' line), this can have many causes, some of the more common causes (and solutions) are as follows, in descending order of most common:-
 
-* [Cause] Hardware firewall/router is blocking outbound connections to the vpn providers servers. [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on your firewall/router.
+* [Cause] Out of date ovpn config file containing reference to retired VPN remote server(s).
+* [Solution] Download the latest ovpn config file from your VPN provider, place in /config/openvpn/ and restart container.
 
-* [Cause] Host machine firewall blocking the docker container from connecting to the vpn providers servers. [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on the hosts firewall.
+* [Cause] Hardware firewall/router is blocking outbound connections to the vpn providers servers.
+* [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on your firewall/router.
 
-* [Cause] VLAN blocking the connection for the host to the VPN providers servers. [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on your switch.
+* [Cause] Host machine firewall blocking the docker container from connecting to the vpn providers servers.
+* [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on the hosts firewall.
 
-* [Cause] Out of date ovpn config file containing reference to retired VPN remote server(s). [Solution] Download the latest ovpn config file from your VPN provider, place in /config/openvpn/ and restart container.
+* [Cause] VLAN blocking the connection for the host to the VPN providers servers.
+* [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on your switch.
 
-* [Cause] ISP is hijacking DNS lookup and redirecting you to their (spammy) landing page. [Solution] Use an IP based ovpn config file instead, this wil circumvent the requirement to do a name lookup.
+* [Cause] ISP is hijacking DNS lookup and redirecting you to their (spammy) landing page.
+* [Solution] Contact ISP and disable DNS redirection, Virgin UK and SKY ISP's have a website where you can disable it.
 
-* [Cause] ISP is blocking outbound connections to the VPN providers servers. [Solution] Contact VPN provider to confirm outage and wait for the outage to be resolved.
+* [Cause] ISP is blocking outbound connections to the VPN providers servers.
+* [Solution] Use an IP based ovpn config file instead, this wil circumvent the requirement to do a name lookup.
 
-* [Cause] VPN provider has a major outage. [Solution] Allow outbound connections for the port defined in the VPN providers ovpn file on your firewall/router.
+* [Cause] VPN provider has a major outage.
+* [Solution] Contact VPN provider to confirm outage and wait for the outage to be resolved.
 
 Once you have ruled out any potential Home LAN issues and if none of the above resolve the issue then you may have to switch VPN provider or even ISP to get around the blocking restriction.
 
@@ -344,7 +351,7 @@ The order shown above will be the order tried, if an endpoint fails to connect t
 
 **Q21.** I now see that you support WireGuard, how do i switch from OpenVPN to WireGuard client?
 
-**A21.** Yes you are correct, all binhex VPN created images now support OpenVPN and WireGuard, for PIA and other VPN providers. 
+**A21.** Yes you are correct, all binhex VPN created images now support OpenVPN and WireGuard, for PIA and other VPN providers.
 
 If you're a PIA user then please follow this procedure:-
 
@@ -368,7 +375,7 @@ If you're a 'custom or airvpn' VPN user (non PIA) then please follow this proced
 OPTIONS ERROR: failed to negotiate cipher with server. Add the server's cipher ('BF-CBC') to --data-ciphers (currently 'AES-256-GCM:AES-128-GCM:AES-256-CBC') if you want to connect to this server.
 ```
 
-**A22.** This error is caused by a misconfiguration of the OpenVPN servers at the VPN providers end (currently affecting PIA customers). The VPN server does not push the supported ciphers via the '--cipher' option and so the client has to assume that the server does not do any cipher negotiation. The client then tries to use the same cipher as the server, but PIA's servers are set incorrectly and report support of cipher ```BF-CBC```, the client tries to switch to that cipher and it fails generating the error.  
+**A22.** This error is caused by a misconfiguration of the OpenVPN servers at the VPN providers end (currently affecting PIA customers). The VPN server does not push the supported ciphers via the '--cipher' option and so the client has to assume that the server does not do any cipher negotiation. The client then tries to use the same cipher as the server, but PIA's servers are set incorrectly and report support of cipher ```BF-CBC```, the client tries to switch to that cipher and it fails generating the error.
 
 The fix for this is to specify a fallback cipher on the client side to a cipher that PIA does support, this is done by editing the file ```/config/openvpn/<file with a ovpn extension>``` and adding/replacing the following lines (use notepad++ **NOT** notepad):-
 
