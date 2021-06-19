@@ -268,24 +268,25 @@ Where xx will be 2 random digits.
 
 **A16.** AUTH_FAILED means you are having issues authenticating with your VPN provider, there can be many causes for this, here are some of the common ones:-
 
-**Cause:**  Your subscription has run out<br><br>
+**Cause:**  Your subscription has run out<br/>
 **Solution:** double check this on the vpn providers website.
 
-**Cause:**  You have not typed in your username (VPN_USER value) and/or password (VPN_PASS value) correctly  **Solution:** do not copy and paste, type it in manually to prevent whitespace issues.
+**Cause:**  You have not typed in your username (VPN_USER value) and/or password (VPN_PASS value) correctly<br/>
+**Solution:** do not copy and paste, type it in manually to prevent whitespace issues.
 
-**Cause:**  You are using the wrong credentials
+**Cause:**  You are using the wrong credentials<br/>
 **Solution:** ensure the credentials are for openvpn/wireguard, NOT proxy servers etc. [**PIA users**] Do **NOT** use the generated PPTP/L2TP/Socks Username and Password, this is not the correct credentials, you need to specify the web login credentials (username will be of the format Pxxxxxx) for VPN_USER and VPN_PASS.
 
-**Cause:**  Your password contains a character which may cause issues
+**Cause:**  Your password contains a character which may cause issues<br/>
 **Solution:** please ensure it only contains letters a-z (upper case or lower case) and numbers 0-9.
 
-**Cause:**  Your password is too long
+**Cause:**  Your password is too long<br/>
 **Solution:** Certain VPN providers (such as PIA) may limit the password length, please try shortening the password for your account. [**PIA users**] The maximum length for account passwords has changed with next-gen network, please ensure your password is 99 characters or less.
 
-**Cause:**  Out of date openvpn config file (ovpn extension)
+**Cause:**  Out of date openvpn config file (ovpn extension)<br/>
 **Solution:** ensure you download the latest ovpn file from your vpn provider.
 
-**Cause:**  The vpn provider you have signed up with is having authentication issues
+**Cause:**  The vpn provider you have signed up with is having authentication issues<br/>
 **Solution:** try another endpoint, failing that contact the vpn provider and explain you are having authentication issues when using native openvpn/wireguard clients with AUTH_FAILED shown.
 
 **Q17.** I'm unable to connect to the web ui and i'm seeing the following repeated over and over in the /config/supervisord.log file, what does it mean and how can i fix it?
@@ -300,25 +301,25 @@ Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 
 **A17.** This means the OpenVPN Client is unable to connect to the VPN providers server on the specified IP address and port (as defined in the ovpn file 'remote' line), this can have many causes, some of the more common causes (and solutions) are as follows, in descending order of most common:-
 
-**Cause:** Out of date ovpn config file containing reference to retired VPN remote server(s).
+**Cause:** Out of date ovpn config file containing reference to retired VPN remote server(s).<br/>
 **Solution:** Download the latest ovpn config file from your VPN provider, place in /config/openvpn/ and restart container.
 
-**Cause:**  Hardware firewall/router is blocking outbound connections to the vpn providers servers.
+**Cause:**  Hardware firewall/router is blocking outbound connections to the vpn providers servers.<br/>
 **Solution:** Allow outbound connections for the port defined in the VPN providers ovpn file on your firewall/router.
 
-**Cause:**  Host machine firewall blocking the docker container from connecting to the vpn providers servers.
+**Cause:**  Host machine firewall blocking the docker container from connecting to the vpn providers servers.<br/>
 **Solution:** Allow outbound connections for the port defined in the VPN providers ovpn file on the hosts firewall.
 
-**Cause:**  VLAN blocking the connection for the host to the VPN providers servers.
+**Cause:**  VLAN blocking the connection for the host to the VPN providers servers.<br/>
 **Solution:** Allow outbound connections for the port defined in the VPN providers ovpn file on your switch.
 
-**Cause:**  ISP is hijacking DNS lookup and redirecting you to their (spammy) landing page.
+**Cause:**  ISP is hijacking DNS lookup and redirecting you to their (spammy) landing page.<br/>
 **Solution:** Contact ISP and disable DNS redirection, Virgin UK and SKY ISP's have a website where you can disable it.
 
-**Cause:**  ISP is blocking outbound connections to the VPN providers servers.
+**Cause:**  ISP is blocking outbound connections to the VPN providers servers.<br/>
 **Solution:** Use an IP based ovpn config file instead, this wil circumvent the requirement to do a name lookup.
 
-**Cause:**  VPN provider has a major outage.
+**Cause:**  VPN provider has a major outage.<br/>
 **Solution:** Contact VPN provider to confirm outage and wait for the outage to be resolved.
 
 Once you have ruled out any potential Home LAN issues and if none of the above resolve the issue then you may have to switch VPN provider or even ISP to get around the blocking restriction.
