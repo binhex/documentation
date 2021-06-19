@@ -302,7 +302,7 @@ Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 **A17.** This means the OpenVPN Client is unable to connect to the VPN providers server on the specified IP address and port (as defined in the ovpn file 'remote' line), this can have many causes, some of the more common causes (and solutions) are as follows, in descending order of most common:-
 
 * **Cause:** Out of date ovpn config file containing reference to retired VPN remote server(s).<br/>
-* **Solution:** Download the latest ovpn config file from your VPN provider, place in /config/openvpn/ and restart container.
+**Solution:** Download the latest ovpn config file from your VPN provider, place in /config/openvpn/ and restart container.
 
 * **Cause:**  Hardware firewall/router is blocking outbound connections to the vpn providers servers.<br/>
 * **Solution:** Allow outbound connections for the port defined in the VPN providers ovpn file on your firewall/router.
