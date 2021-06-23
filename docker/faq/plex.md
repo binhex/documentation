@@ -42,7 +42,7 @@
 ```mkdir -p /tmp/plex-ramdisk && mount -t tmpfs -o size=5g tmpfs /tmp/plex-ramdisk```
 2. Follow the procedure for **A1.** 'Transcode to RAM', substituting 'Host Path' ```/tmp``` for ```/tmp/plex-ramdisk```
 
-**Notes**  
+**Notes**<br/>
 - If you want the RAM Disk to be larger then change the ```size=``` parameter for the command.
 - Location of the RAM Disk can be anywhere and does not have to be located under '/tmp'.
 - The command shown above will not be persistent and therefor will need to be re-run on subsequent reboots, a way of automating this is to include the command in the unRAID boot script named 'go', you can do this by running the command below from the unRAID 'Terminal':-
@@ -61,7 +61,7 @@
 7. Go to variable named 'NVIDIA_VISIBLE_DEVICES' and set the value to the GPU device found in step 2.
 8. Start Plex container.
 
-**Notes**  
+**Notes**<br/>
 It is possible that the variables mentioned above do not exist in your template, if this is the case then please create them by doing the following:-
 
 1. Go to unRAID web ui/Docker tab/left click Plex container and select 'edit'
@@ -84,7 +84,7 @@ Open the log file with something like Notepad++/Atom/VSCode and search the log f
 
 **A5.** The cleanest and safest way of doing this is to restore from a backup, if you run the plugin 'CA Appdata Backup/Restore v2' then you can simply restore your metadata and this should get you up and running.
 
-If you don't have a backup then you can attempt a repair of the corrupt database using the following instructions:- 
+If you don't have a backup then you can attempt a repair of the corrupt database using the following instructions:-
 https://support.plex.tv/articles/201100678-repair-a-corrupt-database/
 
 If the repair database procedure does not work then you can attempt a roll back to a previous database backup by doing the following:-
@@ -96,5 +96,5 @@ If the repair database procedure does not work then you can attempt a roll back 
 5. Rename the newest backup database file (example) ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db-2021-04-03``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db```
 6. Start the Plex container and scrape any missing metadata.
 
-**Notes**  
+**Notes**<br/>
 The above procedure will cause some loss of metadata, as you will be rolling back to a point in time (typically 3 days prior) but it maybe necessary to go back further if the database corruption happens some time ago, so further metadata scraping maybe required for your library after the restore.

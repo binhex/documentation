@@ -6,7 +6,7 @@ OK so you've read any relevant FAQ's from [here](https://github.com/binhex/docum
 2. Stop the container and delete it (or if you're an unRAID user skip this step - done automatically on change to container config).
 3. Set the env var key "DEBUG" to a value of "true".
 4. Start the container and wait 5 mins for it to completely finish initialising.
-5. unRAID users - Attach the log file located at /config/supervisord.log to the correct forum support thread for the container you are running.  
+5. unRAID users - Attach the log file located at /config/supervisord.log to the correct forum support thread for the container you are running.<br/>
    Other users - Please paste into pastebin (or similar) and create Github 'Issue' and link to the log file.
 
 **IMPORTANT** - Make sure to remove any reference to your username and password from the supervisord.log **BEFORE** attaching/pasting it.

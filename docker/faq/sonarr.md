@@ -18,6 +18,6 @@ mkdir -p /mnt/cache/appdata/binhex-sonarr-v3 && cp -R /mnt/cache/appdata/binhex-
 
 **Note**
 
-If you are using a self generated certificates for your downloaders then you may need to relax the new default restriction in Sonarr by going to Sonarr's web ui/Settings/General and then 'Security' heading and setting the dropdown for 'Certificate Validation' to either 'Disabled for Local Addresses' or 'Disabled' and click on 'Save Changes' (top left).  
+If you are using a self generated certificates for your downloaders then you may need to relax the new default restriction in Sonarr by going to Sonarr's web ui/Settings/General and then 'Security' heading and setting the dropdown for 'Certificate Validation' to either 'Disabled for Local Addresses' or 'Disabled' and click on 'Save Changes' (top left).<br/>
 
 The 'latest' tagged version will still be v2 until v3 is officially released.
