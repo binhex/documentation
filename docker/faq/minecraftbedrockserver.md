@@ -67,6 +67,10 @@ If you want to run this on a scheduled basis either from a bash script or via cr
 
 **A4.** This issue can be related to the browser used to connect to the web ui, switching browser normally allows a user to authenticate and view the console.
 
+**Q5.** I have not hard set the 'seed' value for my World in Minecraft Bedrock, how do i now know what the auto generated seed value is?.
+
+**A5.** One way to identify the 'seed' is by using Minecraft Pocket Edition (PE), this can be installed from the 'Google Play' Store, once installed connect to your world then click on the icon at the top that looks like a pause symbol, click on Settings, then click on World, then click on Game and scroll down and the seed value should be shown (its greyed out as you cannot change this from in-game).
+
 **Tutorials**<br/>
 Reddit post 'Bedrock Dedicated Server Tutorial':-
 https://www.reddit.com/user/ProfessorValko/comments/9f438p/bedrock_dedicated_server_tutorial/?utm_source=share&utm_medium=web2x
