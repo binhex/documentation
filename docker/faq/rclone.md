@@ -12,8 +12,8 @@ To run the Rclone wizard open unRAID Web UI and go to Docker tab, then left clic
 
 Depending on the Cloud provider you want to use you will now follow different procedures, a few of the popular ones are linked below:-
 
-OneDrive		https://rclone.org/onedrive/
-Google Drive	https://rclone.org/drive/
-Amazon Drive	https://rclone.org/amazonclouddrive/
+OneDrive		https://rclone.org/onedrive/<br>
+Google Drive	https://rclone.org/drive/<br>
+Amazon Drive	https://rclone.org/amazonclouddrive/<br>
 
 *Note* Certain Cloud Providers will require a Web Browser to be present to be able to complete the Rclone configuration, there is an alternative to this via the Rclone auth configuration option - see here:- https://rclone.org/remote_setup/
