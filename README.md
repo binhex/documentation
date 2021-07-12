@@ -76,6 +76,10 @@ https://github.com/binhex/documentation/blob/master/docker/faq/crafty.md
 Frequently asked questions regards Code-Server specific configuration.
 https://github.com/binhex/documentation/blob/master/docker/faq/code-server.md
 
+##### Rclone Docker FAQ
+Frequently asked questions regards Rclone specific configuration.
+https://github.com/binhex/documentation/blob/master/docker/faq/rclone.md
+
 ##### unRAID Docker FAQ
 Frequently asked questions regards unRAID general Docker usage.
 https://github.com/binhex/documentation/blob/master/docker/faq/unraid.md
