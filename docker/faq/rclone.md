@@ -2,7 +2,7 @@
 
 **Q1.** I am seeing the following message in ```/config/supervisord.log```, what does it mean and how can i fix it?:-
 
-```[crit] RCLONE_CONFIG_PATH '<path defined by user>' does not exist, exiting script...```
+```[warn] RCLONE_CONFIG_PATH '<path defined by user>' does not exist, please run 'rclone config --config /config/rclone/config/config.conf' from within the container```
 
 **A1.** The message above means that you have not run through the initial configuration wizard built into Rclone. This has to be done through the CLI and may require a Web Browser to authenticate (depends on Cloud Provider selected).
 
