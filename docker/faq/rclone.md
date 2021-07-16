@@ -22,6 +22,6 @@ Amazon Drive	https://rclone.org/amazonclouddrive/<br>
 
 ```xxxxxx hashes could not be checked```
 
-**A2.** This is due to the fact that a cipher is being used to encrypt the data being uploaded to the Cloud provider, however this does **NOT** mean no checks are done, from the Rclone documentation this is explained, so checks are still performed:-
+**A2.** This is due to the fact that a cipher is being used to encrypt the data being uploaded to the Cloud provider, however this does **NOT** mean no checks are done, from the Rclone documentation this is explained:-
 
 ```Hashes are not stored for crypt. However the data integrity is protected by an extremely strong crypto authenticator.```
