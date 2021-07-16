@@ -17,3 +17,11 @@ Google Drive	https://rclone.org/drive/<br>
 Amazon Drive	https://rclone.org/amazonclouddrive/<br>
 
 *Note* Certain Cloud Providers will require a Web Browser to be present to be able to complete the Rclone configuration, there is an alternative to this via the Rclone auth configuration option - see here:- https://rclone.org/remote_setup/
+
+**Q2.** I have post checking turned on (via env var ```RCLONE_POST_CHECK```) and when looking at the report (located in ```/config/rclone/reports/```) i see the following message, why can Rclone not check the hashes for the remote files?
+
+```xxxxxx hashes could not be checked```
+
+**A2.** This is due to the fact that a ciapher is being used to encrypt the data being uploaded to the Cloud provider, however this does **NOT** mean no checks are done, from the Rclone documentation this is explained, so checks are still performed:-
+
+```Hashes are not stored for crypt. However the data integrity is protected by an extremely strong crypto authenticator.```
