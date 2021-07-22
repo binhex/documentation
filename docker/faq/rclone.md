@@ -28,7 +28,7 @@ Amazon Drive	https://rclone.org/amazonclouddrive/<br>
 
 **Q3.** I am seeing the following message in ```/config/supervisord.log```, what does it mean and how can i fix it?:-
 
-```[crit] RCLONE_MEDIA_SHARES not defined,(via -e RCLONE_MEDIA_SHARES), exiting script...```
+```[crit] RCLONE_MEDIA_SHARES not defined (via -e RCLONE_MEDIA_SHARES), exiting script...```
 
 **A3.** The message above means that you have not defined via the env var ```RCLONE_MEDIA_SHARES``` what you want to copy/sync to your cloud provider. In order to resolve this you need to edit the ```Value``` for env var ```RCLONE_MEDIA_SHARES``` and put in thh you want to copy/sync.
 
