@@ -34,6 +34,6 @@ Amazon Drive	https://rclone.org/amazonclouddrive/<br>
 
 For example, so assuming you set container path ```/media``` to host path ```/mnt/user``` and you have a share name of ```Movies```, you would set the ```value``` for ```RCLONE_MEDIA_SHARE``` to ```/media/Movies```, that would then do a recursive copy/sync of all files and folders in the share ```Movies```.
 
-If you want only part of the share copied/sync'd then specify ```Value``` for ```RCLONE_MEDIA_SHARE``` as a sub directory of the share, e.g. ```/media/Movies/SD```. If you want to specify multiple paths then please separate the paths with a comma, e.g.:- ```/media/Movies/SD,/media/Movies/HD```.
+If you want only part of the share copied/sync'd then specify ```Value``` for ```RCLONE_MEDIA_SHARE``` as a sub directory of the share, e.g. ```/media/Movies/SD```. If you want to specify multiple paths then please separate the paths with a comma, e.g.:- ```/media/Movies/SD,/media/Movies/HD```
 
 **Note** When specifying media paths please ensure you take care to match the case of the path, remember Linux IS case sensitive.
