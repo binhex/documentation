@@ -32,6 +32,6 @@ Amazon Drive	https://rclone.org/amazonclouddrive/<br>
 
 **A3.** The message above means that you have not defined via the env var ```RCLONE_MEDIA_SHARES``` what you want to copy/sync to your cloud provider. In order to resolve this you need to edit the ```value``` for env var ```RCLONE_MEDIA_SHARES``` and put in thh you want to copy/sync.
 
-For example, so assuming you set container path ```/media``` to ```/mnt/user``` and you have a share name of ```Movies```, you would set the ```value``` for ```RCLONE_MEDIA_SHARE``` to ```/media/Movies```, that would then do a recursive sync of all files and folders in the share ```Movies```.
+For example, so assuming you set container path ```/media``` to ```/mnt/user``` and you have a share name of ```Movies```, you would set the ```value``` for ```RCLONE_MEDIA_SHARE``` to ```/media/Movies```, that would then do a recursive copy/sync of all files and folders in the share ```Movies```.
 
-if you want only part of the share copied up then specify ```value``` for ```RCLONE_MEDIA_SHARE``` as a sub directory of the share, e.g. ```/media/Movies/SD```. If you want to specify multiple paths then please separate the paths with a comma, e.g.:- ```/media/Movies/SD,/media/Movies/HD```.
+if you want only part of the share copied/sync'd then specify ```value``` for ```RCLONE_MEDIA_SHARE``` as a sub directory of the share, e.g. ```/media/Movies/SD```. If you want to specify multiple paths then please separate the paths with a comma, e.g.:- ```/media/Movies/SD,/media/Movies/HD```.
