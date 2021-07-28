@@ -25,7 +25,9 @@ To Fix this issue please see **Q2.** or **Q3.**
 
 **Q5.** I would like to include application/tool/scripting language XXXX in Code-Server, how do i do this?.
 
-**A5.** At the present time i do not support the inclusion of additional user defined tooling into Code-Server, if there is a popular tool that the community wants then i would consider adding this in, but for now no custom tooling permitted from the end user.
+**A5.** You can install applications by specifying the package name from AOR (Arch Official Repository) or from AUR (Arch User Repository), please see example script file located at ```/config/code-server/scripts/example-startup-script.sh``` for how to install packages.
+
+**Note** You will need to ensure that env var ```ENABLE_STARTUP_SCRIPTS``` is set to ```yes``` otherwise no execution of the script(s) will take place.
 
 **Q6.** I want to use the GitHub integration with Code-Server but i don't know what the steps are, can you please tell me how to do this?.
 
