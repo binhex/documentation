@@ -12,9 +12,9 @@
 
 **A3.** In place upgrades are not recommended when using Docker applications, instead wait for the developer to trigger a new build. Once the new image has been built, then open the unRAID webui and click on the "Docker" tab and then press the "Check for Updates" button, this should then change the "Version" for the Docker container to "update ready" then simply click on this and click the "Just do it!" button to begin the download of the newer image.
 
-**Q4.** Why can't Sonarr/Radarr/Lidarr/SickRage/Medusa post process my downloads from SABnzbd/Deluge/rTorrent?
+**Q4.** Why can't my metadata application e.g. Sonarr/Radarr/Lidarr/SickRage/Medusa post process my downloads from download client e.g. NZBGet/SABnzbd/Deluge/qBittorrent/rTorrent, it seems be reporting that the file just downloaded cannot be found, what is going on here and how can i fix it?.
 
-**A4.** The location you set for downloads for your download client(s) MUST be consistent for ALL docker containers, so for instance assuming two containers (there could and probably will be more than two in reality), a downloader (sabnzbdvpn) and a metadata downloader (sonarr), here are some scenarios:-
+**A4.** The location you set for downloads MUST be consistent for the metadata container(s) and the download container(s), so for instance assuming two containers (there could and probably will be more than two in reality), a downloader (sabnzbdvpn) and a metadata downloader (sonarr), here are some scenarios:-
 
 **BROKEN EXAMPLE 1.**</span>
 
