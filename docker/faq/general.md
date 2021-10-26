@@ -52,7 +52,7 @@ For example a volume mapping of /config /mnt/cache/appdata will create a folder 
 
 Drop to Terminal for the unRAID server (NOT the container) and issue the following command to upgrade runc:-
 ```
-curl -o '/usr/bin/runc' -L 'https://github.com/binhex/arch-packages/raw/master/static/x86-64/runc' && chmod +x '/usr/bin/runc'
+curl -o '/usr/bin/runc' -L 'https://github.com/binhex/arch-packages/raw/master/static/x86-64/runc/runc' && chmod +x '/usr/bin/runc'
 ```
 **Note** The above step will be necessary on subsequent restarts of the server (NOT the container).
 
