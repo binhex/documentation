@@ -26,7 +26,7 @@ Most VPN providers have a set of credentials that are used to authenticate with 
 
 -------
 ## **Configuration options**<br>
-So onto configuration of the container, the following is a description of each key and valid values:
+So onto configuration of the container, the following is a description of each env var key and values:
 
 **Key Name:** ```VPN_ENABLED```<br>
 **Description:** Fairly self explanatory, if you set this to 'yes' then a VPN tunnel connection will be attempted, set to no and you will run the application with no VPN protection.<br>
