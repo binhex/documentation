@@ -20,6 +20,7 @@ NOTE:- Please do **NOT** configure your home router for the incoming port, see Q
 
 **Record credentials from VPN provider**
 Most VPN providers have a set of credentials that are used to authenticate with OpenVPN and/or Wireguard, if your VPN provider embeds the authentication into the OpenVPN/Wireguard configuration file then leave ```VPN_USER``` and ```VPN_PASS``` credentials blank.
+
 -------
 **Configuring the container**
 So onto configuration of the container, the following is a description of each key and valid values:
