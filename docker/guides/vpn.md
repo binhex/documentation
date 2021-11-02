@@ -6,7 +6,7 @@
 The first task to do is to sign up to a VPN provider, not all providers are the same, things to want in a VPN provider:
 1. Privacy - Ensure the VPN provider does NOT log anything!, if they do then walk away.
 2. Permitted Traffic - Ensure the VPN provider does allow P2P traffic and doesn't block or throttle.
-3. Incoming Ports - Ensure the VPN provider does support the generation of a incoming port for your account, if they don't then speeds will be low due to restricted access to peers.
+3. Incoming Ports - Ensure the VPN provider does support the generation of a incoming port for your account (most don't permit this), if they don't then speeds will be low due to restricted access to peers.
 
 Recommendations are:
 - PIA (pre-configured for you, easiest approach)
