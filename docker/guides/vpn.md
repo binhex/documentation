@@ -40,7 +40,7 @@ So onto configuration of the container, the following is a description of each e
 **Description:** Same deal as the VPN_USER, this is the VPN provider supplied password, again this may not be necessary for certain providers due to auth via embedded cert in the ovpn file.<br>
 **Values:** ```<vpn password string>```
 
-**IMPORTANT** - usernames/passwords that contain characters which are NOT in the range (0-9, a-z, A-Z) MAY cause issues, check the /config/supervisord.log for this.
+**IMPORTANT** - usernames/passwords that contain characters which are NOT in the range (0-9, a-z, A-Z) MAY cause issues, check the ```/config/supervisord.log``` for this.
 
 **Key Name:** ```VPN_PROV```<br>
 **Description:** This is the VPN provider you're using, the reason i differentiate between providers is because i have built in support for port forwarding for provider PIA, thus its important to specify this correctly, if you aren't using VPN provider PIA then set it to either AirVPN or custom.<br>
