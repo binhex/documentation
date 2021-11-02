@@ -18,7 +18,10 @@ Once you have settled on a VPN provider that you like the look of then configure
 
 NOTE:- Please do **NOT** configure your home router for the incoming port, see Q15:- https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
 
-**Record credentials from VPN provider**
+**Placement of VPN client config**<br>
+So once you have the vpn client configuration file then you need to start and then stop the container - it will auto stop as there is no configuration present at that time, then copy a SINGLE OpenVPN config file (normally has extenion .ovpn) or Wireguard config file (normally has extension .wg0) to /config/openvpn/ as well as any bundled certificates.
+
+**Record credentials from VPN provider**<br>
 Most VPN providers have a set of credentials that are used to authenticate with OpenVPN and/or Wireguard, if your VPN provider embeds the authentication into the OpenVPN/Wireguard configuration file then leave ```VPN_USER``` and ```VPN_PASS``` credentials blank.
 
 -------
