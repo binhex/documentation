@@ -1,5 +1,7 @@
 # **VPN Setup Guide**
 
+## **Prerequisites**<br>
+
 **Sign up to VPN provider**<br>
 The first task to do is to sign up to a VPN provider, not all providers are the same, things to want in a VPN provider:
 1. Privacy - Ensure the VPN provider does NOT log anything!, if they do then walk away.
