@@ -18,7 +18,7 @@ Once you have settled on a VPN provider that you like the look of then configure
 
 **PIA users** - The URL to download the openvpn configuration files and certs is https://www.privateinternetaccess.com/openvpn/openvpn.zip
 
-NOTE:- Please do **NOT** configure your home router for the incoming port, see Q15:- https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+IMPORTANT: Please do **NOT** configure your home router for the incoming port, see Q15:- https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
 
 **Placement of VPN client config**<br>
 So once you have the vpn client configuration file then you need to start and then stop the container - it will auto stop as there is no configuration present at that time, then copy a SINGLE OpenVPN config file (normally has extenion .ovpn) or Wireguard config file (normally has extension .wg0) to ```/config/openvpn/``` or ```/config/wireguard/``` respectively, as well as any bundled certificates.
