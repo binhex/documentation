@@ -1,6 +1,6 @@
 # **VPN Setup Guide**
 
-**Sign up to VPN provider**
+**Sign up to VPN provider**<br>
 The first task to do is to sign up to a VPN provider, not all providers are the same, things to want in a VPN provider:
 1. Privacy - Ensure the VPN provider does NOT log anything!, if they do then walk away.
 2. Permitted Traffic - Ensure the VPN provider does allow P2P traffic and doesn't block or throttle.
@@ -25,7 +25,7 @@ So once you have the vpn client configuration file then you need to start and th
 Most VPN providers have a set of credentials that are used to authenticate with OpenVPN and/or Wireguard, if your VPN provider embeds the authentication into the OpenVPN/Wireguard configuration file then leave ```VPN_USER``` and ```VPN_PASS``` credentials blank.
 
 -------
-## **Configuring the container**<br>
+## **Configuration options**<br>
 So onto configuration of the container, the following is a description of each key and valid values:
 
 **Key Name:** ```VPN_ENABLED```<br>
