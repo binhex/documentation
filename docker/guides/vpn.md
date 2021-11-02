@@ -22,83 +22,83 @@ NOTE:- Please do **NOT** configure your home router for the incoming port, see Q
 Most VPN providers have a set of credentials that are used to authenticate with OpenVPN and/or Wireguard, if your VPN provider embeds the authentication into the OpenVPN/Wireguard configuration file then leave ```VPN_USER``` and ```VPN_PASS``` credentials blank.
 
 -------
-**Configuring the container**
+**Configuring the container**<br>
 So onto configuration of the container, the following is a description of each key and valid values:
 
-**Key Name:** ```VPN_ENABLED```
-**Description:** Fairly self explanatory, if you set this to 'yes' then a VPN tunnel connection will be attempted, set to no and you will run the application with no VPN protection.
+**Key Name:** ```VPN_ENABLED```<br>
+**Description:** Fairly self explanatory, if you set this to 'yes' then a VPN tunnel connection will be attempted, set to no and you will run the application with no VPN protection.<br>
 **Values:** ```yes|no```
 
-**Key Name:** ```VPN_USER```
-**Description:** This is the username as supplied by your VPN provider, it might be the website login, or it might be a separate username. In some cases it may also not be required, as some providers allow you to create a ovpn config file with your authentication supplied as a inline end user certificate (AirVPN for instance).
+**Key Name:** ```VPN_USER```<br>
+**Description:** This is the username as supplied by your VPN provider, it might be the website login, or it might be a separate username. In some cases it may also not be required, as some providers allow you to create a ovpn config file with your authentication supplied as a inline end user certificate (AirVPN for instance).<br>
 **Values:** ```<vpn username string>```
 
-**Key Name:** ```VPN_PASS```
-**Description:** Same deal as the VPN_USER, this is the VPN provider supplied password, again this may not be necessary for certain providers due to auth via embedded cert in the ovpn file.
+**Key Name:** ```VPN_PASS```<br>
+**Description:** Same deal as the VPN_USER, this is the VPN provider supplied password, again this may not be necessary for certain providers due to auth via embedded cert in the ovpn file.<br>
 **Values:** ```<vpn password string>```
 
 **IMPORTANT** - usernames/passwords that contain characters which are NOT in the range (0-9, a-z, A-Z) MAY cause issues, check the /config/supervisord.log for this.
 
-**Key Name:** ```VPN_PROV```
-**Description:** This is the VPN provider you're using, the reason i differentiate between providers is because i have built in support for port forwarding for provider PIA, thus its important to specify this correctly, if you aren't using VPN provider PIA then set it to either AirVPN or custom.
+**Key Name:** ```VPN_PROV```<br>
+**Description:** This is the VPN provider you're using, the reason i differentiate between providers is because i have built in support for port forwarding for provider PIA, thus its important to specify this correctly, if you aren't using VPN provider PIA then set it to either AirVPN or custom.<br>
 **Values:** ```pia|airvpn|custom```
 
-**Key Name:** ```VPN_CLIENT```
-**Description:**  This defines whether you want to connect to the VPN provider using either the OpenVPN client or the Wireguard client.
+**Key Name:** ```VPN_CLIENT```<br>
+**Description:**  This defines whether you want to connect to the VPN provider using either the OpenVPN client or the Wireguard client.<br>
 **Values:** ```openvpn|wireguard```
 
-**Key Name:** ```VPN_OPTIONS```
-**Description:** This allows you to define advanced OpenVPN options (Wireguard not supported), in most cases this is NOT required and can cause issues if misconfigured, please leave undefined unless you know what you are doing.
+**Key Name:** ```VPN_OPTIONS```<br>
+**Description:** This allows you to define advanced OpenVPN options (Wireguard not supported), in most cases this is NOT required and can cause issues if misconfigured, please leave undefined unless you know what you are doing.<br>
 **Values:** ```<openvpn options string>```
 
-**Key Name:** ```STRICT_PORT_FORWARD```
-**Description:**  **PIA users only** If this is set to yes then you will only be able to connect to endpoints that support port forwarding. If you set this to no then you will be able to connect to ANY PIA endpoint, irrespective of whether it supports port forwarding or not.
+**Key Name:** ```STRICT_PORT_FORWARD```<br>
+**Description:**  **PIA users only** If this is set to yes then you will only be able to connect to endpoints that support port forwarding. If you set this to no then you will be able to connect to ANY PIA endpoint, irrespective of whether it supports port forwarding or not.<br>
 **Values:** ```yes|no```
 
-**Key Name:** ```ENABLE_PRIVOXY```
-**Description:** Allows you to define whether you want to run Privoxy inside the container as well - for more details about Privoxy see Q3. https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+**Key Name:** ```ENABLE_PRIVOXY```<br>
+**Description:** Allows you to define whether you want to run Privoxy inside the container as well - for more details about Privoxy see Q3. https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md<br>
 **Values:** ```yes|no```
 
-**Key Name:** ```LAN_NETWORK```
-**Description:** This is used to define your home LAN network, do NOT confuse this with the IP address of your router or your server, the value for this key defines your network (CIDR format) NOT a single host - for help about how to configure this see Q4. https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+**Key Name:** ```LAN_NETWORK```<br>
+**Description:** This is used to define your home LAN network, do NOT confuse this with the IP address of your router or your server, the value for this key defines your network (CIDR format) NOT a single host - for help about how to configure this see Q4. https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md<br>
 **Values:** ```<comma separated list of cidr networks>```
 
-**Key Name:** ```NAME_SERVERS```
-**Description:** This allows you to define the name servers you want to use when the VPN tunnel is established, keep in mind you probably will NOT be able to use your ISP's name servers when the tunnel is running, as your IP address will then not be in your ISP's range and thus will normally be blocked, thus the recommendation to use an open DNS, the defaults are normally fine.
+**Key Name:** ```NAME_SERVERS```<br>
+**Description:** This allows you to define the name servers you want to use when the VPN tunnel is established, keep in mind you probably will NOT be able to use your ISP's name servers when the tunnel is running, as your IP address will then not be in your ISP's range and thus will normally be blocked, thus the recommendation to use an open DNS, the defaults are normally fine.<br>
 **Values:** ```<comma separated list of name servers>```
 
-**Key Name:** ```DELUGE_DAEMON_LOG_LEVEL```
-**Description:** Deluge daemon logging level.
+**Key Name:** ```DELUGE_DAEMON_LOG_LEVEL```<br>
+**Description:** Deluge daemon logging level.<br>
 **Values:** ```info|warning|error|none|debug|trace|garbage```
 
-**Key Name:** ```DELUGE_WEB_LOG_LEVEL```
-**Description:** Deluge web logging level.
+**Key Name:** ```DELUGE_WEB_LOG_LEVEL```<br>
+**Description:** Deluge web logging level.<br>
 **Values:** ```info|warning|error|none|debug|trace|garbage```
 
-**Key Name:** ```VPN_INPUT_PORTS```
-**Description:** This is used to define input ports for the network of the container, this allows you to access additional applications running in containers that share the VPN network. For example if you had DelugeVPN container running you could bind the network for Sonarr to the DelugeVPN container so that all traffic for Sonarr is then sent down the VPN tunnel encrypted. In order to then access the Sonarr Web UI you would need to define the Sonarr Web UI port using this key. See Q24 for more details https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+**Key Name:** ```VPN_INPUT_PORTS```<br>
+**Description:** This is used to define input ports for the network of the container, this allows you to access additional applications running in containers that share the VPN network. For example if you had DelugeVPN container running you could bind the network for Sonarr to the DelugeVPN container so that all traffic for Sonarr is then sent down the VPN tunnel encrypted. In order to then access the Sonarr Web UI you would need to define the Sonarr Web UI port using this key. See Q24 for more details https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md<br>
  **Values:** ```<comma separated list of input ports>```
 
 IMPORTANT: Please note 'VPN_INPUT_PORTS' is NOT to define the incoming port for the VPN, this environment variable is used to define port(s) you want to allow in to the VPN network when network binding multiple containers together, configuring this incorrectly with the VPN provider assigned incoming port COULD result in IP leakage, you have been warned!.
 
-**Key Name:** ```VPN_OUTPUT_PORTS```
-**Description:** This will then permit applications running in the VPN network to access applications on the LAN. An example of this requirement is when having Sonarr/Radarr/Lidarr routed through a VPN container and these apps requiring access to nzbget running on the LAN, in this case you would define VPN_OUTPUT_PORTS = 6789 (default port for nzbget), this would then allow the index app (Sonarr/Radarr/Lidarr) to connect to the download client (nzbget). See Q24 for more details https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+**Key Name:** ```VPN_OUTPUT_PORTS```<br>
+**Description:** This will then permit applications running in the VPN network to access applications on the LAN. An example of this requirement is when having Sonarr/Radarr/Lidarr routed through a VPN container and these apps requiring access to nzbget running on the LAN, in this case you would define VPN_OUTPUT_PORTS = 6789 (default port for nzbget), this would then allow the index app (Sonarr/Radarr/Lidarr) to connect to the download client (nzbget). See Q24 for more details https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md<br>
  **Values:** ```<comma separated list of output ports>```
 
-**Key Name:** ```DEBUG```
-**Description:** Set this to true to enable debug, extremely useful to debug issues when you can't connect to the VPN tunnel - For further help see https://github.com/binhex/documentation/blob/master/docker/faq/help.md
+**Key Name:** ```DEBUG```<br>
+**Description:** Set this to true to enable debug, extremely useful to debug issues when you can't connect to the VPN tunnel - For further help see https://github.com/binhex/documentation/blob/master/docker/faq/help.md<br>
 **Values:** ```true|false```
 
-**Key Name:** ```UMASK```
-**Description:** This sets the permissions for newly created files/folders, the default of ```000``` is normally fine.
+**Key Name:** ```UMASK```<br>
+**Description:** This sets the permissions for newly created files/folders, the default of ```000``` is normally fine.<br>
 **Values:** ```<3 digit numeric>```
 
-**Key Name:** ```PUID```
-**Description:** The user ID to run as, the default value of 99 is for user 'nobody' group 'users', if you want to run the container as another user then find out the UID by issuing the following command:- ```id <username you want to run as>```
+**Key Name:** ```PUID```<br>
+**Description:** The user ID to run as, the default value of 99 is for user 'nobody' group 'users', if you want to run the container as another user then find out the UID by issuing the following command:- ```id <username you want to run as>```<br>
 **Values:** ```<UID digit numeric>```
 
-**Key Name:** ```PGID```
-**Description:** TThe user ID and group ID to run as, the default value of 99 is for user 'nobody' group 'users', if you want to run the container as another user then find out the UID by issuing the following command:-  ```id <username you want to run as>```
+**Key Name:** ```PGID```<br>
+**Description:** TThe user ID and group ID to run as, the default value of 99 is for user 'nobody' group 'users', if you want to run the container as another user then find out the UID by issuing the following command:-  ```id <username you want to run as>```<br>
 **Values:** ```<GID digit numeric>```
 
 IMPORTANT: - If you do decide to change the PUID and/or PGID values and you have previously started the container then please ensure you delete the file ```/config/perms.txt``` to force a reset of permissions for the new user/group.
