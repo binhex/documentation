@@ -108,8 +108,6 @@ IMPORTANT: Please note 'VPN_INPUT_PORTS' is NOT to define the incoming port for 
 IMPORTANT: - If you do decide to change the PUID and/or PGID values and you have previously started the container then please ensure you delete the file ```/config/perms.txt``` to force a reset of permissions for the new user/group.
 
 -------
-And lastly please take a look at the extensive FAQ's i have written up:-<br>
-https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+And lastly please take a look at the extensive FAQ's i have written up: https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
 
-If you are still stuck then please do the following:-<br>
-https://github.com/binhex/documentation/blob/master/docker/faq/help.md
+If you are still stuck then please do the following: https://github.com/binhex/documentation/blob/master/docker/faq/help.md
