@@ -27,7 +27,7 @@ So once you have the vpn client configuration file then you need to start and th
 Most VPN providers have a set of credentials that are used to authenticate with OpenVPN and/or Wireguard, if your VPN provider embeds the authentication into the OpenVPN/Wireguard configuration file then leave ```VPN_USER``` and ```VPN_PASS``` credentials blank.
 
 ## **Configuration options**<br>
-So onto configuration of the container, the following is a description of each env var key and values:
+So onto configuration of the container, the following is a description of each env var key and value:
 
 **Key Name:** ```VPN_ENABLED```<br>
 **Description:** Fairly self explanatory, if you set this to 'yes' then a VPN tunnel connection will be attempted, set to no and you will run the application with no VPN protection.<br>
