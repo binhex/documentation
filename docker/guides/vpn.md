@@ -1,58 +1,107 @@
 # **VPN Setup Guide**
 
-Firstly in order to create a tunnel to your VPN provider you need to use their OpenVPN configuration file and certificates. These will typically be downloaded from your VPN providers website, and generally are zipped. 
+**Sign up to VPN provider**
+The first task to do is to sign up to a VPN provider, not all providers are the same, things to want in a VPN provider:
+1. Privacy - Ensure the VPN provider does NOT log anything!, if they do then walk away.
+2. Permitted Traffic - Ensure the VPN provider does allow P2P traffic and doesn't block or throttle.
+3. Incoming Ports - Ensure the VPN provider does support the generation of a incoming port for your account, if they don't then speeds will be low due to restricted access to peers.
+
+Recommendations are:
+- PIA (pre-configured for you, easiest approach)
+- Mullvad (great for privacy, highly recommended)
+- AirVPN (good solid VPN provider with incoming port support)
+
+**Download config and generate incoming port**
+Once you have settled on a VPN provider that you like the look of then configure an incoming port (not required for PIA users) and download the OpenVPNN and Wireguard configuration files, these are typically zipped as they contain multiple configuration files for the multiple servers that you can connect to.
 
 **PIA users** - The URL to download the openvpn configuration files and certs is https://www.privateinternetaccess.com/openvpn/openvpn.zip
 
-Once you have downloaded the zip (normally a zip as they contain multiple ovpn files) then extract it to somewhere locally, then start and stop the container, this creates the required /config/openvpn/ folder. If there are multiple ovpn files then please delete the ones you don't want to use (normally filename follows location of the endpoint) leaving just a single ovpn file and the referenced certificates (normally files with a crt and pem extension).
+NOTE:- Please do **NOT** configure your home router for the incoming port, see Q15:- https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
 
-You will now need to move onto configuration of the container...
+**Record credentials from VPN provider**
+Most VPN providers have a set of credentials that are used to authenticate with OpenVPN and/or Wireguard, if your VPN provider embeds the authentication into the OpenVPN/Wireguard configuration file then leave ```VPN_USER``` and ```VPN_PASS``` credentials blank.
 
-So all of the Docker images i have produced that include VPN functionality will NOT allow you to access the Web UI of the application until there is a working VPN tunnel. This protects the user from accidentally thinking they have a working tunnel and thus are anonymous, when in actual fact they aren't protected at all.
+**Configuring the container**
+So onto configuration of the container, the following is a description of each key and valid values:
 
-Whilst a lot of VPN providers are subtly different, i will try to give some examples for each setting exposed via Environment Variables (via 'docker run' or unRAID Web UI):-
+**Key Name:** ```VPN_ENABLED```
+**Description:** Fairly self explanatory, if you set this to 'yes' then a VPN tunnel connection will be attempted, set to no and you will run the application with no VPN protection.
+**Values:** ```yes|no```
 
-**VPN_ENABLED** - Fairly self explanatory, if you set this to 'yes' then a VPN tunnel connection will be attempted, set to no and you will run the application with no VPN protection.
+**Key Name:** ```VPN_USER```
+**Description:** This is the username as supplied by your VPN provider, it might be the website login, or it might be a separate username. In some cases it may also not be required, as some providers allow you to create a ovpn config file with your authentication supplied as a inline end user certificate (AirVPN for instance).
+**Values:** ```<vpn username string>```
 
-**VPN_USER** - This is the username as supplied by your VPN provider, it might be the website login, or it might be a separate username. In some cases it may also not be required, as some providers allow you to create a ovpn config file with your authentication supplied as a inline end user certificate (AirVPN for instance).
+**Key Name:** ```VPN_PASS```
+**Description:** Same deal as the VPN_USER, this is the VPN provider supplied password, again this may not be necessary for certain providers due to auth via embedded cert in the ovpn file.
+**Values:** ```<vpn password string>```
 
-**VPN_PASS** - Same deal as the VPN_USER, this is the VPN provider supplied password, again this may not be necessary for certain providers due to auth via embedded cert in the ovpn file.
+**IMPORTANT** - usernames/passwords that contain characters which are NOT in the range (0-9, a-z, A-Z) MAY cause issues, check the /config/supervisord.log for this.
 
-**IMPORTANT** - usernames/passwords that contain characters which are NOT in the range (0-9, a-z, A-Z) MAY cause issues, check the /config/supervisord.log for this
+**Key Name:** ```VPN_PROV```
+**Description:** This is the VPN provider you're using, the reason i differentiate between providers is because i have built in support for port forwarding for provider PIA, thus its important to specify this correctly, if you aren't using VPN provider PIA then set it to either AirVPN or custom.
+**Values:** ```pia|airvpn|custom```
 
-**VPN_PROV** - This is the VPN provider you're using, the reason i differentiate between providers is because i have built in support for port forwarding for provider PIA, thus its important to specify this correctly, if you aren't using VPN provider PIA then set it to either AirVPN or custom.
+**Key Name:** ```VPN_CLIENT```
+**Description:**  This defines whether you want to connect to the VPN provider using either the OpenVPN client or the Wireguard client.
+**Values:** ```openvpn|wireguard```
 
-**VPN_OPTIONS** - This allows you to define advanced OpenVPN options, in most cases this is NOT required unless you know what you're doing.
+**Key Name:** ```VPN_OPTIONS```
+**Description:** This allows you to define advanced OpenVPN options (Wireguard not supported), in most cases this is NOT required and can cause issues if misconfigured, please leave undefined unless you know what you are doing.
+**Values:** ```<openvpn options string>```
 
-**STRICT_PORT_FORWARD** - If this is set to yes then you will be enforcing port forwarding when connected to an VPN remote endpoint for provider PIA. Again i would like to stress this only takes effect for PIA users only, if you're using another provider then you will need to setup the port forward yourself (speeds will be VERY slow without a working incoming port).
+**Key Name:** ```STRICT_PORT_FORWARD```
+**Description:**  **PIA users only** If this is set to yes then you will only be able to connect to endpoints that support port forwarding. If you set this to no then you will be able to connect to ANY PIA endpoint, irrespective of whether it supports port forwarding or not.
+**Values:** ```yes|no```
 
-**ENABLE_PRIVOXY** - Allows you to define whether you want to run Privoxy inside the container as well - for more details about Privoxy see below Q3.
+**Key Name:** ```ENABLE_PRIVOXY```
+**Description:** Allows you to define whether you want to run Privoxy inside the container as well - for more details about Privoxy see Q3. https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+**Values:** ```yes|no```
 
-https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+**Key Name:** ```LAN_NETWORK```
+**Description:** This is used to define your home LAN network, do NOT confuse this with the IP address of your router or your server, the value for this key defines your network (CIDR format) NOT a single host - for help about how to configure this see Q4. https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+**Values:** ```<comma separated list of cidr networks>```
 
-**LAN_NETWORK** - This is used to define your home LAN network, do NOT confuse this with the IP address of your router or your server, the value for this key defines your network NOT a single host - for more details about how to configure this see below Q4.
+**Key Name:** ```NAME_SERVERS```
+**Description:** This allows you to define the name servers you want to use when the VPN tunnel is established, keep in mind you probably will NOT be able to use your ISP's name servers when the tunnel is running, as your IP address will then not be in your ISP's range and thus will normally be blocked, thus the recommendation to use an open DNS, the defaults are normally fine.
+**Values:** ```<comma separated list of name servers>```
 
-https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+**Key Name:** ```DELUGE_DAEMON_LOG_LEVEL```
+**Description:** Deluge daemon logging level.
+**Values:** ```info|warning|error|none|debug|trace|garbage```
 
-**NAME_SERVERS** - This allows you to define the name servers you want to use when the VPN tunnel is established, keep in mind you probably will NOT be able to use your ISP's name servers when the tunnel is running, as your IP address will then not be in your ISP's range and thus will normally be blocked, thus the recommendation to use an open DNS, the defaults are normally fine.
+**Key Name:** ```DELUGE_WEB_LOG_LEVEL```
+**Description:** Deluge web logging level.
+**Values:** ```info|warning|error|none|debug|trace|garbage```
 
-**DEBUG** - Set this to true to enable debug, extremely useful to debug issues when you can't connect to the VPN tunnel - for further help see below
+**Key Name:** ```VPN_INPUT_PORTS```
+**Description:** This is used to define input ports for the network of the container, this allows you to access additional applications running in containers that share the VPN network. For example if you had DelugeVPN container running you could bind the network for Sonarr to the DelugeVPN container so that all traffic for Sonarr is then sent down the VPN tunnel encrypted. In order to then access the Sonarr Web UI you would need to define the Sonarr Web UI port using this key. See Q24 for more details https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+ **Values:** ```<comma separated list of input ports>```
 
-https://github.com/binhex/documentation/blob/master/docker/faq/help.md
+IMPORTANT: Please note 'VPN_INPUT_PORTS' is NOT to define the incoming port for the VPN, this environment variable is used to define port(s) you want to allow in to the VPN network when network binding multiple containers together, configuring this incorrectly with the VPN provider assigned incoming port COULD result in IP leakage, you have been warned!.
 
-**UMASK** - This sets the permissions for newly created files/folders, the defaults are normally fine.
+**Key Name:** ```VPN_OUTPUT_PORTS```
+**Description:** This will then permit applications running in the VPN network to access applications on the LAN. An example of this requirement is when having Sonarr/Radarr/Lidarr routed through a VPN container and these apps requiring access to nzbget running on the LAN, in this case you would define VPN_OUTPUT_PORTS = 6789 (default port for nzbget), this would then allow the index app (Sonarr/Radarr/Lidarr) to connect to the download client (nzbget). See Q24 for more details https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+ **Values:** ```<comma separated list of output ports>```
 
-**PUID/PGID** - The user ID and group ID to run as, the default value of 99 is for user 'nobody' group 'users', if you want to run the container as another user then find out the UID by issuing the following command:-
+**Key Name:** ```DEBUG```
+**Description:** Set this to true to enable debug, extremely useful to debug issues when you can't connect to the VPN tunnel - For further help see https://github.com/binhex/documentation/blob/master/docker/faq/help.md
+**Values:** ```true|false```
 
-```id <username you want to run as>```
+**Key Name:** ```UMASK```
+**Description:** This sets the permissions for newly created files/folders, the default of ```000``` is normally fine.
+**Values:** ```<3 digit numeric>```
 
-Example command run on the docker host:-
+**Key Name:** ```PUID```
+**Description:** The user ID to run as, the default value of 99 is for user 'nobody' group 'users', if you want to run the container as another user then find out the UID by issuing the following command:- ```id <username you want to run as>```
+**Values:** ```<UID digit numeric>```
 
-```
-# id nobody
-# uid=99(nobody) gid=100(users) groups=100(users),98(nobody)
-```
+**Key Name:** ```PGID```
+**Description:** TThe user ID and group ID to run as, the default value of 99 is for user 'nobody' group 'users', if you want to run the container as another user then find out the UID by issuing the following command:-  ```id <username you want to run as>```
+**Values:** ```<GID digit numeric>```
 
-So you can see the UID is 99 and the GID is 100, so set PUID to be 99 and PGID to be 100.
+IMPORTANT: - If you do decide to change the PUID and/or PGID values and you have previously started the container then please ensure you delete the file ```/config/perms.txt``` to force a reset of permissions for the new user/group.
 
-**IMPORTANT** - If you do decide to change the PUID and PGID values and you have previously started the container then please ensure you delete the file ```/config/perms.txt``` to force a reset of permissions for the new user/group.
+And lastly please take a look at the extensive FAQ's i have written up, most of the time your issue can be resolved by looking through the FAQ:- https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
+
+-------
