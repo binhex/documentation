@@ -14,7 +14,7 @@ Recommendations are:
 - AirVPN (good solid VPN provider with incoming port support)
 
 **Download config and generate incoming port**<br>
-Once you have settled on a VPN provider that you like the look of then configure an incoming port (not required for PIA users) and download the OpenVPNN and Wireguard configuration files, these are typically zipped as they contain multiple configuration files for the multiple servers that you can connect to.
+Once you have settled on a VPN provider that you like the look of then configure an incoming port (not required for PIA users) and download the OpenVPN and/or Wireguard configuration files, these are typically zipped as they contain multiple configuration files for the multiple servers that you can connect to.
 
 **PIA users** - The URL to download the openvpn configuration files and certs is https://www.privateinternetaccess.com/openvpn/openvpn.zip
 
