@@ -11,7 +11,7 @@ Recommendations are:
 - Mullvad (great for privacy, highly recommended)
 - AirVPN (good solid VPN provider with incoming port support)
 
-**Download config and generate incoming port**
+**Download config and generate incoming port**<br>
 Once you have settled on a VPN provider that you like the look of then configure an incoming port (not required for PIA users) and download the OpenVPNN and Wireguard configuration files, these are typically zipped as they contain multiple configuration files for the multiple servers that you can connect to.
 
 **PIA users** - The URL to download the openvpn configuration files and certs is https://www.privateinternetaccess.com/openvpn/openvpn.zip
@@ -20,7 +20,7 @@ NOTE:- Please do **NOT** configure your home router for the incoming port, see Q
 
 **Record credentials from VPN provider**
 Most VPN providers have a set of credentials that are used to authenticate with OpenVPN and/or Wireguard, if your VPN provider embeds the authentication into the OpenVPN/Wireguard configuration file then leave ```VPN_USER``` and ```VPN_PASS``` credentials blank.
-
+-------
 **Configuring the container**
 So onto configuration of the container, the following is a description of each key and valid values:
 
