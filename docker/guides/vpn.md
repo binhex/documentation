@@ -110,5 +110,5 @@ IMPORTANT: - If you do decide to change the PUID and/or PGID values and you have
 -------
 And lastly please take a look at the extensive FAQ's i have written up, most of the time your issue can be resolved by looking through the FAQ:- https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md
 
-If you are still stuck then please do the following:-
+If you are still stuck then please do the following:-<br>
 https://github.com/binhex/documentation/blob/master/docker/faq/help.md
