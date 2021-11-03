@@ -80,7 +80,7 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-So armed with the IP Address and Subnet Mask, the easiest way to work out the correct values is to use a online calculator, go to:- http://www.subnet-calculator.com/cidr.php
+From the above you can see the IP address is ```192.168.1.10``` and the Subnet Mask (or netmask) is ```255.255.255.0```, so armed with the IP Address and Subnet Mask, the easiest way to work out the correct values is to use a online calculator, go to:- http://www.subnet-calculator.com/cidr.php
 
 1. Enter the host IP address into the 'IP Address' field, in this example '192.168.1.10'
 2. On the dropdown 'CIDR Netmask' select your subnet mask, in this example 255.255.255.0
