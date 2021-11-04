@@ -98,7 +98,7 @@ IMPORTANT: Please note 'VPN_INPUT_PORTS' is NOT to define the incoming port for 
 **Values:** ```<3 digit integer>```<br>
 
 **Key Name:** ```PUID```<br>
-**Description:** The user ID to run as, the default value of 99 is for user 'nobody', if you want to run the container as another user then find out the UID by issuing the following command:- ```id <username you want to run as>```<br>
+**Description:** The user ID to run as, the default value of 99 is for user 'nobody', if you want to run the container as another user then find out the UID by issuing the following command:- ```id <user you want to run as>```<br>
 **Values:** ```<UID integer>```<br>
 
 **Key Name:** ```PGID```<br>
