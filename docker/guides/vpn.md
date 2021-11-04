@@ -102,7 +102,7 @@ IMPORTANT: Please note 'VPN_INPUT_PORTS' is NOT to define the incoming port for 
 **Values:** ```<UID integer>```<br>
 
 **Key Name:** ```PGID```<br>
-**Description:** TThe group ID to run as, the default value of 100 is for group 'users', if you want to run the container as another group then find out the UID by issuing the following command:-  ```id <username you want to run as>```<br>
+**Description:** TThe group ID to run as, the default value of 100 is for group 'users', if you want to run the container as another group then find out the UID by issuing the following command:-  ```id <group you want to run as>```<br>
 **Values:** ```<GID integer>```<br>
 
 IMPORTANT: - If you do decide to change the PUID and/or PGID values and you have previously started the container then please ensure you delete the file ```/config/perms.txt``` to force a reset of permissions for the new user/group.
