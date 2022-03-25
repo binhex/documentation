@@ -87,6 +87,10 @@ From the above you can see the IP address is ```192.168.1.10``` and the Subnet M
 3. Copy the value from 'Net: CIDR Notation', which in this example would be 192.168.1.0/24
 4. Paste it into the value for env var 'LAN_NETWORK'
 
+If you need to be able to access the Web UI from multiple networks then please use a comma to separate values, e.g.:-
+```
+LAN_NETWORK=192.168.1.0/24,192.168.2.0/24
+```
 **Q5.** I've just updated and now the container won't start. If i look in the /config/supervisord.log file i see the message below, what does it mean and how do i fix it?.
 
 ```VERIFY ERROR: depth=0, error=CA signature digest algorithm too weak:```
