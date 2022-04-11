@@ -8,7 +8,7 @@
 
 To run the Rclone wizard open unRAID Web UI and go to Docker tab, then left click the Rclone icon and select 'Console'. Once at the console of the container please issue the following command to start the Rclone wizard:-
 
-```rclone config --config /config/rclone/config/config.conf```
+```rclone config --config /config/rclone/config/rclone.conf```
 
 Depending on the Cloud provider you want to use you will now follow different procedures, a few of the popular ones are linked below:-
 
