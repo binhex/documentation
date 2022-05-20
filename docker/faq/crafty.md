@@ -21,7 +21,7 @@
 ```
 <br/>
 
-**Latest Java (required by minecraft 1.17+)**<br/>
+**Java XX (latest) (required by minecraft 1.17+)**<br/>
 Due to the rolling nature of Arch Linux and the fact Java versions are changing quickly nowadays i cannot detail the exact path to use, you should be able to identify the latest version included in the image by going to the following link:- https://archlinux.org/packages/extra/x86_64/jdk-openjdk/<br/>
 
 Once you know the major version (e.g. ```18```) then simply replace ```XX``` with the version number to get the path to the latest Java included in the image.
