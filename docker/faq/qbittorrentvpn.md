@@ -16,3 +16,15 @@
 **Q3.** I am seeing fluctuating download and upload speeds with qBittorrent, what can i do to make the speeds more stable?.
 
 **A3.** One setting that does seem to make a difference is to change the 'Peer connection protocol' from 'TCP and uTP' to 'TCP', this setting can be found in qBittorrent web ui/Options/Connection tab/Peer Connection protocol.
+
+**Q4.** I need to run qBittorrent Web UI on a different port as port 8080 is conflicting with an existing container/service, i have changed the host side of the port but this does not seem to of worked and i cannot now access the qBittorrent Web UI, why is this and how can i fix it?.
+
+**A4.** qBittorrent has built in security measures (CSRF protection) to ensure that the port you are requesting from (host port) and the port qBittorrent is listening on (container port) are the same thing, however due to this running in a Docker container this may not always be the case, especially when you want to change the port as it conflicts with an existing application, which leads onto how to fix this issue:-
+
+1. Open unRAID Web UI/Docker left click qBittorrent and select `Edit`
+2. Go to `Container Variable: WEBUI_PORT` and click on `Edit` and set the `Value` to the port number you want to run the Web UI on and click `Save`
+3. Find `Container Port: 8080` and click on `Remove`
+4. Click on blue link `Add another Path, Port, Variable, Label or Device` and select `config type` of `port`
+5. Set the `Container Port:` and `Host Port:` to the same value as the `Container Variable: WEBUI_PORT` then click on `Add`
+6. Click on `Apply` at the bottom and wait for the container to be recreated.
+7. Attempt access to the qBittorrent Web UI using the new port.
