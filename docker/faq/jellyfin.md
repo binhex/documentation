@@ -6,17 +6,17 @@
 
 **nVidia GPU**
 
-1. Install the unRAID Plugin `Nvidia Driver` from CA (Community Applications) and reboot.
-1. Go to unRAID web ui/Docker tab/left click Jellyfin container and select `Edit`
-2. Click on the toggle for `ADVANCED VIEW`
-3. Go to `Extra Parameters:` and enter in a value of `--gpus all`
-4. Click on `Add another Path, Port, Variable, Label or Device` and select `Config Type` of `Variable`
-5. Set `Key:` to `NVIDIA_VISIBLE_DEVICES` and `Value:` to `all`
-6. Click on `Add`
-7. Click on `Add another Path, Port, Variable, Label or Device` and select `Config Type` of `Variable`
-8. Set `Key:` to `NVIDIA_DRIVER_CAPABILITIES` and `Value:` to `all`
-9. Click on `Add`
-10. Click on `Apply` to apply the change
+1. Install the unRAID Plugin `Nvidia Driver` from CA (Community Applications), please ensure the driver version you select is at least `470.57.02`.
+2. Go to unRAID web ui/Docker tab/left click Jellyfin container and select `Edit`
+3. Click on the toggle for `ADVANCED VIEW` (top right)
+4. Go to `Extra Parameters:` and enter in a value of `--gpus all`
+5. Click on `Add another Path, Port, Variable, Label or Device` and select `Config Type` of `Variable`
+6. Set `Key:` to `NVIDIA_VISIBLE_DEVICES` and `Value:` to `all`
+7. Click on `Add`
+8. Click on `Add another Path, Port, Variable, Label or Device` and select `Config Type` of `Variable`
+9. Set `Key:` to `NVIDIA_DRIVER_CAPABILITIES` and `Value:` to `all`
+10. Click on `Add`
+11. Click on `Apply` to apply the change
 
 Once you have done the above it's time to enable hardware transcoding in Jellyfin:-
 
