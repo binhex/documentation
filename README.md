@@ -80,6 +80,10 @@ https://github.com/binhex/documentation/blob/master/docker/faq/code-server.md
 Frequently asked questions regards Rclone specific configuration.
 https://github.com/binhex/documentation/blob/master/docker/faq/rclone.md
 
+##### Jellyfin Docker FAQ
+Frequently asked questions regards Jellyfin specific configuration.
+https://github.com/binhex/documentation/blob/master/docker/faq/jellyfin.md
+
 ##### unRAID Docker FAQ
 Frequently asked questions regards unRAID general Docker usage.
 https://github.com/binhex/documentation/blob/master/docker/faq/unraid.md
