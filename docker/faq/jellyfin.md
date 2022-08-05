@@ -11,7 +11,7 @@
 3. Click on the toggle for `ADVANCED VIEW` (top right)
 4. Go to `Extra Parameters:` and enter in a value of `--gpus all`
 5. Click on `Add another Path, Port, Variable, Label or Device` and select `Config Type` of `Variable`
-6. Set `Key:` to `NVIDIA_VISIBLE_DEVICES` and `Value:` to `all`
+6. Set `Key:` to `NVIDIA_VISIBLE_DEVICES` and `Value:` to `all`, or if you want to pass through a specific card then specify the GPU ID e.g. `GPU-02ac791e-6f42-b14f-3c14-8a4db2a01b8d` (can be found in the `Nvidia Driver` plugin - see step 1.)
 7. Click on `Add`
 8. Click on `Add another Path, Port, Variable, Label or Device` and select `Config Type` of `Variable`
 9. Set `Key:` to `NVIDIA_DRIVER_CAPABILITIES` and `Value:` to `all`
