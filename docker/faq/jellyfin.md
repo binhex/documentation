@@ -6,7 +6,7 @@
 
 **nVidia GPU**
 
-1. Install the unRAID Plugin `Nvidia Driver` from CA (Community Applications), please ensure the driver version you select is at least `470.57.02`.
+1. Install the unRAID Plugin `Nvidia Driver` from CA (Community Applications), please ensure the driver version you select is at **least** `470.57.02`.
 2. Go to unRAID web ui/Docker tab/left click Jellyfin container and select `Edit`
 3. Click on the toggle for `ADVANCED VIEW` (top right)
 4. Go to `Extra Parameters:` and enter in a value of `--gpus all`
