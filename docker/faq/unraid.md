@@ -21,7 +21,7 @@
 **sabnzbdvpn**
 
 Host path is set to:-
-```/mnt/cache/appdata/data/completed```
+```/mnt/user/data/completed```
 
 Container path is set to:-
 ```/data```
@@ -29,7 +29,7 @@ Container path is set to:-
 **sonarr**
 
 Host path is set to:-
-```/mnt/cache/appdata/data```
+```/mnt/user/data```
 
 Container path is set to:-
   ```/data```
@@ -41,7 +41,7 @@ Why is this broken? because although the container path (/data) is the same for 
 **sabnzbdvpn**
 
 Host path is set to:-
-```/mnt/cache/appdata/data/Completed```
+```/mnt/user/data/Completed```
 
 Container path is set to:-
 ```/data```
@@ -49,7 +49,7 @@ Container path is set to:-
 **sonarr**
 
 Host path is set to:-
-```/mnt/cache/appdata/data/completed```
+```/mnt/user/data/completed```
 
 Container path is set to:-
 ```/data```
@@ -61,7 +61,7 @@ Why is this broken? because although the container path (/data) is the same for 
 **sabnzbdvpn**
 
 Host path is set to:-
-```/mnt/cache/appdata/data/completed```
+```/mnt/user/data/completed```
 
 Container path is set to:-
 ```/data```
@@ -69,7 +69,7 @@ Container path is set to:-
 **sonarr**
 
 Host path is set to:-
-```/mnt/cache/appdata/data/completed```
+```/mnt/user/data/completed```
 
 Container path is set to:-
 ```/downloads```
@@ -81,7 +81,7 @@ Why is this broken? because although the host path is now ok, the container path
 **sabnzbdvpn**
 
 Host path is set to:-
-```/mnt/cache/appdata/data/completed``` 
+```/mnt/user/data/completed``` 
 
 Container path is set to:-
 ```/data```
@@ -89,19 +89,19 @@ Container path is set to:-
 **sonarr**
 
 Host path is set to:-
-```/mnt/cache/appdata/data/completed```
+```/mnt/user/data/completed```
 
 Container path is set to:-
 ```/data```
 
-Why is this working? because BOTH the container path (/data) and the host path (/mnt/cache/appdata/data/completed) EXACTLY match.
+Why is this working? because BOTH the container path (/data) and the host path (/mnt/user/data/completed) EXACTLY match.
 
 **WORKING EXAMPLE 2**</span>
 
 **sabnzbdvpn**
 
 Host path is set to:-
-```/mnt/cache/appdata/data/downloads``` 
+```/mnt/user/data/downloads``` 
 
 Container path is set to:-
 ```/data/downloads```
@@ -109,12 +109,12 @@ Container path is set to:-
 **sonarr**
 
 Host path is set to:-
-```/mnt/cache/appdata/data```
+```/mnt/user/data```
 
 Container path is set to:-
 ```/data```
 
-Why is this working? because the container paths (/data and /data/downloads) and the host paths (/mnt/cache/appdata/data/ and /mnt/cache/appdata/data/downloads) are consistent and aligned. `downloads` is within `/data` for sonarr and the `/data` part of the path is consistent (`/mnt/cache/appdata/data`) for the host across both mounts
+Why is this working? because the container paths (/data and /data/downloads) and the host paths (/mnt/user/data/ and /mnt/user/data/downloads) are consistent and aligned. `downloads` is within `/data` for sonarr and the `/data` part of the path is consistent (`/mnt/user/data`) for the host across both mounts
 
 **IMPORTANT** - Application configuration
 
@@ -152,7 +152,7 @@ from
 
 to (if you have a cache drive):-
 
-```/mnt/cache/appdata/<container name>```
+```/mnt/user/data/<container name>```
 
 or (if you do NOT have a cache drive):-
 
