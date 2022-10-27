@@ -76,7 +76,7 @@ Container path is set to:-
 
 Why is this broken? because although the host path is now ok, the container paths do NOT match.
 
-**WORKING EXAMPLE**</span>
+**WORKING EXAMPLE 1**</span>
 
 **sabnzbdvpn**
 
@@ -95,6 +95,26 @@ Container path is set to:-
 ```/data```
 
 Why is this working? because BOTH the container path (/data) and the host path (/mnt/cache/appdata/data/completed) EXACTLY match.
+
+**WORKING EXAMPLE 2**</span>
+
+**sabnzbdvpn**
+
+Host path is set to:-
+```/mnt/cache/appdata/data/downloads``` 
+
+Container path is set to:-
+```/data/downloads```
+
+**sonarr**
+
+Host path is set to:-
+```/mnt/cache/appdata/data```
+
+Container path is set to:-
+```/data```
+
+Why is this working? because the container paths (/data and /data/downloads) and the host paths (/mnt/cache/appdata/data/ and /mnt/cache/appdata/data/downloads) are consistent and aligned. `downloads` is within `/data` for sonarr and the `/data` part of the path is consistent (`/mnt/cache/appdata/data`) for the host across both mounts
 
 **IMPORTANT** - Application configuration
 
