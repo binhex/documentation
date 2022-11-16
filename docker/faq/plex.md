@@ -85,7 +85,7 @@ Open the log file with something like Notepad++/Atom/VSCode and search the log f
 **A5.** The cleanest and safest way of doing this is to restore from a backup, if you run the plugin 'CA Appdata Backup/Restore v2' then you can simply restore your metadata and this should get you up and running.
 
 If you don't have a backup then you can attempt a repair of the corrupt database using the following instructions:-
-https://support.plex.tv/articles/201100678-repair-a-corrupt-database/
+https://support.plex.tv/articles/repair-a-corrupted-database/
 
 If the repair database procedure does not work then you can attempt a roll back to a previous database backup by doing the following:-
 
