@@ -81,7 +81,7 @@ Why is this broken? because although the host path is now ok, the container path
 **sabnzbdvpn**
 
 Host path is set to:-
-```/mnt/cache/appdata/data/completed``` 
+```/mnt/cache/appdata/data/completed```
 
 Container path is set to:-
 ```/data```
@@ -159,4 +159,4 @@ The alternative to the above is to delete the existing template and re-download 
 
 **Note**:- Some variables allow you to define more than one value, this is generally done by use a comma to separate the ```Value:```, in the example above that would be something like ```1234,5678``` - if you are unsure whether the variable supports multiple values then please ask on the support thread on the forum.
 
-Still stuck?, take a look at the unRAID FAQ:- https://lime-technology.com/forums/topic/57181-real-docker-faq/
+Still stuck?, take a look at the unRAID FAQ:- https://forums.unraid.nets/topic/57181-real-docker-faq/
