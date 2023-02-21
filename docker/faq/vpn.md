@@ -328,11 +328,13 @@ Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 
 Once you have ruled out any potential Home LAN issues and if none of the above resolve the issue then you may have to switch VPN provider or even ISP to get around the blocking restriction.
 
-**Q18.** When i set my application (such as Sonarr, Radarr, etc) to use Privoxy and do a curl/wget from within the applications container i see that my IP address is my ISP's assigned IP address and NOT the expected VPN provider IP address for the endpoint im connected to, why is this, is the VPN not working correctly?.
+**Q18.** When i set my application (such as Sonarr, Radarr, web browser, etc) to use Privoxy and do a curl/wget from within the applications container, or on my PC running the web browser i see that my IP address is my ISP's assigned IP address and NOT the expected VPN provider IP address for the endpoint im connected to, why is this, is the VPN not working correctly?.
 
 **A18.** A proxy server works at a application level NOT a system level, therefore when using command line tools like curl or wget these applications would need to be configured to use the proxy in order to correctly route through and show the VPN provider allocated IP address.
 
-Whereas a VPN client works at the system level, thus all traffic is routed over the VPN tunnel, so using command line utilities such as curl or wget inside the VPN docker container (e.g. DelugeVPN, PrivoxyVPN, etc) WOULD correctly show the VPN allocated IP address.
+This is in contrast to a VPN client which works at the system level, thus all traffic is routed over the VPN tunnel, so using command line utilities such as curl or wget inside the VPN docker container (e.g. DelugeVPN, PrivoxyVPN, etc) WOULD correctly show the VPN allocated IP address.
+
+If you wish to verify that the application is correctly using the proxy server then point your application at Privoxy and then stop the PrivoxyVPN container, then from the application (such as Sonarr, Radarr, web browser, etc) you should start seeing connection errors when attempting to connect to index sites/web sites.
 
 **Q19.** I see that PIA has a new network called 'Next-Gen', does *VPN Docker Images that you produce support this, and if so how do i switch over to it?
 
