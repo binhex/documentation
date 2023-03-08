@@ -495,3 +495,7 @@ The 'Endpoint' line from the above example defines the endpoint you connect to, 
 **Q29.** I'm seeing the following warning in the /config/supervisord.log ```[warn] Unable to successfully download PIA json to generate token for wireguard from URL```, what does it mean and how can i fix it?.
 
 **A29.** This warning is telling you that the docker container is unable to connect to the PIA API in order to generate a valid token for Wireguard, this is normally due to issues with a particular PIA endpoint (VPN provider server), try connecting to another endpoint by changing the ```Endpoint = ``` entry in the wireguard config file located at ```/config/wireguard/wg0.conf``` - a full listing of PIA endpoints can normally be seen in the log file located at ```/config/supervisord.log```.
+
+**Q30.** I can view the applications Web UI from my home LAN, but whenever I connect to my home LAN using a VPN I can no longer view the application Web UI, i can view all other docker container Web UI's but not the **VPN ones,  why is this and how can i fix it?.
+
+**A30.** This is due to strict iptables rules, you need to add the VPN network to the ```LAN_NETWORK``` value using a comma as a separator, e.g. ```LAN_NETWORK=192.168.1.0/24,192.168.2.0/24```, if you are having difficulty calculating the CIDR mask (digits after the forward slash) or finding out the network then see Q4 above.
