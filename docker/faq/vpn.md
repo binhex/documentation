@@ -131,6 +131,8 @@ Note - Please ensure you remove any other existing lines that may clash with the
 
 * Consumer grade routers are notoriously underpowered with slow processors and very little RAM, this can result in low or fluctuating download/upload speeds. This is particular true when torrenting, as this causes a heavy burden on the router due to multiple (sometimes hundreds) connections from peers. The solution to this is either simply swap out the router with something more powerful (such a pfSense box) or reduce the number of connections, either globally or per torrent in the torrent client.
 
+* Realtek NIC's - If you have a Realtek NIC in your custom built router (e.g. pfsense) then this can cause intermittent yo-yo dl/ul speeds, or even cause a complete internet outage when torrenting. This is due to poor driver support my Realtek, the advise in this case is to replace the NIC with a Intel card.
+
 **Q7.** Since the update i can't now start the container when VPN_ENABLED is set to 'yes' and i see the following message in /config/supervisord.log
 
 "[crit] No OpenVPN config file located in /config/openvpn/ (ovpn extension), please download from your VPN provider and then restart this container, exiting..." what does this mean and how can i fix this?
