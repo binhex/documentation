@@ -440,13 +440,13 @@ for people using a Docker run command you would add the following lines:-
 1. Left click icon and 'Edit' container and toggle advanced view (top right).
 2. In 'Extra Parameters' enter ```--net=container:<vpn container name>```.
 3. Go to 'Network Type' and select 'none'.
-4. Remove all ports defined (no ports required as we will be accessing it via the vpn container).
+4. Write down the ports defined and then remove all ports (no ports required as we will be accessing it via the vpn container).
 5. Click on 'Apply'.
 
 **Container running VPN**
 1. Left click icon and 'Edit' container and toggle advanced view (top right).
 2. Click on 'Add another Path, Port, Variable, Label or Device' and add in a 'config type' of 'port'.
-3. Enter in the applications Web UI port for 'container port' and any non conflicting port number for 'Host Port' (host port must not be used by another container).
+3. Enter in the applications Web UI port for 'container port' from your list taken earlier in step 4. above and any non conflicting port number for 'Host Port' (host port must not be used by another container).
 4. Edit 'VPN_INPUT_PORTS' env var and put applications Web UI port number in the 'value', if multiple ports required then use a comma to separate.
 5. Click on 'Apply'.
 
