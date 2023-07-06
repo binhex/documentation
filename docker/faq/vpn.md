@@ -501,3 +501,13 @@ The 'Endpoint' line from the above example defines the endpoint you connect to, 
 **Q30.** I can view the applications Web UI from my home LAN, but whenever I connect to my home LAN using a VPN I can no longer view the application Web UI, i can view all other docker container Web UI's but not the **VPN ones,  why is this and how can i fix it?.
 
 **A30.** This is due to strict iptables rules, you need to add the VPN network to the ```LAN_NETWORK``` value using a comma as a separator, e.g. ```LAN_NETWORK=192.168.1.0/24,192.168.2.0/24```, if you are having difficulty calculating the CIDR mask (digits after the forward slash) or finding out the network then see Q4 above.
+
+**Q31.** I see that you have now added in specific support for VPN provider 'ProtonVPN' which will now result in automatic incoming port assignment, what do i have to do to make use of this new functionality when using one of the *VPN images?.
+
+**A31.** In order to get a successful incoming port from VPN provider 'ProtonVPN' you would need to do the following:-
+
+* Login with your registered ProtonVPN account at <https://account.protonvpn.com> and then go to the Downloads section.
+* If you want to use OpenVPN then download a OpenVPN configuration file from a endpoint with P2P enabled (denoted by two arrows going left and right). Place the OpenVPN configuration file in `/config/openvpn/` ensuring it has a file extension of `ovpn`, please also ensure there are NO other files with a `ovpn` extension in `/config/openvpn/`.
+* If you want to use Wireguard then toggle the option `NAT-PMP (Port Forwarding)` to on and then download a Wireguard configuration file from a endpoint with P2P enabled (denoted by two arrows going left and right). Place the Wireguard configuration file in `/config/wireguard/` with the filename `wg0.conf`.
+* Go to UNRAID Web UI and left click the VPN container and select `edit` then scroll down to `VPN_USER` and append the string `+pmp` to the end of the username, e.g. `zuqWGtyy7SMGQM8C+pmp`, also ensure you have set the `VPN_PROV` to `protonvpn`, then scroll to the bottom and click on apply.
+* Monitor log at `/config/supervisord.log` to ensure port is assigned and then check Web UI for application to verify the port has been set.
