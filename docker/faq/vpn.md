@@ -23,7 +23,7 @@ echo "# force iptable mangle module to load (required for *vpn dockers)" >> /boo
 echo "/sbin/modprobe iptable_mangle" >> /boot/config/go
 ```
 
-2. Reboot the host for the change to take effect
+1. Reboot the host for the change to take effect
 
 Note - If you want to apply the fix straight away issue the following:-
 
@@ -80,7 +80,7 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-From the above you can see the IP address is ```192.168.1.10``` and the Subnet Mask (or netmask) is ```255.255.255.0```, so armed with the IP Address and Subnet Mask, the easiest way to work out the correct values is to use a online calculator, go to:- http://www.subnet-calculator.com/cidr.php
+From the above you can see the IP address is ```192.168.1.10``` and the Subnet Mask (or netmask) is ```255.255.255.0```, so armed with the IP Address and Subnet Mask, the easiest way to work out the correct values is to use a online calculator, go to:- <http://www.subnet-calculator.com/cidr.php>
 
 1. Enter the host IP address into the 'IP Address' field, in this example '192.168.1.10'
 2. On the dropdown 'CIDR Netmask' select your subnet mask, in this example 255.255.255.0
@@ -139,7 +139,7 @@ Note - Please ensure you remove any other existing lines that may clash with the
 
 **A7.** Recently i have stpped baking in the OpenVPN configuration file and certs for PIA users (there are multiple reasons for this which i won't go into here), so in order to create a tunnel to your VPN provider you now need to download their OpenVPN configuration file and certificates. These will typically be downloaded from your VPN providers website, and generally are zipped.
 
-PIA users - The URL to download the openvpn configuration files and certs is https://www.privateinternetaccess.com/openvpn/openvpn.zip
+PIA users - The URL to download the openvpn configuration files and certs is <https://www.privateinternetaccess.com/openvpn/openvpn.zip>
 
 Once you have downloaded the zip (normally a zip as they contain multiple ovpn files) then extract it to /config/openvpn/ folder (if that folder doesn't exist then start and stop the docker container to force the creation). If there are multiple ovpn files then please delete the ones you don't want to use (normally filename follows location of the endpoint) leaving just a single ovpn file and the referenced certificates (normally files with a crt and pem extension).
 
@@ -147,7 +147,7 @@ Once you have downloaded the zip (normally a zip as they contain multiple ovpn f
 
 ```Linux ip -6 addr add failed: external program exited with error status: 2```
 
-**A8.** This is due to the VPN provider pushing an OpenVPN option to use IPv6 to the client (your end), due to the fact that unRAID 6.3.x or earlier doesn't support IPv6 you will then see the above error message. To prevent this we can filter out the pushed options by adding the following lines to your ovpn file (located in /config/openvpn/<your filename>.ovpn)
+**A8.** This is due to the VPN provider pushing an OpenVPN option to use IPv6 to the client (your end), due to the fact that unRAID 6.3.x or earlier doesn't support IPv6 you will then see the above error message. To prevent this we can filter out the pushed options by adding the following lines to your ovpn file (located in `/config/openvpn/<your filename>.ovpn`)
 
 ```
 pull-filter ignore "route-ipv6"
@@ -219,7 +219,7 @@ Note:- The above is ONLY true for PIA users, the env var 'STRICT_PORT_FORWARD' 
 
 **Method 1. (recommended)**
 Download the latest ovpn zip pack from PIA, link below:-
-https://www.privateinternetaccess.com/openvpn/openvpn.zip
+<https://www.privateinternetaccess.com/openvpn/openvpn.zip>
 
 Extract the zip to /config/openvpn/ and then delete all .ovpn files that you do NOT want to connect to, leaving the ovpn file you want to use and the required certificates, then restart the container for the change to take effect.
 
@@ -230,11 +230,13 @@ Look for the line that starts with 'remote' and modify this line to one of the p
 
 Example, switching from 'italy' to 'malta':-
 
-```
+```text
 remote italy.privacy.network 1198 udp
 ```
+
 to
-```
+
+```text
 remote malta.privacy.network 1198 udp
 ```
 
@@ -297,7 +299,7 @@ Where xx will be 2 random digits.
 
 **Q17.** I'm unable to connect to the web ui and i'm seeing the following repeated over and over in the /config/supervisord.log file, what does it mean and how can i fix it?
 
-```
+```text
 2020-02-04 07:21:26,213 DEBG 'start-script' stdout output:
 Tue Feb  4 07:21:26 2020 [UNDEF] Inactivity timeout (--ping-restart), restarting
 
@@ -343,7 +345,7 @@ If you wish to verify that the application is correctly using the proxy server t
 **A19.** Yes, it's now fully supported including port forwarding, if you want to switch from PIA's current network to the 'next-gen' network then please generate a new ovpn file using the following procedure:-
 
 1. Please make sure you have the latest Docker Image by issuing a docker pull.
-2. Download next-gen ovpn config file from the following link:- https://www.privateinternetaccess.com/openvpn/openvpn.zip
+2. Download next-gen ovpn config file from the following link:- <https://www.privateinternetaccess.com/openvpn/openvpn.zip>
 3. Extract the zip and copy **ONE** of the ovpn files and any other certs etc to /config/openvpn/, ensuring you either rename the extension or delete the old current-gen network ovpn file.
 4. Restart the container and monitor /config/supervisord.log file for any issues.
 
@@ -351,7 +353,7 @@ If you wish to verify that the application is correctly using the proxy server t
 
 **A20** Yes, all the Docker Images i produce do support multiple endpoints, this is achieved by editing the OpenVPN configuration file located in /config/openvpn/ and adding in additional 'remote' lines, an example is shown below:-
 
-```
+```text
 remote al.privacy.network 1198
 remote ad.privacy.network 1198
 remote austria.privacy.network 1198
@@ -386,7 +388,7 @@ If you're a 'custom or airvpn' VPN user (non PIA) then please follow this proced
 
 **Q22.** I see the following in the log /config/supervisord.log, what does it mean and how can i fix it?
 
-```
+```text
 OPTIONS ERROR: failed to negotiate cipher with server. Add the server's cipher ('BF-CBC') to --data-ciphers (currently 'AES-256-GCM:AES-128-GCM:AES-256-CBC') if you want to connect to this server.
 ```
 
@@ -394,14 +396,14 @@ OPTIONS ERROR: failed to negotiate cipher with server. Add the server's cipher (
 
 The fix for this is to specify a fallback cipher on the client side to a cipher that PIA does support, this is done by editing the file ```/config/openvpn/<file with a ovpn extension>``` and adding/replacing the following lines (use notepad++ **NOT** notepad):-
 
-```
+```text
 cipher aes-256-gcm
 ncp-disable
 ```
 
 Remove this line (if present):-
 
-```
+```text
 data-ciphers-fallback aes-256-gcm
 ```
 
@@ -409,7 +411,7 @@ Save and restart the container for the change to take effect.
 
 **Q23.** I see the following in the log /config/supervisord.log, what does it mean and how can i fix it?
 
-```
+```text
 RTNETLINK answers: Operation not permitted
 Unable to access interface: Operation not permitted
 [#] ip link delete dev wg0
@@ -421,13 +423,13 @@ Cannot find device "wg0"
 
 For unRAID users this can be done by toggling 'Privileged:' to 'on' for the container, and adding the following line to 'Extra Parameters:'
 
-```
+```text
 --sysctl="net.ipv4.conf.all.src_valid_mark=1"
 ```
 
 for people using a Docker run command you would add the following lines:-
 
-```
+```text
 --sysctl="net.ipv4.conf.all.src_valid_mark=1" \
 --privileged=true \
 ```
@@ -437,6 +439,7 @@ for people using a Docker run command you would add the following lines:-
 **A24.** In order to route an application(s) through an existing VPN container you would do the following steps:-
 
 **Container to route through VPN**
+
 1. Left click icon and 'Edit' container and toggle advanced view (top right).
 2. In 'Extra Parameters' enter ```--net=container:<vpn container name>```.
 3. Go to 'Network Type' and select 'none'.
@@ -444,6 +447,7 @@ for people using a Docker run command you would add the following lines:-
 5. Click on 'Apply'.
 
 **Container running VPN**
+
 1. Left click icon and 'Edit' container and toggle advanced view (top right).
 2. Click on 'Add another Path, Port, Variable, Label or Device' and add in a 'config type' of 'port'.
 3. Enter in the applications Web UI port for 'container port' from your list taken earlier in step 4. above and any non conflicting port number for 'Host Port' (host port must not be used by another container).
@@ -451,6 +455,7 @@ for people using a Docker run command you would add the following lines:-
 5. Click on 'Apply'.
 
 **Notes**
+
 1. Please keep in mind that when defining connections from an application to another application in the same VPN container network that **you will need to set the host to 'localhost' and NOT the LAN IP address**, this is because the applications are now bound to the same network and thus should communicate over 'localhost' and NOT the unRAID host IP address.
 
 2. The order of containers starting is now important, the VPN container **must start first** in order for the other container(s) to route through it, ordering can be changed in the unRAID Web UI by dragging the containers up and down, the unRAID Web UI shows the start order in descending order.
@@ -478,7 +483,8 @@ An example of this requirement is when having Sonarr/Radarr/Lidarr routed throug
 **Q28.** If i am using Wireguard how do i change the endpoint that i am connecting to?
 
 **A28.** Wireguard is configured via the file ```/config/wireguard/wg.conf```, this file is either programmatically generated for PIA users or is downloaded from the VPN providers website. This file contains the endpoint you connect to, which can either be a hostname or an IP address, example config file shown below:-
-```
+
+```text
 [Interface]
 Address = 10.1.2.3
 PrivateKey = DFGDFDF234234$$£$DSGDSFGDFG=
@@ -490,13 +496,14 @@ PublicKey = DFGDFDF234234$$£$DSGDSFGDFG=
 AllowedIPs = 0.0.0.0/0
 Endpoint = nl-amsterdam.privacy.network:1337
 ```
+
 The 'Endpoint' line from the above example defines the endpoint you connect to, this can be changed to the endpoint you want to connect to, for PIA users a list of endpoints that support port forwarding is shown in the log ```/config/supervisord.log```.
 
 **PIA users** - Please keep in mind not all endpoints support port forwarding, i would highly recommend sticking to port forward enabled endpoints only.
 
 **Q29.** I'm seeing the following warning in the /config/supervisord.log ```[warn] Unable to successfully download PIA json to generate token for wireguard from URL```, what does it mean and how can i fix it?.
 
-**A29.** This warning is telling you that the docker container is unable to connect to the PIA API in order to generate a valid token for Wireguard, this is normally due to issues with a particular PIA endpoint (VPN provider server), try connecting to another endpoint by changing the ```Endpoint = ``` entry in the wireguard config file located at ```/config/wireguard/wg0.conf``` - a full listing of PIA endpoints can normally be seen in the log file located at ```/config/supervisord.log```.
+**A29.** This warning is telling you that the docker container is unable to connect to the PIA API in order to generate a valid token for Wireguard, this is normally due to issues with a particular PIA endpoint (VPN provider server), try connecting to another endpoint by changing the ```Endpoint =``` entry in the wireguard config file located at ```/config/wireguard/wg0.conf``` - a full listing of PIA endpoints can normally be seen in the log file located at ```/config/supervisord.log```.
 
 **Q30.** I can view the applications Web UI from my home LAN, but whenever I connect to my home LAN using a VPN I can no longer view the application Web UI, i can view all other docker container Web UI's but not the **VPN ones,  why is this and how can i fix it?.
 
@@ -513,3 +520,7 @@ The 'Endpoint' line from the above example defines the endpoint you connect to, 
 * Monitor log at `/config/supervisord.log` to ensure port is assigned and then check Web UI for application to verify the port has been set.
 
 **Note** Due to UNRAID templates not automatically updating it will be necessary to add `protonvpn` to the list of VPN providers for env var `VPN_PROV` before you can select it, you can do this by editing the container and clicking `edit` for env var `VPN_PROV` and setting the `Default Value` to `pia|airvpn|custom|protonvpn` then click on `Save` and you then should be able to select `protonvpn` from the list.
+
+**Q32.** I can access the Web UI for the application when connected to my LAN, but when i connect to my LAN via a VPN connection i can no longer access the Web UI, why is this and how do i fix it?
+
+**A32.** Due to strict ip table rules unless you add the network range configured for your VPN server to LAN_NETWORK then you will be blocked from aceessing the Web UI (and proxy if enabled). To fix this you need to append the VPN network to LAN_NETWORK, if you are unsure how to identify the network then see Q4.
