@@ -523,4 +523,9 @@ The 'Endpoint' line from the above example defines the endpoint you connect to, 
 
 **Q32.** I can access the Web UI for the application when connected to my LAN, but when i connect to my LAN via a VPN connection i can no longer access the Web UI, why is this and how do i fix it?
 
-**A32.** Due to strict ip table rules unless you add the network range configured for your VPN server to LAN_NETWORK then you will be blocked from aceessing the Web UI (and proxy if enabled). To fix this you need to append the VPN network to LAN_NETWORK, if you are unsure how to identify the network then see Q4.
+**A32.** Due to strict ip table rules unless you add the network range configured for your VPN server to LAN_NETWORK then you will be blocked from aceessing the Web UI (and proxy if enabled). To fix this you need to append the VPN network to LAN_NETWORK using a commaa to separate values, if you are unsure how to identify the network range then see Q4.
+
+**Q33.** I have VLAN's defined on my network and for some reason i cannot access the Web UI of the application even though the `/config/supervisord.log` states the application has started, why is this and how do i fix it?
+
+**A33.** Due to strict ip table rules unless you add the network range configured for your VLAN to LAN_NETWORK then you will be blocked from aceessing the Web UI (and proxy if enabled). To fix this you need to append the VLAN network(s) to LAN_NETWORK using a commaa to separate values, if you are unsure how to identify the network range then see Q4.
+
