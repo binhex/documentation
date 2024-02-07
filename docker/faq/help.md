@@ -4,6 +4,8 @@ OK so you've read any relevant FAQ's from [here](https://github.com/binhex/docum
 
 ## UNRAID Users
 
+Please perform both sections below unless instructed otherwise:
+
 ### Gather Command execution
 
 1. Left click the container and select 'Edit', make any change to a value, then switch it back to what it was and click on 'Apply', then copy and paste the 'Command execution' shown to a file, ensuring to **remove all reference to username and password**.
