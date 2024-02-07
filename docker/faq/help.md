@@ -1,6 +1,6 @@
 # **Further Help**
 
-OK so you've read any relevant FAQ's from [here](https://github.com/binhex/documentation) and you're still stuck, in that case you will need to perform the following, remember without logs there is little chance of resolving your issue:-
+OK so you've read any relevant FAQ's from [here](https://github.com/binhex/documentation) and you're still stuck, in that case you will need to perform the following, please keep in mind without logs i have no detailed visibility of your configuration and thus little chance of identifying the issue.
 
 ## UNRAID Users
 
