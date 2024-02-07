@@ -516,16 +516,16 @@ The 'Endpoint' line from the above example defines the endpoint you connect to, 
 * Login with your registered ProtonVPN account at <https://account.protonvpn.com> and then go to the Downloads section.
 * If you want to use OpenVPN then download a OpenVPN configuration file from a endpoint with P2P enabled (denoted by two arrows going left and right). Place the OpenVPN configuration file in `/config/openvpn/` ensuring it has a file extension of `ovpn`, please also ensure there are NO other files with a `ovpn` extension in `/config/openvpn/`.
 * If you want to use Wireguard then toggle the option `NAT-PMP (Port Forwarding)` to on and then download a Wireguard configuration file from a endpoint with P2P enabled (denoted by two arrows going left and right). Place the Wireguard configuration file in `/config/wireguard/` with the filename `wg0.conf`.
-* Go to UNRAID Web UI and left click the VPN container and select `edit` then scroll down to `VPN_USER` and append the string `+pmp` to the end of the username, e.g. `zuqWGtyy7SMGQM8C+pmp`, also ensure you have set the `VPN_PROV` to `protonvpn` (if this doesn't exist then see Note below), then scroll to the bottom and click on apply.
+* Go to UNRAID Web UI and left click the VPN container and select `edit` then scroll down to `VPN_USER` and append the string `+pmp` to the end of the username, e.g. `zuqWGtyy7SMGQM8C+pmp`, also ensure you have set the `VPN_PROV` to `protonvpn` (if this doesn't exist then see Note below), then scroll to the bottom and click onply.
 * Monitor log at `/config/supervisord.log` to ensure port is assigned and then check Web UI for application to verify the port has been set.
 
 **Note** Due to UNRAID templates not automatically updating it will be necessary to add `protonvpn` to the list of VPN providers for env var `VPN_PROV` before you can select it, you can do this by editing the container and clicking `edit` for env var `VPN_PROV` and setting the `Default Value` to `pia|airvpn|custom|protonvpn` then click on `Save` and you then should be able to select `protonvpn` from the list.
 
 **Q32.** I can access the Web UI for the application when connected to my LAN, but when i connect to my LAN via a VPN connection i can no longer access the Web UI, why is this and how do i fix it?
 
-**A32.** Due to strict ip table rules unless you add the network range configured for your VPN server to LAN_NETWORK then you will be blocked from aceessing the Web UI (and proxy if enabled). To fix this you need to append the VPN network to LAN_NETWORK using a commaa to separate values, if you are unsure how to identify the network range then see Q4.
+**A32.** Due to strict ip table rules unless you add the network range configured for your VPN server to LAN_NETWORK then you will be blocked from aceessing the Web UI (and proxy if enabled). To fix this you need to append the VPN network to LAN_NETWORK using a comma to separate values, if you are unsure how to identify the network range then see Q4.
 
 **Q33.** I have VLAN's defined on my network and for some reason i cannot access the Web UI of the application even though the `/config/supervisord.log` states the application has started, why is this and how do i fix it?
 
-**A33.** Due to strict ip table rules unless you add the network range configured for your VLAN to LAN_NETWORK then you will be blocked from aceessing the Web UI (and proxy if enabled). To fix this you need to append the VLAN network(s) to LAN_NETWORK using a commaa to separate values, if you are unsure how to identify the network range then see Q4.
+**A33.** Due to strict ip table rules unless you add the network range configured for your VLAN to LAN_NETWORK then you will be blocked from aceessing the Web UI (and proxy if enabled). To fix this you need to append the VLAN network(s) to LAN_NETWORK using a comma to separate values, if you are unsure how to identify the network range then see Q4.
 
