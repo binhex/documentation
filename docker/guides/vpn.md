@@ -80,13 +80,13 @@ So onto configuration of the container, the following is a description of each e
 **Values:** ```info|warning|error|none|debug|trace|garbage```<br>
 
 **Key Name:** ```VPN_INPUT_PORTS```<br>
-**Description:** This is used to define input ports for the network of the container, this allows you to access additional applications running in containers that share the VPN network. For example if you had DelugeVPN container running you could bind the network for Sonarr to the DelugeVPN container so that all traffic for Sonarr is then sent down the VPN tunnel encrypted. In order to then access the Sonarr Web UI you would need to define the Sonarr Web UI port using this key. See Q24 for more details https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md<br>
+**Description:** This will permit access from the LAN to applications running in the VPN network. For example if you had DelugeVPN container running you could bind the network for Sonarr to the DelugeVPN container so that all traffic for Sonarr is then sent down the VPN tunnel encrypted. In order to then access the Sonarr Web UI from the LAN you would need to define the Sonarr Web UI port using this key. See Q24 for more details https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md<br>
  **Values:** ```<comma separated list of input ports>```<br>
 
-IMPORTANT: Please note 'VPN_INPUT_PORTS' is NOT to define the incoming port for the VPN, this environment variable is used to define port(s) you want to allow in to the VPN network when network binding multiple containers together, configuring this incorrectly with the VPN provider assigned incoming port COULD result in IP leakage, you have been warned!.
+IMPORTANT: Please note 'VPN_INPUT_PORTS' is **NOT** to define the incoming port for the VPN, this environment variable is used to define port(s) you want to allow in to the VPN network when network binding multiple containers together, configuring this incorrectly with the VPN provider assigned incoming port COULD result in IP leakage, you have been warned!.
 
 **Key Name:** ```VPN_OUTPUT_PORTS```<br>
-**Description:** This will then permit applications running in the VPN network to access applications on the LAN. An example of this requirement is when having Sonarr/Radarr/Lidarr routed through a VPN container and these apps requiring access to nzbget running on the LAN, in this case you would define VPN_OUTPUT_PORTS = 6789 (default port for nzbget), this would then allow the index app (Sonarr/Radarr/Lidarr) to connect to the download client (nzbget). See Q24 for more details https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md<br>
+**Description:** This will permit applications running in the VPN network to access applications on the LAN. An example of this requirement is when having Sonarr/Radarr/Lidarr routed through a VPN container and these apps requiring access to nzbget running on the LAN, in this case you would define VPN_OUTPUT_PORTS = 6789 (default port for nzbget), this would then allow the index app (Sonarr/Radarr/Lidarr) to connect to the download client (nzbget). See Q24 for more details https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md<br>
  **Values:** ```<comma separated list of output ports>```<br>
 
 **Key Name:** ```DEBUG```<br>
