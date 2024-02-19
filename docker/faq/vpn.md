@@ -528,3 +528,36 @@ The 'Endpoint' line from the above example defines the endpoint you connect to, 
 **Q33.** I have VLAN's defined on my network and for some reason I cannot access the Web UI of the application even though the `/config/supervisord.log` states the application has started, why is this and how do I fix it?
 
 **A33.** Due to strict ip table rules unless you add the network range configured for your VLAN to LAN_NETWORK then you will be blocked from aceessing the Web UI (and proxy if enabled). To fix this you need to append the VLAN network(s) to LAN_NETWORK using a comma to separate values, if you are unsure how to identify the network range then see Q4.
+
+**Q34.** I'm running this container on a Docker Swarm or connected to non-standard docker networks and can't access the Web UI of the application.
+
+**A34.** Due to strict ip table rules and container limitations in docker engine, you must set `ENABLE_STARTUP_SCRIPTS=yes` in your docker run or docker compose and place a custom script similar to the following in your `config/scripts` directory
+```
+#!/bin/bash
+
+# Use WEBUI_PORT environment variable for the table ID and table name
+TABLE_ID="${WEBUI_PORT}"
+TABLE_NAME="${WEBUI_PORT}_qbittorrent"
+echo "Configuring routing table $TABLE_NAME."
+
+# Ensure /etc/iproute2 directory and rt_tables file exist
+if [ ! -d /etc/iproute2 ]; then
+    mkdir -p /etc/iproute2
+fi
+
+if [ ! -f /etc/iproute2/rt_tables ]; then
+    touch /etc/iproute2/rt_tables
+fi
+
+# Check if the routing table already exists, add if it doesn't
+if ! grep -q "$TABLE_NAME" /etc/iproute2/rt_tables; then
+    echo "$TABLE_ID $TABLE_NAME" >> /etc/iproute2/rt_tables
+    echo "Added routing table $TABLE_NAME."
+fi
+
+# Add routing rules for qBittorrent
+ip route add 10.0.0.0/24 via 10.0.0.2 table $TABLE_NAME
+ip route add 10.0.1.0/24 via 10.0.1.1 table $TABLE_NAME
+echo "Routing rules configured for $TABLE_NAME."
+```
+See also [arch-qbittorrentvpn issue 203](https://github.com/binhex/arch-qbittorrentvpn/issues/203)
