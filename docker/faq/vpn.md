@@ -91,7 +91,7 @@ If you need to be able to access the Web UI from multiple networks then please u
 ```
 LAN_NETWORK=192.168.1.0/24,192.168.2.0/24
 ```
-**Q5.** I've just updated and now the container won't start. If i look in the /config/supervisord.log file i see the message below, what does it mean and how do i fix it?.
+**Q5.** I've just updated and now the container won't start. If I look in the /config/supervisord.log file I see the message below, what does it mean and how do I fix it?.
 
 ```VERIFY ERROR: depth=0, error=CA signature digest algorithm too weak:```
 
@@ -133,17 +133,17 @@ Note - Please ensure you remove any other existing lines that may clash with the
 
 * Realtek NIC's - If you have a Realtek NIC in your custom built router (e.g. pfsense) then this can cause intermittent yo-yo dl/ul speeds, or even cause a complete internet outage when torrenting. This is due to poor driver support my Realtek, the advise in this case is to replace the NIC with a Intel card.
 
-**Q7.** Since the update i can't now start the container when VPN_ENABLED is set to 'yes' and i see the following message in /config/supervisord.log
+**Q7.** Since the update I can't now start the container when VPN_ENABLED is set to 'yes' and I see the following message in /config/supervisord.log
 
-"[crit] No OpenVPN config file located in /config/openvpn/ (ovpn extension), please download from your VPN provider and then restart this container, exiting..." what does this mean and how can i fix this?
+"[crit] No OpenVPN config file located in /config/openvpn/ (ovpn extension), please download from your VPN provider and then restart this container, exiting..." what does this mean and how can I fix this?
 
-**A7.** Recently i have stpped baking in the OpenVPN configuration file and certs for PIA users (there are multiple reasons for this which i won't go into here), so in order to create a tunnel to your VPN provider you now need to download their OpenVPN configuration file and certificates. These will typically be downloaded from your VPN providers website, and generally are zipped.
+**A7.** Recently I have stpped baking in the OpenVPN configuration file and certs for PIA users (there are multiple reasons for this which I won't go into here), so in order to create a tunnel to your VPN provider you now need to download their OpenVPN configuration file and certificates. These will typically be downloaded from your VPN providers website, and generally are zipped.
 
 PIA users - The URL to download the openvpn configuration files and certs is <https://www.privateinternetaccess.com/openvpn/openvpn.zip>
 
 Once you have downloaded the zip (normally a zip as they contain multiple ovpn files) then extract it to /config/openvpn/ folder (if that folder doesn't exist then start and stop the docker container to force the creation). If there are multiple ovpn files then please delete the ones you don't want to use (normally filename follows location of the endpoint) leaving just a single ovpn file and the referenced certificates (normally files with a crt and pem extension).
 
-**Q8.** I'm unable to see the Web UI and i'm seeing the following in the /config/supervisord.log file, what does this mean and how can i fix this?
+**Q8.** I'm unable to see the Web UI and I'm seeing the following in the /config/supervisord.log file, what does this mean and how can I fix this?
 
 ```Linux ip -6 addr add failed: external program exited with error status: 2```
 
@@ -156,11 +156,11 @@ pull-filter ignore "ifconfig-ipv6"
 
 Save the file and restart the container for the change to take effect.
 
-**Q9.** How can i confirm that my incoming port is working when the VPN tunnel is established?
+**Q9.** How can I confirm that my incoming port is working when the VPN tunnel is established?
 
 **A9.** To do this you can use the website [you get signal](https://www.yougetsignal.com/tools/open-ports/) this allows you to put in your public IP address for your VPN connection (can be found in the /config/supervisord.log) and the incoming port that you have manually configured (or in the case of PIA auto configured) for the application. Once you have entered in these details hit the "check" button to confirm the port is open.
 
-**Q10.** I can't connect to the Web UI and i see the following repeated over and over in the logs, what does mean and how do i fix it?
+**Q10.** I can't connect to the Web UI and I see the following repeated over and over in the logs, what does mean and how do I fix it?
 
 ```
 2018-04-02 21:13:42,659 DEBG 'start-script' stdout output:
@@ -213,7 +213,7 @@ The alternative to this is to set env var 'STRICT_PORT_FORWARD' value to 'no', t
 
 Note:- The above is ONLY true for PIA users, the env var 'STRICT_PORT_FORWARD' does nothing for any other VPN providers.
 
-**Q11.** I see from Q10 that i need to change the PIA endpoint i connect to due to the endpoint im currently connected to be being disabled for port forwarding, so how do i do this?
+**Q11.** I see from Q10 that I need to change the PIA endpoint I connect to due to the endpoint im currently connected to be being disabled for port forwarding, so how do I do this?
 
 **A11.** There are two ways of switching the endpoint you connect to:-
 
@@ -242,7 +242,7 @@ remote malta.privacy.network 1198 udp
 
 Save the file and restart the container for the change to take effect.
 
-**Q12.** I have an application that does not seem to support the use of a proxy (privoxy), how do i configure the application to use Privoxy?
+**Q12.** I have an application that does not seem to support the use of a proxy (privoxy), how do I configure the application to use Privoxy?
 
 **A12.** You can configure ANY application to use Privoxy by adding in the following environment variable to the "Extra Parameters" field (please switch to "Advanced view" to view this) in the unRaid Web UI/Docker tab.
 
@@ -260,7 +260,7 @@ Where xx will be 2 random digits.
 
 **A14.** The Synology DS-1817+ can have performance issues when running dockers that include openvpn client, this can manifest itself as slow download/upload rates. There are two solutions to this problem, either reduce the load on the system by shutting down other containers/vm's or alternatively by running the vpn enabled docker container on a more powerful system.
 
-**Q15.** I have setup port forwarding on my router/firewall but still cannot seem to seed any torrents and my incoming port is showing as closed, how can i fix this?
+**Q15.** I have setup port forwarding on my router/firewall but still cannot seem to seed any torrents and my incoming port is showing as closed, how can I fix this?
 
 **A15.** A common misconception is that port forwarding for a torrent client when using a VPN connection is still done on the users router/firewall, this is NOT the case, port forwarding MUST be done on the VPN provider side only. In order to have a working incoming port you need to have all of the following in place:-
 
@@ -270,7 +270,7 @@ Where xx will be 2 random digits.
 
 * You have configured the application to use the assigned port - For PIA users this is done automatically for you, for other providers you will need to manually set the application to use the port assigned to you.
 
-**Q16.** I am seeing the following in the log file '/config/supervisord.log' and cannot access the web ui, what does it mean and how can i fix it?.
+**Q16.** I am seeing the following in the log file '/config/supervisord.log' and cannot access the web ui, what does it mean and how can I fix it?.
 
 ```AUTH: Received control message: AUTH_FAILED'```
 
@@ -297,7 +297,7 @@ Where xx will be 2 random digits.
 * **Cause:**  The vpn provider you have signed up with is having authentication issues<br/>
 **Solution:** try another endpoint, failing that contact the vpn provider and explain you are having authentication issues when using native openvpn/wireguard clients with AUTH_FAILED shown.
 
-**Q17.** I'm unable to connect to the web ui and i'm seeing the following repeated over and over in the /config/supervisord.log file, what does it mean and how can i fix it?
+**Q17.** I'm unable to connect to the web ui and I'm seeing the following repeated over and over in the /config/supervisord.log file, what does it mean and how can I fix it?
 
 ```text
 2020-02-04 07:21:26,213 DEBG 'start-script' stdout output:
@@ -332,7 +332,7 @@ Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 
 Once you have ruled out any potential Home LAN issues and if none of the above resolve the issue then you may have to switch VPN provider or even ISP to get around the blocking restriction.
 
-**Q18.** When i set my application (such as Sonarr, Radarr, web browser, etc) to use Privoxy and do a curl/wget from within the applications container, or on my PC running the web browser i see that my IP address is my ISP's assigned IP address and NOT the expected VPN provider IP address for the endpoint im connected to, why is this, is the VPN not working correctly?.
+**Q18.** When I set my application (such as Sonarr, Radarr, web browser, etc) to use Privoxy and do a curl/wget from within the applications container, or on my PC running the web browser I see that my IP address is my ISP's assigned IP address and NOT the expected VPN provider IP address for the endpoint im connected to, why is this, is the VPN not working correctly?.
 
 **A18.** A proxy server works at a application level NOT a system level, therefore when using command line tools like curl or wget these applications would need to be configured to use the proxy in order to correctly route through and show the VPN provider allocated IP address.
 
@@ -340,7 +340,7 @@ This is in contrast to a VPN client which works at the system level, thus all tr
 
 If you wish to verify that the application is correctly using the proxy server then point your application at Privoxy and then stop the PrivoxyVPN container, then from the application (such as Sonarr, Radarr, web browser, etc) you should start seeing connection errors when attempting to connect to index sites/web sites.
 
-**Q19.** I see that PIA has a new network called 'Next-Gen', does *VPN Docker Images that you produce support this, and if so how do i switch over to it?
+**Q19.** I see that PIA has a new network called 'Next-Gen', does *VPN Docker Images that you produce support this, and if so how do I switch over to it?
 
 **A19.** Yes, it's now fully supported including port forwarding, if you want to switch from PIA's current network to the 'next-gen' network then please generate a new ovpn file using the following procedure:-
 
@@ -351,7 +351,7 @@ If you wish to verify that the application is correctly using the proxy server t
 
 **Q20.** I would like to specify multiple endpoints to attempt to connect to in case one or more of them have transient issues, can your *VPN Docker images do this, and if so, how?
 
-**A20** Yes, all the Docker Images i produce do support multiple endpoints, this is achieved by editing the OpenVPN configuration file located in /config/openvpn/ and adding in additional 'remote' lines, an example is shown below:-
+**A20** Yes, all the Docker Images I produce do support multiple endpoints, this is achieved by editing the OpenVPN configuration file located in /config/openvpn/ and adding in additional 'remote' lines, an example is shown below:-
 
 ```text
 remote al.privacy.network 1198
@@ -366,7 +366,7 @@ The order shown above will be the order tried, if an endpoint fails to connect t
 
 **Note** Multiple OpenVPN configuration files is **NOT** supported, only multi remote lines as shown above.
 
-**Q21.** I now see that you support WireGuard, how do i switch from OpenVPN to WireGuard client?
+**Q21.** I now see that you support WireGuard, how do I switch from OpenVPN to WireGuard client?
 
 **A21.** Yes you are correct, all binhex VPN created images now support OpenVPN and WireGuard, for PIA and other VPN providers.
 
@@ -386,7 +386,7 @@ If you're a 'custom or airvpn' VPN user (non PIA) then please follow this proced
 4. Copy and paste in the WireGuard configuration file for your VPN provider to ```/config/wireguard/```
 5. Start the container and monitor the log ```/config/supervisord.log``` to ensure the connection is established.
 
-**Q22.** I see the following in the log /config/supervisord.log, what does it mean and how can i fix it?
+**Q22.** I see the following in the log /config/supervisord.log, what does it mean and how can I fix it?
 
 ```text
 OPTIONS ERROR: failed to negotiate cipher with server. Add the server's cipher ('BF-CBC') to --data-ciphers (currently 'AES-256-GCM:AES-128-GCM:AES-256-CBC') if you want to connect to this server.
@@ -409,7 +409,7 @@ data-ciphers-fallback aes-256-gcm
 
 Save and restart the container for the change to take effect.
 
-**Q23.** I see the following in the log /config/supervisord.log, what does it mean and how can i fix it?
+**Q23.** I see the following in the log /config/supervisord.log, what does it mean and how can I fix it?
 
 ```text
 RTNETLINK answers: Operation not permitted
@@ -434,7 +434,7 @@ for people using a Docker run command you would add the following lines:-
 --privileged=true \
 ```
 
-**Q24.** I would like to be able to route other docker containers through one of my existing VPN containers, how do i do this?
+**Q24.** I would like to be able to route other docker containers through one of my existing VPN containers, how do I do this?
 
 **A24.** In order to route an application(s) through an existing VPN container you would do the following steps:-
 
@@ -460,7 +460,7 @@ for people using a Docker run command you would add the following lines:-
 
 2. The order of containers starting is now important, the VPN container **must start first** in order for the other container(s) to route through it, ordering can be changed in the unRAID Web UI by dragging the containers up and down, the unRAID Web UI shows the start order in descending order.
 
-**Q25.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and can not view the Web UI for the application i am routing through the VPN container, why is this and how can i fix it?.
+**Q25.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and can not view the Web UI for the application I am routing through the VPN container, why is this and how can I fix it?.
 
 **A25.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for the application you want to access whilst routed through the VPN to the env var key 'VPN_INPUT_PORTS' with the ports being the value, if you have multiple ports then please separate the values with a comma, e.g. 'VPN_INPUT_PORTS' = 1234,5678
 
@@ -468,19 +468,19 @@ The other change you will need to do is when defining connections from an applic
 
 Please also review **A24.** above, and ensure you have completed ALL steps to route a container through another one correctly.
 
-**Q26.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and have setup Sonarr/Radarr/Lidarr...etc to use Privoxy (proxy server), but this is now no longer able to connect to the 'Download Client' (e.g. Deluge, rTorrent, qBittorrent, SABnzbd), why is this and how can i fix it?.
+**Q26.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and have setup Sonarr/Radarr/Lidarr...etc to use Privoxy (proxy server), but this is now no longer able to connect to the 'Download Client' (e.g. Deluge, rTorrent, qBittorrent, SABnzbd), why is this and how can I fix it?.
 
 **A26.** Due to iptables tightening you need to now bypass local addresses for proxy connection in index applications, for Sonarr/Radarr/Lidarr this can be achieved by editing the value for 'Ignored Addresses' under the Settings/General/Proxy and entering in the IP address of the unRAID server running the VPN container. This will then bypass using Privoxy (proxy server) for connections to the local server, and thus allow a direct connection to the download client.
 
 An alternative method to this is to setup Jackett, then configure Jackett to use Privoxy. You then simply point Sonarr/Radarr/Lidarr...etc at Jackett as an 'Indexer' and you are done, there is NO need to configure a proxy for Sonarr/Radarr/Lidarr...etc in this configuration, as Jackett is already doing the proxying for you.
 
-**Q27.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN which i route several containers through, and thanks to A25. i can now access the Web UI, however i cannot get applications routed through the VPN network to communicate with applications on the LAN, why is this and how can i fix it?
+**Q27.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN which I route several containers through, and thanks to A25. I can now access the Web UI, however I cannot get applications routed through the VPN network to communicate with applications on the LAN, why is this and how can I fix it?
 
 **A27.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for applications on the LAN to the env var key 'VPN_OUTPUT_PORTS', with the ports being the value, this will then permit applications running in the VPN network to access applications on the LAN, if you have multiple ports then please separate the values with a comma, e.g. 'VPN_OUTPUT_PORTS' = 1234,5678
 
 An example of this requirement is when having Sonarr/Radarr/Lidarr routed through a VPN container and these apps requiring access to nzbget running on the LAN, in this case you would define VPN_OUTPUT_PORTS = 6789 (default port for nzbget), this would then allow the index app (Sonarr/Radarr/Lidarr) to connect to the download client (nzbget).
 
-**Q28.** If i am using Wireguard how do i change the endpoint that i am connecting to?
+**Q28.** If I am using Wireguard how do I change the endpoint that I am connecting to?
 
 **A28.** Wireguard is configured via the file ```/config/wireguard/wg.conf```, this file is either programmatically generated for PIA users or is downloaded from the VPN providers website. This file contains the endpoint you connect to, which can either be a hostname or an IP address, example config file shown below:-
 
@@ -499,17 +499,17 @@ Endpoint = nl-amsterdam.privacy.network:1337
 
 The 'Endpoint' line from the above example defines the endpoint you connect to, this can be changed to the endpoint you want to connect to, for PIA users a list of endpoints that support port forwarding is shown in the log ```/config/supervisord.log```.
 
-**PIA users** - Please keep in mind not all endpoints support port forwarding, i would highly recommend sticking to port forward enabled endpoints only.
+**PIA users** - Please keep in mind not all endpoints support port forwarding, I would highly recommend sticking to port forward enabled endpoints only.
 
-**Q29.** I'm seeing the following warning in the /config/supervisord.log ```[warn] Unable to successfully download PIA json to generate token for wireguard from URL```, what does it mean and how can i fix it?.
+**Q29.** I'm seeing the following warning in the /config/supervisord.log ```[warn] Unable to successfully download PIA json to generate token for wireguard from URL```, what does it mean and how can I fix it?.
 
 **A29.** This warning is telling you that the docker container is unable to connect to the PIA API in order to generate a valid token for Wireguard, this is normally due to issues with a particular PIA endpoint (VPN provider server), try connecting to another endpoint by changing the ```Endpoint =``` entry in the wireguard config file located at ```/config/wireguard/wg0.conf``` - a full listing of PIA endpoints can normally be seen in the log file located at ```/config/supervisord.log```.
 
-**Q30.** I can view the applications Web UI from my home LAN, but whenever I connect to my home LAN using a VPN I can no longer view the application Web UI, i can view all other docker container Web UI's but not the **VPN ones,  why is this and how can i fix it?.
+**Q30.** I can view the applications Web UI from my home LAN, but whenever I connect to my home LAN using a VPN I can no longer view the application Web UI, I can view all other docker container Web UI's but not the **VPN ones,  why is this and how can I fix it?.
 
 **A30.** This is due to strict iptables rules, you need to add the VPN network to the ```LAN_NETWORK``` value using a comma as a separator, e.g. ```LAN_NETWORK=192.168.1.0/24,192.168.2.0/24```, if you are having difficulty calculating the CIDR mask (digits after the forward slash) or finding out the network then see Q4 above.
 
-**Q31.** I see that you have now added in specific support for VPN provider 'ProtonVPN' which will now result in automatic incoming port assignment, what do i have to do to make use of this new functionality when using one of the *VPN images?.
+**Q31.** I see that you have now added in specific support for VPN provider 'ProtonVPN' which will now result in automatic incoming port assignment, what do I have to do to make use of this new functionality when using one of the *VPN images?.
 
 **A31.** In order to get a successful incoming port from VPN provider 'ProtonVPN' you would need to do the following:-
 
@@ -521,11 +521,10 @@ The 'Endpoint' line from the above example defines the endpoint you connect to, 
 
 **Note** Due to UNRAID templates not automatically updating it will be necessary to add `protonvpn` to the list of VPN providers for env var `VPN_PROV` before you can select it, you can do this by editing the container and clicking `edit` for env var `VPN_PROV` and setting the `Default Value` to `pia|airvpn|custom|protonvpn` then click on `Save` and you then should be able to select `protonvpn` from the list.
 
-**Q32.** I can access the Web UI for the application when connected to my LAN, but when i connect to my LAN via a VPN connection i can no longer access the Web UI, why is this and how do i fix it?
+**Q32.** I can access the Web UI for the application when connected to my LAN, but when I connect to my LAN via a VPN connection I can no longer access the Web UI, why is this and how do I fix it?
 
 **A32.** Due to strict ip table rules unless you add the network range configured for your VPN server to LAN_NETWORK then you will be blocked from aceessing the Web UI (and proxy if enabled). To fix this you need to append the VPN network to LAN_NETWORK using a comma to separate values, if you are unsure how to identify the network range then see Q4.
 
-**Q33.** I have VLAN's defined on my network and for some reason i cannot access the Web UI of the application even though the `/config/supervisord.log` states the application has started, why is this and how do i fix it?
+**Q33.** I have VLAN's defined on my network and for some reason I cannot access the Web UI of the application even though the `/config/supervisord.log` states the application has started, why is this and how do I fix it?
 
 **A33.** Due to strict ip table rules unless you add the network range configured for your VLAN to LAN_NETWORK then you will be blocked from aceessing the Web UI (and proxy if enabled). To fix this you need to append the VLAN network(s) to LAN_NETWORK using a comma to separate values, if you are unsure how to identify the network range then see Q4.
-
