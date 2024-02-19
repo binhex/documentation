@@ -93,6 +93,10 @@ IMPORTANT: Please note 'VPN_INPUT_PORTS' is **NOT** to define the incoming port 
 **Description:** Set this to true to enable debug, extremely useful to debug issues when you can't connect to the VPN tunnel - For further help see https://github.com/binhex/documentation/blob/master/docker/faq/help.md<br>
 **Values:** ```true|false```<br>
 
+**Key Name:** ```ENABLE_STARTUP_SCRIPTS```<br>
+**Description:** Set this to yes to enable startup scripts to run from the /config/scripts directory.<br>
+**Values:** ```yes|no```<br>
+
 **Key Name:** ```UMASK```<br>
 **Description:** This sets the permissions for newly created files/folders, the default of ```000``` is normally fine.<br>
 **Values:** ```<3 digit integer>```<br>
