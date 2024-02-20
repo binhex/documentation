@@ -18,7 +18,7 @@ In order to force the loading of iptable_mangle you need to add the following to
 
 1. SSH into the unRAID host and issue the following commands:-
 
-```
+```bash
 echo "# force iptable mangle module to load (required for *vpn dockers)" >> /boot/config/go
 echo "/sbin/modprobe iptable_mangle" >> /boot/config/go
 ```
@@ -47,7 +47,7 @@ Note:- Privoxy is NOT intended to be used by the application running inside the 
 
 If you type "ipconfig /all" on Windows host on your LAN you will get something similar to this:-
 
-```
+```text
 Ethernet adapter Ethernet:
 
    Connection-specific DNS Suffix  . : home.gateway
@@ -70,7 +70,7 @@ Ethernet adapter Ethernet:
 
 or "ifconfig" on Linux/Mac:-
 
-```
+```text
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 192.168.1.10  netmask 255.255.255.0  broadcast 192.168.1.255
         ether 68:05:ca:0b:fe:25  txqueuelen 0  (Ethernet)
@@ -88,9 +88,11 @@ From the above you can see the IP address is ```192.168.1.10``` and the Subnet M
 4. Paste it into the value for env var 'LAN_NETWORK'
 
 If you need to be able to access the Web UI from multiple networks then please use a comma to separate values, e.g.:-
-```
+
+```bash
 LAN_NETWORK=192.168.1.0/24,192.168.2.0/24
 ```
+
 **Q5.** I've just updated and now the container won't start. If I look in the /config/supervisord.log file I see the message below, what does it mean and how do I fix it?.
 
 ```VERIFY ERROR: depth=0, error=CA signature digest algorithm too weak:```
@@ -110,12 +112,16 @@ PIA endpoints that support port forwarding (incoming port) can be seen in the lo
 * Upload rate set too high/unlimited - failure to correctly define your upload speed will mean your connection will be choked, resulting in low download speeds, the solution to this is to define your upload rate as about 3/4 of your theoretical maximum upload rate (keeping in mind this is defined in Bytes (big B) NOT bits (small b).
 
 * (VPN provider specific) Use GCM cipher instead of CBC - If the VPN provider you are using supports AES-128-GCM/AES-256-GCM (PIA does support this) then by switching to GCM you can improve security (stronger cipher), reduce CPU load and potentially improve dl/ul speeds when compared to using traditional ciphers such as CBC. To achieve this you simply edit the ovpn configuration file located in /config/openvpn/ and include the following lines, once saved restart the container:-
+
+```text
 cipher aes-128-gcm
 auth sh**A256
 ncp-disable
-Note - Please ensure you remove any other existing lines that may clash with the lines above, 
+```
 
-* (Deluge specific) Disable in/out utp - There have been reports of significant speed increases by disabling utp, this can be achieved by installing the Deluge plugin 'itconfig', once installed make sure to disabled both 'enable_incoming_utp' and 'enable_outgoing_utp', then restart the container. 
+**Note** - Please ensure you remove any other existing lines that may clash with the lines above.
+
+* (Deluge specific) Disable in/out utp - There have been reports of significant speed increases by disabling utp, this can be achieved by installing the Deluge plugin 'itconfig', once installed make sure to disabled both 'enable_incoming_utp' and 'enable_outgoing_utp', then restart the container.
 
 * (Deluge specific) Rate limit overhead enabled - If the option in the Deluge Web UI in the "Bandwidth" section labelled "Rate limit IP overhead" is ticked this can result in low speeds, please untick this option.
 
@@ -145,11 +151,13 @@ Once you have downloaded the zip (normally a zip as they contain multiple ovpn f
 
 **Q8.** I'm unable to see the Web UI and I'm seeing the following in the /config/supervisord.log file, what does this mean and how can I fix this?
 
-```Linux ip -6 addr add failed: external program exited with error status: 2```
+```text
+Linux ip -6 addr add failed: external program exited with error status: 2
+```
 
 **A8.** This is due to the VPN provider pushing an OpenVPN option to use IPv6 to the client (your end), due to the fact that unRAID 6.3.x or earlier doesn't support IPv6 you will then see the above error message. To prevent this we can filter out the pushed options by adding the following lines to your ovpn file (located in `/config/openvpn/<your filename>.ovpn`)
 
-```
+```text
 pull-filter ignore "route-ipv6"
 pull-filter ignore "ifconfig-ipv6"
 ```
@@ -162,7 +170,7 @@ Save the file and restart the container for the change to take effect.
 
 **Q10.** I can't connect to the Web UI and I see the following repeated over and over in the logs, what does mean and how do I fix it?
 
-```
+```text
 2018-04-02 21:13:42,659 DEBG 'start-script' stdout output:
 [warn] Response code 000 from curl != 2xx
 [warn] Exit code 7 from curl != 0
@@ -176,7 +184,7 @@ For a dynamically generated up to date list of port forward enabled endpoints fo
 
 The below is an example snippet from the log, please do **NOT** use this as the current list:-
 
-```
+```text
 2020-03-25 17:05:32,603 DEBG 'start-script' stdout output:
 [info] PIA endpoint 'austria.privacy.network' is in the list of endpoints that support port forwarding
 
@@ -532,7 +540,8 @@ The 'Endpoint' line from the above example defines the endpoint you connect to, 
 **Q34.** I'm running this container on a Docker Swarm or connected to non-standard docker networks and can't access the Web UI of the application.
 
 **A34.** Due to strict ip table rules and container limitations in docker engine, you must set `ENABLE_STARTUP_SCRIPTS=yes` in your docker run or docker compose and place a custom script similar to the following in your `config/scripts` directory
-```
+
+```bash
 #!/bin/bash
 
 # Use WEBUI_PORT environment variable for the table ID and table name
@@ -560,4 +569,5 @@ ip route add 10.0.0.0/24 via 10.0.0.2 table $TABLE_NAME
 ip route add 10.0.1.0/24 via 10.0.1.1 table $TABLE_NAME
 echo "Routing rules configured for $TABLE_NAME."
 ```
+
 See also [arch-qbittorrentvpn issue 203](https://github.com/binhex/arch-qbittorrentvpn/issues/203)
