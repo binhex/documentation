@@ -1,4 +1,4 @@
-# **VPN Setup Guide**
+# **VPN Setup Guide**]
 
 ## **Prerequisites**<br>
 
@@ -18,9 +18,9 @@ Recommendations are:
 **Download config and generate incoming port**<br>
 Once you have settled on a VPN provider that you like the look of then configure an incoming port (not required for PIA users) and download the OpenVPN and/or Wireguard configuration files, these are typically zipped as they contain multiple configuration files for the multiple servers that you can connect to.
 
-**PIA users** - The URL to download the openvpn configuration files and certs is (<https://www.privateinternetaccess.com/openvpn/openvpn.zip>)
+**PIA users** - The URL to download the openvpn configuration files and certs is <https://www.privateinternetaccess.com/openvpn/openvpn.zip>
 
-IMPORTANT: Please do **NOT** configure your home router for the incoming port, see Q15:- (<https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md>)
+IMPORTANT: Please do **NOT** configure your home router for the incoming port, see Q15:- <https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md>
 
 **Placement of VPN client config**<br>
 So once you have the vpn client configuration file then you need to start and then stop the container - it will auto stop as there is no configuration present at that time, then copy a SINGLE OpenVPN config file (normally has extenion .ovpn) or Wireguard config file (normally has extension .wg0) to ```/config/openvpn/``` or ```/config/wireguard/``` respectively, as well as any bundled certificates.
@@ -63,11 +63,11 @@ So onto configuration of the container, the following is a description of each e
 **Values:** ```yes|no```<br>
 
 **Key Name:** ```ENABLE_PRIVOXY```<br>
-**Description:** Allows you to define whether you want to run Privoxy inside the container as well - for more details about Privoxy see Q3. (<https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md>)<br>
+**Description:** Allows you to define whether you want to run Privoxy inside the container as well - for more details about Privoxy see Q3. <https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md><br>
 **Values:** ```yes|no```<br>
 
 **Key Name:** ```LAN_NETWORK```<br>
-**Description:** This is used to define your home LAN network, do NOT confuse this with the IP address of your router or your server, the value for this key defines your network (CIDR format) NOT a single host - for help about how to configure this see Q4. (<https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md>)<br>
+**Description:** This is used to define your home LAN network, do NOT confuse this with the IP address of your router or your server, the value for this key defines your network (CIDR format) NOT a single host - for help about how to configure this see Q4. <https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md><br>
 **Values:** ```<comma separated list of cidr networks>```<br>
 
 **Key Name:** ```NAME_SERVERS```<br>
@@ -83,17 +83,17 @@ So onto configuration of the container, the following is a description of each e
 **Values:** ```info|warning|error|none|debug|trace|garbage```<br>
 
 **Key Name:** ```VPN_INPUT_PORTS```<br>
-**Description:** This will permit access from the LAN to applications running in the VPN network. For example if you had DelugeVPN container running you could bind the network for Sonarr to the DelugeVPN container so that all traffic for Sonarr is then sent down the VPN tunnel encrypted. In order to then access the Sonarr Web UI from the LAN you would need to define the Sonarr Web UI port using this key. See Q24 for more details (<https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md>)<br>
+**Description:** This will permit access from the LAN to applications running in the VPN network. For example if you had DelugeVPN container running you could bind the network for Sonarr to the DelugeVPN container so that all traffic for Sonarr is then sent down the VPN tunnel encrypted. In order to then access the Sonarr Web UI from the LAN you would need to define the Sonarr Web UI port using this key. See Q24 for more details <https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md><br>
  **Values:** ```<comma separated list of input ports>```<br>
 
 IMPORTANT: Please note 'VPN_INPUT_PORTS' is **NOT** to define the incoming port for the VPN, this environment variable is used to define port(s) you want to allow in to the VPN network when network binding multiple containers together, configuring this incorrectly with the VPN provider assigned incoming port COULD result in IP leakage, you have been warned!.
 
 **Key Name:** ```VPN_OUTPUT_PORTS```<br>
-**Description:** This will permit applications running in the VPN network to access applications on the LAN. An example of this requirement is when having Sonarr/Radarr/Lidarr routed through a VPN container and these apps requiring access to nzbget running on the LAN, in this case you would define VPN_OUTPUT_PORTS = 6789 (default port for nzbget), this would then allow the index app (Sonarr/Radarr/Lidarr) to connect to the download client (nzbget). See Q24 for more details (<https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md>)<br>
+**Description:** This will permit applications running in the VPN network to access applications on the LAN. An example of this requirement is when having Sonarr/Radarr/Lidarr routed through a VPN container and these apps requiring access to nzbget running on the LAN, in this case you would define VPN_OUTPUT_PORTS = 6789 (default port for nzbget), this would then allow the index app (Sonarr/Radarr/Lidarr) to connect to the download client (nzbget). See Q24 for more details <https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md><br>
  **Values:** ```<comma separated list of output ports>```<br>
 
 **Key Name:** ```DEBUG```<br>
-**Description:** Set this to true to enable debug, extremely useful to debug issues when you can't connect to the VPN tunnel - For further help see (<https://github.com/binhex/documentation/blob/master/docker/faq/help.md>)<br>
+**Description:** Set this to true to enable debug, extremely useful to debug issues when you can't connect to the VPN tunnel - For further help see <https://github.com/binhex/documentation/blob/master/docker/faq/help.md><br>
 **Values:** ```true|false```<br>
 
 **Key Name:** ```ENABLE_STARTUP_SCRIPTS```<br>
@@ -116,7 +116,7 @@ IMPORTANT: - If you do decide to change the PUID and/or PGID values and you have
 
 -------
 And lastly please take a look at the extensive FAQ's i have written up:<br>
-(<https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md>)
+<https://github.com/binhex/documentation/blob/master/docker/faq/vpn.md>
 
 If you are still stuck then please do the following:<br>
-(<https://github.com/binhex/documentation/blob/master/docker/faq/help.md>)
+<https://github.com/binhex/documentation/blob/master/docker/faq/help.md>
