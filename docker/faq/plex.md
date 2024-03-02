@@ -82,13 +82,13 @@ Open the log file with something like Notepad++/Atom/VSCode and search the log f
 
 **Q5.** So i see from Q4 that i do have Plex daatabase corruption, how can i attempt to fix this?.
 
-**A5.** The cleanest and safest way of doing this is to restore from a backup, if you run the plugin 'CA Appdata Backup/Restore v2' then you can simply restore your metadata and this should get you up and running.
+**A5.** There are three methods for recovering from database corruption, these are listed below in preferred order:
 
-If you don't have a backup then you can attempt a repair of the corrupt database using the following instructions:-
-https://support.plex.tv/articles/repair-a-corrupted-database/
+1. Restore from backup using the UNRAID Plugin 'APPDATA.BACKUP' (recommended) - See support thread [here](https://forums.unraid.net/topic/137710-plugin-appdatabackup/)
+2. Attempt rollback to built in database backup - See 'Rollback database' below.
+3. Attempt database repair using the built in script - See 'Repair database' below.
 
-If the repair database procedure does not work then you can attempt a roll back to a previous database backup by doing the following:-
-
+**Rollbck databaase**
 1. Stop the Plex container.
 2. Rename the current database file ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db.orig```
 3. Rename the current database file ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db``` to ```/config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db.orig```
@@ -97,4 +97,17 @@ If the repair database procedure does not work then you can attempt a roll back 
 6. Start the Plex container and scrape any missing metadata.
 
 **Notes**<br/>
-The above procedure will cause some loss of metadata, as you will be rolling back to a point in time (typically 3 days prior) but it maybe necessary to go back further if the database corruption happens some time ago, so further metadata scraping maybe required for your library after the restore.
+The above procedures MAY cause loss of metadata (NOT media), as you will be rolling back to a point in time (typically 3 days prior) but it maybe necessary to go back further if the database corruption happens some time ago, so further metadata scraping maybe required for your library after the restore.
+
+**Repair database**
+1. Start the Plex container.
+2. Left click the icon in the UNRAID WebUI and select 'Console'.
+3. Type `/home/nobody/dbrepair.sh`
+4. Select option `Check integrity`, once this has completed exit the console and restart the container, if this still has not fixed it move onto the next step.
+5. Select option `Repair structure (basic repair)` once this has completed exit the console and restart the container, if this still has not fixed it move onto the next step.
+6. Select option `Rebuild indexes` once this has completed exit the console and restart the container, if this still has not fixed it move onto the next step.
+7. Select option `Low-level recovery` once this has completed exit the console and restart the container, if this still has not fixed it move onto the next step.
+8. If none of the steps above have fixed the database then the only course of action is to reconfigure Plex from scratch.
+
+**Notes**<br/>
+The above procedures MAY cause loss of metadata (NOT media) and other unforseen issues (configuration), repairing the database will result in deletion of the corrupt data so further metadata scraping and/or configuration maybe required after the repair.
