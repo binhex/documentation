@@ -8,7 +8,7 @@ An example of installing python v3.11.0 would be:-
 
 `pyenv install 3.11.0`
 
-If you want to install to a specific location then you can set this via env var `PYENV_ROOT` e.g. to install python 3.11.0 to '/tmp':-
+If you want to install to a specific location then you can set this via env var `PYENV_ROOT` e.g. to install python v3.11.0 to '/tmp':-
 
 ``` bash
 export PYENV_ROOT='/tmp'
