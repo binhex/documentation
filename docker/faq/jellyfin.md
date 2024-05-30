@@ -27,4 +27,8 @@ Once you have done the above it's time to enable hardware transcoding in Jellyfi
 5. Click `Save` at the bottom of the screen to enable.
 6. Test playback and monitor CPU usage
 
-**Note** To help debug further it is highly recommended to also install the unRAID Plugin `GPU Statistics`, this will then give you stats on your GPU and will enable you to easily see when the GPU is being used for transcoding.
+**Note** To help debug further it is highly recommended to also install the unRAID Plugin `GPU Statistics`, this will then give you stats on your GPU and will enable you to easily see when the GPU is being used for transcoding.**
+
+**Q2.** I am attempting to setup Jellyfin from scratch but I'm getting prompted for login credentials, what are the default credentials to login?
+
+**A2.** This is a bug in the Jellyfin Web UI, on initial startup it should be running the wizard to setup credentials for the admin account, if this is not happening and you are instead seeing the login prompt then you need to go to the following URL instead to force the use of the wizard which will walk you through the setup process:- `http://<ip of your host>:8096/web/index.html#!/wizardstart.html`
