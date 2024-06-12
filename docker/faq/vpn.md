@@ -468,6 +468,8 @@ for people using a Docker run command you would add the following lines:-
 
 2. The order of containers starting is now important, the VPN container **must start first** in order for the other container(s) to route through it, ordering can be changed in the unRAID Web UI by dragging the containers up and down, the unRAID Web UI shows the start order in descending order.
 
+3. Still can't access the Web UI of the application?, check Q4. this is a common trip up for most people.
+
 **Q25.** I have recently updated my Docker image for DelugeVPN/PrivoxyVPN/SABnzbdVPN/qBittorrentVPN and can not view the Web UI for the application I am routing through the VPN container, why is this and how can I fix it?.
 
 **A25.** Due to iptables tightening it is now a requirement that you add the Web UI/API ports for the application you want to access whilst routed through the VPN to the env var key 'VPN_INPUT_PORTS' with the ports being the value, if you have multiple ports then please separate the values with a comma, e.g. 'VPN_INPUT_PORTS' = 1234,5678
