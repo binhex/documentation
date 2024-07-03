@@ -573,3 +573,14 @@ echo "Routing rules configured for $TABLE_NAME."
 ```
 
 See also [arch-qbittorrentvpn issue 203](https://github.com/binhex/arch-qbittorrentvpn/issues/203)
+
+**Q35.** I am seeing the following in /config/supervisord.log after the latest update `Error: error sending query: Could not send or receive, because of network error`, why is this hapening and how can i fix it?
+
+**A35.** Due to more aggresive `iptables` blocking, name resolution is now strictly permitted only for the defined name servers via env var `NAME_SERVERS`, the above message is due to the defined name servers (port 53) being blocked, common reasons this may happen are as follows:-
+
+* Firewall/Router is blocking outbound port 53
+* PiHole (or similar) is blocking outbound port 53
+* Host is blocking outbound port 53
+* ISP is blocking outbound port 53
+
+**Note** Using local name servers is not permitted to prevent IP leakage and DNS failure will occur once the VPN tunnel is established.
