@@ -320,6 +320,9 @@ Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 * **Cause:** Out of date ovpn config file containing reference to retired VPN remote server(s).<br/>
 **Solution:** Download the latest ovpn config file from your VPN provider, place in /config/openvpn/ and restart container.
 
+* **Cause:**  Your subscription has run out<br/>
+**Solution:** double check this on the vpn providers website.
+
 * **Cause:**  VPN provider has a major outage.<br/>
 **Solution:** Contact VPN provider to confirm outage and wait for the outage to be resolved.
 
