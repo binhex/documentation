@@ -285,25 +285,25 @@ Where xx will be 2 random digits.
 **A16.** AUTH_FAILED means you are having issues authenticating with your VPN provider, there can be many causes for this, here are some of the common ones:-
 
 * **Cause:**  Your subscription has run out<br/>
-**Solution:** double check this on the vpn providers website.
+**Solution:** Double check this on the vpn providers website.
 
 * **Cause:**  You have not typed in your username (VPN_USER value) and/or password (VPN_PASS value) correctly<br/>
-**Solution:** do not copy and paste, type it in manually to prevent whitespace issues.
+**Solution:** Do not copy and paste, type it in manually to prevent whitespace issues.
 
 * **Cause:**  You are using the wrong credentials<br/>
 **Solution:** ensure the credentials are for openvpn/wireguard, NOT proxy servers etc. [**PIA users**] Do **NOT** use the generated PPTP/L2TP/Socks Username and Password, this is not the correct credentials, you need to specify the web login credentials (username will be of the format Pxxxxxx) for VPN_USER and VPN_PASS.
 
 * **Cause:**  Your password contains a character which may cause issues<br/>
-**Solution:** please ensure it only contains letters a-z (upper case or lower case) and numbers 0-9.
+**Solution:** Please ensure it only contains letters a-z (upper case or lower case) and numbers 0-9.
 
 * **Cause:**  Your password is too long<br/>
 **Solution:** Certain VPN providers (such as PIA) may limit the password length, please try shortening the password for your account. [**PIA users**] The maximum length for account passwords has changed with next-gen network, please ensure your password is 99 characters or less.
 
 * **Cause:**  Out of date openvpn config file (ovpn extension)<br/>
-**Solution:** ensure you download the latest ovpn file from your vpn provider.
+**Solution:** Ensure you download the latest ovpn file from your vpn provider.
 
 * **Cause:**  The vpn provider you have signed up with is having authentication issues<br/>
-**Solution:** try another endpoint, failing that contact the vpn provider and explain you are having authentication issues when using native openvpn/wireguard clients with AUTH_FAILED shown.
+**Solution:** Try another endpoint, failing that contact the vpn provider and explain you are having authentication issues when using native openvpn/wireguard clients with AUTH_FAILED shown.
 
 **Q17.** I'm unable to connect to the web ui and I'm seeing the following repeated over and over in the /config/supervisord.log file, what does it mean and how can I fix it?
 
@@ -321,7 +321,7 @@ Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 **Solution:** Download the latest ovpn config file from your VPN provider, place in /config/openvpn/ and restart container.
 
 * **Cause:**  Your subscription has run out<br/>
-**Solution:** double check this on the vpn providers website.
+**Solution:** Double check this on the vpn providers website.
 
 * **Cause:**  VPN provider has a major outage.<br/>
 **Solution:** Contact VPN provider to confirm outage and wait for the outage to be resolved.
