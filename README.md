@@ -103,6 +103,11 @@ https://github.com/binhex/documentation/blob/master/docker/faq/rclone.md
 Frequently asked questions regards Jellyfin specific configuration.
 https://github.com/binhex/documentation/blob/master/docker/faq/jellyfin.md
 
+##### bitmagnet Docker FAQ
+
+Frequently asked questions regards bitmagnet specific configuration.
+https://github.com/binhex/documentation/blob/master/docker/faq/bitmagnet.md
+
 ##### unRAID Docker FAQ
 
 Frequently asked questions regards unRAID general Docker usage.
