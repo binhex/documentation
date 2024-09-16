@@ -2,7 +2,7 @@
 
 **Q1.** I have set category 'xxx' to be deleted by defining it in the config.yml under section 'delete_content_types' but i still see the number of items going up, why is this?
 
-**A1.** iIf you 'Order By' 'Published' you will note that the 'Published' time will start to increase as new content is not added, the number of indexed items will increase but no further items will be displayed for the category.
+**A1.** If you 'Order By' 'Published' you will note that the 'Published' time will start to increase as new content is not added, the number of indexed items will increase but no further items will be displayed for the category.
 
 **Q2.** I have set category 'xxx' to be deleted by defining it in the config.yml under section 'delete_content_types' but the number of items indexed in the category 'xxx' is not going down, why is this?.
 
