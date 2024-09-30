@@ -2,6 +2,11 @@ $schema: "https://bitmagnet.io/schemas/classifier-0.1.json"
 
 # Example 1. Classifier configuration file demonstrating how to filter out content based on torrent filename and file content
 
+keywords:
+  banned:
+    - "*my-bad-word*"
+    - "*my-other-bad-word*"
+
 extensions:
   video_movie:
     - mkv
