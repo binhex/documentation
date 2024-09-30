@@ -1,0 +1,64 @@
+$schema: "https://bitmagnet.io/schemas/classifier-0.1.json"
+
+# Example 1. Classifier configuration file demonstrating how to filter out content based on torrent filename and file content
+
+extensions:
+  video_movie:
+    - mkv
+    - mp4
+    - avi
+    - mov
+    - wmv
+    - webm
+    - divx
+
+# extend the default workflow with a custom workflow:
+workflows:
+  custom:
+    # first run the default workflow:
+    - run_workflow: default
+    # filter specific content
+    - if_else:
+        condition: "result.contentType in [contentType.movie, contentType.tv_show, contentType.unknown]"
+        if_action:
+          find_match:
+            - if_else:
+                condition:
+                  or:
+                    # remove any magnet in content type movies, tv series or unknown that contains a torrent filename or basename that matches any of the defined banned keywords
+                    - "torrent.baseName.matches(keywords.banned)"
+                    - "([torrent.baseName] + torrent.files.map(f, f.basePath)).join(' ').matches(keywords.banned)"
+                if_action: delete
+    - if_else:
+        condition: "result.contentType in [contentType.movie, contentType.tv_show]"
+        if_action:
+          find_match:
+            - if_else:
+                condition:
+                  or:
+                    # remove any magnet in content type movies or tv series that matches the extensions video_movie and is 200 MB or larger and contains a torrent filename with 2 or more consecutive non ascii characters
+                    - "torrent.files.filter(f, f.extension in extensions.video_movie && f.size > 200*mb).map(f, f.basePath).join(' ').matches('.*[^\x00-\x7F]{2,}.*')"
+                if_action: delete
+                # if_action:
+                #   add_tag: foreign-video
+    - if_else:
+        condition: "result.contentType in [contentType.unknown]"
+        if_action:
+          find_match:
+            - if_else:
+                condition:
+                  or:
+                    # remove any magnet in content type unknown that contains a torrent filename with any non ascii characters
+                    - "([torrent.baseName] + torrent.files.map(f, f.basePath)).join(' ').matches('.*[^\x00-\x7F].*')"
+                if_action: delete
+                # if_action:
+                #   add_tag: foreign-unknown
+
+flags:
+  local_search_enabled: true
+  apis_enabled: true
+  tmdb_enabled: true
+  delete_xxx: true
+  # belts and braces, also delete content type xxx
+  delete_content_types:
+    - xxx
