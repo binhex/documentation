@@ -10,7 +10,7 @@
 
 **Q3.** I can see there is a newer version of the Docker application im running, can i update the application using the applications built-in update system?.
 
-**A3.** In place upgrades are not recommended when using Docker applications, instead wait for the developer to trigger a new build. Once the new image has been built, then open the unRAID webui and click on the "Docker" tab and then press the "Check for Updates" button, this should then change the "Version" for the Docker container to "update ready" then simply click on this and click the "Just do it!" button to begin the download of the newer image.
+**A3.** In place upgrades are not supported and could possibly break the Docker container, instead to check and apply any pending updates open the unRAID webui and click on the 'Docker' tab and then press the 'Check for Updates' button (bottom of the screen), this should then change the 'Version' for the Docker container to 'update ready' then simply click on 'Apply Update' and click the "Yes Update it!" button to begin the download of the newer image. If you wish to update all Docker images at the same time then press the 'Check for Updates' button, wait for it to finish and then click the 'Update All' button (bottom of the screen).
 
 **Q4.** Why can't my metadata application e.g. Sonarr/Radarr/Lidarr/SickRage/Medusa post process my downloads from download client e.g. NZBGet/SABnzbd/Deluge/qBittorrent/rTorrent, it seems be reporting that the file just downloaded cannot be found, what is going on here and how can i fix it?.
 
