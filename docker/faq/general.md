@@ -48,17 +48,42 @@ For example a volume mapping of /config /mnt/cache/appdata will create a folder 
 
 1. Update the version of Docker (**non unRAID users**) - This is by far the simplest way of upgrading runc, as the latest version is included in the latest Docker release, please refer to your distro documentation on how to update to the latest version of Docker.
 
-2. Update runc manually (**unRAID users**) - The steps are as follows:-
+1. Update runc manually (**unRAID users**) - The steps are as follows:-
 
 Drop to Terminal for the unRAID server (NOT the container) and issue the following command to upgrade runc:-
-```
+
+```bash
 curl -o '/usr/bin/runc' -L 'https://github.com/binhex/arch-packages/raw/master/static/x86-64/runc/runc' && chmod +x '/usr/bin/runc'
 ```
+
 **Note** The above step will be necessary on subsequent restarts of the server (NOT the container).
 
 This is a temporary stopgap whilst we wait for the next release of unRAID (6.9.2), which should include the latest version of Docker (i have contacted Limetech).
 
-3. Switch to privileged mode - This is a workaround if you do not want to update runc, but it does elevate permissions for the container and thus increases the potential for a security issue. unRAID users can do this by going to web ui/Docker tab/left click icon and select 'edit' then toggle the ```Privileged``` to ```on``` and click on Apply. For non unRAID users they simply supply the additional flag when creating the container ```--privileged=true```
+1. Switch to privileged mode - This is a workaround if you do not want to update runc, but it does elevate permissions for the container and thus increases the potential for a security issue. unRAID users can do this by going to web ui/Docker tab/left click icon and select 'edit' then toggle the ```Privileged``` to ```on``` and click on Apply. For non unRAID users they simply supply the additional flag when creating the container ```--privileged=true```
 
-4. Roll back to previous version - If none of the above options are sutiable then the only option left is to roll back to a previous version before the glibc update by using a specifc tagged image, see Q5. from the following link:- https://github.com/binhex/documentation/blob/master/docker/faq/unraid.md
+1. Roll back to previous version - If none of the above options are sutiable then the only option left is to roll back to a previous version before the glibc update by using a specifc tagged image, see Q5. from the following link:- [https://github.com/binhex/documentation/blob/master/docker/faq/unraid.md](https://github.com/binhex/documentation/blob/master/docker/faq/unraid.md)
 
+**Q11.** I want to use a particular version of an application, how can i do this using Docker containers?.
+
+**A11.** I have implemented sub version tagging for all images going forward (no retro version tags), this means if you are sensitive to version changes for any application you can now restrict this by specifying the version you want in a more exact manner. The tags generated are as follows:-
+
+```text
+<major version>
+<major version>.<minor version>
+<full version>
+'latest'
+```
+
+So for example a version of 'v1.45.0' would generate the following tags:-
+
+```text
+v1
+v1.45
+v1.45.0
+latest
+```
+
+So if you wanted to only use v1, then you could specify `<repo name>:v1` or if you wanted to use the current major-minor version then `<repo name>:v1.45`
+
+**Note** Do keep in mind sub version tags will only be generated for applications that comply to semver, that is 3 (or more) octets in the version, not all application developers do this.
