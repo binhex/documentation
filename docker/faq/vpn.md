@@ -2,148 +2,148 @@
 
 **Q1.** Do you implement a kill switch to prevent IP leakage when the VPN tunnel goes down?
 
-**A1.** No I do not implement a kill switch, what I do implement is better, let me explain...
+**A1.** No, I do not implement a kill switch; what I do implement is better. Let me explain...
 
-The VPN Docker images I produce use iptables (firewall) to prevent IP leakage at ALL times by using blocking rules, thus ensuring whatever state the VPN tunnel is in (up, down or otherwise) IP leakage cannot occur.
+The VPN Docker images I produce use iptables (firewall) to prevent IP leakage at ALL times by using blocking rules, thus ensuring that whatever state the VPN tunnel is in (up, down, or otherwise), IP leakage cannot occur.
 
-Kill switches on the other hand only block AFTER the VPN tunnel has gone down, thus potentially leaving a time gap between tunnel being down and the kill switch kicking in and blocking the connection, during this time window it is potentially possible for ip leakage to occur.
+Kill switches, on the other hand, only block AFTER the VPN tunnel has gone down, thus potentially leaving a time gap between the tunnel being down and the kill switch kicking in and blocking the connection. During this time window, it is potentially possible for IP leakage to occur.
 
-If the tunnel does happen to go down then openvpn will automatically reconnect, if the openvpn process dies (crashes) then the process will be automatically started thus ensuring at all times a constant connection and zero leakage.
+If the tunnel does happen to go down, then OpenVPN will automatically reconnect. If the OpenVPN process dies (crashes), then the process will be automatically started, thus ensuring at all times a constant connection and zero leakage.
 
-**Q2.** I can't seem to access the webui from outside my LAN, why is this?
+**Q2.** I can't seem to access the web UI from outside my LAN. Why is this?
 
-**A2.** The Docker VPN images use iptables in order to secure against ip leakage of your ISP assigned ip address, this requires all modules loading at the kernel level for iptables, including the iptable_mangle module. If the iptable_mangle module is not loaded/available on your hosts kernel then you will not be able to access the webui outside of your LAN. Until recently unRAID DID include iptable_mangle support by default, but the latest release (6.1.8 or later) has removed this.
+**A2.** The Docker VPN images use iptables in order to secure against IP leakage of your ISP-assigned IP address. This requires all modules loading at the kernel level for iptables, including the iptable_mangle module. If the iptable_mangle module is not loaded/available on your host's kernel, then you will not be able to access the web UI outside of your LAN. Until recently, Unraid DID include iptable_mangle support by default, but the latest release (6.1.8 or later) has removed this.
 
-In order to force the loading of iptable_mangle you need to add the following to your unRAID "go" file, this can be done by issuing the following:-
+In order to force the loading of iptable_mangle, you need to add the following to your Unraid "go" file. This can be done by issuing the following:
 
-1. SSH into the unRAID host and issue the following commands:-
+1. SSH into the Unraid host and issue the following commands:
 
 ```bash
 echo "# force iptable mangle module to load (required for *vpn dockers)" >> /boot/config/go
 echo "/sbin/modprobe iptable_mangle" >> /boot/config/go
 ```
 
-1. Reboot the host for the change to take effect
+2. Reboot the host for the change to take effect.
 
-Note - If you want to apply the fix straight away issue the following:-
+Note - If you want to apply the fix straight away, issue the following:
 
 ```/sbin/modprobe iptable_mangle```
 
 **Q3.** What is the purpose of Privoxy?
 
-**A3.** Privoxy is a non-caching web proxy with filtering capabilities for enhancing privacy, manipulating cookies and modifying web page data and HTTP headers before the page is rendered by the browser. In practise what this gives you by including it in the same container as the VPN tunnel is that you can bypass any filtering that maybe present by your ISP by simply configuring your browser to use the proxy server.
+**A3.** Privoxy is a non-caching web proxy with filtering capabilities for enhancing privacy, manipulating cookies, and modifying web page data and HTTP headers before the page is rendered by the browser. In practice, what this gives you by including it in the same container as the VPN tunnel is that you can bypass any filtering that may be present by your ISP by simply configuring your browser to use the proxy server.
 
-This is achieved by sending and receiving all data via the VPN tunnel, think of Privoxy as a middle man who will route traffic for you from your LAN over the VPN tunnel and back again.
+This is achieved by sending and receiving all data via the VPN tunnel. Think of Privoxy as a middleman who will route traffic for you from your LAN over the VPN tunnel and back again.
 
-The other uses as well as simple web browsing is certain applications can also be told to use the proxy when downloading metadata, such as nzb or torrent files from index sites (sickchill, medusa, sonarr, radarr etc all have proxy support), as some ISP's may block certain index sites, this is an extremely useful feature.
+The other uses, as well as simple web browsing, are certain applications can also be told to use the proxy when downloading metadata, such as NZB or torrent files from index sites (SickChill, Medusa, Sonarr, Radarr, etc. all have proxy support), as some ISPs may block certain index sites. This is an extremely useful feature.
 
-The other common use is bypassing Geo-blocking, again normally done through the browser, allowing you to potentially access sites as if you were coming from another country (useful for BBC iPlayer, Netflix etc).
+The other common use is bypassing geo-blocking, again normally done through the browser, allowing you to potentially access sites as if you were coming from another country (useful for BBC iPlayer, Netflix, etc.).
 
-Note:- Privoxy is NOT intended to be used by the application running inside the container (deluge, rutorrent, qbittorrent etc), this is not required and can cause slowdown and/or connection issues.
+Note: Privoxy is NOT intended to be used by the application running inside the container (Deluge, ruTorrent, qBittorrent, etc.); this is not required and can cause slowdown and/or connection issues.
 
-**Q4.** I'm struggling to configure LAN_NETWORK correctly, can you give some examples?
+**Q4.** I'm struggling to configure LAN_NETWORK correctly. Can you give some examples?
 
-**A4.** Sure!, a common misconception when defining this is to set the IP address to the value of your router or host (server), this is NOT correct. What you need to do is set the value to encapsulate all host IP addresses for your home network, NOT for a particular host on the network. Below is an examples of how to identify the correct IP address and CIDR notation (digit(s) after the /)
+**A4.** Sure! A common misconception when defining this is to set the IP address to the value of your router or host (server); this is NOT correct. What you need to do is set the value to encapsulate all host IP addresses for your home network, NOT for a particular host on the network. Below are examples of how to identify the correct IP address and CIDR notation (digit(s) after the /):
 
-If you type "ipconfig /all" on Windows host on your LAN you will get something similar to this:-
+If you type "ipconfig /all" on a Windows host on your LAN, you will get something similar to this:
 
 ```text
 Ethernet adapter Ethernet:
 
-   Connection-specific DNS Suffix  . : home.gateway
-   Description . . . . . . . . . . . : Red Hat VirtIO Ethernet Adapter
-   Physical Address. . . . . . . . . : 11-22-33-44-55-66
-   DHCP Enabled. . . . . . . . . . . : Yes
-   Autoconfiguration Enabled . . . . : Yes
-   Link-local IPv6 Address . . . . . : fe00::1111:2222:3333:4444%4(Preferred)
-   IPv4 Address. . . . . . . . . . . : 192.168.1.10(Preferred)
-   Subnet Mask . . . . . . . . . . . : 255.255.255.0
-   Lease Obtained. . . . . . . . . . : 17 February 2016 21:10:32
-   Lease Expires . . . . . . . . . . : 27 February 2016 11:10:13
-   Default Gateway . . . . . . . . . : 192.168.1.1
-   DHCP Server . . . . . . . . . . . : 192.168.1.1
-   DHCPv6 IAID . . . . . . . . . . . : 55727104
-   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-1D-4A-97-73-52-54-00-32-3F-43
-   DNS Servers . . . . . . . . . . . : 193.1.2.3
-   NetBIOS over Tcpip. . . . . . . . : Enabled
+  Connection-specific DNS Suffix  . : home.gateway
+  Description . . . . . . . . . . . : Red Hat VirtIO Ethernet Adapter
+  Physical Address. . . . . . . . . : 11-22-33-44-55-66
+  DHCP Enabled. . . . . . . . . . . : Yes
+  Autoconfiguration Enabled . . . . : Yes
+  Link-local IPv6 Address . . . . . : fe00::1111:2222:3333:4444%4(Preferred)
+  IPv4 Address. . . . . . . . . . . : 192.168.1.10(Preferred)
+  Subnet Mask . . . . . . . . . . . : 255.255.255.0
+  Lease Obtained. . . . . . . . . . : 17 February 2016 21:10:32
+  Lease Expires . . . . . . . . . . : 27 February 2016 11:10:13
+  Default Gateway . . . . . . . . . : 192.168.1.1
+  DHCP Server . . . . . . . . . . . : 192.168.1.1
+  DHCPv6 IAID . . . . . . . . . . . : 55727104
+  DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-1D-4A-97-73-52-54-00-32-3F-43
+  DNS Servers . . . . . . . . . . . : 193.1.2.3
+  NetBIOS over Tcpip. . . . . . . . : Enabled
 ```
 
-or "ifconfig" on Linux/Mac:-
+or "ifconfig" on Linux/Mac:
 
 ```text
-eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 192.168.1.10  netmask 255.255.255.0  broadcast 192.168.1.255
-        ether 68:05:ca:0b:fe:25  txqueuelen 0  (Ethernet)
-        RX packets 28203743  bytes 36171326044 (33.6 GiB)
-        RX errors 0  dropped 19925  overruns 0  frame 0
-        TX packets 26710466  bytes 165269242671 (153.9 GiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.1.10  netmask 255.255.255.0  broadcast 192.168.1.255
+        ether 68:05:ca:0b:fe:25  txqueuelen 0  (Ethernet)
+        RX packets 28203743  bytes 36171326044 (33.6 GiB)
+        RX errors 0  dropped 19925  overruns 0  frame 0
+        TX packets 26710466  bytes 165269242671 (153.9 GiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-From the above you can see the IP address is ```192.168.1.10``` and the Subnet Mask (or netmask) is ```255.255.255.0```, so armed with the IP Address and Subnet Mask, the easiest way to work out the correct values is to use a online calculator, go to:- <http://www.subnet-calculator.com/cidr.php>
+From the above you can see the IP address is ```192.168.1.10``` and the Subnet Mask (or netmask) is ```255.255.255.0```, so armed with the IP Address and Subnet Mask, the easiest way to work out the correct values is to use an online calculator, go to: <http://www.subnet-calculator.com/cidr.php>
 
-1. Enter the host IP address into the 'IP Address' field, in this example '192.168.1.10'
-2. On the dropdown 'CIDR Netmask' select your subnet mask, in this example 255.255.255.0
-3. Copy the value from 'Net: CIDR Notation', which in this example would be 192.168.1.0/24
-4. Paste it into the value for env var 'LAN_NETWORK'
+1. Enter the host IP address into the 'IP Address' field, in this example '192.168.1.10'.
+2. On the dropdown 'CIDR Netmask' select your subnet mask, in this example 255.255.255.0.
+3. Copy the value from 'Net: CIDR Notation', which in this example would be 192.168.1.0/24.
+4. Paste it into the value for env var 'LAN_NETWORK'.
 
-If you need to be able to access the Web UI from multiple networks then please use a comma to separate values, e.g.:-
+If you need to be able to access the Web UI from multiple networks, then please use a comma to separate values, e.g.:
 
 ```bash
 LAN_NETWORK=192.168.1.0/24,192.168.2.0/24
 ```
 
-**Q5.** I've just updated and now the container won't start. If I look in the /config/supervisord.log file I see the message below, what does it mean and how do I fix it?.
+**Q5.** I've just updated and now the container won't start. If I look in the /config/supervisord.log file I see the message below, what does it mean and how do I fix it?
 
 ```VERIFY ERROR: depth=0, error=CA signature digest algorithm too weak:```
 
-**A5.** The above message is informing you that the cipher used for the VPN providers certificate is too weak and thus susceptible to decryption by a third party. In order to fix this you need to contact your VPN provider and inform them that the certificate available is using a weak cipher and has been flagged as such by OpenSSL 1.1.x and kindly ask them to re-generate a new certificate with a stronger cipher.
+**A5.** The above message is informing you that the cipher used for the VPN provider's certificate is too weak and thus susceptible to decryption by a third party. In order to fix this, you need to contact your VPN provider and inform them that the certificate available is using a weak cipher and has been flagged as such by OpenSSL 1.1.x and kindly ask them to re-generate a new certificate with a stronger cipher.
 
-Keep in mind the purpose of a VPN is to provider secure, anonymous connectivity to the internet, using a weak cipher means you are potentially exposing the connection to snooping.
+Keep in mind the purpose of a VPN is to provide secure, anonymous connectivity to the internet. Using a weak cipher means you are potentially exposing the connection to snooping.
 
-**Q6.** My download/upload speeds are low when connected to the VPN tunnel, what could be the cause of this?.
+**Q6.** My download/upload speeds are low when connected to the VPN tunnel. What could be the cause of this?
 
-**A6.** There are multiple potential causes for low speeds, here is a list of the common ones:-
+**A6.** There are multiple potential causes for low speeds. Here is a list of the common ones:
 
-* Incoming port not defined correctly - This is the main cause of low speeds, if you want to maintain high upload/download rates then you MUST have a working incoming port. If you are using PIA as your VPN provider then this will be done for you automatically, as long as you are connected to a endpoint that supports port forwarding (see list below) AND STRICT_PORT_FORWARD is set to "yes". If you are using another VPN provider then you will need to find out if your VPN provider supports port forwarding and what mechanism they use to allocate the port, and finally configure the application to use the port.
+* Incoming port not defined correctly - This is the main cause of low speeds. If you want to maintain high upload/download rates, then you MUST have a working incoming port. If you are using PIA as your VPN provider, then this will be done for you automatically, as long as you are connected to an endpoint that supports port forwarding (see list below) AND STRICT_PORT_FORWARD is set to "yes". If you are using another VPN provider, then you will need to find out if your VPN provider supports port forwarding and what mechanism they use to allocate the port, and finally configure the application to use the port.
 
 PIA endpoints that support port forwarding (incoming port) can be seen in the log file ```/config/supervisord.log```
 
-* Upload rate set too high/unlimited - failure to correctly define your upload speed will mean your connection will be choked, resulting in low download speeds, the solution to this is to define your upload rate as about 3/4 of your theoretical maximum upload rate (keeping in mind this is defined in Bytes (big B) NOT bits (small b).
+* Upload rate set too high/unlimited - Failure to correctly define your upload speed will mean your connection will be choked, resulting in low download speeds. The solution to this is to define your upload rate as about 3/4 of your theoretical maximum upload rate (keeping in mind this is defined in Bytes (big B) NOT bits (small b)).
 
-* (VPN provider specific) Use GCM cipher instead of CBC - If the VPN provider you are using supports AES-128-GCM/AES-256-GCM (PIA does support this) then by switching to GCM you can improve security (stronger cipher), reduce CPU load and potentially improve dl/ul speeds when compared to using traditional ciphers such as CBC. To achieve this you simply edit the ovpn configuration file located in /config/openvpn/ and include the following lines, once saved restart the container:-
+* (VPN provider specific) Use GCM cipher instead of CBC - If the VPN provider you are using supports AES-128-GCM/AES-256-GCM (PIA does support this), then by switching to GCM you can improve security (stronger cipher), reduce CPU load, and potentially improve dl/ul speeds when compared to using traditional ciphers such as CBC. To achieve this, you simply edit the OVPN configuration file located in /config/openvpn/ and include the following lines. Once saved, restart the container:
 
 ```text
 cipher aes-128-gcm
-auth sh**A256
+auth sha256
 ncp-disable
 ```
 
 **Note** - Please ensure you remove any other existing lines that may clash with the lines above.
 
-* (Deluge specific) Disable in/out utp - There have been reports of significant speed increases by disabling utp, this can be achieved by installing the Deluge plugin 'itconfig', once installed make sure to disabled both 'enable_incoming_utp' and 'enable_outgoing_utp', then restart the container.
+* (Deluge specific) Disable in/out uTP - There have been reports of significant speed increases by disabling uTP. This can be achieved by installing the Deluge plugin 'itconfig'. Once installed, make sure to disable both 'enable_incoming_utp' and 'enable_outgoing_utp', then restart the container.
 
-* (Deluge specific) Rate limit overhead enabled - If the option in the Deluge Web UI in the "Bandwidth" section labelled "Rate limit IP overhead" is ticked this can result in low speeds, please untick this option.
+* (Deluge specific) Rate limit overhead enabled - If the option in the Deluge Web UI in the "Bandwidth" section labelled "Rate limit IP overhead" is ticked, this can result in low speeds. Please untick this option.
 
-* VPN endpoint has low bandwidth - Not all VPN endpoints are equal, some will have larger allocations of bandwidth than others, you will need to check with your VPN provider to identify which are the faster endpoints and connect to one of these.
+* VPN endpoint has low bandwidth - Not all VPN endpoints are equal; some will have larger allocations of bandwidth than others. You will need to check with your VPN provider to identify which are the faster endpoints and connect to one of these.
 
-* Highly fragmented disk - If your disk has a lot of fragmentation then speeds can be low due to the significantly reduced I/O that a fragmented disk can cause. This can be fixed by performing a disk defrag to optimise the disk.
+* Highly fragmented disk - If your disk has a lot of fragmentation, then speeds can be low due to the significantly reduced I/O that a fragmented disk can cause. This can be fixed by performing a disk defrag to optimize the disk.
 
-* Name Resolution not working - When specifying the NAME_SERVER value you must keep in mind that your ISP's Name Servers will most probably block name resolution for everything that doesn't have a source IP address owned by them, thus when the VPN tunnel is established Name Resolution will most likely fail if you're using your ISP's Name Servers (as your source IP will be different) and this will result in low speeds. The fix for this is to use Name Servers which permit usage from ANY source IP, such as Google or FreeDNS, both of which are set by default.
+* Name resolution not working - When specifying the NAME_SERVER value, you must keep in mind that your ISP's name servers will most probably block name resolution for everything that doesn't have a source IP address owned by them. Thus, when the VPN tunnel is established, name resolution will most likely fail if you're using your ISP's name servers (as your source IP will be different), and this will result in low speeds. The fix for this is to use name servers which permit usage from ANY source IP, such as Google or FreeDNS, both of which are set by default.
 
-* Writing incomplete/partial downloads directly to the unRAID array - unRAID writes to the array are normally slow, typically being in the range 20MB/s to 50MB/s depending on hardware. Due to this low write speed you may see issues when a torrent client attempts to write incomplete/partial downloads directly to the array, especially when multiple writes from different downloads are in progress. The fix is to write to a cache drive (preferably SSD) or use the 'Unassigned Devices' plugin to connect to a single drive (again preferably SSD)  - see below for details on this.
+* Writing incomplete/partial downloads directly to the Unraid array - Unraid writes to the array are normally slow, typically being in the range 20MB/s to 50MB/s depending on hardware. Due to this low write speed, you may see issues when a torrent client attempts to write incomplete/partial downloads directly to the array, especially when multiple writes from different downloads are in progress. The fix is to write to a cache drive (preferably SSD) or use the 'Unassigned Devices' plugin to connect to a single drive (again preferably SSD) - see below for details on this.
 
-* There have been reports from users that using a unRAID mirrored cache pool (has to be BTRFS currently) causes yo-yo download speeds and/or timeouts to the download daemon (seen with rTorrentVPN), there is currently no fix to this other than to break the mirror and use a single cache drive. The alternative method is to use the unRAID plugin 'unassigned devices' and mount an external drive and use this to store incomplete/completed downloads on. The other point to mention is that XFS seems to be a more efficient and stable filesystem in comparison to BTRFS (at this time), so if you do split your cache pool it maybe worth taking the opportunity to switch to XFS, as you will need to format in any case after the mirror split.
+* There have been reports from users that using an Unraid mirrored cache pool (has to be BTRFS currently) causes yo-yo download speeds and/or timeouts to the download daemon (seen with rTorrentVPN). There is currently no fix to this other than to break the mirror and use a single cache drive. The alternative method is to use the Unraid plugin 'Unassigned Devices' and mount an external drive and use this to store incomplete/completed downloads on. The other point to mention is that XFS seems to be a more efficient and stable filesystem in comparison to BTRFS (at this time), so if you do split your cache pool it may be worth taking the opportunity to switch to XFS, as you will need to format in any case after the mirror split.
 
-* Consumer grade routers are notoriously underpowered with slow processors and very little RAM, this can result in low or fluctuating download/upload speeds. This is particular true when torrenting, as this causes a heavy burden on the router due to multiple (sometimes hundreds) connections from peers. The solution to this is either simply swap out the router with something more powerful (such a pfSense box) or reduce the number of connections, either globally or per torrent in the torrent client.
+* Consumer grade routers are notoriously underpowered with slow processors and very little RAM. This can result in low or fluctuating download/upload speeds. This is particularly true when torrenting, as this causes a heavy burden on the router due to multiple (sometimes hundreds) of connections from peers. The solution to this is either simply swap out the router with something more powerful (such as a pfSense box) or reduce the number of connections, either globally or per torrent in the torrent client.
 
-* Realtek NIC's - If you have a Realtek NIC in your custom built router (e.g. pfsense) then this can cause intermittent yo-yo dl/ul speeds, or even cause a complete internet outage when torrenting. This is due to poor driver support my Realtek, the advise in this case is to replace the NIC with a Intel card.
+* Realtek NICs - If you have a Realtek NIC in your custom built router (e.g. pfSense), then this can cause intermittent yo-yo dl/ul speeds, or even cause a complete internet outage when torrenting. This is due to poor driver support by Realtek. The advice in this case is to replace the NIC with an Intel card.
 
 **Q7.** Since the update I can't now start the container when VPN_ENABLED is set to 'yes' and I see the following message in /config/supervisord.log
 
 "[crit] No OpenVPN config file located in /config/openvpn/ (ovpn extension), please download from your VPN provider and then restart this container, exiting..." what does this mean and how can I fix this?
 
-**A7.** Recently I have stpped baking in the OpenVPN configuration file and certs for PIA users (there are multiple reasons for this which I won't go into here), so in order to create a tunnel to your VPN provider you now need to download their OpenVPN configuration file and certificates. These will typically be downloaded from your VPN providers website, and generally are zipped.
+**A7.** Recently I have stopped baking in the OpenVPN configuration file and certs for PIA users (there are multiple reasons for this which I won't go into here), so in order to create a tunnel to your VPN provider you now need to download their OpenVPN configuration file and certificates. These will typically be downloaded from your VPN providers website, and generally are zipped.
 
 PIA users - The URL to download the openvpn configuration files and certs is <https://www.privateinternetaccess.com/openvpn/openvpn.zip>
 
@@ -155,7 +155,7 @@ Once you have downloaded the zip (normally a zip as they contain multiple ovpn f
 Linux ip -6 addr add failed: external program exited with error status: 2
 ```
 
-**A8.** This is due to the VPN provider pushing an OpenVPN option to use IPv6 to the client (your end), due to the fact that unRAID 6.3.x or earlier doesn't support IPv6 you will then see the above error message. To prevent this we can filter out the pushed options by adding the following lines to your ovpn file (located in `/config/openvpn/<your filename>.ovpn`)
+**A8.** This is due to the VPN provider pushing an OpenVPN option to use IPv6 to the client (your end). Due to the fact that unRAID 6.3.x or earlier doesn't support IPv6 you will then see the above error message. To prevent this we can filter out the pushed options by adding the following lines to your ovpn file (located in `/config/openvpn/<your filename>.ovpn`)
 
 ```text
 pull-filter ignore "route-ipv6"
@@ -221,22 +221,22 @@ The alternative to this is to set env var 'STRICT_PORT_FORWARD' value to 'no', t
 
 Note:- The above is ONLY true for PIA users, the env var 'STRICT_PORT_FORWARD' does nothing for any other VPN providers.
 
-**Q11.** I see from Q10 that I need to change the PIA endpoint I connect to due to the endpoint im currently connected to be being disabled for port forwarding, so how do I do this?
+**Q11.** I see from Q10 that I need to change the PIA endpoint I connect to due to the endpoint I'm currently connected to being disabled for port forwarding. So how do I do this?
 
-**A11.** There are two ways of switching the endpoint you connect to:-
+**A11.** There are two ways of switching the endpoint you connect to:
 
 **Method 1. (recommended)**
-Download the latest ovpn zip pack from PIA, link below:-
+Download the latest OVPN zip pack from PIA, link below:
 <https://www.privateinternetaccess.com/openvpn/openvpn.zip>
 
-Extract the zip to /config/openvpn/ and then delete all .ovpn files that you do NOT want to connect to, leaving the ovpn file you want to use and the required certificates, then restart the container for the change to take effect.
+Extract the zip to /config/openvpn/ and then delete all .ovpn files that you do NOT want to connect to, leaving the OVPN file you want to use and the required certificates, then restart the container for the change to take effect.
 
 **Method 2.**
-Download a text editor that honors line endings, such as notepad++ or atom, then open the file /config/openvpn/`<filename with a ovpn extension>`
+Download a text editor that honors line endings, such as Notepad++ or Atom, then open the file /config/openvpn/`<filename with an ovpn extension>`
 
 Look for the line that starts with 'remote' and modify this line to one of the port forward enabled endpoints shown in your log (see Q10 for details on how to find this).
 
-Example, switching from 'italy' to 'malta':-
+Example, switching from 'italy' to 'malta':
 
 ```text
 remote italy.privacy.network 1198 udp
@@ -250,13 +250,13 @@ remote malta.privacy.network 1198 udp
 
 Save the file and restart the container for the change to take effect.
 
-**Q12.** I have an application that does not seem to support the use of a proxy (privoxy), how do I configure the application to use Privoxy?
+**Q12.** I have an application that does not seem to support the use of a proxy (privoxy). How do I configure the application to use Privoxy?
 
 **A12.** You can configure ANY application to use Privoxy by adding in the following environment variable to the "Extra Parameters" field (please switch to "Advanced view" to view this) in the unRaid Web UI/Docker tab.
 
 ```-e RUN_OPTS="--ProxyConnection=<host ip addr>:<privoxy host port number>"```
 
-**Q13.** I can see from the '/config/supervisord.log' file that the openvpn process keeps getting killed every 30 seconds on my QNAP appliance, what could be the cause of this?
+**Q13.** I can see from the '/config/supervisord.log' file that the openvpn process keeps getting killed every 30 seconds on my QNAP appliance. What could be the cause of this?
 
 **A13.** For some reason (unknown at this time) QNAP decided to kill any openvpn process running on the host by adding in a line to the 'daemon_mgr.conf' file. In order to prevent this you need to delete the following line from the 'daemon_mgr.conf':-
 
@@ -264,13 +264,13 @@ Save the file and restart the container for the change to take effect.
 
 Where xx will be 2 random digits.
 
-**Q14.** I am a Synology DS-1817+ user and am seeing very bad download/upload speeds whilst using DelugeVPN/SABnzbdVPN/qBittorrentVPN, what could be the cause?.
+**Q14.** I am a Synology DS-1817+ user and am seeing very bad download/upload speeds whilst using DelugeVPN/SABnzbdVPN/qBittorrentVPN. What could be the cause?.
 
-**A14.** The Synology DS-1817+ can have performance issues when running dockers that include openvpn client, this can manifest itself as slow download/upload rates. There are two solutions to this problem, either reduce the load on the system by shutting down other containers/vm's or alternatively by running the vpn enabled docker container on a more powerful system.
+**A14.** The Synology DS-1817+ can have performance issues when running dockers that include openvpn client. This can manifest itself as slow download/upload rates. There are two solutions to this problem, either reduce the load on the system by shutting down other containers/vm's or alternatively by running the vpn enabled docker container on a more powerful system.
 
-**Q15.** I have setup port forwarding on my router/firewall but still cannot seem to seed any torrents and my incoming port is showing as closed, how can I fix this?
+**Q15.** I have setup port forwarding on my router/firewall but still cannot seem to seed any torrents and my incoming port is showing as closed. How can I fix this?
 
-**A15.** A common misconception is that port forwarding for a torrent client when using a VPN connection is still done on the users router/firewall, this is NOT the case, port forwarding MUST be done on the VPN provider side only. In order to have a working incoming port you need to have all of the following in place:-
+**A15.** A common misconception is that port forwarding for a torrent client when using a VPN connection is still done on the users router/firewall. This is NOT the case, port forwarding MUST be done on the VPN provider side only. In order to have a working incoming port you need to have all of the following in place:-
 
 * The VPN provider you have signed up to provides port forwarding - For PIA users this is the case, there are other providers too which allow port forwarding, but be aware most do NOT, check with the provider BEFORE signing up.
 
@@ -278,32 +278,32 @@ Where xx will be 2 random digits.
 
 * You have configured the application to use the assigned port - For PIA users this is done automatically for you, for other providers you will need to manually set the application to use the port assigned to you.
 
-**Q16.** I am seeing the following in the log file '/config/supervisord.log' and cannot access the web ui, what does it mean and how can I fix it?.
+**Q16.** I am seeing the following in the log file '/config/supervisord.log' and cannot access the web UI. What does it mean and how can I fix it?
 
 ```AUTH: Received control message: AUTH_FAILED'```
 
-**A16.** AUTH_FAILED means you are having issues authenticating with your VPN provider, there can be many causes for this, here are some of the common ones:-
+**A16.** AUTH_FAILED means you are having issues authenticating with your VPN provider. There can be many causes for this. Here are some of the common ones:
 
 * **Cause:**  Your subscription has run out<br/>
-**Solution:** Double check this on the vpn providers website.
+**Solution:** Double check this on the VPN provider's website.
 
 * **Cause:**  You have not typed in your username (VPN_USER value) and/or password (VPN_PASS value) correctly<br/>
 **Solution:** Do not copy and paste, type it in manually to prevent whitespace issues.
 
 * **Cause:**  You are using the wrong credentials<br/>
-**Solution:** ensure the credentials are for openvpn/wireguard, NOT proxy servers etc. [**PIA users**] Do **NOT** use the generated PPTP/L2TP/Socks Username and Password, this is not the correct credentials, you need to specify the web login credentials (username will be of the format Pxxxxxx) for VPN_USER and VPN_PASS.
+**Solution:** Ensure the credentials are for OpenVPN/WireGuard, NOT proxy servers etc. [**PIA users**] Do **NOT** use the generated PPTP/L2TP/Socks Username and Password, this is not the correct credentials. You need to specify the web login credentials (username will be of the format Pxxxxxx) for VPN_USER and VPN_PASS.
 
 * **Cause:**  Your password contains a character which may cause issues<br/>
 **Solution:** Please ensure it only contains letters a-z (upper case or lower case) and numbers 0-9.
 
 * **Cause:**  Your password is too long<br/>
-**Solution:** Certain VPN providers (such as PIA) may limit the password length, please try shortening the password for your account. [**PIA users**] The maximum length for account passwords has changed with next-gen network, please ensure your password is 99 characters or less.
+**Solution:** Certain VPN providers (such as PIA) may limit the password length. Please try shortening the password for your account. [**PIA users**] The maximum length for account passwords has changed with next-gen network. Please ensure your password is 99 characters or less.
 
-* **Cause:**  Out of date openvpn config file (ovpn extension)<br/>
-**Solution:** Ensure you download the latest ovpn file from your vpn provider.
+* **Cause:**  Out of date OpenVPN config file (ovpn extension)<br/>
+**Solution:** Ensure you download the latest OVPN file from your VPN provider.
 
-* **Cause:**  The vpn provider you have signed up with is having authentication issues<br/>
-**Solution:** Try another endpoint, failing that contact the vpn provider and explain you are having authentication issues when using native openvpn/wireguard clients with AUTH_FAILED shown.
+* **Cause:**  The VPN provider you have signed up with is having authentication issues<br/>
+**Solution:** Try another endpoint. Failing that, contact the VPN provider and explain you are having authentication issues when using native OpenVPN/WireGuard clients with AUTH_FAILED shown.
 
 **Q17.** I'm unable to connect to the web ui and I'm seeing the following repeated over and over in the /config/supervisord.log file, what does it mean and how can I fix it?
 
@@ -315,13 +315,13 @@ Tue Feb  4 07:21:26 2020 [UNDEF] Inactivity timeout (--ping-restart), restarting
 Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 ```
 
-**A17.** This means the OpenVPN Client is unable to connect to the VPN providers server on the specified IP address and port (as defined in the ovpn file 'remote' line), this can have many causes, some of the more common causes (and solutions) are as follows, in descending order of most common:-
+**A17.** This means the OpenVPN Client is unable to connect to the VPN providers server on the specified IP address and port (as defined in the ovpn file 'remote' line). This can have many causes, some of the more common causes (and solutions) are as follows, in descending order of most common:-
 
 * **Cause:** Out of date ovpn config file containing reference to retired VPN remote server(s).<br/>
 **Solution:** Download the latest ovpn config file from your VPN provider, place in /config/openvpn/ and restart container.
 
 * **Cause:**  Your subscription has run out<br/>
-**Solution:** Double check this on the vpn providers website.
+**Solution:** Double check this on the VPN provider's website.
 
 * **Cause:**  VPN provider has a major outage.<br/>
 **Solution:** Contact VPN provider to confirm outage and wait for the outage to be resolved.
@@ -343,26 +343,26 @@ Tue Feb  4 07:21:26 2020 SIGHUP[soft,ping-restart] received, process restarting
 
 Once you have ruled out any potential Home LAN issues and if none of the above resolve the issue then you may have to switch VPN provider or even ISP to get around the blocking restriction.
 
-**Q18.** When I set my application (such as Sonarr, Radarr, web browser, etc) to use Privoxy and do a curl/wget from within the applications container, or on my PC running the web browser I see that my IP address is my ISP's assigned IP address and NOT the expected VPN provider IP address for the endpoint im connected to, why is this, is the VPN not working correctly?.
+**Q18.** When I set my application (such as Sonarr, Radarr, web browser, etc.) to use Privoxy and do a curl/wget from within the application's container, or on my PC running the web browser, I see that my IP address is my ISP's assigned IP address and NOT the expected VPN provider IP address for the endpoint I'm connected to. Why is this? Is the VPN not working correctly?
 
-**A18.** A proxy server works at a application level NOT a system level, therefore when using command line tools like curl or wget these applications would need to be configured to use the proxy in order to correctly route through and show the VPN provider allocated IP address.
+**A18.** A proxy server works at an application level, NOT a system level. Therefore, when using command line tools like curl or wget, these applications would need to be configured to use the proxy in order to correctly route through and show the VPN provider allocated IP address.
 
-This is in contrast to a VPN client which works at the system level, thus all traffic is routed over the VPN tunnel, so using command line utilities such as curl or wget inside the VPN docker container (e.g. DelugeVPN, PrivoxyVPN, etc) WOULD correctly show the VPN allocated IP address.
+This is in contrast to a VPN client which works at the system level, thus all traffic is routed over the VPN tunnel. So using command line utilities such as curl or wget inside the VPN Docker container (e.g. DelugeVPN, PrivoxyVPN, etc.) WOULD correctly show the VPN allocated IP address.
 
-If you wish to verify that the application is correctly using the proxy server then point your application at Privoxy and then stop the PrivoxyVPN container, then from the application (such as Sonarr, Radarr, web browser, etc) you should start seeing connection errors when attempting to connect to index sites/web sites.
+If you wish to verify that the application is correctly using the proxy server, then point your application at Privoxy and then stop the PrivoxyVPN container. Then from the application (such as Sonarr, Radarr, web browser, etc.) you should start seeing connection errors when attempting to connect to index sites/websites.
 
-**Q19.** I see that PIA has a new network called 'Next-Gen', does *VPN Docker Images that you produce support this, and if so how do I switch over to it?
+**Q19.** I see that PIA has a new network called 'Next-Gen'. Does *VPN Docker Images that you produce support this, and if so how do I switch over to it?
 
-**A19.** Yes, it's now fully supported including port forwarding, if you want to switch from PIA's current network to the 'next-gen' network then please generate a new ovpn file using the following procedure:-
+**A19.** Yes, it's now fully supported including port forwarding. If you want to switch from PIA's current network to the 'next-gen' network then please generate a new ovpn file using the following procedure:-
 
 1. Please make sure you have the latest Docker Image by issuing a docker pull.
 2. Download next-gen ovpn config file from the following link:- <https://www.privateinternetaccess.com/openvpn/openvpn.zip>
 3. Extract the zip and copy **ONE** of the ovpn files and any other certs etc to /config/openvpn/, ensuring you either rename the extension or delete the old current-gen network ovpn file.
 4. Restart the container and monitor /config/supervisord.log file for any issues.
 
-**Q20.** I would like to specify multiple endpoints to attempt to connect to in case one or more of them have transient issues, can your *VPN Docker images do this, and if so, how?
+**Q20.** I would like to specify multiple endpoints to attempt to connect to in case one or more of them have transient issues. Can your *VPN Docker images do this, and if so, how?
 
-**A20** Yes, all the Docker Images I produce do support multiple endpoints, this is achieved by editing the OpenVPN configuration file located in /config/openvpn/ and adding in additional 'remote' lines, an example is shown below:-
+**A20** Yes, all the Docker Images I produce do support multiple endpoints. This is achieved by editing the OpenVPN configuration file located in /config/openvpn/ and adding in additional 'remote' lines, an example is shown below:-
 
 ```text
 remote al.privacy.network 1198
@@ -445,7 +445,7 @@ for people using a Docker run command you would add the following lines:-
 --privileged=true \
 ```
 
-**Q24.** I would like to be able to route other docker containers through one of my existing VPN containers, how do I do this?
+**Q24.** I would like to be able to route other docker containers through one of my existing VPN containers. How do I do this?
 
 **A24.** In order to route an application(s) through an existing VPN container you would do the following steps:-
 
@@ -518,81 +518,6 @@ The 'Endpoint' line from the above example defines the endpoint you connect to, 
 
 **A29.** This warning is telling you that the docker container is unable to connect to the PIA API in order to generate a valid token for Wireguard, this is normally due to issues with a particular PIA endpoint (VPN provider server), try connecting to another endpoint by changing the ```Endpoint =``` entry in the wireguard config file located at ```/config/wireguard/wg0.conf``` - a full listing of PIA endpoints can normally be seen in the log file located at ```/config/supervisord.log```.
 
-**Q30.** I can view the applications Web UI from my home LAN, but whenever I connect to my home LAN using a remote connection (such as Tailscale, Cloudflare, OpenVPN or Wireguard) I can no longer view the application Web UI, I can view all other docker container Web UI's but not the **VPN ones,  why is this and how can I fix it?.
+**Q30.** I can view the application's Web UI from my home LAN, but whenever I connect to my home LAN using a remote connection (such as Tailscale, Cloudflare, OpenVPN or WireGuard) I can no longer view the application Web UI. I can view all other Docker container Web UIs but not the **VPN** ones. Why is this and how can I fix it?
 
-**A30.** This is due to strict iptables rules, you need to add the VPN network to the ```LAN_NETWORK``` value using a comma as a separator, e.g. ```LAN_NETWORK=192.168.1.0/24,192.168.2.0/24```, if you are having difficulty calculating the CIDR mask (digits after the forward slash) or finding out the network then see Q4 above.
-
-**Q31.** I see that you have now added in specific support for VPN provider 'ProtonVPN' which will now result in automatic incoming port assignment, what do I have to do to make use of this new functionality when using one of the *VPN images?.
-
-**A31.** In order to get a successful incoming port from VPN provider 'ProtonVPN' you would need to do the following:-
-
-* Login with your registered ProtonVPN account at <https://account.protonvpn.com> and then go to the Downloads section.
-* If you want to use OpenVPN then download a OpenVPN configuration file from a endpoint with P2P enabled (denoted by two arrows going left and right). Place the OpenVPN configuration file in `/config/openvpn/` ensuring it has a file extension of `ovpn`, please also ensure there are NO other files with a `ovpn` extension in `/config/openvpn/`.
-* If you want to use Wireguard then toggle the option `NAT-PMP (Port Forwarding)` to on and then download a Wireguard configuration file from a endpoint with P2P enabled (denoted by two arrows going left and right). Place the Wireguard configuration file in `/config/wireguard/` with the filename `wg0.conf`.
-* Go to UNRAID Web UI and left click the VPN container and select `edit` then scroll down to `VPN_USER` and append the string `+pmp` to the end of the username, e.g. `zuqWGtyy7SMGQM8C+pmp`, also ensure you have set the `VPN_PROV` to `protonvpn` (if this doesn't exist then see Note below), then scroll to the bottom and click onply.
-* Monitor log at `/config/supervisord.log` to ensure port is assigned and then check Web UI for application to verify the port has been set.
-
-**Note** Due to UNRAID templates not automatically updating it will be necessary to add `protonvpn` to the list of VPN providers for env var `VPN_PROV` before you can select it, you can do this by editing the container and clicking `edit` for env var `VPN_PROV` and setting the `Default Value` to `pia|airvpn|custom|protonvpn` then click on `Save` and you then should be able to select `protonvpn` from the list.
-
-**Q32.** I can access the Web UI for the application when connected to my LAN, but when I connect to my LAN via a VPN connection I can no longer access the Web UI, why is this and how do I fix it?
-
-**A32.** Due to strict ip table rules unless you add the network range configured for your VPN server to LAN_NETWORK then you will be blocked from aceessing the Web UI (and proxy if enabled). To fix this you need to append the VPN network to LAN_NETWORK using a comma to separate values, if you are unsure how to identify the network range then see Q4.
-
-**Q33.** I have VLAN's defined on my network and for some reason I cannot access the Web UI of the application even though the `/config/supervisord.log` states the application has started, why is this and how do I fix it?
-
-**A33.** Due to strict ip table rules unless you add the network range configured for your VLAN to LAN_NETWORK then you will be blocked from aceessing the Web UI (and proxy if enabled). To fix this you need to append the VLAN network(s) to LAN_NETWORK using a comma to separate values, if you are unsure how to identify the network range then see Q4.
-
-**Q34.** I'm running this container on a Docker Swarm or connected to non-standard docker networks and can't access the Web UI of the application.
-
-**A34.** Due to strict ip table rules and container limitations in docker engine, you must set `ENABLE_STARTUP_SCRIPTS=yes` in your docker run or docker compose and place a custom script similar to the following in your `config/scripts` directory
-
-```bash
-#!/bin/bash
-
-# Use WEBUI_PORT environment variable for the table ID and table name
-TABLE_ID="${WEBUI_PORT}"
-TABLE_NAME="${WEBUI_PORT}_qbittorrent"
-echo "Configuring routing table $TABLE_NAME."
-
-# Ensure /etc/iproute2 directory and rt_tables file exist
-if [ ! -d /etc/iproute2 ]; then
-    mkdir -p /etc/iproute2
-fi
-
-if [ ! -f /etc/iproute2/rt_tables ]; then
-    touch /etc/iproute2/rt_tables
-fi
-
-# Check if the routing table already exists, add if it doesn't
-if ! grep -q "$TABLE_NAME" /etc/iproute2/rt_tables; then
-    echo "$TABLE_ID $TABLE_NAME" >> /etc/iproute2/rt_tables
-    echo "Added routing table $TABLE_NAME."
-fi
-
-# Add routing rules for qBittorrent
-ip route add 10.0.0.0/24 via 10.0.0.2 table $TABLE_NAME
-ip route add 10.0.1.0/24 via 10.0.1.1 table $TABLE_NAME
-echo "Routing rules configured for $TABLE_NAME."
-```
-
-See also [arch-qbittorrentvpn issue 203](https://github.com/binhex/arch-qbittorrentvpn/issues/203)
-
-**Q35.** I am seeing the following in /config/supervisord.log after the latest update `Error: error sending query: Could not send or receive, because of network error`, why is this hapening and how can i fix it?
-
-**A35.** Due to more aggresive `iptables` blocking, name resolution is now strictly permitted only for the defined name servers via env var `NAME_SERVERS`, the above message is due to the defined name servers (port 53) being blocked, common reasons this may happen are as follows:-
-
-* Firewall/Router is blocking outbound port 53
-* PiHole (or similar) is blocking outbound port 53
-* Host is blocking outbound port 53
-* ISP is blocking outbound port 53
-
-**Note** Using local name servers is not permitted to prevent IP leakage and DNS failure will occur once the VPN tunnel is established.
-
-**Q36.** When enabling Tailscale I can no longer access the Web UI of any VPN enabled contains, why is this and how can I fix it?.
-
-**A36.** Tailscale interferes with DNS and networking causing issues with VPN enabled images, here are the known workarounds:-
-
-* MagicDNS is enabled - Fix is to disable MagicDNS in Tailscale
-* `TAILSCALE_USERSPACE_NETWORKING` is set to `false` - Fix is to set this to `true`
-
-**Note** If you are attempting to access the VPN enabled applications Web UI remotely over Tailscale then you will also need to ensure the Tailscale IP network is also added to LAN_NETWORK - See `Q30.` above for more details.
+**A30.** This is due to strict iptables rules. You need to add the VPN network to the ```LAN_NETWORK``` value using a comma as a separator, e.g. ```LAN_NETWORK=192.168.1.0/24,192.168.2.0/24```. If you are having difficulty calculating the CIDR mask (digits
