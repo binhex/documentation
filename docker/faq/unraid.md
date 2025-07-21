@@ -162,9 +162,9 @@ The alternative to the above is to delete the existing template and re-download 
 
 **Q11.** I see that the latest template has an env var for healthchecking, namely `HEALTHCHECK_ACTION`, what does this do?
 
-**A11.** The env var `HEALTHCHECK_ACTION` allows a user to define wht aciton is performed if the containr becomes unhealthy (defined via `HEALTHCHECK_COMMAND` - see Q10 ), if no value is given then the default action is to return an non zero exit code, this will mark the container as 'unhealthly` but will take no further action
+**A11.** The env var `HEALTHCHECK_ACTION` allows a user to define what action is performed if the containr becomes unhealthy (defined via `HEALTHCHECK_COMMAND` - see Q10 ), if no value is given then the default action is to return an non zero exit code, this will mark the container as 'unhealthly` but will take no further action
 
-**Q12.** I want to automaticallt restart the container if `HEALTHCHECK_COMMAND` fails, how can I do this?
+**Q12.** I want to automatically restart the container if `HEALTHCHECK_COMMAND` fails, how can I do this?
 
 **A12.** In order to autatically restart the container on a healthcheck failure you would need to set two things, firstly set the `HEALTHCHECK_ACTION` to `kill 1` (will send SIGTERM to all processes), and secondly append to `Extra Parameters:` (toggle 'ADVANCED VIEW' to see this)  the flag `--restart=always`
 
