@@ -150,8 +150,6 @@ The alternative to the above is to delete the existing template and re-download 
 
 **Note**: Some variables allow you to define more than one value. This is generally done by using a comma to separate the `Value:`. In the example above, that would be something like `1234,5678`—if you are unsure whether the variable supports multiple values, then please ask on the support thread on the forum.
 
-Still stuck? Take a look at the [Unraid FAQ](https://forums.unraid.nets/topic/57181-real-docker-faq/).
-
 **Q9.** I see that the latest templates for Nicotine+/qBittorrent/Deluge have an env var called `GLUETUN_INCOMING_PORT`, what does this do?
 
 **A9.** This env var if set to a value of `yes` will automatically assign the port forward from gluetun to Nicotine+/qBittorrent/Deluge, it will also bind the listening adapter to the VPN adapter for additional security against IP leakage. In order for this to work you must be sharing the network of an existing gluetun container, and the gluetun container must have port forwarding via the env var `VPN_PORT_FORWARDING` set to `on`
@@ -169,3 +167,5 @@ Still stuck? Take a look at the [Unraid FAQ](https://forums.unraid.nets/topic/57
 **Q12.** I want to automaticallt restart the container if `HEALTHCHECK_COMMAND` fails, how can I do this?
 
 **A12.** In order to autatically restart the container on a healthcheck failure you would need to set two things, firstly set the `HEALTHCHECK_ACTION` to `kill 1` (will send SIGTERM to all processes), and secondly append to `Extra Parameters:` (toggle 'ADVANCED VIEW' to see this)  the flag `--restart=always`
+
+Still stuck? Take a look at the [Unraid FAQ](https://forums.unraid.nets/topic/57181-real-docker-faq/).
