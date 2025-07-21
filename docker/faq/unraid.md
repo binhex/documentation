@@ -16,7 +16,7 @@
 
 **A4.** The location you set for downloads MUST be consistent for the metadata container(s) and the download container(s). So for instance, assuming two containers (there could and probably will be more than two in reality), a downloader (sabnzbdvpn) and a metadata downloader (sonarr), here are some scenarios
 
-**Broken Example 1.- SABnzbdVPN
+**Broken Example 1.- SABnzbdVPN**
 
 Host path is set to:
 ```/mnt/cache/appdata/data/completed```
@@ -24,7 +24,7 @@ Host path is set to:
 Container path is set to:
 ```/data```
 
-**Broken Example 1.- Sonarr
+**Broken Example 1.- Sonarr**
 
 Host path is set to:
 ```/mnt/cache/appdata/data```
@@ -34,7 +34,7 @@ Container path is set to:
 
 Why is this broken? Because although the container path (/data) is the same for both containers, the host path does NOT match.
 
-**Broken Example 2.- SABnzbdVPN
+**Broken Example 2.- SABnzbdVPN**
 
 Host path is set to:
 ```/mnt/cache/appdata/data/Completed```
@@ -42,7 +42,7 @@ Host path is set to:
 Container path is set to:
 ```/data```
 
-**Broken Example 2.- Sonarr
+**Broken Example 2.- Sonarr**
 
 Host path is set to:
 ```/mnt/cache/appdata/data/completed```
@@ -52,7 +52,7 @@ Container path is set to:
 
 Why is this broken? Because although the container path (/data) is the same for both containers, the host path does NOT match (Linux is case sensitive).
 
-**Broken Example 3.- SABnzbdVPN
+**Broken Example 3.- SABnzbdVPN**
 
 Host path is set to:
 ```/mnt/cache/appdata/data/completed```
@@ -60,7 +60,7 @@ Host path is set to:
 Container path is set to:
 ```/data```
 
-**Broken Example 3.- Sonarr
+**Broken Example 3.- Sonarr**
 
 Host path is set to:
 ```/mnt/cache/appdata/data/completed```
@@ -70,7 +70,7 @@ Container path is set to:
 
 Why is this broken? Because although the host path is now ok, the container paths do NOT match.
 
-**Working Example 1.- SABnzbdVPN
+**Working Example 1.- SABnzbdVPN**
 
 Host path is set to:
 ```/mnt/cache/appdata/data/completed```
@@ -78,7 +78,7 @@ Host path is set to:
 Container path is set to:
 ```/data```
 
-**Working Example 1.- Sonarr
+**Working Example 1.- Sonarr**
 
 Host path is set to:
 ```/mnt/cache/appdata/data/completed```
