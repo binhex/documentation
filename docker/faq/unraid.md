@@ -1,6 +1,8 @@
 # Unraid Docker FAQ
 
-## Q1. ## What does the Privileged checkbox do?
+## Q1
+
+What does the Privileged checkbox do?
 
 ## A1. The Privileged checkbox allows the Docker container to perform certain privileged activities. These are typically required for additional networking functions, such as creating/editing virtual adapters
 
