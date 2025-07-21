@@ -166,6 +166,6 @@ The alternative to the above is to delete the existing template and re-download 
 
 **Q12.** I want to automatically restart the container if `HEALTHCHECK_COMMAND` fails, how can I do this?
 
-**A12.** In order to autatically restart the container on a healthcheck failure you would need to set two things, firstly set the `HEALTHCHECK_ACTION` to `kill 1` (will send SIGTERM to all processes), and secondly append to `Extra Parameters:` (toggle 'ADVANCED VIEW' to see this)  the flag `--restart=always`
+**A12.** In order to automatically restart the container on a healthcheck failure you would need to set two things, firstly set the `HEALTHCHECK_ACTION` to `kill 1` (will send SIGTERM to all processes), and secondly append to `Extra Parameters:` (toggle 'ADVANCED VIEW' to see this)  the flag `--restart=always`
 
 Still stuck? Take a look at the [Unraid FAQ](https://forums.unraid.nets/topic/57181-real-docker-faq/).
