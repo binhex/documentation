@@ -520,4 +520,13 @@ The 'Endpoint' line from the above example defines the endpoint you connect to, 
 
 **Q30.** I can view the application's Web UI from my home LAN, but whenever I connect to my home LAN using a remote connection (such as Tailscale, Cloudflare, OpenVPN or WireGuard) I can no longer view the application Web UI. I can view all other Docker container Web UIs but not the **VPN** ones. Why is this and how can I fix it?
 
-**A30.** This is due to strict iptables rules. You need to add the VPN network to the ```LAN_NETWORK``` value using a comma as a separator, e.g. ```LAN_NETWORK=192.168.1.0/24,192.168.2.0/24```. If you are having difficulty calculating the CIDR mask (digits
+**A30.** This is due to strict iptables rules. You need to add the VPN network to the ```LAN_NETWORK``` value using a comma as a separator, e.g. ```LAN_NETWORK=192.168.1.0/24,192.168.2.0/24```. If you are having difficulty calculating the CIDR mask (digits after the forward slash) or figuring out the network then see Q4 above.
+
+**Q31.** When enabling Tailscale I can no longer access the Web UI of any VPN enabled contains, why is this and how can I fix it?.
+
+**A31.** Tailscale interferes with DNS and networking causing issues with VPN enabled images, here are the known workarounds:-
+
+* MagicDNS is enabled - Fix is to disable MagicDNS in Tailscale
+* `TAILSCALE_USERSPACE_NETWORKING` is set to `false` - Fix is to set this to `true`
+
+**Note** If you are attempting to access the VPN enabled applications Web UI remotely over Tailscale then you will also need to ensure the Tailscale IP network is also added to LAN_NETWORK - See `Q30.` above for more details.
