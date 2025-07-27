@@ -102,12 +102,8 @@ The above procedures MAY cause loss of metadata (NOT media), as you will be roll
 **Repair database**
 1. Start the Plex container.
 2. Left-click the icon in the Unraid web UI and select 'Console'.
-3. Type `/home/nobody/dbrepair.sh`.
-4. Select option `Check integrity`. Once this has completed, exit the console and restart the container. If this still has not fixed it, move on to the next step.
-5. Select option `Repair structure (basic repair)`. Once this has completed, exit the console and restart the container. If this still has not fixed it, move on to the next step.
-6. Select option `Rebuild indexes`. Once this has completed, exit the console and restart the container. If this still has not fixed it, move on to the next step.
-7. Select option `Low-level recovery`. Once this has completed, exit the console and restart the container. If this still has not fixed it, move on to the next step.
-8. If none of the steps above have fixed the database, then the only course of action is to reconfigure Plex from scratch.
+3. Type `DBRepair.sh stop auto start exit`, this will stop Plex, peform required repair of the database, start Plex and exit the script - for more instruction please see [here](https://github.com/ChuckPa/DBRepair)
+4. If none of the steps above have fixed the database, then the only course of action is to reconfigure Plex from scratch.
 
 **Notes**<br/>
 The above procedures MAY cause loss of metadata (NOT media) and other unforeseen issues (configuration). Repairing the database will result in deletion of the corrupt data, so further metadata scraping and/or configuration may be required after the repair.
