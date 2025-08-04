@@ -10,7 +10,7 @@
 | `VPN_TYPE` | `openvpn` |
 | `OPENVPN_USER` | `<your PIA username>` |
 | `OPENVPN_PASSWORD` | `<your PIA password>` |
-| `SERVER_HOSTNAMES` | `<port forward enabled endpoints>` list available [here](https://gist.github.com/binhex/215f86a33f828a98d0886fdec1d4a825) |
+| `SERVER_HOSTNAMES` | `<port forward enabled endpoints>` list available [here](https://gist.github.com/binhex/0d8bc1974bad90f8a61d2d4219ef862c) |
 | `VPN_PORT_FORWARDING` | `on` |
 | `FIREWALL_OUTBOUND_SUBNETS` | `<CIDR for your network>` (same as LAN_NETWORK for my existing VPN containers) |
 
