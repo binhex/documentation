@@ -21,11 +21,11 @@
 | `VPN_SERVICE_PROVIDER` | `protonvpn` | VPN provider |
 | `VPN_TYPE` | `wireguard` | ProtonVPN supports openvpn and wireguard, wireguard recommended |
 | `WIREGUARD_PRIVATE_KEY` | - | Copied from generated Proton connection file |
+| `WIREGUARD_PUBLIC_KEY` | - | Copied from generated Proton connection file |
 | `SERVER_COUNTRIES` | `<select or leave empty>` | Select country or leave blank |
 | `SERVER_CITIES` | `<select or leave empty>` | Select city or leave blank |
 | `VPN_PORT_FORWARDING` | `on` | Force port forwarding |
 | `TZ` | `<set to my local time zone>` | Set to the local timezone |
 | `PORT_FORWARD_ONLY` | `on` | Enforce port forward enabled endpoints only, recommended |
-| `WIREGUARD_PUBLIC_KEY` | - | Copied from generated Proton connection file |
 
 ## AirVPN settings
