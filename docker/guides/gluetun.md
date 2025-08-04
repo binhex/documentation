@@ -1,6 +1,6 @@
 # Gluetun Guide
 
-## Common settings
+## Common container settings
 
 | Environment Variable | Value | Description |
 |----------------------|-------|-------------|
@@ -8,7 +8,7 @@
 | `VPN_PORT_FORWARDING` | `on` | Forces port forwarding |
 | `PORT_FORWARD_ONLY` | `on` | Enforce port forward enabled endpoints only (recommended) |
 
-## PIA specific settings
+## PIA container settings
 
 | Environment Variable | Value | Description |
 |----------------------|-------|-------------|
@@ -18,7 +18,7 @@
 | `OPENVPN_PASSWORD` | `<your PIA password>` | Your PIA password |
 | `SERVER_HOSTNAMES` | `<port forward enabled endpoints>` | List of port forward enabled endpoints [here](https://gist.github.com/binhex/0d8bc1974bad90f8a61d2d4219ef862c) |
 
-## ProtonVPN settings
+## ProtonVPN container settings
 
 | Environment Variable | Value | Description |
 |----------------------|-------|-------------|
@@ -30,3 +30,8 @@
 | `SERVER_CITIES` | `<select or leave empty>` | Select city or leave blank |
 
 ## AirVPN settings
+
+| Environment Variable | Value | Description |
+|----------------------|-------|-------------|
+| `VPN_SERVICE_PROVIDER` | `airvpn` | VPN provider |
+| `VPN_TYPE` | `wireguard` | AirVPN supports openvpn and wireguard, (wireguard recommended) |
