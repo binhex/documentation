@@ -10,7 +10,7 @@
 | `VPN_TYPE` | `openvpn` |
 | `OPENVPN_USER` | `<your PIA username>` |
 | `OPENVPN_PASSWORD` | `<your PIA password>` |
-| `SERVER_HOSTNAMES` | `<port forward enabled endpoints>` e.g. `ca-toronto.privacy.network,nl-amsterdam.privacy.network` |
+| `SERVER_HOSTNAMES` | `<port forward enabled endpoints>` list available [here](https://gist.github.com/binhex/215f86a33f828a98d0886fdec1d4a825) |
 | `VPN_PORT_FORWARDING` | `on` |
 | `FIREWALL_OUTBOUND_SUBNETS` | `<CIDR for your network>` (same as LAN_NETWORK for my existing VPN containers) |
 
