@@ -4,15 +4,15 @@
 
 ## PIA specific settings
 
-| Environment Variable | Value |
-|----------------------|-------|
-| `VPN_SERVICE_PROVIDER` | `PIA` |
-| `VPN_TYPE` | `openvpn` |
-| `OPENVPN_USER` | `<your PIA username>` |
-| `OPENVPN_PASSWORD` | `<your PIA password>` |
-| `SERVER_HOSTNAMES` | `<port forward enabled endpoints>` list available [here](https://gist.github.com/binhex/0d8bc1974bad90f8a61d2d4219ef862c) |
-| `VPN_PORT_FORWARDING` | `on` |
-| `FIREWALL_OUTBOUND_SUBNETS` | `<CIDR for your network>` (same as LAN_NETWORK for my existing VPN containers) |
+| Environment Variable | Value | Description |
+|----------------------|-------|-------------|
+| `VPN_SERVICE_PROVIDER` | `PIA` | VPN provider |
+| `VPN_TYPE` | `openvpn` | Gluetun VPN type for PIA is openvpn only |
+| `OPENVPN_USER` | `<your PIA username>` | This will be in the format piaxxxxxxx |
+| `OPENVPN_PASSWORD` | `<your PIA password>` | Your PIA password |
+| `SERVER_HOSTNAMES` | `<port forward enabled endpoints>` | List available on Gist [here](https://gist.github.com/binhex/0d8bc1974bad90f8a61d2d4219ef862c) |
+| `VPN_PORT_FORWARDING` | `on` | Forces port forwarding |
+| `FIREWALL_OUTBOUND_SUBNETS` | `<CIDR for your network>` | Same as `LAN_NETWORK` for the existing binhex *VPN containers |
 
 ## ProtonVPN settings
 
