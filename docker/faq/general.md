@@ -87,3 +87,5 @@ latest
 So if you wanted to only use v1, then you could specify `<repo name>:v1`, or if you wanted to use the current major-minor version then `<repo name>:v1.45`.
 
 **Note**: Do keep in mind sub-version tags will only be generated for applications that comply with semver, that is, 3 (or more) octets in the version. Not all application developers do this.
+
+A list of available Docker tags can be seen at: `https://hub.docker.com/r/binhex/arch-<app name>/tags` e.g. `https://hub.docker.com/r/binhex/arch-sonarr/tags`
