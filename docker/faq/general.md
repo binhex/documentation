@@ -84,7 +84,7 @@ v1.45.0
 latest
 ```
 
-So if you wanted to only use v1, then you could specify `<repo name>:v1`, or if you wanted to use the current major-minor version then `<repo name>:v1.45`.
+So if you wanted to only use v1, then you could specify `<repo name>:v1`, or if you wanted to use the current major-minor version then `<repo name>:v1.45`, you can also pin to a specific version by specifying the entire version `<repo name>:v1.45.0`.
 
 **Note**: Do keep in mind sub-version tags will only be generated for applications that comply with semver, that is, 3 (or more) octets in the version. Not all application developers do this.
 
