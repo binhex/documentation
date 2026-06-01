@@ -14,7 +14,7 @@ Please perform both sections below unless instructed otherwise:
 ### Gather Supervisor Log
 
 1. Delete any existing log file located at `/config/supervisord.log`, where `/config` is the host path for the container.
-2. Left-click the container and select 'Edit', then set the 'Container Variable' for `DEBUG` to a value of `true` and click 'Apply'.
+2. If running a container with a built in VPN - Left-click the container and select 'Edit', then set the 'Container Variable' for `DEBUG` to a value of `true` and click 'Apply'.
 3. Wait 5 minutes for it to completely finish initializing, then open the log file at `/config/supervisord.log` and **remove all references to username and password from the file**, then save the log somewhere.
 4. Attach (do NOT paste) the log output file from Step 3 to the post and click on 'Submit Reply'.
 
@@ -22,7 +22,7 @@ Please perform both sections below unless instructed otherwise:
 
 1. Delete any existing log file located at `/config/supervisord.log`, where /config is the host path.
 2. Stop and delete the container (not the image).
-3. Set the env var key `DEBUG` to a value of `true`.
+3. If running a container with a built in VPN - Set the env var key `DEBUG` to a value of `true`.
 4. Create the container and wait 5 minutes for it to completely finish initializing.
 5. Open the log file at `/config/supervisord.log` and **remove all references to username and password** and save to another filename.
 6. Append the docker run/create command or docker compose yml file to the saved log file.
